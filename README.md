@@ -4,7 +4,12 @@
 describe <br /> <br />
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
- ## Table of Contents:
+## Collaborators:
+* Ryan Thomas: <br />
+* Danny Yates:  <br />
+* Timothy Zalewski: https://github.com/Tim-Zebra <br />
+* William Wong: 
+
 
   **[How to Use](#how-to-use)** <br />
   **[Application Demos](#application-demos)** <br />
