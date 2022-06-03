@@ -38,7 +38,7 @@ describe <br /> <br />
 3. See commits for more details
 
 ## Developers:
-* Ryan Thomas: <br />
-* Danny Yates:  <br />
+* Ryan Thomas: https://github.com/Stiltskinner <br />
+* Danny Yates: https://github.com/cycoconutz <br />
 * Timothy Zalewski: https://github.com/Tim-Zebra <br />
-* William Wong: 
+* William Wong: https://github.com/billycwong19
