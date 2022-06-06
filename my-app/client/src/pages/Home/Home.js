@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyledHome } from './Home.styled'
+import LoginForm from "../../components/LoginForm/LoginForm"
 
-export default function Home () {
+export default function Home() {
   return (
     <StyledHome theme>
-      <h1>Hello World!</h1>
-      </StyledHome>
+      <LoginForm />
+    </StyledHome>
   )
 }
