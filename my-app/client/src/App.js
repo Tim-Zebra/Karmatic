@@ -2,8 +2,6 @@ import React from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import Home from './pages/Home/Home';
 import Nav from './components/Nav/Nav';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Footer from "./components/Footer/Footer"
 
 
@@ -27,6 +25,5 @@ export default function App() {
           <Home />
           <Footer />
         </div>
-  
   );
 }
