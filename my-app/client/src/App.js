@@ -1,29 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Home from './pages/Home';
+import { GlobalStyles } from './GlobalStyles';
+import Home from './pages/Home/Home';
+import Nav from './components/Nav/Nav';
 
-
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
-
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<Home />}
-            />
-          </Routes>
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
+const theme = {
+  maintextcolor: '#00A191',
+  maintextcolor2: '#5EACA4',
+  lightcolor: '#B1DCD8',
+  bubble: '#E2B4E5',
+  shadow: '#E0B9B9',
+  darkshadow: '#A85EAC',
+  mainbg: '#E9E9E9',
+  footerheaderbg: '#4A5655'
 }
 
-export default App;
+
+export default function App() {
+  return (
+        <div>
+          <GlobalStyles />
+          <Nav />
+          <Home />
+        </div> 
+  );
+}
