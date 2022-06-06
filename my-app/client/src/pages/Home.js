@@ -1,7 +1,8 @@
 import React from 'react'
+import LoginForm from "../components/LoginForm/LoginForm"
 
 export default function Home() {
     return (
-        <h1>Hello World!</h1>
+        <LoginForm />
     );
 }
