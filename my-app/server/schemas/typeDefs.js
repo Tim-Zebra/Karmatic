@@ -71,5 +71,3 @@ module.exports = typeDefs;
 //   createMatchup(tech1: String!, tech2: String!): Matchup
 //   createVote(_id: String!, techNum: Int!): Matchup
 // }
-
-    // 
