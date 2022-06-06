@@ -1,20 +1,35 @@
 const { Schema, model } = require('mongoose');
 
 const karmaPostSchema = new Schema({
-  karmaPost: {
+  postTitle: {
     type: String,
     required: 'You need to leave a thought!',
     minlength: 1,
     maxlength: 280,
     trim: true,
   },
-  karmaAuthor: {
+  postDescription: {
+    type: String,
+    required: 'You need to leave a thought!',
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
+  postAuthor: {
     type: String,
     required: true,
     trim: true,
   },  
-  karmaValue: {
+  postValue: {
     type: Number,
+    required: true,
+  },
+  duration: {
+    type: Number,
+    required: true,
+  },
+  difficulty: {
+    type: String,
     required: true,
   },
     createdAt: {

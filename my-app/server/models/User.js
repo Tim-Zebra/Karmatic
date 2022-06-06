@@ -35,6 +35,12 @@ const userSchema = new Schema({
       ref: 'KarmaPosts',
     },
   ],
+  karmaGroups: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Location',
+    },
+  ],
 });
 
 // set up pre-save middleware to create password

@@ -1,4 +1,5 @@
-const Tech = require('./Tech');
-const Matchup = require('./Matchup');
+const KarmaPost = require('./KarmaPost');
+const Location = require('./Location');
+const User = require('./User');
 
-module.exports = { Tech, Matchup };
+module.exports = { User, KarmaPost, Location };
