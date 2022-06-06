@@ -1,29 +1,25 @@
-const { Tech, Matchup } = require('../models');
+const { User, KarmaPost, Location } = require('../models');
 
 const resolvers = {
   Query: {
-    tech: async () => {
-      return Tech.find({});
-    },
-    matchups: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return Matchup.find(params);
+    users: async () => {
+      return User.find({});
     },
   },
-  Mutation: {
-    createMatchup: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
-    },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
-        { new: true }
-      );
-      return vote;
-    },
-  },
+  // Mutation: {
+  //   createPost: async (parent, args) => {
+  //     const post = await post.create(args);
+  //     return post;
+  //   },
+  //   changeKarma: async (parent, { _id, karma }) => {
+  //     const vote = await User.findOneAndUpdate(
+  //       { _id },
+  //       {karma: $karma},
+  //       { new: true }
+  //     );
+  //     return vote;
+  //   },
+  // },
 };
 
 module.exports = resolvers;

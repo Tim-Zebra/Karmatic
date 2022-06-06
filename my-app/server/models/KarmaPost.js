@@ -39,22 +39,28 @@ const karmaPostSchema = new Schema({
   },
   karmaHelpers: [
     {
-      helperUsername: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-      helperKarma: {
-        type: Number,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
+      type: Schema.Types.ObjectId,
+      ref: 'User',
     },
   ],
+  // karmaHelpers: [
+  //   {
+  //     helperUsername: {
+  //       type: String,
+  //       required: true,
+  //       trim: true,
+  //     },
+  //     helperKarma: {
+  //       type: Number,
+  //       required: true,
+  //     },
+  //     createdAt: {
+  //       type: Date,
+  //       default: Date.now,
+  //       get: (timestamp) => dateFormat(timestamp),
+  //     },
+  //   },
+  // ],
 
 });
 

@@ -13,13 +13,19 @@ const locationSchema = new Schema({
   },
   members: [
     {
-      memberName: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-    },
-  ],
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ]
+  // members: [
+  //   {
+  //     memberName: {
+  //       type: String,
+  //       required: true,
+  //       trim: true,
+  //     },
+  //   },
+  // ],
 });
 
 const Location = model('Location', locationSchema);
