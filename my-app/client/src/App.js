@@ -2,6 +2,10 @@ import React from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import Home from './pages/Home/Home';
 import Nav from './components/Nav/Nav';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import Footer from "./components/Footer/Footer"
+
 
 const theme = {
   maintextcolor: '#00A191',
@@ -21,6 +25,8 @@ export default function App() {
           <GlobalStyles />
           <Nav />
           <Home />
-        </div> 
+          <Footer />
+        </div>
+  
   );
 }
