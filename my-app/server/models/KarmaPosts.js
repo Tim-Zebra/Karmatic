@@ -12,6 +12,10 @@ const karmaPostSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+  },  
+  karmaValue: {
+    type: Number,
+    required: true,
   },
     createdAt: {
     type: Date,
@@ -24,6 +28,10 @@ const karmaPostSchema = new Schema({
         type: String,
         required: true,
         trim: true,
+      },
+      helperKarma: {
+        type: Number,
+        required: true,
       },
       createdAt: {
         type: Date,

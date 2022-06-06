@@ -19,6 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  karma: {
+    type: Number,
+    default: 100,
+  },
   karmaPosts: [
     {
       type: Schema.Types.ObjectId,
