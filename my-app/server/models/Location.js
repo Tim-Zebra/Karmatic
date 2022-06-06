@@ -11,15 +11,22 @@ const locationSchema = new Schema({
     type: String,
     required: true,
   },
+  // Note from Ryan: I made members reference the User model since they should connect rather than making new objects
   members: [
     {
-      memberName: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-    },
-  ],
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ]
+  // members: [
+  //   {
+  //     memberName: {
+  //       type: String,
+  //       required: true,
+  //       trim: true,
+  //     },
+  //   },
+  // ],
 });
 
 const Location = model('Location', locationSchema);
