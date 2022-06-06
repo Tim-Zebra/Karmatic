@@ -4,7 +4,7 @@ import xxx from './components/**somename**';
 function App() {
   return (
     <div>
-      < />
+
     </div>
   );
 }
