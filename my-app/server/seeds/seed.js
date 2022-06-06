@@ -1,13 +1,33 @@
 const db = require('../config/connection');
-const { Tech } = require('../models');
-
-const techData = require('./techData.json');
-
+const { User, Location } = require('../models');
+const userSeeds = require('./userSeeds.json');
+const locationSeeds = require('./locationSeeds.json');
 db.once('open', async () => {
-  await Tech.deleteMany({});
+  try {
+    // Clears out DB
+    await User.deleteMany({});
 
-  const technologies = await Tech.insertMany(techData);
+    // Creates new collections
+    // Creates users
+    await User.create(userSeeds);
 
-  console.log('Technologies seeded!');
+    // Adds location along with the user
+    for (let i = 0; i < thoughtSeeds.length; i++) {
+      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { username: thoughtAuthor },
+        {
+          $addToSet: {
+            thoughts: _id,
+          },
+        }
+      );
+    }
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+
+  console.log('all done!');
   process.exit(0);
 });
