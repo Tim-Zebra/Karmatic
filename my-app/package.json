@@ -16,6 +16,8 @@
     "concurrently": "^7.2.1"
   },
   "dependencies": {
-    "style-components": "^0.1.0"
+    "node": "^16.14.2",
+    "style-components": "^0.1.0",
+    "styled-components": "^5.3.5"
   }
 }
