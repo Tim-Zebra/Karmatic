@@ -16,12 +16,17 @@ const typeDefs = gql`
     _id: ID!
     postTitle: String!
     postDescription: String!
-    postAuthor: String!
     postValue: Int!
     duration: Int!
     difficulty: String!
     createdAt:String
-    karmaHelpers: [User]
+    karmaHelpers: [KarmaHelper]
+  }
+
+  type KarmaHelper {
+    _id: ID!
+    helperUsername: String!
+    createdAt: String!
   }
 
   type Location {
@@ -33,10 +38,11 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    karmaPosts: [KarmaPost]
+    user(username: String!): User
+    karmaPost(karmaPostId: ID!): KarmaPost
+    karmaPosts(username: String!): [KarmaPost]
     karmaHelping: [KarmaPost]
     karmaGroups: [Location]
-    karmaHelpers: [User]
     members: [User]
   }
 `;
@@ -65,3 +71,5 @@ module.exports = typeDefs;
 //   createMatchup(tech1: String!, tech2: String!): Matchup
 //   createVote(_id: String!, techNum: Int!): Matchup
 // }
+
+    // 

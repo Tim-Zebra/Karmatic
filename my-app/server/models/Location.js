@@ -11,6 +11,7 @@ const locationSchema = new Schema({
     type: String,
     required: true,
   },
+  // Note from Ryan: I made members reference the User model since they should connect rather than making new objects
   members: [
     {
       type: Schema.Types.ObjectId,
