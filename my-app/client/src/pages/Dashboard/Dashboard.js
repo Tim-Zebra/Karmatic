@@ -1,6 +1,6 @@
 import React from 'react'
 import { DashboardContainer, Column, GreetingContainer } from './Dashboard.styled'
-import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../components/Forms/LoginForm.styled'
+import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../components/Forms/ToggleForm.styled'
 import { PrettyButton } from '../../components/Buttons/PrettyButton.styled'
 
 export default function Dashboard() {
