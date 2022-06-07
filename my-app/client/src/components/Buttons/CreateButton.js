@@ -1,11 +1,10 @@
 import React from 'react'
 import { StyledButton } from './Button.styled'
 
-export default function SignUpButton() {
+export default function LoginButton() {
     return (
         <StyledButton>
-            <img src='./assets/images/signup_btn.png' alt='signup button' />
-
+            <img src='./assets/images/login_btn.png' alt='login button' />
         </StyledButton>
     )
 }
