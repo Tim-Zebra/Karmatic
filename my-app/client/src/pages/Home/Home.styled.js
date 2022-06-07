@@ -13,12 +13,15 @@ export const HomeContainer = styled.div`
 export const StyledHomeLeft = styled.div`
     margin-top: 6rem;
     height: fit-content;
-    width: 100vw;
+    width: 85vw;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    @media only screen and (min-width: 776px) {
+        width: 60vw;
+        height: 100vh;
+    }
     @media only screen and (min-width: 992px) {
         width: 50vw;
         height: 100vh;
