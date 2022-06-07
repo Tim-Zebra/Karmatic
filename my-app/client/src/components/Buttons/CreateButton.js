@@ -1,10 +1,10 @@
 import React from 'react'
 import { PrettyButton } from './PrettyButton.styled'
 
-export default function LoginButton() {
+export default function CreateButton() {
     return (
         <PrettyButton>
-            Login
+            Create Account
         </PrettyButton>
     )
 }
