@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-
-
 export const UserContainer = styled.div`
-  width: 33%;
+  width: 50%;
   border: 2px solid #4A5655;
   border-radius: 20px;
   padding: 2px 5px 2px 5px;
