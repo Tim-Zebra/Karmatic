@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledForm } from "./LoginForm.styled"
 import LoginButton from '../../Buttons/LoginButton'
 import SignupButton from '../../Buttons/SignupButton'
+import toggleButton from '../../Buttons/ToggleButton'
 
 export default function LoginForm({ handleLoginSignupToggle }) {
     return (
@@ -12,7 +13,7 @@ export default function LoginForm({ handleLoginSignupToggle }) {
             <label for="password">password</label>
             <input type="password" name="password" placeholder="Type in your password..." />
             <LoginButton></LoginButton>
-            <SignupButton toggle={handleLoginSignupToggle}></SignupButton>
+            <toggleButton toggle={handleLoginSignupToggle}></SignupButton>
         </StyledForm>
     );
 }
