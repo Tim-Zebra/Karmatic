@@ -2,7 +2,6 @@ import React from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home/Home';
-import Dashboard from './pages/Dashboard/Dashboard';
 import Nav from './components/Nav/Nav';
 import Footer from "./components/Footer/Footer"
 
