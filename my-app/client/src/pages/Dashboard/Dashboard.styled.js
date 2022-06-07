@@ -14,17 +14,15 @@ export const Column = styled.div`
     }
 `
 
-export const GreetingContainer = styled.div`
-    background-color: white;
-    border-radius: 25px;
-    padding: 1rem;
-    box-shadow: 3px 3px ${({ theme  }) => theme.colors.lightpurple};
-    width: 50%;
-    text-align: left;
-`
 
-export const UserContainerHeader = styled.div`
-    font-family: ${({ theme }) => theme.fonts.otherfont };
-    text-align: center;
 
-`
+
+
+// export const KarmaBar = styled.div`
+//     height: 1rem;
+//     width: 99%;
+//     border-radius: 25px;
+//     background: rgb(0,161,145);
+//     background: linear-gradient(90deg, rgba(0,161,145,1) ${({ Karma }) => Karma }%, rgba(168,94,172,1) ${({ Karma }) => 100 - Karma }%);
+//     margin-bottom: 1rem;
+// `

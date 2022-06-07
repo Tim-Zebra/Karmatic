@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const PrettyButton = styled.button`
     color: ${({ theme }) => theme.colors.darkteal};
-    font-size: 20px;
+    font-size: 16px;
+    width:60%;
     padding: 1rem;
     margin:1rem;
     border: 2px solid ${({ theme }) => theme.colors.darkteal};
@@ -18,4 +19,5 @@ export const PrettyButton = styled.button`
     &:active {
         box-shadow: 2px 2px ${({ theme }) => theme.colors.lightpurple}
     }
+
 `
