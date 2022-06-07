@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyledForm } from "./SignupForm.styled"
-import CreateButton from '../../Buttons/CreateButton'
+import { StyledForm } from "./SignupForm.styled";
+import CreateButton from '../../Buttons/CreateButton';
 
-import submitButton from '../../Buttons/SubmitButton'
-import toggleButton from '../../Buttons/ToggleButton'
+import submitButton from '../../Buttons/SubmitButton';
+import toggleButton from '../../Buttons/ToggleButton';
 
 export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     const toggleButtonTextContent = 'Login Instead!!';
