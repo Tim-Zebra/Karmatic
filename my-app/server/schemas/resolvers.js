@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find({});
+      return User.find({}).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
@@ -36,22 +36,22 @@ const resolvers = {
     //   return {token, user};
     // Login mutation ready, commented out for when front-end needs it
     // },
-    // login: async (parent, { username, password }) => {
-    //   const user = await User.findOne({ username });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
-    //   if (!user) {
-    //     throw new AuthenticationError('Incorrect login information');
-    //   }
-    //   const correctPw = await user.isCorrectPassword(password);
+      if (!user) {
+        throw new AuthenticationError('Incorrect login information');
+      }
+      const correctPw = await user.isCorrectPassword(password);
 
-    //   if (!correctPw) {
-    //     throw new AuthenticationError('Incorrect login information')
-    //   }
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect login information')
+      }
 
-    //   const token = signToken(user);
+      const token = signToken(user);
 
-    //   return { token, user };
-    // },
+      return { token, user };
+    },
     changeKarma: async (parent, { username, karma }) => {
       return User.findOneAndUpdate(
         { username },
@@ -99,6 +99,26 @@ const resolvers = {
 
         return karmaPost;
         },
+    editPost: async (parent, {_id, postTitle, postDescription, duration, difficulty}) => {
+      return KarmaPost.findOneAndUpdate(
+        {_id},
+        {postTitle, postDescription, duration, difficulty},
+        {new: true}
+      )
+        },
+    deletePost: async (parent, {_id, username}) => {
+      const karmaPost = await KarmaPost.findOneAndDelete({
+        _id: _id
+      },
+      {new: true});
+
+      await User.findOneAndUpdate(
+        { username: username},
+        { $pull: { karmaPosts: karmaPost.id}},
+        {new: true}
+      );
+      return karmaPost;
+    },
     addHelper: async (parent, {_id, helperUsername}) => {
       return KarmaPost.findOneAndUpdate(
         {_id},
