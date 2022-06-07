@@ -18,7 +18,7 @@ const theme = {
     lightgrey: '#E9E9E9',
     darkgrey: '#4A5655',
   },
-  fonts : {
+  fonts: {
     otherfont: 'Nunito Sans'
   }
 }
@@ -26,13 +26,13 @@ const theme = {
 
 export default function App() {
   return (
-        <>
-          <ThemeProvider theme={ theme }>
-          <GlobalStyles />
-          <Nav />
-          <Dashboard />
-          <Footer />
-          </ThemeProvider>
-        </>
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Nav />
+        <Home />
+        <Footer />
+      </ThemeProvider>
+    </>
   );
 }

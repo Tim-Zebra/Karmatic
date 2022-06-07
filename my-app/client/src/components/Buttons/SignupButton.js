@@ -1,10 +1,10 @@
 import React from 'react'
-import { StyledButton } from './Button.styled'
+import { PrettyButton } from './PrettyButton.styled'
 
-export default function SignUpButton() {
-    return(
-        <StyledButton>
-            <img src='./assets/images/signup_btn.png' alt='signup button' />
-        </StyledButton>
+export default function SignUpButton({ toggle }) {
+    return (
+        <PrettyButton onClick={() => toggle()}>
+            Signup
+        </PrettyButton>
     )
 }
