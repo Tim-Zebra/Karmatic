@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
+import Profile from './pages/Profile/Profile';
 import Home from './pages/Home/Home';
 import Nav from './components/Nav/Nav';
 import Footer from "./components/Footer/Footer"
@@ -17,7 +18,7 @@ const theme = {
     lightgrey: '#E9E9E9',
     darkgrey: '#4A5655',
   },
-  fonts : {
+  fonts: {
     otherfont: 'Nunito Sans'
   }
 }
