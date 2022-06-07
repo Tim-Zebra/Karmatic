@@ -54,5 +54,6 @@ export const Row = styled.div`
     }
     @media only screen and (min-width: 992px) {
         flex-direction: row;
+
     }
 `

@@ -22,7 +22,7 @@ export const UserContainerBorderThick = styled.div`
   padding:20px;
 `
 
-export const StyledLoginForm = styled.form`
+export const StyledForm = styled.form`
 label{
     font-size:20px;
     color:#666666;
@@ -47,6 +47,12 @@ input[type=password], select {
   border-radius: 10px;
   background-color: #E9E9E9;
   box-sizing: border-box;
+}
+
+& a{
+  display:flex;
+  padding:10px;
+  flex-wrap:nowrap;
 }
 
 `
