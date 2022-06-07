@@ -18,7 +18,7 @@ export default function LoginForm({ handleLoginSignupToggle }) {
             <label for="password">confirm password</label>
             <input type="password" name="password" placeholder="Confirm your password..." />
             <CreateButton />
-            <LoginButton toggle={handleLoginSignupToggle} />
+            <a href="toggle={handleLoginSignupToggle}">Back to Login</a>
         </StyledForm>
     );
 }
