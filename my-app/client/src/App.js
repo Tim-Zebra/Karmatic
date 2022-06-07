@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import Profile from './pages/Profile/Profile';
 import Home from './pages/Home/Home';
-import Dashboard from './pages/Dashboard/Dashboard';
 import Nav from './components/Nav/Nav';
 import Footer from "./components/Footer/Footer"
 
@@ -26,14 +25,32 @@ const theme = {
 
 
 export default function App() {
+  // Logic to have app follow the current page being displayed
+  const [currentPage, setCurrentPage] = useState('Page1');
+  const handlePageChange = (page) => setCurrentPage(page);
+  
+  // Renders current page
+  const renderCurrentPage = () => {
+    console.log('The Current Page selected and through renderCurrentPage function', currentPage);
+    if(currentPage === 'Page1') {
+      return <Home />;
+    }
+    if(currentPage === 'Page2') {
+      return <Home />;
+    }
+    if(currentPage === 'Page3') {
+      return <Home />;
+    }
+  }
+
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Nav />
-        <Profile />
-        <Footer />
-      </ThemeProvider>
-    </>
+        <>
+          <ThemeProvider theme={ theme }>
+          <GlobalStyles />
+          <Nav currentPage={currentPage} handlePageChange={handlePageChange}/>
+          {renderCurrentPage()}
+          <Footer />
+          </ThemeProvider>
+        </>
   );
 }
