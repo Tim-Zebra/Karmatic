@@ -8,4 +8,5 @@ export const StyledButton = styled.button`
     img {
         height: 44px;
     }
+
 `
