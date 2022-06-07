@@ -1,6 +1,6 @@
 import React from 'react'
 import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer, KarmaBanner } from './ColumnOne.styled'
-import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../components/Box/Box.styled'
+import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
 export default function ColumnOne() {
     return (
@@ -26,9 +26,9 @@ export default function ColumnOne() {
                             <KarmaBanner>
                                 Great!
                             </KarmaBanner>
-                            <div>
+                            <a href='#page3'>
                                 View Your Profile
-                            </div>
+                            </a>
                         </UserContainerBorderThick>
                     </UserContainerBorder>
                 </UserContainer>
