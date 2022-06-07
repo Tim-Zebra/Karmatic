@@ -40,6 +40,11 @@ const typeDefs = gql`
     members: [Member]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -54,7 +59,10 @@ const typeDefs = gql`
   type Mutation {
     createUser(username: String!, email: String!, password: String!) : User
     changeKarma(username: String!, karma: Int!) : User
+    login(username: String!, password: String!) : Auth
     createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!) : KarmaPost
+    editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!) : KarmaPost
+    deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
     createLocation(locationName: String!, locationGeoTag: String!) : Location
     addMember(_id: ID!, member: String!) : Location
