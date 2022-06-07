@@ -29,32 +29,35 @@ const typeDefs = gql`
     createdAt: String!
   }
 
+  type Member {
+    member: String!
+  }
+
   type Location {
     _id: ID!
     locationName: String!
     locationGeoTag: String!
-    members: [User]
+    members: [Member]
   }
 
   type Query {
     users: [User]
     user(username: String!): User
-    karmaPost(karmaPostId: ID!): KarmaPost
+    karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
     karmaHelping: [KarmaPost]
     karmaGroups: [Location]
-    members: [User]
-    location(locationId: ID!): Location
+    location(_id: ID!): Location
     locations: [Location]
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!)
+    createUser(username: String!, email: String!, password: String!) : User
     changeKarma(username: String!, karma: Int!) : User
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!)
-    addHelper(karmaPostId: ID!, helperUsername: String!)
-    createLocation(locationName: String!, locationGeoTag: String!)
-    addMember(locationId: ID!, memberId: ID!)
+    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!) : KarmaPost
+    addHelper(_id: ID!, helperUsername: String!) : KarmaPost
+    createLocation(locationName: String!, locationGeoTag: String!) : Location
+    addMember(_id: ID!, member: String!) : Location
   }
 `;
 
