@@ -1,11 +1,10 @@
 import React from 'react'
-import { DashboardContainer, Column, GreetingContainer, UserContainerHeader, KarmaBar, StyledCoin, CurrentKarmaCoinsContainer } from './ColumnOne.styled'
+import { GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer } from './ColumnOne.styled'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../components/Box/Box.styled'
 
 export default function ColumnOne() {
     return (
-        <DashboardContainer>
-            <Column>
+            <>
                 <GreetingContainer>
                     Hey, Bob!
                 </GreetingContainer>
@@ -33,7 +32,6 @@ export default function ColumnOne() {
                         </UserContainerBorderThick>
                     </UserContainerBorder>
                 </UserContainer>
-            </Column>
-        </DashboardContainer>
+            </>
     )
 }

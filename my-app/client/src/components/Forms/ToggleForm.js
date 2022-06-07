@@ -15,13 +15,15 @@ export default function LoginSignupForm() {
     const renderLoginSignupFormSection = () => {
         // Renders login form if true
         if (currentLoginSignupForm) {
-            return <LoginForm handleLoginSignupToggle={handleLoginSignupToggle} />;
+            return <LoginForm handleSubmit={handleSubmit} handleLoginSignupToggle={handleLoginSignupToggle} />;
         }
         // Renders sign up form if false
-        return <SignupForm handleLoginSignupToggle={handleLoginSignupToggle} />
+        return <SignupForm handleSubmit={handleSubmit} handleLoginSignupToggle={handleLoginSignupToggle} />;
     }
 
     const handleLoginSignupToggle = () => setcurrentLoginSignupForm(!currentLoginSignupForm);
+
+    const handleSubmit = () => console.log('This happened lol');
 
     return (
         <UserContainer>

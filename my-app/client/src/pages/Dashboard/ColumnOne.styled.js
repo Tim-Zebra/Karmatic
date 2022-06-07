@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const ColumnContainer = styled.div`
+    
+`
+
 export const GreetingContainer = styled.div`
     background-color: white;
     border-radius: 25px;
