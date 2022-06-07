@@ -1,6 +1,6 @@
 import React from 'react'
 import { HomeContainer, StyledHomeLeft, StyledHomeRight } from '../Home/Home.styled'
-import { UserContainerWide, UserContainerLong, UserContainer, UserContainerBorder, UserContainerBorderThick } from "../../components/Forms/ToggleForm.styled"
+import { UserContainerWide, UserContainerLong, UserContainer, UserContainerBorder, UserContainerBorderThick } from "../../components/Box/Box.styled"
 import { ProfileContainer } from './Profile.styled'
 
 

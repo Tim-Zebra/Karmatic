@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {
     UserContainer, UserContainerBorder, UserContainerBorderThick
-} from "./ToggleForm.styled"
+} from "../Box/Box.styled"
 
-import LoginForm from './LoginForm/LoginForm';
-import SignupForm from './SignupForm/SignupForm';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 export default function LoginSignupForm() {
     // Displays either login or sign up form depending on which button (login or sign up) the user clicked on

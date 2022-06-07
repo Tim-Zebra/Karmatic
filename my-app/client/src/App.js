@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import Profile from './pages/Profile/Profile';
+import Dashboard from './pages/Dashboard/Dashboard'
 import Home from './pages/Home/Home';
 import Nav from './components/Nav/Nav';
 import Footer from "./components/Footer/Footer"
@@ -36,10 +37,10 @@ export default function App() {
       return <Home />;
     }
     if(currentPage === 'Page2') {
-      return <Home />;
+      return <Dashboard />;
     }
     if(currentPage === 'Page3') {
-      return <Home />;
+      return <Profile />;
     }
   }
 
