@@ -19,7 +19,7 @@ export const StyledHeaderContainer = styled.div`
     margin: 1rem 2rem;
     @media only screen and (min-width: 992px) {
         flex-direction: row;
-        
+
     }
 `
 
@@ -42,13 +42,13 @@ export const Row = styled.div`
     justify-content: space-around;
     width: 90%;
     p {
-        background-color: ${({ theme }) => theme.colors.purple };
+        background-color: ${({ theme }) => theme.colors.purple};
         border-radius: 40px;
         padding: 2rem;
         width: 75%;
         line-height: 1.6;
-        font-family: Avenir;
-    }
+        font-family: 'Nunito Sans', sans-serif;
+        }
     img {
         margin: 1rem 1rem;
     }
@@ -56,4 +56,3 @@ export const Row = styled.div`
         flex-direction: row;
     }
 `
-
