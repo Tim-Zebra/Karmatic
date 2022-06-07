@@ -1,0 +1,32 @@
+[
+  {
+    "postTitle": "Bring out your dead!",
+    "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
+    "postAuthor":"Tim-Zebra",
+    "postValue": 200,
+    "duration": 1,
+    "difficulty": 2,
+    "karmaHelpers": [
+        {
+          "helperUsername": "Stiltskinner"
+        }
+      ]
+  },
+  {
+    "postTitle": "Rabit on the Lose!",
+    "postDescription": "Help! My rabit got out and I'm worried he might get hurt. He's been known to be a little...aggressive but that's no excuse for throwing holy hand grenades at him!",
+    "postAuthor":"Stiltskinner",
+    "postValue": 200,
+    "duration": 1,
+    "difficulty": 2,
+    "karmaHelpers": [
+        {
+          "helperUsername": "cyconutz"
+        },
+        {
+          "helperUsername": "billycwong19"
+        }
+    ]
+  }
+]
+
