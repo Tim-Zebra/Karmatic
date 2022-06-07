@@ -1,14 +1,18 @@
 import React from 'react'
-import SignUpButton from '../../components/Buttons/SignupButton'
-
-import { StyledHome } from './Home.styled'
+import { HomeContainer, StyledHomeLeft, StyledHomeRight, StyledLogo } from './Home.styled'
+import HomeInfo from '../../components/HomeInfo/HomeInfo'
 import LoginSignupForm from "../../components/Forms/index"
 
 export default function Home() {
   return (
-    <StyledHome theme>
-      <LoginSignupForm />
-      <SignUpButton />
-    </StyledHome>
+    <HomeContainer>
+      <StyledHomeLeft>
+        <StyledLogo src='./assets/images/full_logo.png' alt='karmatic logo' />
+        <LoginSignupForm />
+      </StyledHomeLeft>
+      <StyledHomeRight>
+      <HomeInfo />
+      </StyledHomeRight>
+    </HomeContainer>
   )
 }

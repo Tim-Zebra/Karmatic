@@ -3,11 +3,13 @@ import styled from 'styled-components'
 export const StyledNavContainer = styled.header`
     height: 3rem;
     padding: 1em;
+    z-index: 1;
     position: fixed;
+    top: 0;
     width: 100vw;
     display: flex;
     flex: nowrap;
-    background-color: #4A5655;
+    background-color: ${({ theme }) => theme.colors.darkgrey };
     align-content: center;
     justify-content: space-between;
 
@@ -22,11 +24,11 @@ export const StyledNavEnd =  styled.div`
 
     a {
         margin-right: 3em;
-        border: solid #E9E9E9 2px;
+        border: solid ${({ theme }) => theme.colors.lightgrey } 2px;
         border-radius:30px;
         padding: .6rem;
         text-decoration: none;
-        color: #E9E9E9;
+        color: ${({ theme }) => theme.colors.lightgrey };
         cursor: pointer;
 
     }
