@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const DashboardContainer = styled.div`
     margin-top: 6rem;
+    display: flex;
 `
 export const Column = styled.div`
     width: 100vw;

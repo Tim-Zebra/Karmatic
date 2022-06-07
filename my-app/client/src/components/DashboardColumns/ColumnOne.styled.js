@@ -2,9 +2,18 @@ import styled from 'styled-components'
 
 export const ColumnContainer = styled.div`
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    a {
+        text-decoration: none;
+        color: ${({ theme }) => theme.colors.darkgrey}
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 `
 export const GreetingContainer = styled.div`
     background-color: white;
@@ -43,4 +52,5 @@ export const KarmaBanner = styled.div`
     width: 50%;
     text-align: center;
     align-self: center;
+    margin-bottom: 2rem;
 `
