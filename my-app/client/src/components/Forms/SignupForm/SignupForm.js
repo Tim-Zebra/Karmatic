@@ -1,22 +1,22 @@
 // SIGN UP FORM
 import React from 'react';
-import { StyledLoginForm } from "./SignupForm.styled"
+import { StyledSignupForm } from "./SignupForm.styled"
 
 // Imports buttons
-import SignUpButton from '../../components/Buttons/SignupButton'
+import SignupButton from '../../Buttons/SignupButton'
 import ToggleButton from '../../Buttons/ToggleButton'
 
 // Renders login form
 export default function LoginForm({handleLoginSignupToggle}) {
     return (
-        <StyledLoginForm>
+        <StyledSignupForm>
             <label for="email">LORUM IPSUM 4 EVER</label>
             <input type="text" name="email" placeholder="allwrong***..." />
 
             <label for="password">I AM JUST PLACEHOLDER</label>
             <input type="password" name="password" placeholder="REALLY WRONG.." />
-            <SignUpButton />
+            <SignupButton />
             <ToggleButton toggle={handleLoginSignupToggle}/>
-        </StyledLoginForm>
+        </StyledSignupForm>
     );
 }

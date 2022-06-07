@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
-    StyledLoginForm, UserContainer, UserContainerBorder, UserContainerBorderThick
-} from "./LoginForm.styled"
+    UserContainer, UserContainerBorder, UserContainerBorderThick
+} from "./index.styled"
 
+import LoginForm from './LoginForm/LoginForm';
+import SignupForm from './SignupForm/SignupForm';
 
 export default function LoginSignupForm() {
   // Displays either login or sign up form depending on which button (login or sign up) the user clicked on
@@ -19,13 +21,13 @@ export default function LoginSignupForm() {
     return <SignupForm />
   }
 
-  const handleLoginSignupToggle = (value) => setcurrentLoginSignupForm(value);
+  const handleLoginSignupToggle = () => setcurrentLoginSignupForm(!currentLoginSignupForm);
 
     return (
         <UserContainer>
             <UserContainerBorder>
                 <UserContainerBorderThick>
-                  {renderLoginSignupFormSection(isLoginForm={handleLoginSignupToggle})}
+                  {renderLoginSignupFormSection(handleLoginSignupToggle={handleLoginSignupToggle})}
                 </UserContainerBorderThick>
             </UserContainerBorder>
         </UserContainer >
