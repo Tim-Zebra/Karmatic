@@ -1,19 +1,30 @@
 import React from 'react'
-import { HomeContainer, StyledHomeLeft, StyledHomeRight, StyledLogo } from './Home.styled'
-import LoginForm from "../../components/Forms/LoginForm"
-import HomeInfo from '../../components/HomeInfo/HomeInfo'
-import SignupForm from '../../components/Forms/SignupForm'
+import { HomeContainer, StyledHomeLeft, StyledHomeRight } from '../Home/Home.styled'
+import { UserContainerWide, UserContainerLong, UserContainer, UserContainerBorder, UserContainerBorderThick } from "../../components/Box/Box.styled"
+import { ProfileContainer } from './Profile.styled'
 
-export default function Home() {
+
+export default function Profile() {
     return (
         <HomeContainer>
             <StyledHomeLeft>
-                <StyledLogo src='./assets/images/full_logo.png' alt='karmatic logo' />
-                <LoginForm />
-                <SignupForm />
+                <UserContainer>
+                    <UserContainerBorder>
+                        <UserContainerBorderThick>
+                            <h1>Neighbors:</h1>
+                        </UserContainerBorderThick>
+                    </UserContainerBorder>
+                </UserContainer>
             </StyledHomeLeft>
             <StyledHomeRight>
-                <HomeInfo />
+                <ProfileContainer>
+                    <UserContainerWide>
+                        <h1>Hey User!</h1>
+                    </UserContainerWide>
+                    <UserContainerLong>
+                        <h1>Activity:</h1>
+                    </UserContainerLong>
+                </ProfileContainer>
             </StyledHomeRight>
         </HomeContainer>
     )

@@ -24,3 +24,25 @@ export const UserContainerBorderThick = styled.div`
   align-items: center;
   flex-direction: column;
 `
+
+export const UserContainerWide = styled.div`
+  width: 92%;
+  height: 25%;
+  border-radius: 20px;
+  padding: 2px 5px 2px 5px;
+  margin:30px;
+  background-color: white;
+  border-right:${({ theme }) => theme.colors.lightpurple} 10px solid;
+  border-bottom:${({ theme }) => theme.colors.lightpurple} 10px solid;
+`
+
+export const UserContainerLong = styled.div`
+  width: 92%;
+  height: 60%;
+  border-radius: 20px;
+  padding: 2px 5px 2px 5px;
+  margin:30px;
+  background-color: white;
+  border-right:${({ theme }) => theme.colors.lightpurple} 10px solid;
+  border-bottom:${({ theme }) => theme.colors.lightpurple} 10px solid;
+`

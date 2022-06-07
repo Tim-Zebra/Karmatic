@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, KarmaPost, Location } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -28,6 +29,29 @@ const resolvers = {
       const user = await User.create(args);
       return user;
     },
+    // create user verison with json web tokens for login
+    // createUser: async (parent, args) => {
+    //   const user = await User.create(args);
+    //   const token = signToken(user)
+    //   return {token, user};
+    // Login mutation ready, commented out for when front-end needs it
+    // },
+    // login: async (parent, { username, password }) => {
+    //   const user = await User.findOne({ username });
+
+    //   if (!user) {
+    //     throw new AuthenticationError('Incorrect login information');
+    //   }
+    //   const correctPw = await user.isCorrectPassword(password);
+
+    //   if (!correctPw) {
+    //     throw new AuthenticationError('Incorrect login information')
+    //   }
+
+    //   const token = signToken(user);
+
+    //   return { token, user };
+    // },
     changeKarma: async (parent, { username, karma }) => {
       return User.findOneAndUpdate(
         { username },
@@ -69,7 +93,8 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { username: username},
-          { $addToSet: {karmaPosts: karmaPost.id}}
+          { $addToSet: {karmaPosts: karmaPost.id}},
+          {new: true}
         );
 
         return karmaPost;
