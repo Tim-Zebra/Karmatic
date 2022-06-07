@@ -4,7 +4,6 @@ export const StyledHomeInfoContainer = styled.div`
     width: 80%;
     background-color: white;
     box-shadow: 5px 5px ${({ theme }) => theme.colors.lightpurple};
-    border-radius: 40px;
 
     @media only screen and (min-width: 992px) {
         width: 100%;
@@ -17,9 +16,9 @@ export const StyledHeaderContainer = styled.div`
     align-items: center;
     justify-content: start;
     margin: 1rem 2rem;
+
     @media only screen and (min-width: 992px) {
         flex-direction: row;
-
     }
 `
 
@@ -41,6 +40,7 @@ export const Row = styled.div`
     flex-direction: column;
     justify-content: space-around;
     width: 90%;
+
     p {
         background-color: ${({ theme }) => theme.colors.purple};
         border-radius: 40px;
@@ -49,9 +49,11 @@ export const Row = styled.div`
         line-height: 1.6;
         font-family: 'Nunito Sans', sans-serif;
         }
+
     img {
         margin: 1rem 1rem;
     }
+    
     @media only screen and (min-width: 992px) {
         flex-direction: row;
 
