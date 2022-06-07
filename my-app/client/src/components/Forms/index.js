@@ -15,10 +15,10 @@ export default function LoginSignupForm() {
   const renderLoginSignupFormSection = () => {
     // Renders login form if true
     if (currentLoginSignupForm) {
-      return <LoginForm />;
+      return <LoginForm handleLoginSignupToggle={handleLoginSignupToggle}/>;
     }
     // Renders sign up form if false
-    return <SignupForm />
+    return <SignupForm handleLoginSignupToggle={handleLoginSignupToggle}/>
   }
 
   const handleLoginSignupToggle = () => setcurrentLoginSignupForm(!currentLoginSignupForm);
@@ -27,7 +27,7 @@ export default function LoginSignupForm() {
         <UserContainer>
             <UserContainerBorder>
                 <UserContainerBorderThick>
-                  {renderLoginSignupFormSection(handleLoginSignupToggle={handleLoginSignupToggle})}
+                  {renderLoginSignupFormSection()}
                 </UserContainerBorderThick>
             </UserContainerBorder>
         </UserContainer >

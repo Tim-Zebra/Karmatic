@@ -10,6 +10,7 @@ import ToggleButton from '../../Buttons/ToggleButton'
 export default function LoginForm({handleLoginSignupToggle}) {
     return (
         <StyledSignupForm>
+            <h1>Sign Up Form</h1>
             <label for="email">LORUM IPSUM 4 EVER</label>
             <input type="text" name="email" placeholder="allwrong***..." />
 
