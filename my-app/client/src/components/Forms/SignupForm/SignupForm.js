@@ -1,25 +1,22 @@
+// SIGN UP FORM
 import React from 'react';
-import {
-    StyledLoginForm, UserContainer, UserContainerBorder, UserContainerBorderThick
-} from "./LoginForm.styled"
+import { StyledLoginForm } from "./SignupForm.styled"
+
+// Imports buttons
 import SignUpButton from '../../components/Buttons/SignupButton'
+import ToggleButton from '../../Buttons/ToggleButton'
 
-
+// Renders login form
 export default function LoginForm() {
     return (
-        <UserContainer>
-            <UserContainerBorder>
-                <UserContainerBorderThick>
-                    <StyledLoginForm>
-                        <label for="email">LORUM IPSUM 4 EVER</label>
-                        <input type="text" name="email" placeholder="allwrong***..." />
+        <StyledLoginForm>
+            <label for="email">LORUM IPSUM 4 EVER</label>
+            <input type="text" name="email" placeholder="allwrong***..." />
 
-                        <label for="password">I AM JUST PLACEHOLDER</label>
-                        <input type="password" name="password" placeholder="allwrong..." />
-                        <SignUpButton />
-                    </StyledLoginForm>
-                </UserContainerBorderThick>
-            </UserContainerBorder>
-        </UserContainer >
+            <label for="password">I AM JUST PLACEHOLDER</label>
+            <input type="password" name="password" placeholder="REALLY WRONG.." />
+            <SignUpButton />
+            <ToggleButton />
+        </StyledLoginForm>
     );
 }

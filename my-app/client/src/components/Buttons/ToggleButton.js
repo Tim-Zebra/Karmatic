@@ -6,8 +6,8 @@ export default function ToggleButton() {
         <StyledButton>
           <button
           type="submit"
-          >
-            <img src='./assets/images/signup_btn.png' alt='signup button' />
+          > TOGGLE ME
+
           </button>
         </StyledButton>
     )

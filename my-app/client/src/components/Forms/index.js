@@ -2,22 +2,30 @@ import React from 'react';
 import {
     StyledLoginForm, UserContainer, UserContainerBorder, UserContainerBorderThick
 } from "./LoginForm.styled"
-import LoginButton from '../Buttons/LoginButton'
 
 
-export default function LoginForm() {
+export default function LoginSignupForm() {
+  // Displays either login or sign up form depending on which button (login or sign up) the user clicked on
+  // Sets hook to render form
+  const [currentLoginSignupForm, setcurrentLoginSignupForm] = useState(true);
+  // Simple toggle between either form
+  // Can be more complex once adding  called to render whichever form depending on login
+  const renderLoginSignupFormSection = () => {
+    // Renders login form if true
+    if (currentLoginSignupForm) {
+      return <LoginForm />;
+    }
+    // Renders sign up form if false
+    return <SignupForm />
+  }
+
+  const handleLoginSignupToggle = (value) => setcurrentLoginSignupForm(value);
+
     return (
         <UserContainer>
             <UserContainerBorder>
                 <UserContainerBorderThick>
-                    <StyledLoginForm>
-                        <label for="email">email</label>
-                        <input type="text" name="email" placeholder="Enter your email..." />
-
-                        <label for="password">password</label>
-                        <input type="password" name="password" placeholder="Type in your password..." />
-                        <LoginButton />
-                    </StyledLoginForm>
+                  {renderLoginSignupFormSection(isLoginForm={handleLoginSignupToggle})}
                 </UserContainerBorderThick>
             </UserContainerBorder>
         </UserContainer >

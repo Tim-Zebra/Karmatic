@@ -1,9 +1,9 @@
 import React from 'react';
-import {
-    StyledLoginForm, UserContainer, UserContainerBorder, UserContainerBorderThick
-} from "./LoginForm.styled"
-import LoginButton from '../Buttons/LoginButton'
+import { StyledLoginForm } from "./LoginForm.styled"
 
+// Imports buttons
+import LoginButton from '../../Buttons/LoginButton'
+import ToggleButton from '../../Buttons/ToggleButton'
 
 export default function LoginForm() {
     return (
@@ -14,6 +14,7 @@ export default function LoginForm() {
             <label for="password">password</label>
             <input type="password" name="password" placeholder="Type in your password..." />
             <LoginButton />
+            <ToggleButton />
         </StyledLoginForm>
     );
 }
