@@ -1,10 +1,10 @@
 import React from 'react'
-import { GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer } from './ColumnOne.styled'
+import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer, KarmaBanner } from './ColumnOne.styled'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../components/Box/Box.styled'
 
 export default function ColumnOne() {
     return (
-            <>
+            <ColumnContainer>
                 <GreetingContainer>
                     Hey, Bob!
                 </GreetingContainer>
@@ -23,15 +23,15 @@ export default function ColumnOne() {
                             <UserContainerHeader>
                                 Overall Status:
                             </UserContainerHeader>
-                            <div>
+                            <KarmaBanner>
                                 Great!
-                            </div>
+                            </KarmaBanner>
                             <div>
                                 View Your Profile
                             </div>
                         </UserContainerBorderThick>
                     </UserContainerBorder>
                 </UserContainer>
-            </>
+            </ColumnContainer>
     )
 }

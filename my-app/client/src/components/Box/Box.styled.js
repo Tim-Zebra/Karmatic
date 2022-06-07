@@ -20,4 +20,7 @@ export const UserContainerBorderThick = styled.div`
   border: 2px solid #4A5655;
   border-radius: 20px;
   padding:20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `
