@@ -6,9 +6,9 @@ import ToggleButton from '../Buttons/ToggleButton'
 
 export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     // Button text content
-    const toggleButtonTextContent = 'Sign Up Instead!!';
-    const submitButtonTextContent = 'Login/Submit';
-    
+    const toggleButtonTextContent = 'Sign Up';
+    const submitButtonTextContent = 'Login';
+
     return (
         <StyledForm>
             <label for="email">email</label>

@@ -5,8 +5,8 @@ import ToggleButton from '../Buttons/ToggleButton';
 
 export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     // Button text content
-    const submitButtonTextContent = 'Signup/Submit';
-    const toggleButtonTextContent = 'Login Instead!!';
+    const submitButtonTextContent = 'Create Account';
+    const toggleButtonTextContent = 'Back to Login';
 
     return (
         <StyledForm>
@@ -24,8 +24,6 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
             <ToggleButton toggle={handleLoginSignupToggle} textContent={toggleButtonTextContent} />
-            
-            <a href="toggle={handleLoginSignupToggle}">Back to Login</a>
         </StyledForm>
     );
 }
