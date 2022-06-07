@@ -1,9 +1,9 @@
 import React from 'react'
 import { PrettyButton } from './PrettyButton.styled'
 
-export default function toggleButton({ toggle, textContent }) {
+export default function toggleButton({ submit, textContent }) {
     return (
-        <PrettyButton onClick={() => toggle()}>
+        <PrettyButton onClick={() => submit()}>
           {textContent}
         </PrettyButton>
     )

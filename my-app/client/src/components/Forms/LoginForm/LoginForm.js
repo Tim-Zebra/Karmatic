@@ -1,10 +1,13 @@
 import React from 'react';
 import { StyledForm } from "./LoginForm.styled"
-import LoginButton from '../../Buttons/LoginButton'
-import SignupButton from '../../Buttons/SignupButton'
+
+import submitButton from '../../Buttons/SubmitButton'
 import toggleButton from '../../Buttons/ToggleButton'
 
-export default function LoginForm({ handleLoginSignupToggle }) {
+export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
+    const toggleButtonTextContent = 'Sign Up Instead!!';
+    const submitButtonTextContent = 'Login/Submit';
+    
     return (
         <StyledForm>
             <label for="email">email</label>
@@ -12,8 +15,9 @@ export default function LoginForm({ handleLoginSignupToggle }) {
 
             <label for="password">password</label>
             <input type="password" name="password" placeholder="Type in your password..." />
-            <LoginButton></LoginButton>
-            <toggleButton toggle={handleLoginSignupToggle}></SignupButton>
+            <submitButton submit={handleSubmit} textContent={submitButtonTextContent}/>
+            <toggleButton toggle={handleLoginSignupToggle} textContent={toggleButtonTextContent}/>
         </StyledForm>
+        
     );
 }
