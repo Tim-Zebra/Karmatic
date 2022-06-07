@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalStyles } from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
+import Profile from './pages/Profile/Profile';
 import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Nav from './components/Nav/Nav';
@@ -30,7 +31,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Nav />
-        <Home />
+        <Profile />
         <Footer />
       </ThemeProvider>
     </>

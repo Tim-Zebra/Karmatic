@@ -1,16 +1,30 @@
 import React from 'react'
 import { HomeContainer, StyledHomeLeft, StyledHomeRight } from '../Home/Home.styled'
-import UserContainer from "../../components/Forms/LoginForm.styled"
-import HomeInfo from '../../components/HomeInfo/HomeInfo'
+import { UserContainerWide, UserContainerLong, UserContainer, UserContainerBorder, UserContainerBorderThick } from "../../components/Forms/ToggleForm.styled"
+import { ProfileContainer } from './Profile.styled'
+
 
 export default function Profile() {
     return (
         <HomeContainer>
             <StyledHomeLeft>
-                <UserContainer />
+                <UserContainer>
+                    <UserContainerBorder>
+                        <UserContainerBorderThick>
+                            <h1>Neighbors:</h1>
+                        </UserContainerBorderThick>
+                    </UserContainerBorder>
+                </UserContainer>
             </StyledHomeLeft>
             <StyledHomeRight>
-                <HomeInfo />
+                <ProfileContainer>
+                    <UserContainerWide>
+                        <h1>Hey User!</h1>
+                    </UserContainerWide>
+                    <UserContainerLong>
+                        <h1>Activity:</h1>
+                    </UserContainerLong>
+                </ProfileContainer>
             </StyledHomeRight>
         </HomeContainer>
     )
