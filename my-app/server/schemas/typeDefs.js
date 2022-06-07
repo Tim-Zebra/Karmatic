@@ -49,12 +49,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!)
+    createUser(username: String!, email: String!, password: String!): User
     changeKarma(username: String!, karma: Int!) : User
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!)
-    addHelper(karmaPostId: ID!, helperUsername: String!)
-    createLocation(locationName: String!, locationGeoTag: String!)
-    addMember(locationId: ID!, memberId: ID!)
+    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!): KarmaPost
+    addHelper(karmaPostId: ID!, helperUsername: String!): KarmaPost
+    createLocation(locationName: String!, locationGeoTag: String!): Location
+    addMember(locationId: ID!, memberId: ID!): Location
   }
 `;
 

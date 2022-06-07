@@ -30,7 +30,7 @@ export default function App() {
           <ThemeProvider theme={ theme }>
           <GlobalStyles />
           <Nav />
-          <Dashboard />
+          <Home />
           <Footer />
           </ThemeProvider>
         </>
