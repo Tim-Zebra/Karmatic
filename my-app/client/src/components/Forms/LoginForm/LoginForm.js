@@ -5,7 +5,7 @@ import { StyledLoginForm } from "./LoginForm.styled"
 import LoginButton from '../../Buttons/LoginButton'
 import ToggleButton from '../../Buttons/ToggleButton'
 
-export default function LoginForm() {
+export default function LoginForm({handleLoginSignupToggle}) {
     return (
         <StyledLoginForm>
             <label for="email">email</label>
@@ -14,7 +14,7 @@ export default function LoginForm() {
             <label for="password">password</label>
             <input type="password" name="password" placeholder="Type in your password..." />
             <LoginButton />
-            <ToggleButton />
+            <ToggleButton toggle={handleLoginSignupToggle}/>
         </StyledLoginForm>
     );
 }

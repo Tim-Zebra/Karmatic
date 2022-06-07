@@ -7,7 +7,7 @@ import SignUpButton from '../../components/Buttons/SignupButton'
 import ToggleButton from '../../Buttons/ToggleButton'
 
 // Renders login form
-export default function LoginForm() {
+export default function LoginForm({handleLoginSignupToggle}) {
     return (
         <StyledLoginForm>
             <label for="email">LORUM IPSUM 4 EVER</label>
@@ -16,7 +16,7 @@ export default function LoginForm() {
             <label for="password">I AM JUST PLACEHOLDER</label>
             <input type="password" name="password" placeholder="REALLY WRONG.." />
             <SignUpButton />
-            <ToggleButton />
+            <ToggleButton toggle={handleLoginSignupToggle}/>
         </StyledLoginForm>
     );
 }
