@@ -11,8 +11,8 @@ import { QUERY_USER } from "../../utils/queries"
 export default function Profile() {
     const { data } = useQuery(QUERY_USER);
     const user = data?.users[0].username
-    console.log(data)
-    console.log(user)
+    console.log(data);
+    console.log(user);
 
     return (
         <ProfileContainer>

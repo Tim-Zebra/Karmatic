@@ -46,8 +46,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
+    me: User
     user(username: String!): User
+    users: [User]
     karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
     karmaHelping: [KarmaPost]
