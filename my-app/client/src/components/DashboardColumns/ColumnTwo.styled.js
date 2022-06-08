@@ -8,6 +8,7 @@ export const ColumnContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: white;
+    border-radius: 10px;
 `
 
 export const FeedHeaderContainer = styled.div`
@@ -16,26 +17,32 @@ export const FeedHeaderContainer = styled.div`
 
 export const CreatePostContainer = styled.div`
     display: flex;
-    justify-content: end;
-    margin-top: 1rem;
-    margin-right: 1rem;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.lightteal};
+    border-radius: 10px;
 
-    button {
-        color: ${({ theme  }) => theme.colors.darkgrey};
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        font-size: 20px;
+`
+
+export const PostTextArea = styled.textarea`
+    margin: 2rem 0 1rem 0;
+    width: 90%;
+    height: 5rem;
+    font-family: ${({ theme }) => theme.fonts.otherfont};
+    font-size: 16px;
+    border: none;
+
+    &:active {
+        border: none
     }
 `
 export const ActivityHeader = styled.div`
     color: ${({ theme  }) => theme.colors.darkgrey};
-    margin-left: 2rem;
+
     font-family: ${({ theme }) => theme.fonts.otherfont};
     font-size: 32px;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0 1.5rem 2rem;
 `
 
 export const FeedContainer = styled.div`
