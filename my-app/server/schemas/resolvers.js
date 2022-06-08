@@ -4,11 +4,17 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find({}).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
+    me: async (parent, args, context) => {
+      if(context.user) {
+        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
+      }
+      throw new AuthenticationError('You are not logged in!');
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
+    },
+    users: async () => {
+      return User.find({}).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
     },
     karmaPosts: async (parent, {username}) => {
       return KarmaPost.find({ username });

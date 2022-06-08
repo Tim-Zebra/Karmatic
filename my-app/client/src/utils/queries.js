@@ -1,22 +1,42 @@
 import { gql } from '@apollo/client';
 
+// Gets logged in user info
+export const GET_ME = gql`
+query me {
+  me {
+    _id
+    username
+    email
+    bookCount
+    savedBooks {
+      authors
+      title
+      description
+      bookId
+      image
+      link
+      title
+    }
+  }
+}
+`;
+
+// Queryies a specific user **************NOT DONE**********************
 export const QUERY_USER = gql`
-query Users {
-  users {
+query User {
+  user {
     _id
     username
   }
 }
 `;
 
-export const QUERY_MATCHUPS = gql`
-  query matchups($_id: String) {
-    matchups(_id: $_id) {
-      _id
-      tech1
-      tech2
-      tech1_votes
-      tech2_votes
-    }
+// Queries all users **************NOT DONE**********************
+export const QUERY_USERS = gql`
+query Users {
+  users {
+    _id
+    username
   }
+}
 `;
