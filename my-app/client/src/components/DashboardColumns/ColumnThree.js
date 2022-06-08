@@ -10,6 +10,7 @@ export default function ColumnThree(){
                 <UserContainerBorder>
                     <UserContainerBorderThick>
                     <RecentKarma />
+                    <RecentKarma />
                     </UserContainerBorderThick>
                 </UserContainerBorder>
             </UserContainer>

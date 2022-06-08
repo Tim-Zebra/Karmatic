@@ -6,21 +6,21 @@ const karma = 60
 export default function RecentKarma(){
     return (
         <RecentKarmaBox>
-            <img src='./assets/images/karma_coin.png' height='44px' alt='karma coin' />
+            <img src='./assets/images/karma_coin.png' height='66px' alt='karma coin' />
             <RecentContainer>
                 <ExchangeContainer>
                     <ExchangeBetween>
-                        <h3>Bob</h3>
+                        <p>Bob</p>
                         <p>received</p>
                     </ExchangeBetween>
                     <ExchangeBetween>
                         <p>from</p>
-                        <h3>Mary</h3>
+                        <p>Mary</p>
                     </ExchangeBetween>
                 </ExchangeContainer>
                 <KarmaCoins>
                     <h1>{karma}</h1>
-                    <h3>Karma Coins</h3>
+                    <p>Karma Coins</p>
                 </KarmaCoins>
             </RecentContainer>
         </RecentKarmaBox>
