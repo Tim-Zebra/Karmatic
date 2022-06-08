@@ -11,15 +11,15 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
 
     return (
         <StyledForm>
-            <label for="email">email</label>
-            <input type="text" name="email" placeholder="Enter your email..." />
+            <label for="username">username</label>
+            <input type="text" name="username" placeholder="Enter your username..." />
 
             <label for="password">password</label>
             <input type="password" name="password" placeholder="Type in your password..." />
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
             <OrDiv>
-            <hr /> or <hr />
+                <hr /> or <hr />
             </OrDiv>
             <ToggleButton toggle={handleLoginSignupToggle} textContent={toggleButtonTextContent} />
         </StyledForm>
