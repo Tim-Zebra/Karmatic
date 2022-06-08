@@ -55,7 +55,6 @@ const theme = {
   }
 }
 
-
 export default function App() {
   // Logic to have app follow the current page being displayed
   const [currentPage, setCurrentPage] = useState('Page1');
