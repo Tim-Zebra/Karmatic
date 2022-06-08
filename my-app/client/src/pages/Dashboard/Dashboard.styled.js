@@ -3,6 +3,11 @@ import styled from 'styled-components'
 export const DashboardContainer = styled.div`
     margin-top: 6rem;
     display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: 992px) {
+        flex-direction: row;
+    }
 `
 export const Column = styled.div`
     width: 100vw;

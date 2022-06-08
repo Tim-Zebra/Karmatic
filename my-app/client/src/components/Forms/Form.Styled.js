@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 label{
     font-size:20px;
     color:#666666;
+    align-self: flex-start;
 }
 input[type=text], select {
   color:#666666;
@@ -33,4 +38,9 @@ input[type=password], select {
   flex-wrap:nowrap;
 }
 
+`
+
+export const OrDiv = styled.div`
+  display: flex;
+  width: 100%;
 `

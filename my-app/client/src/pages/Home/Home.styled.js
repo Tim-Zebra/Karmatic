@@ -20,7 +20,7 @@ export const StyledHomeLeft = styled.div`
     align-items: center;
     @media only screen and (min-width: 776px) {
         width: 60vw;
-        height: 100vh;
+
     }
     @media only screen and (min-width: 992px) {
         width: 50vw;
