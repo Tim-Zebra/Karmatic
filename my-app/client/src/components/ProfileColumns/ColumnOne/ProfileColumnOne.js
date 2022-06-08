@@ -1,5 +1,5 @@
 import React from "react";
-import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
+import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../Box/Box.styled'
 
 export default function ProfileColumnOne() {
     return (
