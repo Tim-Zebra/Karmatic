@@ -1,4 +1,5 @@
 import React from 'react'
+import Post from '../Post/Post'
 import { ColumnContainer, FeedHeaderContainer, CreatePostContainer, FeedContainer, ActivityHeader } from './ColumnTwo.styled'
 
 export default function ColumnTwo() {
@@ -16,7 +17,7 @@ export default function ColumnTwo() {
                 </ActivityHeader>
             </FeedHeaderContainer>
             <FeedContainer>
-                YO
+                <Post></Post>
             </FeedContainer>
         </ColumnContainer>
     )

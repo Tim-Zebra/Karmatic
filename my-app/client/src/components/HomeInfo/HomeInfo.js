@@ -7,7 +7,7 @@ import {
     Row
 } from './HomeInfo.styled'
 
-export default function HomeInfo({ handleLoginSignupToggle }) {
+export default function HomeInfo() {
 
     return (
         <StyledHomeInfoContainer>
@@ -37,7 +37,6 @@ export default function HomeInfo({ handleLoginSignupToggle }) {
                     <img src='./assets/images/flags.png' alt='waving flags' />
                 </Row>
             </Rows>
-
         </StyledHomeInfoContainer>
     )
 }

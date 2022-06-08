@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledForm } from "./Form.Styled"
+import { StyledForm, OrDiv } from "./Form.Styled"
 
 import SubmitButton from '../Buttons/SubmitButton'
 import ToggleButton from '../Buttons/ToggleButton'
@@ -18,6 +18,9 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             <input type="password" name="password" placeholder="Type in your password..." />
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
+            <OrDiv>
+            <hr /> or <hr />
+            </OrDiv>
             <ToggleButton toggle={handleLoginSignupToggle} textContent={toggleButtonTextContent} />
         </StyledForm>
     );

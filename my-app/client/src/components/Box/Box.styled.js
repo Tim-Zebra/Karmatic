@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const UserContainer = styled.div`
-  width: 50%;
+  width: 60%;
   border: 2px solid #4A5655;
   border-radius: 20px;
   padding: 2px 5px 2px 5px;
@@ -23,26 +23,24 @@ export const UserContainerBorderThick = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  
 `
 
 export const UserContainerWide = styled.div`
   width: 92%;
-  height: 25%;
   border-radius: 20px;
   padding: 2px 5px 2px 5px;
   margin:30px;
   background-color: white;
-  border-right:${({ theme }) => theme.colors.lightpurple} 10px solid;
-  border-bottom:${({ theme }) => theme.colors.lightpurple} 10px solid;
+  box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple} ;
+
 `
 
 export const UserContainerLong = styled.div`
   width: 92%;
-  height: 60%;
   border-radius: 20px;
   padding: 2px 5px 2px 5px;
   margin:30px;
   background-color: white;
-  border-right:${({ theme }) => theme.colors.lightpurple} 10px solid;
-  border-bottom:${({ theme }) => theme.colors.lightpurple} 10px solid;
+  box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple} ;
 `

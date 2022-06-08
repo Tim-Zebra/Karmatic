@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const PrettyButton = styled.button`
     color: ${({ theme }) => theme.colors.darkteal};
     font-size: 16px;
-    width:60%;
-    padding: 1rem;
+    width: 150px;
+    padding: .5rem;
     margin:1rem;
     border: 2px solid ${({ theme }) => theme.colors.darkteal};
     border-radius: 25px;

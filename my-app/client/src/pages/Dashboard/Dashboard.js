@@ -8,12 +8,15 @@ import { DashboardContainer, Column } from './Dashboard.styled'
 export default function Dashboard() {
     return (
         <DashboardContainer>
+
             <Column>
             <ColumnOne />
             </Column>
+
             <Column>
             <ColumnTwo />
             </Column>
+            
         </DashboardContainer>
     )
 }
