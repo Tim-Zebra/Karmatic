@@ -70,11 +70,11 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
 
     return (
         <StyledForm onSubmit={handleFormSubmit}>
-            <label for="email">Email</label>
+            <label for="username">Username</label>
             <input 
             type="text" 
-            name="email" 
-            placeholder="Enter your email..."
+            name="username" 
+            placeholder="Enter your username..."
             value={userFormData.email} 
             onChange={handleInputChange}
             />
@@ -92,7 +92,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
             {renderAlert()}
             <OrDiv>
-            <hr /> or <hr />
+                <hr /> or <hr />
             </OrDiv>
             <ToggleButton toggle={handleLoginSignupToggle} textContent={toggleButtonTextContent} />
         </StyledForm>
