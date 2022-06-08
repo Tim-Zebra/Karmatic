@@ -36,13 +36,19 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
         }
 
         try {
-            console.log('USERFORM DATA BEFORE TRY', userFormData);
+            // Updates user data. Need to do a "if passwords match" Option
+            const userData = {
+                username: userFormData.username,
+                email: userFormData.email,
+                password: userFormData.password,
+            }
+            console.log('new USERFORM DATA BEFORE TRY', userData);
             const { data } = await createUser({
-                variables: { ...userFormData },
+                variables: { ...userData },
             });
-
-            Auth.login(data.login.token);
-            console.log('YOU ARE LOGGED');
+            console.log('USERFORM DATA **AFTER** TRY', data);
+            Auth.login(data.createUser.token);
+            console.log('SIGNED UP!!');
             // Hides alert if previously present
         } catch (err) {
             console.error(err);
