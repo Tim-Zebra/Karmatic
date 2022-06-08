@@ -15,6 +15,8 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
 
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
     const [createUser, { error, data }] = useMutation(CREATE_USER);
+    const [showAlert, setShowAlert] = useState(false);
+
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -25,7 +27,6 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
       };
 
       const handleFormSubmit = async (event) => {
-        console.log('HANDLE FORM SUBMIT HAPPENED');
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
@@ -42,16 +43,14 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
                 email: userFormData.email,
                 password: userFormData.password,
             }
-            console.log('new USERFORM DATA BEFORE TRY', userData);
             const { data } = await createUser({
                 variables: { ...userData },
             });
-            console.log('USERFORM DATA **AFTER** TRY', data);
             Auth.login(data.createUser.token);
-            console.log('SIGNED UP!!');
             // Hides alert if previously present
         } catch (err) {
             console.error(err);
+            setShowAlert(true);
         }
 
         setUserFormData({
@@ -61,6 +60,12 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
             confirmPassword: '',
         });
     };
+
+    const renderAlert = () => {
+        if(showAlert) {
+            return <div>NICE TRY !! {'>:('}</div>
+        }
+    }
 
     return (
         <StyledForm onSubmit={handleFormSubmit}>
@@ -89,6 +94,7 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
             />
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
+            {renderAlert()}
             <ToggleButton toggle={handleLoginSignupToggle} textContent={toggleButtonTextContent} />
         </StyledForm>
     );

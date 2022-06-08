@@ -28,8 +28,6 @@ module.exports = {
   },
   signToken: function ({ email, username, _id }) {
     console.log('Sign TOKEN');
-    console.log('SECRET', secret);
-console.log('This happened', process.env.JWT_SECRET_KEY);
     const payload = { email, username, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
