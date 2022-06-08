@@ -2,6 +2,11 @@ import React from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostFooter, } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 
+const data = {
+    username: 'Mary Marie',
+    createdAt: 'date'
+}
+
 export default function Post() {
     return (
         <PostOutterContainer>
