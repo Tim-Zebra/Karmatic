@@ -2,7 +2,7 @@ import React from 'react'
 import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer, KarmaBanner } from './ColumnOne.styled'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
-export default function ColumnOne() {
+export default function ColumnOne({handlePageChange}) {
     return (
             <ColumnContainer>
                 <GreetingContainer>
@@ -26,7 +26,7 @@ export default function ColumnOne() {
                             <KarmaBanner>
                                 Great!
                             </KarmaBanner>
-                            <a href='#page3'>
+                            <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile
                             </a>
                         </UserContainerBorderThick>

@@ -22,21 +22,8 @@ export const CreatePostContainer = styled.div`
     align-items: center;
     background-color: ${({ theme }) => theme.colors.lightteal};
     border-radius: 10px;
-
 `
 
-export const PostTextArea = styled.textarea`
-    margin: 2rem 0 1rem 0;
-    width: 90%;
-    height: 5rem;
-    font-family: ${({ theme }) => theme.fonts.otherfont};
-    font-size: 16px;
-    border: none;
-
-    &:active {
-        border: none
-    }
-`
 export const ActivityHeader = styled.div`
     color: ${({ theme  }) => theme.colors.darkgrey};
 

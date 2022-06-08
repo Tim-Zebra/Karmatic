@@ -12,7 +12,7 @@ export default function Nav({ currentPage, handlePageChange }) {
             { currentPage === 'Profile' ? 
 
             <StyledNavEnd>
-                <a href='#profile' onClick={() => handlePageChange('Dashboard')}>Dashboard</a>
+                <a href='#dashboard' onClick={() => handlePageChange('Dashboard')}>Dashboard</a>
                 <a href='#logout'>Logout</a>
                 <StyledNavImage src='./assets/images/k_logo.png' alt='karmatic square logo' />
             </StyledNavEnd> 
