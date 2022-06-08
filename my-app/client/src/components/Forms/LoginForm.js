@@ -16,7 +16,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     const submitButtonTextContent = 'Login';
 
     // Sets hooks for userform data, and invalid info
-    const [userFormData, setUserFormData] = useState({ username: '', password: '' });
+    const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
     const [showAlert, setShowAlert] = useState(false);
 
@@ -24,10 +24,10 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUserFormData({
-            ...userFormData, 
+            ...userFormData,
             [name]: value
         });
-      };
+    };
 
     const handleFormSubmit = async (event) => {
         console.log('HANDLE FORM SUBMIT HAPPENED');
@@ -62,7 +62,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     };
 
     const renderAlert = () => {
-        if(showAlert) {
+        if (showAlert) {
             return <div>WRONG INFO!!</div>
         }
     }
@@ -70,23 +70,23 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     return (
         <StyledForm onSubmit={handleFormSubmit}>
             <label for="username">Username</label>
-            <input 
-            type="text" 
-            name="username" 
-            placeholder="Enter your username..."
-            value={userFormData.username} 
-            onChange={handleInputChange}
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter your username..."
+                value={userFormData.username}
+                onChange={handleInputChange}
             />
 
             <label for="password">password</label>
-            <input 
-            type="password" 
-            name="password" 
-            placeholder="Type in your password..." 
-            value={userFormData.password}
-            onChange={handleInputChange}
+            <input
+                type="password"
+                name="password"
+                placeholder="Type in your password..."
+                value={userFormData.password}
+                onChange={handleInputChange}
             />
-            
+
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
             {renderAlert()}

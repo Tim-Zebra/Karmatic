@@ -5,6 +5,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
+    password: String!
     karma: Int
     karmaPosts: [KarmaPost]
     karmaHelping: [KarmaPost]
