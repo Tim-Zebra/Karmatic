@@ -16,7 +16,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     const submitButtonTextContent = 'Login';
 
     // Sets hooks for userform data, and invalid info
-    const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+    const [userFormData, setUserFormData] = useState({ username: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
     const [showAlert, setShowAlert] = useState(false);
 
@@ -45,9 +45,9 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             const { data } = await login({
                 variables: { ...userFormData },
             });
-            console.log('TRY DATA happened', data);
-            Auth.login(data.login.token);
 
+            Auth.login(data.login.token);
+            console.log('YOU ARE LOGGED');
             // Hides alert if previously present
             setShowAlert(false);
         } catch (err) {
@@ -57,7 +57,6 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
 
         setUserFormData({
             username: '',
-            email: '',
             password: '',
         });
     };
@@ -75,7 +74,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             type="text" 
             name="username" 
             placeholder="Enter your username..."
-            value={userFormData.email} 
+            value={userFormData.username} 
             onChange={handleInputChange}
             />
 
