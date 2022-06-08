@@ -19,10 +19,10 @@ export default function UserBox() {
                         <h1>Hey {user}</h1>
                     </ContainerSubColumnOne>
                     <AddButtonWhite>
-                        <img src='./assets/images/addbutton.png' alt='add button' />
+                        <img src='./assets/images/addbutton.png' alt='add neighborbutton' />
                         Neighbor</AddButtonWhite>
                     <AddButtonWhite>
-                        <img src='./assets/images/addbutton.png' alt='add button' />
+                        <img src='./assets/images/addbutton.png' alt='add post button' />
                         Create Post</AddButtonWhite>
                 </ContainerSubRowOne>
                 <ContainerSubColumnTwo>
@@ -31,7 +31,7 @@ export default function UserBox() {
                     <h3>Overall: GRRRRRRRREAT</h3>
                 </ContainerSubColumnTwo>
                 <ContainerSubRowTwo>
-                    <img height="60px" src='./assets/images/karma_coin.png'></img>
+                    <img height="60px" src='./assets/images/karma_coin.png' alt='coin logo'></img>
                 </ContainerSubRowTwo>
             </UserContainerWide>
         </Container>

@@ -1,6 +1,8 @@
 import React from "react";
+//Styled Components
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../../Box/Box.styled'
 import { ActivityBoxStyled } from "../../Box/ActivityBox.styled";
+
 export default function ProfileColumnOne() {
     return (
         <UserContainer>
