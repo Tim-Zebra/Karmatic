@@ -16,6 +16,7 @@ export default function Profile() {
 
     return (
         <ProfileContainer>
+            
             <ColumnOne>
                 <ProfileColumnOne />
             </ColumnOne>
