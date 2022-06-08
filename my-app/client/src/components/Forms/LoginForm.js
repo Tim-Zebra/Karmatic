@@ -4,6 +4,7 @@ import { StyledForm, OrDiv } from "./Form.Styled"
 // Mutation imports
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 // Component imports
 import SubmitButton from '../Buttons/SubmitButton'
@@ -14,9 +15,10 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     const toggleButtonTextContent = 'Sign Up';
     const submitButtonTextContent = 'Login';
 
-    // Sets hooks for userform data and login
+    // Sets hooks for userform data, and invalid info
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
+    const [showAlert, setShowAlert] = useState(false);
 
     // Updates form state based on input changes
     const handleInputChange = (event) => {
@@ -25,9 +27,11 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             ...userFormData, 
             [name]: value
         });
+        console.log('This happened', userFormData);
       };
 
     const handleFormSubmit = async (event) => {
+        console.log('HANDLE FORM SUBMIT HAPPENED');
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
@@ -38,11 +42,15 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
         }
 
         try {
+            console.log('TRY HAPPENED');
             const { data } = await login({
                 variables: { ...userFormData },
             });
-
+            console.log('TRY DATA happened', data);
             Auth.login(data.login.token);
+
+            // Hides alert if previously present
+            setShowAlert(false);
         } catch (err) {
             console.error(err);
             setShowAlert(true);
@@ -55,15 +63,35 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
         });
     };
 
+    const renderAlert = () => {
+        if(showAlert) {
+            return <div>WRONG INFO!!</div>
+        }
+    }
+
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleFormSubmit}>
             <label for="email">Email</label>
-            <input type="text" name="email" placeholder="Enter your email..." />
+            <input 
+            type="text" 
+            name="email" 
+            placeholder="Enter your email..."
+            value={userFormData.email} 
+            onChange={handleInputChange}
+            />
 
             <label for="password">password</label>
-            <input type="password" name="password" placeholder="Type in your password..." />
+            <input 
+            type="password" 
+            name="password" 
+            placeholder="Type in your password..." 
+            value={userFormData.password}
+            onChange={handleInputChange}
+            />
+            
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
+            {renderAlert}
             <OrDiv>
             <hr /> or <hr />
             </OrDiv>
