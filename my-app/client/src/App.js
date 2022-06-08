@@ -57,21 +57,19 @@ const theme = {
 
 export default function App() {
   // Logic to have app follow the current page being displayed
-  const [currentPage, setCurrentPage] = useState('Page1');
+  const [currentPage, setCurrentPage] = useState('Home');
   const handlePageChange = (page) => setCurrentPage(page);
 
   // Renders current page
   const renderCurrentPage = () => {
     console.log('The Current Page selected and through renderCurrentPage function', currentPage);
-    if (currentPage === 'Page1') {
-      return <Home />;
-    }
-    if (currentPage === 'Page2') {
-      return <Dashboard />;
-    }
-    if (currentPage === 'Page3') {
+    if (currentPage === 'Profile') {
       return <Profile />;
     }
+    if (currentPage === 'Dashboard') {
+      return <Dashboard />;
+    }
+      return <Home />;
   }
 
   return (
