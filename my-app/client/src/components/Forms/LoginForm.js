@@ -27,7 +27,6 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             ...userFormData, 
             [name]: value
         });
-        console.log('This happened', userFormData);
       };
 
     const handleFormSubmit = async (event) => {
@@ -42,7 +41,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
         }
 
         try {
-            console.log('TRY HAPPENED');
+            console.log('USERFORM DATA BEFORE TRY', userFormData);
             const { data } = await login({
                 variables: { ...userFormData },
             });
@@ -91,7 +90,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
             
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
-            {renderAlert}
+            {renderAlert()}
             <OrDiv>
             <hr /> or <hr />
             </OrDiv>
