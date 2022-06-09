@@ -11,4 +11,5 @@ padding:5px 0 5px 0;
 font-size:18px;
 color: #e9e9e9;
 opacity: .8;
+margin-top: 1rem;
 `

@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const RecentKarmaBox = styled.div`
-    border: 3px solid ${({ theme }) => theme.colors.lightteal};
+    border: 3px solid ${({ theme }) => theme.colors.darkteal};
+    background-color: white ;
     border-radius: 20px;
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 80%;
     max-height: fit-content;
     margin-bottom: .5rem;
 
@@ -34,6 +35,10 @@ export const ExchangeBetween = styled.div`
     color: ${({ theme }) => theme.colors.darkteal};
     font-size: 14px;
     font-family: ${({ theme }) => theme.fonts.otherfont};
+
+    h4 {
+        color: ${({ theme }) => theme.colors.teal};
+    }
 `
 
 export const KarmaCoins = styled.div`
@@ -43,5 +48,6 @@ export const KarmaCoins = styled.div`
 
     h1 {
         margin-right: 1rem;
+        font-family: ${({ theme }) => theme.fonts.otherfont};
     }
 `
