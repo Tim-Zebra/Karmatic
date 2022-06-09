@@ -26,7 +26,9 @@ const data = [
 
 export default function ColumnThree(){
     // Queries recent Karma posts
-    // Filters by date created
+    // Filters by date created determining if data created it outside scope of 'recent'
+
+
     return(
         <ColumnContainer>
             <h3>Recent Karma</h3>
