@@ -1,36 +1,27 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, KarmaPost, Location } = require('../models');
+const { User, KarmaPost } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if(context.user) {
-        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
+        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelpers');
       }
       throw new AuthenticationError('You are not logged in!');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
+      return User.findOne({ username }).populate('karmaPosts').populate('karmaHelpers');
     },
     users: async () => {
-      return User.find({}).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
+      return User.find({}).populate('karmaPosts').populate('karmaHelpers');
     },
     karmaPosts: async (parent, {username}) => {
-      return KarmaPost.find({ username }).populate('location');
+      return KarmaPost.find({ username }).populate('karmaHelpers');
     },
     karmaPost: async (parent, {_id }) => {
-      return KarmaPost.findOne({ _id }.populate('location'));
+      return KarmaPost.findOne({ _id }).populate('karmaHelpers');
     },
-    locationKarmaPosts: async (parent, {_id}) => {
-      return KarmaPost.find({ location });
-    },
-    locations: async () => {
-      return Location.find({}).populate('members');
-    },
-    location: async (parent, {_id}) => {
-      return Location.findOne({ _id}).populate('members').populate('karmaPosts');
-    }
   },
 
   Mutation: {
@@ -64,7 +55,7 @@ const resolvers = {
       );
     },
     // postValue is a placeholder, needs to be calculated based on duration and difficulty. Needs tokens to be able to use context. This is the version that uses context, commented out so we can test creating a post
-    createPost: async (parent, {username, postTitle, postDescription, duration, difficulty, address, location}, context) => {
+    createPost: async (parent, {username, postTitle, postDescription, duration, difficulty, address}, context) => {
       // context.user authentication commented out for now for testing. username above should be removed when context is being used. context should also be replaced under user.findoneandupdate and postAuthor
       // if (context.user) {
         const postValue = 100;
@@ -75,18 +66,12 @@ const resolvers = {
           postValue: postValue, 
           duration, 
           difficulty,
-          address,
-          location})
+          address,})
 
         await User.findOneAndUpdate(
           { username: username},
           { $addToSet: {karmaPosts: karmaPost.id}}
         );
-
-        await Location.findOneAndUpdate(
-          { _id: karmaPost.location},
-          { $addToSet: {karmaPosts: karmaPost._id}}
-        )
         return karmaPost;
         // uncomment the following two lines when activating context
         // }
@@ -114,11 +99,6 @@ const resolvers = {
         { $pull: { karmaPosts: karmaPost.id}},
         {new: true}
       );
-
-      await Location.findOneAndUpdate(
-        { _id: karmaPost.location},
-        { $pull: {karmaPosts: karmaPost.id}}
-      )
       return karmaPost; }
       throw new AuthenticationError('You need to be logged in!')
     },
@@ -129,17 +109,6 @@ const resolvers = {
         { new: true }
       )
     },
-    createLocation: async (parent, args) => {
-      const location = await Location.create(args)
-      return location
-    },
-    addMember: async (parent, {locationId, memberId}) => {
-      return Location.findOneAndUpdate(
-        {_id: locationId},
-        { $addToSet: {members: memberId}},
-        { new: true}
-      )
-    }
   },
 };
 

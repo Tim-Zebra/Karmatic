@@ -1,7 +1,6 @@
 const db = require('../config/connection');
-const { User, Location, KarmaPost } = require('../models');
+const { User, KarmaPost } = require('../models');
 const userSeeds = require('./userSeeds.json');
-const locationSeeds = require('./locationSeeds.json');
 const karmaPostSeeds = require('./karmaPostSeeds.json')
 
 // Resets DB and seeds
@@ -9,38 +8,12 @@ db.once('open', async () => {
   try {
     // Clears out DB collections
     await User.deleteMany({});
-    await Location.deleteMany({});
     await KarmaPost.deleteMany({});
 
     // Creates new collections for each module
     await User.create(userSeeds);
 
-    let locationIdArray = [];
-    // Adds location to user documents karmaGroups [] / Links Location to Users
-    // Loops through locationSeeds []
-    for (let i = 0; i < locationSeeds.length; i++) {
-      // Creates Location document, and gets the _id value
-      const { _id } = await Location.create(locationSeeds[i]);
-      locationIdArray.push(_id);
-      // Loops through the members array
-      for(let k = 0; k < locationSeeds[i].members.length; k++) {
-        // finds specific member for query
-        let member = locationSeeds[i].members[k].member;
-
-        // Adds location id to user array karmaGroups []
-        const user = await User.findOneAndUpdate(
-          { username: member },
-          {
-            $addToSet: {
-              karmaGroups: _id,
-            },
-          }
-        );
-      }
-    }
-
     // Adds usernames to user documents karmaPosts [] and karmaHelping [] / Links karmaPosts to Users
-    // Loops through locationSeeds []
     for (let i = 0; i < karmaPostSeeds.length; i++) {
       // Creates KarmaPost document, and gets the _id value and author
       const { _id, postAuthor } = await KarmaPost.create(karmaPostSeeds[i]);
