@@ -64,6 +64,6 @@ const karmaPostSchema = new Schema({
 
 });
 
-const KarmaPost = model('KarmaPosts', karmaPostSchema);
+const KarmaPost = model('KarmaPost', karmaPostSchema);
 
 module.exports = KarmaPost;

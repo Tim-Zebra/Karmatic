@@ -66,7 +66,7 @@ const typeDefs = gql`
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
     createLocation(locationName: String!, locationGeoTag: String!) : Location
-    addMember(_id: ID!, members: ID!) : Location
+    addMember(locationId: ID!, memberId: ID!) : Location
   }
 `;
 

@@ -133,11 +133,10 @@ const resolvers = {
       const location = await Location.create(args)
       return location
     },
-    addMember: async (parent, {_id, member}) => {
-      console.log('member', member)
+    addMember: async (parent, {locationId, memberId}) => {
       return Location.findOneAndUpdate(
-        {_id},
-        { $addToSet: {members: {member}}},
+        {_id: locationId},
+        { $addToSet: {members: memberId}},
         { new: true}
       )
     }
