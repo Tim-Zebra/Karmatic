@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    margin-top: 1rem;
     width: 100%;
-    height: fit-content;
-    background-color: ${({ theme }) => theme.colors.lightteal};
-
-    & h1, h2, h3{
-    color:${({ theme }) => theme.colors.darkteal};
-    }
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `

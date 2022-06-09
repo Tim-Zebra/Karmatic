@@ -19,7 +19,7 @@ export const UserContainerBorder = styled.div`
 export const UserContainerBorderThick = styled.div`
   border: 2px solid #4A5655;
   border-radius: 20px;
-  padding:20px;
+  padding:10px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -28,23 +28,4 @@ export const UserContainerBorderThick = styled.div`
     color:#666666;
   }
 
-`
-
-export const UserContainerWide = styled.div`
-  width: 92%;
-  border-radius: 20px;
-  padding: 2px 5px 2px 5px;
-  margin:30px;
-  background-color: white;
-  box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple} ;
-
-`
-
-export const UserContainerLong = styled.div`
-  width: 92%;
-  border-radius: 20px;
-  padding: 2px 5px 2px 5px;
-  margin:30px;
-  background-color: white;
-  box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple} ;
 `
