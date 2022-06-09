@@ -31,15 +31,11 @@ const typeDefs = gql`
     createdAt: String!
   }
 
-  type Member {
-    member: String!
-  }
-
   type Location {
     _id: ID!
     locationName: String!
     locationGeoTag: String!
-    members: [Member]
+    members: [User]
     karmaPosts: [KarmaPost]
   }
 
@@ -54,6 +50,7 @@ const typeDefs = gql`
     users: [User]
     karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
+    locationKarmaPosts(location: ID!): [KarmaPost]
     karmaHelping: [KarmaPost]
     karmaGroups: [Location]
     location(_id: ID!): Location
@@ -69,7 +66,7 @@ const typeDefs = gql`
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
     createLocation(locationName: String!, locationGeoTag: String!) : Location
-    addMember(_id: ID!, member: String!) : Location
+    addMember(locationId: ID!, memberId: ID!) : Location
   }
 `;
 

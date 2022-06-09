@@ -26,13 +26,13 @@ const userSchema = new Schema({
   karmaPosts: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'KarmaPosts',
+      ref: 'KarmaPost',
     },
   ],
   karmaHelping: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'KarmaPosts',
+      ref: 'KarmaPost',
     },
   ],
   karmaGroups: [
