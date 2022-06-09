@@ -11,7 +11,7 @@ import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
 // Gets the Karma Post
-import { GET_LOCATIONS } from '../../utils/queries';
+import { GET_ME } from '../../utils/queries';
 
 const data = 
 {
@@ -20,8 +20,23 @@ const data =
 }
 
 export default function ColumnOne({handlePageChange}) {
-    // Query Username and Karma
+    // Querys username and karma
+    // Sets hooks for data loading
+    console.log('Column Two happened');
+    const { loadingUserData, dataUserData } = useQuery(GET_ME);
 
+    const userData = dataUserData?.me || [];
+
+    if(!userData) {
+    return null;
+    }
+
+    // Displays differently during loading
+    if (loadingUserData) {
+        return <h2>LOADING...</h2>;
+    }
+
+    console.log('\n\nKARMAPOSTS:: \n\n', karmaPosts);
     return (
             <ColumnContainer>
                 <GreetingContainer>
@@ -37,13 +52,13 @@ export default function ColumnOne({handlePageChange}) {
                             {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                             <CurrentKarmaCoinsContainer>
                             <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                                {data.karma} Karma Coins
+                                {userData.karma} Karma Coins
                             </CurrentKarmaCoinsContainer>
                             <UserContainerHeader>
                                 Overall Status:
                             </UserContainerHeader>
 
-                            <StatusBanner data={data} />
+                            <StatusBanner data={userData} />
 
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile
