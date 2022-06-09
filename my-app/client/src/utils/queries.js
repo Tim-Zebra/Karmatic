@@ -161,4 +161,5 @@ query GET_KARAMAPOSTS {
       createdAt
     }
   }
+}
 `;
