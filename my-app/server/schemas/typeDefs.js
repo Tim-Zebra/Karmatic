@@ -5,6 +5,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
+    password: String!
     karma: Int
     karmaPosts: [KarmaPost]
     karmaHelping: [KarmaPost]
@@ -57,7 +58,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!) : User
+    createUser(username: String!, email: String!, password: String!) : Auth
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
     createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!) : KarmaPost

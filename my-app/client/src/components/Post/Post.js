@@ -25,21 +25,24 @@ export default function Post() {
                 <img src='./assets/images/user.png' alt='profile pic' />
             </ImageContainer>
             <PostBody>
-            <PostHeader>
-            <h3>{data.postAuthor}</h3>
-            <p>{data.createdAt}</p>
-            </PostHeader>
-            <PostMessage>
-                <p>{data.postTitle}</p>
-                {data.postDescription}
-            </PostMessage>
 
-            {/* Button to add karmaHelper to Post */}
-            <PrettyButton>Help {data.postAuthor}</PrettyButton>
+                <PostHeader>
+                    <h3>{data.postAuthor}</h3>
+                    <p>{data.createdAt}</p>
+                </PostHeader>
+                <PostMessage>
+                    <p>{data.postTitle}</p>
+                    {data.postDescription}
+                </PostMessage>
+
+                {/* Button to add karmaHelper to Post */}
+                <PrettyButton>Help {data.postAuthor}</PrettyButton>
 
             </PostBody>
         </PostContainer>
-        {/* Checkts to see if someone has been added to karmaHelpers and displays the postValue */}
+
+        {/* Checks to see if someone has been added to karmaHelpers and displays the postValue */}
+
         { data.karmaHelpers ? 
         <PostFooter>
             <button>In Progress</button>
