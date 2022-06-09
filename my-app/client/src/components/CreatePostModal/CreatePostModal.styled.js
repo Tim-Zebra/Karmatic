@@ -34,11 +34,15 @@ export const ModalContainer = styled.div`
        position: relative;
        top: -40px;
        right: -35px;
-       background-color: ${({ theme }) => theme.colors.lightteal};
+       background-color: ${({ theme }) => theme.colors.lightgrey};
+       border: none;
     }
 
     button:hover {
         background-color: ${({ theme }) => theme.colors.teal} ;
+    }
+    button:active {
+        border: 2px solid ${({ theme }) => theme.colors.darkteal}
     }
 
     @media only screen and (min-width: 992px) {
