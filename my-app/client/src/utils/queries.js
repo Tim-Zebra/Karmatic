@@ -144,13 +144,30 @@ query GET_USERS {
 }
 `;
 
-// Gets all KarmaPosts. For display on dashboard
-export const GET_LOCATIONS = gql`
-query GET_LOCATIONS {
-  locations {
-    members {
-      username
-      email
+export const USER_KARMA_POSTS = gql`
+query Me {
+  me {
+    _id
+    username
+    karmaGroups {
+      _id
+      locationName
+      locationGeoTag
+      karmaPosts {
+        _id
+        postTitle
+        postDescription
+        postValue
+        duration
+        difficulty
+        address
+        createdAt
+        karmaHelpers {
+          _id
+          helperUsername
+          createdAt
+        }
+      }
     }
   }
 }

@@ -1,9 +1,11 @@
 import React from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostFooter, } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
+import { useMutation, useQuery } from '@apollo/client';
 
 
 export default function Post({data}) {
+
     return (
         <PostOutterContainer>
         <PostContainer>
