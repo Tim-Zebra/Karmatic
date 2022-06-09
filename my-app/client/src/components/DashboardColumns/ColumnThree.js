@@ -25,13 +25,15 @@ const data = [
 
 
 export default function ColumnThree(){
+    // Queries recent Karma posts
+    // Filters by date created
     return(
         <ColumnContainer>
             <h3>Recent Karma</h3>
 
-                    {data.map((recentPost) => 
-                    <RecentKarma data={recentPost} />
-                    )}
+            {data.map((recentPost) => 
+            <RecentKarma data={recentPost} />
+            )}
                     
         </ColumnContainer>
     )

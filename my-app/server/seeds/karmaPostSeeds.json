@@ -6,6 +6,7 @@
     "postValue": 200,
     "duration": 1,
     "difficulty": "Medium",
+    "createdAt": "2022-05-09T15:39:45.124+00:00",
     "karmaHelpers": [
         {
           "helperUsername": "Stiltskinner"
@@ -19,9 +20,11 @@
     "postValue": 400,
     "duration": 1,
     "difficulty": "Hard",
+    "createdAt": "2022-06-09T15:39:45.124+00:00",
     "karmaHelpers": [
         {
           "helperUsername": "cyconutz"
+          
         },
         {
           "helperUsername": "billycwong19"
