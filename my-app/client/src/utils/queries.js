@@ -143,3 +143,22 @@ query GET_USERS {
   }
 }
 `;
+
+// Gets all KarmaPosts. For display on dashboard
+export const GET_KARMAPOSTS = gql`
+query GET_KARAMAPOSTS {
+  karmaPosts {
+    _id
+    postTitle
+    postDescription
+    postValue
+    duration
+    difficulty
+    createdAt
+    karmaHelpers {
+      _id
+      helperUsername
+      createdAt
+    }
+  }
+`;

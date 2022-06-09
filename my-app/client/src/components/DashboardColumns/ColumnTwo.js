@@ -3,6 +3,20 @@ import Post from '../Post/Post'
 import { ColumnContainer, FeedHeaderContainer, CreatePostContainer, FeedContainer, ActivityHeader  } from './ColumnTwo.styled'
 import PostForm from '../Forms/PostForm'
 
+// Imports Authorization
+import Auth from '../../utils/auth';
+
+// Allows use for both queries and mutations from our utils folder
+import { useMutation, useQuery } from '@apollo/client';
+
+// Gets Queries
+// Gets the Karma Post
+import { GET_KARMAPOSTS } from '../../utils/queries';
+
+// Gets Mutations
+// Allow for helpers
+
+
 const data = [
 {
     postTitle: 'Pirate Bay',
@@ -35,6 +49,16 @@ const data = [
 ]
 
 export default function ColumnTwo() {
+// Queries Karma Post data
+// Sets hooks for data loading
+const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_KARMAPOSTS);
+
+const karmaPosts = dataKarmaPosts?.me || [];
+
+if(!karmaPosts) {
+  return null;
+}
+
     return(
         <ColumnContainer>
             <FeedHeaderContainer>

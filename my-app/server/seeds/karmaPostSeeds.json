@@ -5,7 +5,7 @@
     "postAuthor":"Tim-Zebra",
     "postValue": 200,
     "duration": 1,
-    "difficulty": 2,
+    "difficulty": "Medium",
     "karmaHelpers": [
         {
           "helperUsername": "Stiltskinner"
@@ -16,9 +16,9 @@
     "postTitle": "Rabit on the Lose!",
     "postDescription": "Help! My rabit got out and I'm worried he might get hurt. He's been known to be a little...aggressive but that's no excuse for throwing holy hand grenades at him!",
     "postAuthor":"Stiltskinner",
-    "postValue": 200,
+    "postValue": 400,
     "duration": 1,
-    "difficulty": 2,
+    "difficulty": "Hard",
     "karmaHelpers": [
         {
           "helperUsername": "cyconutz"
