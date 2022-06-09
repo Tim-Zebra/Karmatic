@@ -8,8 +8,7 @@ const typeDefs = gql`
     password: String!
     karma: Int
     karmaPosts: [KarmaPost]
-    karmaHelping: [KarmaPost]
-    karmaGroups: [Location]
+    karmaHelpers: [KarmaPost]
   }
 
   type KarmaPost {
@@ -20,7 +19,6 @@ const typeDefs = gql`
     duration: Int!
     difficulty: String!
     address: String!
-    location: Location!
     createdAt:String
     karmaHelpers: [KarmaHelper]
   }
@@ -29,14 +27,6 @@ const typeDefs = gql`
     _id: ID!
     helperUsername: String!
     createdAt: String!
-  }
-
-  type Location {
-    _id: ID!
-    locationName: String!
-    locationGeoTag: String!
-    members: [User]
-    karmaPosts: [KarmaPost]
   }
 
   type Auth {
@@ -50,23 +40,17 @@ const typeDefs = gql`
     users: [User]
     karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
-    locationKarmaPosts(location: ID!): [KarmaPost]
-    karmaHelping: [KarmaPost]
-    karmaGroups: [Location]
-    location(_id: ID!): Location
-    locations: [Location]
+    karmaHelpers: [KarmaPost]
   }
 
   type Mutation {
     createUser(username: String!, email: String!, password: String!) : Auth
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!, location: ID!) : KarmaPost
+    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
-    createLocation(locationName: String!, locationGeoTag: String!) : Location
-    addMember(locationId: ID!, memberId: ID!) : Location
   }
 `;
 

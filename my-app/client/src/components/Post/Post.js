@@ -1,9 +1,14 @@
 import React from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostFooter, } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
+import { useMutation, useQuery } from '@apollo/client';
+import { USER_KARMA_POSTS} from '../../utils/queries'
 
 
-export default function Post({data}) {
+export default function Post() {
+
+    const { data} = useQuery(USER_KARMA_POSTS);
+    console.log('data',data)
     return (
         <PostOutterContainer>
         <PostContainer>
