@@ -67,6 +67,7 @@ export const PostFooter = styled.div`
     font-size: 12px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
     div {
         display: flex;

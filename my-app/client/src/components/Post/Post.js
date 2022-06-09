@@ -41,11 +41,12 @@ export default function Post() {
             </PostBody>
         </PostContainer>
 
-        {/* Checks to see if someone has been added to karmaHelpers and displays the postValue */}
+        {/* Checks to see if someone has been added to karmaHelpers and displays the helpers with an in progress link else it shows the stats of the post including difficulty, duration, coins */}
 
         { data.karmaHelpers ? 
         <PostFooter>
             <button>In Progress</button>
+            <p>with {data.karmaHelpers[0].helperUsername}</p>
             <div>
             <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
             {data.postValue}
@@ -53,7 +54,8 @@ export default function Post() {
         </PostFooter>
         : 
         <PostFooter>
-            <p></p>
+            <p>Estimated Duration: { data.duration === 1 ? '1 Hour or less' : data.duration === 2 ? 'About 2 Hours' : data.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
+            <p>{ data.difficulty === 'Easy' ? 'Easy-peasy' : data.difficulty === 'Medium' ? 'Medium-shmedium' :  'Quite difficult' }</p>
             <div>
             <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
             {data.postValue}

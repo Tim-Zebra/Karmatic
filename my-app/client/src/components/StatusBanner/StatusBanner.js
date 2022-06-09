@@ -3,6 +3,7 @@ import { GreatKarmaBanner, AwesomeKarmaBanner, ExcellentKarmaBanner, CommunityLe
 
 export default function StatusBanner({data}){
     return (
+        // Changes color based on amount of karma coins
         <>
         { data.karma > 100 && data.karma < 500 ?
             <GreatKarmaBanner>

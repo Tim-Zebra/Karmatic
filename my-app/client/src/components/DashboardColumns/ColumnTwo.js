@@ -15,7 +15,7 @@ export default function ColumnTwo() {
                 </ActivityHeader>
             </FeedHeaderContainer>
             <FeedContainer>
-                <Post></Post>
+                <Post />
             </FeedContainer>
         </ColumnContainer>
     )
