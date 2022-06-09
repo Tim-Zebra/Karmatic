@@ -37,7 +37,7 @@ export default function ColumnThree(){
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
     console.log('Column THREE happened');
-    const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_KARMAPOSTS);
+    const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_LOCATIONS);
 
     const karmaPosts = dataKarmaPosts?.karmaPosts || [];
 
