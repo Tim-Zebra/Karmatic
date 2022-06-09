@@ -20,9 +20,9 @@ const typeDefs = gql`
     duration: Int!
     difficulty: String!
     address: String!
+    location: Location!
     createdAt:String
     karmaHelpers: [KarmaHelper]
-    location: Location!
   }
 
   type KarmaHelper {
@@ -64,7 +64,7 @@ const typeDefs = gql`
     createUser(username: String!, email: String!, password: String!) : Auth
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!, location: String!) : KarmaPost
+    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!, location: ID!) : KarmaPost
     editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost

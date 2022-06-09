@@ -17,16 +17,16 @@ const resolvers = {
       return User.find({}).populate('karmaPosts').populate('karmaHelping').populate('karmaGroups');
     },
     karmaPosts: async (parent, {username}) => {
-      return KarmaPost.find({ username });
+      return KarmaPost.find({ username }).populate('location');
     },
     karmaPost: async (parent, {_id }) => {
-      return KarmaPost.findOne({ _id });
+      return KarmaPost.findOne({ _id }.populate('location'));
     },
     locations: async () => {
       return Location.find({});
     },
     location: async (parent, {_id}) => {
-      return Location.findOne({ _id}).populate('members');
+      return Location.findOne({ _id}).populate('members').populate('karmaPosts');
     }
   },
 
@@ -61,67 +61,61 @@ const resolvers = {
       );
     },
     // postValue is a placeholder, needs to be calculated based on duration and difficulty. Needs tokens to be able to use context. This is the version that uses context, commented out so we can test creating a post
-    createPost: async (parent, { postTitle, postDescription, duration, difficulty}, context) => {
-      if (context.user) {
+    createPost: async (parent, {username, postTitle, postDescription, duration, difficulty, address, location}, context) => {
+      // context.user authentication commented out for now for testing. username above should be removed when context is being used. context should also be replaced under user.findoneandupdate and postAuthor
+      // if (context.user) {
         const postValue = 100;
         const karmaPost = await KarmaPost.create({ 
           postTitle, 
           postDescription, 
-          postAuthor: context.user.username,
+          postAuthor: username,
           postValue: postValue, 
           duration, 
-          difficulty})
+          difficulty,
+          address,
+          location})
 
         await User.findOneAndUpdate(
-          { username: context.user.username},
+          { username: username},
           { $addToSet: {karmaPosts: karmaPost.id}}
         );
 
+        await Location.findOneAndUpdate(
+          { _id: karmaPost.location},
+          { $addToSet: {karmaPosts: karmaPost._id}}
+        )
         return karmaPost;
-        }
-        throw new AuthenticationError('You need to be logged in!')
+        // uncomment the following two lines when activating context
+        // }
+        // throw new AuthenticationError('You need to be logged in!')
       },
-      // verison of createPost that does not use context in case it's needed for testing
-    // createPost: async (parent, {username, postTitle, postDescription, duration, difficulty}) => {
-    //     const postValue = 100;
-    //     const karmaPost = await KarmaPost.create({ 
-    //       postTitle, 
-    //       postDescription, 
-    //       postAuthor: username,
-    //       postValue: postValue, 
-    //       duration, 
-    //       difficulty})
-
-    //     await User.findOneAndUpdate(
-    //       { username: username},
-    //       { $addToSet: {karmaPosts: karmaPost.id}},
-    //       {new: true}
-    //     );
-
-    //     return karmaPost;
-    //     },
-    editPost: async (parent, {_id, postTitle, postDescription, duration, difficulty}) => {
+    editPost: async (parent, {_id, postTitle, postDescription, duration, difficulty, address}) => {
       if (context.user) {
       return KarmaPost.findOneAndUpdate(
         {_id},
-        {postTitle, postDescription, duration, difficulty},
+        {postTitle, postDescription, duration, difficulty, address},
         {new: true}
       )
       }
       throw new AuthenticationError('You need to be logged in!')
         },
-    deletePost: async (parent, {_id, username}) => {
+    deletePost: async (parent, {_id}) => {
       if (context.user) {
       const karmaPost = await KarmaPost.findOneAndDelete({
         _id: _id
       },
-      {new: true});
+      );
 
       await User.findOneAndUpdate(
-        { username: username},
+        { username: context.user.username},
         { $pull: { karmaPosts: karmaPost.id}},
         {new: true}
       );
+
+      await Location.findOneAndUpdate(
+        { _id: karmaPost.location},
+        { $pull: {karmaPosts: karmaPost.id}}
+      )
       return karmaPost; }
       throw new AuthenticationError('You need to be logged in!')
     },
