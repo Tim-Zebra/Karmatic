@@ -11,12 +11,12 @@ import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
 // Gets the Karma Post
-import { GET_LOCATIONS } from '../../utils/queries';
+import { GET_ME } from '../../utils/queries';
 
 // Gets Mutations
 // Allow for helpers
 
-const data = [
+const data1 = [
 {
     postTitle: 'Pirate Bay',
     postDescription: `Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl.`,
@@ -50,21 +50,21 @@ const data = [
 export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
-    // console.log('Column Two happened');
-    // const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_KARMAPOSTS);
+    console.log('Column Two happened');
+    const { loading, data } = useQuery(GET_ME);
 
-    // const karmaPosts = dataKarmaPosts?.karmaPosts || [];
+    const karmaPost = data?.me.karmaPosts || [];
 
-    // if(!karmaPosts) {
-    // return null;
-    // }
+    if(!karmaPost) {
+    return null;
+    }
 
-    // // Displays differently during loading
-    // if (loadingKarmaPosts) {
-    //     return <h2>LOADING...</h2>;
-    // }
+    // Displays differently during loading
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
 
-    // console.log('\n\nKARMAPOSTS:: \n\n', karmaPosts);
+    console.log('\n\nKARMAPOSTS:: \n\n', karmaPost);
 
     return(
         <ColumnContainer>
@@ -78,7 +78,7 @@ export default function ColumnTwo() {
             </FeedHeaderContainer>
             <FeedContainer>
 
-                { data.map((post) => 
+                { karmaPost.map((post) => 
                 <Post data={post} />
                 )}
 

@@ -10,6 +10,21 @@ query Me {
     username
     email
     karma
+    karmaPosts {
+      _id
+      postTitle
+      postDescription
+      postValue
+      duration
+      difficulty
+      address
+      createdAt
+      karmaHelpers {
+        _id
+        helperUsername
+        createdAt
+      }
+    }
   }
 }
 `;

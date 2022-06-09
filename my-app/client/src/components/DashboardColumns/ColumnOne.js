@@ -13,12 +13,6 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets the Karma PostGET_USER
 import { GET_ME } from '../../utils/queries';
 
-const data1 = 
-{
-    username: 'Bob',
-    karma: 2000,
-}
-
 export default function ColumnOne({handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
@@ -26,6 +20,7 @@ export default function ColumnOne({handlePageChange}) {
 
     const userData = data?.me || {};
 
+    // Returns null if userdata is not present
     if(!userData) {
         return null;
     }
@@ -35,7 +30,6 @@ export default function ColumnOne({handlePageChange}) {
         return <h2>LOADING...</h2>;
     }
 
-    console.log('\nUSERDATA:: \n\n', userData);
     return (
             <ColumnContainer>
                 <GreetingContainer>
