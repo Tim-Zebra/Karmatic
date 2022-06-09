@@ -28,14 +28,21 @@ export const ModalContainer = styled.div`
     }
 
     button {
-       height: 44px;
-       border-radius: 50% ;
-       padding:0 1rem;
-       position: relative;
-       top: -40px;
-       right: -35px;
-       background-color: ${({ theme }) => theme.colors.lightgrey};
-       border: none;
+        height: 44px;
+        width: 44px;
+        border-radius: 50% ;
+        padding:0 1rem;
+        position: relative;
+        top: -40px;
+        right: -35px;
+        background-color: ${({ theme }) => theme.colors.lightgrey};
+        border: none;
+        img {
+            height: 16px;
+            position: relative;
+            left:-2px;
+            top: 1.5px;
+        }
     }
 
     button:hover {

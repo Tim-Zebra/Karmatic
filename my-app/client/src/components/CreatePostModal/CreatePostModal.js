@@ -9,7 +9,7 @@ export default function CreatePostModal({setIsOpen}){
             <ModalContainer>
                 <div>
                     <p>Post</p>
-                    <button onClick={() => setIsOpen(false)}>X</button>
+                    <button onClick={() => setIsOpen(false)}><img src="./assets/images/cancel.png" alt="cancel x" /></button>
                 </div>
             <PostForm />
             </ModalContainer>

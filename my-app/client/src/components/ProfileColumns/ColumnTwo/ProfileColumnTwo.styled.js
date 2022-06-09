@@ -56,4 +56,5 @@ export const UserContainerLong = styled.div`
   background-color: white;
   box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple};
   padding-top: 1rem;
+  flex-direction: column-reverse;
 `
