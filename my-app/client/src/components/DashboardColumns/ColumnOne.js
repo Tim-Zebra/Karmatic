@@ -12,7 +12,7 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets Queries
 // Gets the Karma PostGET_USER
 import { GET_ME } from '../../utils/queries';
-import { GET_USERS } from '../../utils/queries';
+
 const data1 = 
 {
     username: 'Bob',
@@ -22,10 +22,9 @@ const data1 =
 export default function ColumnOne({handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
-    console.log('Column ONE happened');
-    const { loading, data } = useQuery(GET_USERS);
+    const { loading, data } = useQuery(GET_ME);
 
-    const userData = data?.users || {};
+    const userData = data?.me || {};
 
     if(!userData) {
         return null;
@@ -40,7 +39,7 @@ export default function ColumnOne({handlePageChange}) {
     return (
             <ColumnContainer>
                 <GreetingContainer>
-                    Hey, {data1.username}!
+                    Hey, {userData.username}!
                 </GreetingContainer>
                 <UserContainer>
                     <UserContainerBorder>
@@ -52,13 +51,13 @@ export default function ColumnOne({handlePageChange}) {
                             {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                             <CurrentKarmaCoinsContainer>
                             <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                                {data1.karma} Karma Coins
+                                {userData.karma} Karma Coins
                             </CurrentKarmaCoinsContainer>
                             <UserContainerHeader>
                                 Overall Status:
                             </UserContainerHeader>
 
-                            <StatusBanner data={data1} />
+                            <StatusBanner data={userData} />
 
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile

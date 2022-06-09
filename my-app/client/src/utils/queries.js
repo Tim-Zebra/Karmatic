@@ -2,9 +2,11 @@ import { gql } from '@apollo/client';
 
 // Gets logged in user info
 // This pulls everything for current user excluding password
+// **TIMS WORK - IN PROGRESS**
 export const GET_ME = gql`
-query me {
+query Me {
   me {
+    _id
     username
     email
     karma
