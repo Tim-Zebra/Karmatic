@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
 
 // Gets logged in user info
-// This pulls everything excluding password
+// This pulls everything for current user excluding password
+// **TIMS WORK - IN PROGRESS**
 export const GET_ME = gql`
-query GET_ME {
-  users {
+query Me {
+  me {
     _id
     username
     email
@@ -16,33 +17,12 @@ query GET_ME {
       postValue
       duration
       difficulty
+      address
       createdAt
       karmaHelpers {
         _id
         helperUsername
         createdAt
-      }
-    }
-    karmaHelping {
-      _id
-      postTitle
-      postDescription
-      postValue
-      duration
-      difficulty
-      createdAt
-      karmaHelpers {
-        _id
-        helperUsername
-        createdAt
-      }
-    }
-    karmaGroups {
-      _id
-      locationName
-      locationGeoTag
-      members {
-        member
       }
     }
   }
@@ -98,9 +78,8 @@ query GET_USER($username: String!) {
 
 // Queries all users except password
 export const GET_USERS = gql`
-query GET_USERS {
+query Users {
   users {
-    _id
     username
     email
     karma
@@ -111,6 +90,7 @@ query GET_USERS {
       postValue
       duration
       difficulty
+      address
       createdAt
       karmaHelpers {
         _id
@@ -125,19 +105,12 @@ query GET_USERS {
       postValue
       duration
       difficulty
+      address
       createdAt
       karmaHelpers {
         _id
         helperUsername
         createdAt
-      }
-    }
-    karmaGroups {
-      _id
-      locationName
-      locationGeoTag
-      members {
-        member
       }
     }
   }

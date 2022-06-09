@@ -4,17 +4,18 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
+    // Finds user based off the jwt context
+    me: async (parent, args, context ) => {
       if(context.user) {
-        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelpers');
+        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelping');
       }
       throw new AuthenticationError('You are not logged in!');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('karmaPosts').populate('karmaHelpers');
+      return User.findOne({ username }).populate('karmaPosts').populate('karmaHelping');
     },
     users: async () => {
-      return User.find({}).populate('karmaPosts').populate('karmaHelpers');
+      return User.find({}).populate('karmaPosts').populate('karmaHelping');
     },
     karmaPosts: async (parent, {username}) => {
       return KarmaPost.find({ username }).populate('karmaHelpers');
@@ -32,6 +33,7 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { username, password }) => {
+      console.log('LOGIN HAPPENED');
       const user = await User.findOne({ username });
 
       if (!user) {

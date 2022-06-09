@@ -3,17 +3,37 @@ import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, Cu
 import StatusBanner from '../StatusBanner/StatusBanner'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
-const data = 
-{
-    username: 'Bob',
-    karma: 2000,
-}
+// Imports Authorization
+import Auth from '../../utils/auth';
+
+// Allows use for both queries and mutations from our utils folder
+import { useMutation, useQuery } from '@apollo/client';
+
+// Gets Queries
+// Gets the Karma PostGET_USER
+import { GET_ME } from '../../utils/queries';
 
 export default function ColumnOne({handlePageChange}) {
+    // Querys username and karma
+    // Sets hooks for data loading
+    const { loading, data } = useQuery(GET_ME);
+
+    const userData = data?.me || {};
+
+    // Returns null if userdata is not present
+    if(!userData) {
+        return null;
+    }
+
+    // Displays differently during loading
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
+
     return (
             <ColumnContainer>
                 <GreetingContainer>
-                    Hey, {data.username}!
+                    Hey, {userData.username}!
                 </GreetingContainer>
                 <UserContainer>
                     <UserContainerBorder>
@@ -25,13 +45,13 @@ export default function ColumnOne({handlePageChange}) {
                             {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                             <CurrentKarmaCoinsContainer>
                             <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                                {data.karma} Karma Coins
+                                {userData.karma} Karma Coins
                             </CurrentKarmaCoinsContainer>
                             <UserContainerHeader>
                                 Overall Status:
                             </UserContainerHeader>
 
-                            <StatusBanner data={data} />
+                            <StatusBanner data={userData} />
 
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile
