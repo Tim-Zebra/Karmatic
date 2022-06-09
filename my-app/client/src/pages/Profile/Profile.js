@@ -3,23 +3,23 @@ import React from 'react'
 
 import { ProfileContainer, ColumnOne, ColumnTwo } from './Profile.styled'
 import ProfileColumnOne from '../../components/ProfileColumns/ColumnOne/ProfileColumnOne'
-import ActivityBox from '../../components/ProfileColumns/ColumnTwo/ActivityBox'
-import UserBox from '../../components/ProfileColumns/ColumnTwo/UserBox'
+import UserActivity from '../../components/ProfileColumns/ColumnTwo/UserActivity'
+import UserInfo from '../../components/ProfileColumns/ColumnTwo/UserInfo'
 
 export default function Profile() {
 
     return (
         <ProfileContainer>
+            
+            <ColumnTwo>
+                <UserInfo />
+                <h3>Recent Activity</h3>
+                <UserActivity />
+            </ColumnTwo>
 
             <ColumnOne>
                 <ProfileColumnOne />
             </ColumnOne>
-
-
-            <ColumnTwo>
-                <UserBox />
-                <ActivityBox />
-            </ColumnTwo>
 
         </ProfileContainer>
     )
