@@ -22,9 +22,9 @@ const locationSchema = new Schema({
   members: [
     {
       member: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
-        trim: true,
       },
     },
   ],
