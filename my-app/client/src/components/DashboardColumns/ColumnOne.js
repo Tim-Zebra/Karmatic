@@ -1,5 +1,6 @@
 import React from 'react'
-import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer, GreatKarmaBanner, AwesomeKarmaBanner, ExcellentKarmaBanner, CommunityLeaderKarmaBanner, KarmaticHeroKarmaBanner } from './ColumnOne.styled'
+import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer } from './ColumnOne.styled'
+import StatusBanner from '../StatusBanner/StatusBanner'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
 const data = 
@@ -8,7 +9,7 @@ const data =
     karma: 2000,
 }
 
-export default function ColumnOne({ handlePageChange }) {
+export default function ColumnOne({handlePageChange}) {
     return (
             <ColumnContainer>
                 <GreetingContainer>
@@ -30,28 +31,7 @@ export default function ColumnOne({ handlePageChange }) {
                                 Overall Status:
                             </UserContainerHeader>
 
-                            { data.karma > 100 && data.karma < 500 ?
-                            <GreatKarmaBanner>
-                                Great!
-                            </GreatKarmaBanner>
-                            : data.karma >= 500 && data.karma < 1000 ?
-                            <AwesomeKarmaBanner>
-                                Awesome!
-                            </AwesomeKarmaBanner>
-                            : data.karma >= 1000 && data.karma < 1500 ?
-                            <ExcellentKarmaBanner>
-                                Excellent!
-                            </ExcellentKarmaBanner>
-                            : data.karma >= 1500 && data.karma < 2000 ?
-                            <CommunityLeaderKarmaBanner>
-                                Community Leader!
-                            </CommunityLeaderKarmaBanner>
-                            : data.karma >= 1500 ?
-                            <KarmaticHeroKarmaBanner>
-                                Karmatic Hero!
-                            </KarmaticHeroKarmaBanner>
-                            : <>Help Somone Today to Change your Status!</>
-                            }
+                            <StatusBanner data={data} />
 
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile

@@ -67,7 +67,7 @@ export default function App() {
       return <Profile />;
     }
     if (currentPage === 'Dashboard') {
-      return <Dashboard handlePageChange />;
+      return <Dashboard handlePageChange={handlePageChange} />;
     }
       return <Home />;
   }
