@@ -5,5 +5,13 @@ export const CardContainer = styled.div`
     border-radius: 5px;
     width: 100%;
     margin: 0 1rem 1rem 1rem;
+    display: flex;
     padding: .5rem;
+    align-items: center;
+    justify-content: space-evenly;
+
+    img {
+        height: 44px;
+        margin-right: 1rem;
+    }
 `
