@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-
+// Location refers to the neighborhood or community a user/karmapost is part of. Address, property of karmpost, refers to the specific address that help is required at
 const typeDefs = gql`
   type User {
     _id: ID!
@@ -19,8 +19,10 @@ const typeDefs = gql`
     postValue: Int!
     duration: Int!
     difficulty: String!
+    address: String!
     createdAt:String
     karmaHelpers: [KarmaHelper]
+    location: Location!
   }
 
   type KarmaHelper {
@@ -38,6 +40,7 @@ const typeDefs = gql`
     locationName: String!
     locationGeoTag: String!
     members: [Member]
+    karmaPosts: [KarmaPost]
   }
 
   type Auth {
@@ -61,8 +64,8 @@ const typeDefs = gql`
     createUser(username: String!, email: String!, password: String!) : Auth
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!) : KarmaPost
-    editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!) : KarmaPost
+    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!, location: String!) : KarmaPost
+    editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
     createLocation(locationName: String!, locationGeoTag: String!) : Location
