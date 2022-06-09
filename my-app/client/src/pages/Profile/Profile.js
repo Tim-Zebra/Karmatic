@@ -1,6 +1,4 @@
 import React from 'react'
-
-
 import { ProfileContainer, ColumnOne, ColumnTwo } from './Profile.styled'
 import ProfileColumnOne from '../../components/ProfileColumns/ColumnOne/ProfileColumnOne'
 import UserActivity from '../../components/ProfileColumns/ColumnTwo/UserActivity'

@@ -15,13 +15,13 @@ db.once('open', async () => {
     // Creates new collections for each module
     await User.create(userSeeds);
 
-
+    let locationIdArray = [];
     // Adds location to user documents karmaGroups [] / Links Location to Users
     // Loops through locationSeeds []
     for (let i = 0; i < locationSeeds.length; i++) {
       // Creates Location document, and gets the _id value
       const { _id } = await Location.create(locationSeeds[i]);
-
+      locationIdArray.push(_id);
       // Loops through the members array
       for(let k = 0; k < locationSeeds[i].members.length; k++) {
         // finds specific member for query

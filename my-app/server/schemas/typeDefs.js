@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-
+// Location refers to the neighborhood or community a user/karmapost is part of. Address, property of karmpost, refers to the specific address that help is required at
 const typeDefs = gql`
   type User {
     _id: ID!
@@ -19,6 +19,8 @@ const typeDefs = gql`
     postValue: Int!
     duration: Int!
     difficulty: String!
+    address: String!
+    location: Location!
     createdAt:String
     karmaHelpers: [KarmaHelper]
   }
@@ -29,15 +31,12 @@ const typeDefs = gql`
     createdAt: String!
   }
 
-  type Member {
-    member: String!
-  }
-
   type Location {
     _id: ID!
     locationName: String!
     locationGeoTag: String!
-    members: [Member]
+    members: [User]
+    karmaPosts: [KarmaPost]
   }
 
   type Auth {
@@ -51,6 +50,7 @@ const typeDefs = gql`
     users: [User]
     karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
+    locationKarmaPosts(location: ID!): [KarmaPost]
     karmaHelping: [KarmaPost]
     karmaGroups: [Location]
     location(_id: ID!): Location
@@ -61,12 +61,12 @@ const typeDefs = gql`
     createUser(username: String!, email: String!, password: String!) : Auth
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!) : KarmaPost
-    editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!) : KarmaPost
+    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!, location: ID!) : KarmaPost
+    editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
     createLocation(locationName: String!, locationGeoTag: String!) : Location
-    addMember(_id: ID!, member: String!) : Location
+    addMember(locationId: ID!, memberId: ID!) : Location
   }
 `;
 

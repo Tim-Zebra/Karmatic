@@ -6,6 +6,7 @@
     "postValue": 200,
     "duration": 1,
     "difficulty": 2,
+    "address": "123 Camelot Trail",
     "karmaHelpers": [
         {
           "helperUsername": "Stiltskinner"
@@ -19,6 +20,7 @@
     "postValue": 200,
     "duration": 1,
     "difficulty": 2,
+    "address": "456 Arthur Lane",
     "karmaHelpers": [
         {
           "helperUsername": "cyconutz"
