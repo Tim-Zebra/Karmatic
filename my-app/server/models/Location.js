@@ -28,6 +28,12 @@ const locationSchema = new Schema({
       },
     },
   ],
+  karmaPosts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'KarmaPosts',
+    }
+  ]
 });
 
 const Location = model('Location', locationSchema);
