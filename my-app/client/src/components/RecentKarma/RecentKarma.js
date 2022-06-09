@@ -2,18 +2,9 @@ import React from 'react'
 import { RecentKarmaBox, ExchangeContainer, ExchangeBetween, KarmaCoins, RecentContainer } from './RecentKarma.styled'
 
 // STATIC DATA BUILT OFF MODEL 
-const data = 
-{
-    postAuthor: 'Mary',
-    postValue: '100',
-    karmaHelpers: [
-        {
-        helperUsername: 'Bob',
-        }
-    ]
-}
 
-export default function RecentKarma(){
+
+export default function RecentKarma({data}){
     return (
         <RecentKarmaBox>
             <img src='./assets/images/karma_coin.png' height='44px' alt='karma coin' />

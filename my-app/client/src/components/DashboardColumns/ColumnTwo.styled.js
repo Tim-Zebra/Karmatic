@@ -31,10 +31,13 @@ export const CreatePostContainer = styled.div`
 
 export const ActivityHeader = styled.div`
     color: ${({ theme  }) => theme.colors.darkgrey};
-
+    
+    p {
     font-family: ${({ theme }) => theme.fonts.otherfont};
-    font-size: 32px;
-    margin: 1.5rem 0 1.5rem 2rem;
+    font-size: 20px;
+    margin-left: 1rem;
+
+    }
     
     @media only screen and (min-width: 992px) {
         
@@ -47,5 +50,5 @@ export const FeedContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.teal };
     width: 99%;
     height: 100%;
-    border-radius: 25px 25px 0 0;
+    overflow: scroll;
 `
