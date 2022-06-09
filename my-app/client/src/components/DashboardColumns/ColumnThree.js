@@ -36,32 +36,32 @@ const data = [
 export default function ColumnThree(){
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
-    console.log('Column THREE happened');
-    const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_LOCATIONS);
+    // console.log('Column THREE happened');
+    // const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_LOCATIONS);
 
-    const karmaPosts = dataKarmaPosts?.karmaPosts || [];
+    // const karmaPosts = dataKarmaPosts?.karmaPosts || [];
 
-    if(!karmaPosts) {
-    return null;
-    }
+    // if(!karmaPosts) {
+    // return null;
+    // }
 
-    console.log('KARMAPOST VALUES\n', karmaPosts);
-    // Filters Karma posts from the current date, up to 2 days from the current date.
-    const recentKarmaPosts = karmaPosts.filter((post) => post.date < Date.now - 2 hours);
+    // console.log('KARMAPOST VALUES\n', karmaPosts);
+    // // Filters Karma posts from the current date, up to 2 days from the current date.
+    // const recentKarmaPosts = karmaPosts.filter((post) => post.date < Date.now - 2 hours);
 
-    // Displays differently during loading
-    if (loadingKarmaPosts) {
-        return <h2>LOADING...</h2>;
-    }
+    // // Displays differently during loading
+    // if (loadingKarmaPosts) {
+    //     return <h2>LOADING...</h2>;
+    // }
 
-    console.log('\n\nPASSED DATA KARMAPOSTS:: \n\n', recentKarmaPosts);
+    // console.log('\n\nPASSED DATA KARMAPOSTS:: \n\n', recentKarmaPosts);
     // Need 
 
     return(
         <ColumnContainer>
             <h3>Recent Karma</h3>
 
-            {recentKarmaPosts.map((recentPost) => 
+            {data.map((recentPost) => 
             <RecentKarma data={recentPost} />
             )}
                     

@@ -3,8 +3,8 @@ import { gql } from '@apollo/client';
 // Gets logged in user info
 // This pulls everything excluding password
 export const GET_ME = gql`
-query GET_ME {
-  users {
+query me {
+  me {
     _id
     username
     email
@@ -147,18 +147,10 @@ query GET_USERS {
 // Gets all KarmaPosts. For display on dashboard
 export const GET_LOCATIONS = gql`
 query GET_LOCATIONS {
-  karmaPosts {
-    _id
-    postTitle
-    postDescription
-    postValue
-    duration
-    difficulty
-    createdAt
-    karmaHelpers {
-      _id
-      helperUsername
-      createdAt
+  locations {
+    members {
+      username
+      email
     }
   }
 }

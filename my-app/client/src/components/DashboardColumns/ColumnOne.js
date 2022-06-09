@@ -25,10 +25,10 @@ export default function ColumnOne({handlePageChange}) {
     console.log('Column Two happened');
     const { loadingUserData, dataUserData } = useQuery(GET_ME);
 
-    const userData = dataUserData?.me || [];
+    const userData = dataUserData?.me || {};
 
     if(!userData) {
-    return null;
+        return null;
     }
 
     // Displays differently during loading
@@ -36,11 +36,11 @@ export default function ColumnOne({handlePageChange}) {
         return <h2>LOADING...</h2>;
     }
 
-    console.log('\n\nKARMAPOSTS:: \n\n', karmaPosts);
+    console.log('\nUSERDATA:: \n\n', userData);
     return (
             <ColumnContainer>
                 <GreetingContainer>
-                    Hey, {data.username}!
+                    Hey, {userData.username}!
                 </GreetingContainer>
                 <UserContainer>
                     <UserContainerBorder>
@@ -58,7 +58,7 @@ export default function ColumnOne({handlePageChange}) {
                                 Overall Status:
                             </UserContainerHeader>
 
-                            <StatusBanner data={userData} />
+                            <StatusBanner data={data} />
 
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile
