@@ -3,8 +3,18 @@ import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeade
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 
 const data = {
-    username: 'Mary Marie',
-    createdAt: 'date'
+    postTitle: 'Pirate Bay',
+    postDescription: `Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl.`,
+    postAuthor: 'Mary',
+    postValue: 100,
+    duration: 1,
+    difficulty: 'Medium',
+    createdAt: 'June 2, 2022',
+    karmaHelpers: [
+        {
+            helperUsername: 'Bob'
+        }
+    ]
 }
 
 export default function Post() {
@@ -16,18 +26,38 @@ export default function Post() {
             </ImageContainer>
             <PostBody>
             <PostHeader>
-            <h3>Mary Marie</h3>
-            <p>June 2, 2022</p>
+            <h3>{data.postAuthor}</h3>
+            <p>{data.createdAt}</p>
             </PostHeader>
             <PostMessage>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters. Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. 
+                <p>{data.postTitle}</p>
+                {data.postDescription}
             </PostMessage>
-            <PrettyButton>Help Mary</PrettyButton>
+
+            {/* Button to add karmaHelper to Post */}
+            <PrettyButton>Help {data.postAuthor}</PrettyButton>
+
             </PostBody>
         </PostContainer>
+        {/* Checkts to see if someone has been added to karmaHelpers and displays the postValue */}
+        { data.karmaHelpers ? 
         <PostFooter>
-            <button as='a' href='#'>Comment</button>
+            <button>In Progress</button>
+            <div>
+            <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+            {data.postValue}
+            </div>
         </PostFooter>
+        : 
+        <PostFooter>
+            <p></p>
+            <div>
+            <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+            {data.postValue}
+            </div>
+        </PostFooter>
+        }   
+
         </PostOutterContainer>
     )
 }

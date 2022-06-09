@@ -1,30 +1,33 @@
 import React from "react";
-import { AddButton } from '../Buttons/AddButton.styled'
-import { PostFormContainer, PostTextArea, PostFormOptions } from './PostForm.styled'
+import { CreatePostButton } from '../Buttons/AddButton.styled'
+import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } from './PostForm.styled'
 
 export default function PostForm() {
     return (
         <PostFormContainer>
-            <PostTextArea placeholder='Karmatic Post Here!'/>
+            <PostTitleContainer>
+            <input type='text' maxLength={50} placeholder='Title' />
+            </PostTitleContainer>
+            <PostTextArea maxLength={140} placeholder='What do you need help with?'/>
                 <PostFormOptions>
-                    <label>Difficulty</label>
+                    <label>Difficulty:</label>
                         <select id="difficulty" name="difficulty">
-                            <option value="volvo">Easy</option>
-                            <option value="saab">Medium</option>
-                            <option value="fiat">Hard</option>
+                            <option value="Easy">Easy-Peasy</option>
+                            <option value="Medium">Medium-Shmedium</option>
+                            <option value="Hard">Very Difficult</option>
                         </select>
-                    <label>Duration</label>
+                    <hr />
+                    <label>Duration:</label>
                         <select id="difficulty" name="difficulty">
-                            <option value="volvo">1 Hour</option>
-                            <option value="saab">2 Hours</option>
-                            <option value="fiat">3 Hours</option>
-                            <option value="fiat">4 Hours</option>
+                            <option value="1">1 Hour</option>
+                            <option value="2">2 Hours</option>
+                            <option value="3">3 Hours</option>
+                            <option value="4">4 Hours</option>
                         </select>
                 </PostFormOptions>
-            <AddButton as='a' href='#' type='submit'>
-            <img src='./assets/images/addbutton.png' alt='add button' />
+            <CreatePostButton as='a' href='#' type='submit'>
             Create Post
-            </AddButton>
+            </CreatePostButton>
         </PostFormContainer>
     )
 }

@@ -1,19 +1,16 @@
 import React from 'react'
-import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 import RecentKarma from '../RecentKarma/RecentKarma'
+import { ColumnContainer } from './ColumnThree.styled'
 
 export default function ColumnThree(){
     return(
-        <>
-            Recent Karma
-            <UserContainer>
-                <UserContainerBorder>
-                    <UserContainerBorderThick>
+        <ColumnContainer>
+            <h3>Recent Karma</h3>
+            
                     <RecentKarma />
                     <RecentKarma />
-                    </UserContainerBorderThick>
-                </UserContainerBorder>
-            </UserContainer>
-        </>
+        
+       
+        </ColumnContainer>
     )
 }

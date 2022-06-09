@@ -54,20 +54,37 @@ export const PostMessage = styled.div`
     font-family: ${({ theme }) => theme.fonts.otherfont };
     width: 95%;
     padding-right: 1em;
+
+    p {
+        margin: 0;
+    }
 `
 
 export const PostFooter = styled.div`
-    background-color: ${({ theme }) => theme.colors.lightteal };
+    background-color: ${({ theme }) => theme.colors.lightgrey };
     padding: 1rem;
     border-radius: 0 0 10px 10px;
     font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    
+    div {
+        display: flex;
+        align-items: center;
+        img {
+            margin-right: .5rem;
+        }
+    }
 
     button {
-        background-color: ${({ theme }) => theme.colors.lightteal } ;
+        background-color: ${({ theme }) => theme.colors.lightgrey } ;
         border: none;
         cursor: pointer;
     }
     button:hover {
         text-decoration: underline;
+    }
+    p {
+        margin: 0
     }
 `

@@ -9,6 +9,7 @@ export const ColumnContainer = styled.div`
     align-items: center;
     background-color: white;
     border-radius: 10px;
+
 `
 
 export const FeedHeaderContainer = styled.div`
@@ -21,7 +22,11 @@ export const CreatePostContainer = styled.div`
     width: 100%;
     align-items: center;
     background-color: ${({ theme }) => theme.colors.lightteal};
-    border-radius: 10px;
+    @media only screen and (min-width: 992px) {
+        position: fixed;
+        width: 33vw;
+    }
+    
 `
 
 export const ActivityHeader = styled.div`
@@ -30,6 +35,12 @@ export const ActivityHeader = styled.div`
     font-family: ${({ theme }) => theme.fonts.otherfont};
     font-size: 32px;
     margin: 1.5rem 0 1.5rem 2rem;
+    
+    @media only screen and (min-width: 992px) {
+        
+        margin-top: 260px;
+    }
+    
 `
 
 export const FeedContainer = styled.div`

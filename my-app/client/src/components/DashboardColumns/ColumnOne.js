@@ -1,12 +1,18 @@
 import React from 'react'
-import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer, KarmaBanner } from './ColumnOne.styled'
+import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer, GreatKarmaBanner, AwesomeKarmaBanner, ExcellentKarmaBanner, CommunityLeaderKarmaBanner, KarmaticHeroKarmaBanner } from './ColumnOne.styled'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
-export default function ColumnOne({handlePageChange}) {
+const data = 
+{
+    username: 'Bob',
+    karma: 2000,
+}
+
+export default function ColumnOne({ handlePageChange }) {
     return (
             <ColumnContainer>
                 <GreetingContainer>
-                    Hey, Bob!
+                    Hey, {data.username}!
                 </GreetingContainer>
                 <UserContainer>
                     <UserContainerBorder>
@@ -18,14 +24,35 @@ export default function ColumnOne({handlePageChange}) {
                             {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                             <CurrentKarmaCoinsContainer>
                             <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                                100 Karma Coins
+                                {data.karma} Karma Coins
                             </CurrentKarmaCoinsContainer>
                             <UserContainerHeader>
                                 Overall Status:
                             </UserContainerHeader>
-                            <KarmaBanner>
+
+                            { data.karma > 100 && data.karma < 500 ?
+                            <GreatKarmaBanner>
                                 Great!
-                            </KarmaBanner>
+                            </GreatKarmaBanner>
+                            : data.karma >= 500 && data.karma < 1000 ?
+                            <AwesomeKarmaBanner>
+                                Awesome!
+                            </AwesomeKarmaBanner>
+                            : data.karma >= 1000 && data.karma < 1500 ?
+                            <ExcellentKarmaBanner>
+                                Excellent!
+                            </ExcellentKarmaBanner>
+                            : data.karma >= 1500 && data.karma < 2000 ?
+                            <CommunityLeaderKarmaBanner>
+                                Community Leader!
+                            </CommunityLeaderKarmaBanner>
+                            : data.karma >= 1500 ?
+                            <KarmaticHeroKarmaBanner>
+                                Karmatic Hero!
+                            </KarmaticHeroKarmaBanner>
+                            : <>Help Somone Today to Change your Status!</>
+                            }
+
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile
                             </a>
