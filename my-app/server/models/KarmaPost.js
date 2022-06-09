@@ -37,11 +37,6 @@ const karmaPostSchema = new Schema({
     type: String,
     required: true,
   },
-  location: {
-    type: Schema.Types.ObjectId,
-    ref: 'Location',
-    required: true
-  },
     createdAt: {
     type: Date,
     default: Date.now,
