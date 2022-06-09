@@ -13,7 +13,7 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets the Karma Post
 import { GET_ME } from '../../utils/queries';
 
-const data = 
+const data1 = 
 {
     username: 'Bob',
     karma: 2000,
@@ -22,17 +22,17 @@ const data =
 export default function ColumnOne({handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
-    console.log('Column Two happened');
-    const { loadingUserData, dataUserData } = useQuery(GET_ME);
+    console.log('Column ONE happened');
+    const { loading, data } = useQuery(GET_ME);
 
-    const userData = dataUserData?.me || {};
+    const userData = data?.me || {};
 
     if(!userData) {
         return null;
     }
 
     // Displays differently during loading
-    if (loadingUserData) {
+    if (loading) {
         return <h2>LOADING...</h2>;
     }
 
@@ -40,7 +40,7 @@ export default function ColumnOne({handlePageChange}) {
     return (
             <ColumnContainer>
                 <GreetingContainer>
-                    Hey, {userData.username}!
+                    Hey, {data1.username}!
                 </GreetingContainer>
                 <UserContainer>
                     <UserContainerBorder>
@@ -52,13 +52,13 @@ export default function ColumnOne({handlePageChange}) {
                             {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                             <CurrentKarmaCoinsContainer>
                             <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                                {userData.karma} Karma Coins
+                                {data1.karma} Karma Coins
                             </CurrentKarmaCoinsContainer>
                             <UserContainerHeader>
                                 Overall Status:
                             </UserContainerHeader>
 
-                            <StatusBanner data={data} />
+                            <StatusBanner data={data1} />
 
                             <a href='#profile' onClick={() => handlePageChange('Profile')}>
                                 View Your Profile

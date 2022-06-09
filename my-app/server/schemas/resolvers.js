@@ -4,11 +4,13 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    // Finds user based off the jwt context
     me: async (parent, args, context) => {
-      if(context.user) {
-        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelpers');
-      }
-      throw new AuthenticationError('You are not logged in!');
+      // if(context.user) {
+        const user = User.findOne({ _id: '62a25c5d62b08616235b6e81' }).populate('karmaPosts').populate('karmaHelpers');
+        console.log('This happened', user);
+      // }
+      // throw new AuthenticationError('You are not logged in!');
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('karmaPosts').populate('karmaHelpers');

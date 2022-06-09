@@ -5,40 +5,9 @@ import { gql } from '@apollo/client';
 export const GET_ME = gql`
 query me {
   me {
-    _id
     username
     email
     karma
-    karmaPosts {
-      _id
-      postTitle
-      postDescription
-      postValue
-      duration
-      difficulty
-      createdAt
-      karmaHelpers {
-        _id
-        helperUsername
-        createdAt
-      }
-    }
-    karmaHelping {
-      _id
-      postTitle
-      postDescription
-      postValue
-      duration
-      difficulty
-      createdAt
-      karmaHelpers {
-        _id
-        helperUsername
-        createdAt
-      }
-    }
-    
-    }
   }
 }
 `;
