@@ -50,12 +50,11 @@ const data1 = [
 export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
-    console.log('Column Two happened');
     const { loading, data } = useQuery(GET_ME);
 
-    const karmaPost = data?.me.karmaPosts || [];
+    const karmaPosts = data?.me.karmaPosts || [];
 
-    if(!karmaPost) {
+    if(!karmaPosts) {
     return null;
     }
 
@@ -63,9 +62,6 @@ export default function ColumnTwo() {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-
-    console.log('\n\nKARMAPOSTS:: \n\n', karmaPost);
-
     return(
         <ColumnContainer>
             <FeedHeaderContainer>
@@ -78,7 +74,7 @@ export default function ColumnTwo() {
             </FeedHeaderContainer>
             <FeedContainer>
 
-                { karmaPost.map((post) => 
+                { karmaPosts.map((post) => 
                 <Post data={post} />
                 )}
 
