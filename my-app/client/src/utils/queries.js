@@ -61,9 +61,8 @@ query GET_USER($username: String!) {
 
 // Queries all users except password
 export const GET_USERS = gql`
-query GET_USERS {
+query Users {
   users {
-    _id
     username
     email
     karma
@@ -74,6 +73,7 @@ query GET_USERS {
       postValue
       duration
       difficulty
+      address
       createdAt
       karmaHelpers {
         _id
@@ -88,19 +88,12 @@ query GET_USERS {
       postValue
       duration
       difficulty
+      address
       createdAt
       karmaHelpers {
         _id
         helperUsername
         createdAt
-      }
-    }
-    karmaGroups {
-      _id
-      locationName
-      locationGeoTag
-      members {
-        member
       }
     }
   }

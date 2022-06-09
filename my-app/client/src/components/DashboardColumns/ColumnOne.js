@@ -10,9 +10,9 @@ import Auth from '../../utils/auth';
 import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
-// Gets the Karma Post
+// Gets the Karma PostGET_USER
 import { GET_ME } from '../../utils/queries';
-
+import { GET_USERS } from '../../utils/queries';
 const data1 = 
 {
     username: 'Bob',
@@ -23,9 +23,9 @@ export default function ColumnOne({handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
     console.log('Column ONE happened');
-    const { loading, data } = useQuery(GET_ME);
+    const { loading, data } = useQuery(GET_USERS);
 
-    const userData = data?.me || {};
+    const userData = data?.users || {};
 
     if(!userData) {
         return null;
