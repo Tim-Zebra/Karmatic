@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 export const ProfileContainer = styled.div`
-    margin-top: 6rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
 
@@ -25,6 +25,12 @@ export const ColumnTwo = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: ${({ theme }) => theme.colors.lightteal};
+
+    h3 {
+        margin-bottom: 0;
+        font-family: ${({ theme }) => theme.fonts.otherfont } ;
+    }
 
     @media only screen and (min-width: 992px) {
         width: 66vw;
