@@ -6,12 +6,12 @@ import ColumnThree from '../../components/DashboardColumns/ColumnThree'
 import { DashboardContainer, Column } from './Dashboard.styled'
 
 
-export default function Dashboard() {
+export default function Dashboard({ handlePageChange }) {
     return (
         <DashboardContainer>
 
             <Column>
-            <ColumnOne />
+            <ColumnOne handlePageChange={handlePageChange} />
             </Column>
 
             <Column>

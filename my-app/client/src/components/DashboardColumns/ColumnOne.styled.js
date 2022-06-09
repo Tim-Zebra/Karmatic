@@ -40,17 +40,6 @@ export const CurrentKarmaCoinsContainer = styled.div`
 `
 export const StyledCoin = styled.img`
     height: 44px;
+    margin-right: 1rem;
 `
 
-export const KarmaBanner = styled.div`
-    background: rgb(226,180,229);
-    background: linear-gradient(39deg, rgba(226,180,229,1) 15%, rgba(234,234,234,1) 85%);  
-    padding: 1rem;
-    border-radius: 25px;
-    box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple};
-    color: ${({ theme }) => theme.colors.darkpurple};
-    width: 50%;
-    text-align: center;
-    align-self: center;
-    margin-bottom: 2rem;
-`

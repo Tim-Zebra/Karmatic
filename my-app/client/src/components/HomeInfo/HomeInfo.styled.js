@@ -43,12 +43,14 @@ export const Row = styled.div`
     width: 90%;
 
     p {
-        background-color: ${({ theme }) => theme.colors.purple};
-        border-radius: 40px;
-        padding: 2rem;
+        background-color: ${({ theme }) => theme.colors.lightgrey};
+        border-radius: 30px;
+        padding: 1rem;
         width: 75%;
-        line-height: 1.6;
+        height: 180px;
+        line-height: 1.5;
         font-family: 'Nunito Sans', sans-serif;
+        height:fit-content;
         }
 
     img {
@@ -57,6 +59,9 @@ export const Row = styled.div`
     
     @media only screen and (min-width: 992px) {
         flex-direction: row;
+        p {
+            height:fit-content;
+        }
 
     }
 `
