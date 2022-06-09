@@ -22,8 +22,11 @@ const resolvers = {
     karmaPost: async (parent, {_id }) => {
       return KarmaPost.findOne({ _id }.populate('location'));
     },
+    locationKarmaPosts: async (parent, {_id}) => {
+      return KarmaPost.find({ location });
+    },
     locations: async () => {
-      return Location.find({});
+      return Location.find({}).populate('members');
     },
     location: async (parent, {_id}) => {
       return Location.findOne({ _id}).populate('members').populate('karmaPosts');
@@ -131,6 +134,7 @@ const resolvers = {
       return location
     },
     addMember: async (parent, {_id, member}) => {
+      console.log('member', member)
       return Location.findOneAndUpdate(
         {_id},
         { $addToSet: {members: {member}}},
