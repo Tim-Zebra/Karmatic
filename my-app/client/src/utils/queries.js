@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 // Gets logged in user info
-// This pulls everything excluding password
+// This pulls everything for current user excluding password
 export const GET_ME = gql`
 query me {
   me {
@@ -37,13 +37,7 @@ query me {
         createdAt
       }
     }
-    karmaGroups {
-      _id
-      locationName
-      locationGeoTag
-      members {
-        member
-      }
+    
     }
   }
 }
