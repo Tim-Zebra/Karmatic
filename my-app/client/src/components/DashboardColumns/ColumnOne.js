@@ -3,6 +3,16 @@ import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, Cu
 import StatusBanner from '../StatusBanner/StatusBanner'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
+// Imports Authorization
+import Auth from '../../utils/auth';
+
+// Allows use for both queries and mutations from our utils folder
+import { useMutation, useQuery } from '@apollo/client';
+
+// Gets Queries
+// Gets the Karma Post
+import { GET_LOCATIONS } from '../../utils/queries';
+
 const data = 
 {
     username: 'Bob',
@@ -10,6 +20,8 @@ const data =
 }
 
 export default function ColumnOne({handlePageChange}) {
+    // Query Username and Karma
+
     return (
             <ColumnContainer>
                 <GreetingContainer>

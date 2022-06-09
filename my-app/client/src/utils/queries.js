@@ -145,8 +145,8 @@ query GET_USERS {
 `;
 
 // Gets all KarmaPosts. For display on dashboard
-export const GET_KARMAPOSTS = gql`
-query GET_KARAMAPOSTS {
+export const GET_LOCATIONS = gql`
+query GET_LOCATIONS {
   karmaPosts {
     _id
     postTitle

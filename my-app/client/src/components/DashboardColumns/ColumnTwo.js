@@ -11,11 +11,10 @@ import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
 // Gets the Karma Post
-import { GET_KARMAPOSTS } from '../../utils/queries';
+import { GET_LOCATIONS } from '../../utils/queries';
 
 // Gets Mutations
 // Allow for helpers
-
 
 const data = [
 {

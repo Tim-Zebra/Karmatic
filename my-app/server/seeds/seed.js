@@ -15,7 +15,6 @@ db.once('open', async () => {
     // Creates new collections for each module
     await User.create(userSeeds);
 
-
     // Adds location to user documents karmaGroups [] / Links Location to Users
     // Loops through locationSeeds []
     for (let i = 0; i < locationSeeds.length; i++) {
