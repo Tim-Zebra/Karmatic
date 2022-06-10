@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AddButton = styled.button`
+export const Button = styled.button`
     color: ${({ theme }) => theme.colors.darkgrey};
     background-color: ${({ theme }) => theme.colors.lightteal};
     border: none;
@@ -16,7 +16,7 @@ export const AddButton = styled.button`
     }
 `
 
-export const CreatePostButton = styled(AddButton)`
+export const CreatePostButton = styled(Button)`
     border: solid 2px ${({ theme }) => theme.colors.darkgrey};
     border-radius:30px;
     padding: .5rem;

@@ -15,9 +15,10 @@ export const PostContainer = styled.div`
 `
 export const ImageContainer = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     min-width: 60px;
+    flex-direction: column;
     
     img {
         height: 44px;
@@ -26,6 +27,16 @@ export const ImageContainer = styled.div`
         padding: .5rem;
         border-radius: 10px;
         margin: 1rem;
+    }
+    p {
+        font-family: ${({ theme }) => theme.fonts.otherfont };
+        font-size: 16px;
+        color: ${({ theme }) => theme.colors.darkgrey }
+    }
+
+    p:hover {
+        color: ${({ theme }) => theme.colors.lightteal };
+        cursor: pointer;
     }
 
 `
@@ -61,6 +72,7 @@ export const PostMessage = styled.div`
 `
 export const PostBottom = styled.div`
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 `
