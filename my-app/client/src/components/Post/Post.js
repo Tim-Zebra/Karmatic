@@ -42,7 +42,7 @@ export default function Post({data}) {
         { data.karmaHelpers ? 
         <PostFooter>
             <button>In Progress</button>
-            <p>with {data.karmaHelpers[0].helperUsername}</p>
+            <p>with {data.karmaHelpers.helperUsername}</p>
             <div>
             <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
             {data.postValue}
