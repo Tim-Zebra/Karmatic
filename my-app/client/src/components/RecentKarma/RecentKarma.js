@@ -11,7 +11,7 @@ export default function RecentKarma({data}){
             <RecentContainer>
                 <ExchangeContainer>
                     <ExchangeBetween>
-                        <p>{data.karmaHelpers[0].helperUsername}</p>
+                        <p></p>
                         <h4>received</h4>
                     </ExchangeBetween>
                     <ExchangeBetween>

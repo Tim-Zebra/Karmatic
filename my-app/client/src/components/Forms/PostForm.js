@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import { CreatePostButton } from '../Buttons/AddButton.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } from './PostForm.styled'
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
+import { GET_ME } from '../../utils/queries';
 
 export default function PostForm() {
+    // Querys username and karma
+    // Sets hooks for data loading
+    const { loading, data } = useQuery(GET_ME);
 
+    const userData = data?.me || {};
+
+    const username = userData.username
     const [postTitle, setTitle] = useState('');
-    const [username] = 'danny';
-    // const [postAuthor] = 'danny'
     const [postDescription, setDescription] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [duration, setDuration] = useState('');
@@ -20,17 +25,18 @@ export default function PostForm() {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log('username', username)
             await createPost({
                 variables: {
                     username: username,
                     postTitle: postTitle,
                     postDescription: postDescription,
+                    postValue: 50,
                     duration: parseInt(duration),
                     difficulty: difficulty,
                     address: address
                 }
             });
-            console.log('post created!', typeof postTitle, typeof postDescription, difficulty, typeof duration, address)
             setTitle('');
             setDescription('');
         } catch (err) {
@@ -74,12 +80,12 @@ export default function PostForm() {
                     <option
                     >Please Select</option>
                     <option
-                        value="Easy">Easy-Peasy</option>
+                        value="Easy">Easy</option>
                     <option
-                        value="Medium">Medium-Shmedium
+                        value="Medium">Medium
                     </option>
                     <option
-                        value="Hard">Very Difficult
+                        value="Hard">Hard
                     </option>
                 </select>
                 <hr />
