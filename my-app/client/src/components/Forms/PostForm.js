@@ -81,12 +81,12 @@ export default function PostForm() {
                     <option
                     >Select Difficulty</option>
                     <option
-                        value="Easy">Easy-Peasy</option>
+                        value="Easy">Easy</option>
                     <option
-                        value="Medium">Medium-Shmedium
+                        value="Medium">Medium
                     </option>
                     <option
-                        value="Hard">Very Difficult
+                        value="Hard">Hard
                     </option>
                 </select>
                 <hr />

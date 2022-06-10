@@ -20,9 +20,9 @@ export default function UserActivity() {
         <>
             <Container>
                 <UserContainerLong>
-                    {data.map((activity) =>
-                        <ProfileActivityCard data={activity} key={activity.postAuthor} />
-                    )}
+
+                    <ProfileActivityCard />
+
                 </UserContainerLong>
             </Container>
         </>
