@@ -15,6 +15,7 @@ import { GET_ME } from '../../utils/queries';
 import { ADD_HELPER } from '../../utils/mutations'
 
 export default function Post({data}) {
+    console.log('DATA from previous', data);
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
     const [addSelfAsHelper] = useMutation(ADD_HELPER);
@@ -39,8 +40,28 @@ export default function Post({data}) {
     };
 
     // Adds logged in user to karmapost as helper
-    const addHelperToPost = () => {
+    const addHelperToPost = async (helperId) => {
+        console.log('ADD HELPER HAPPENED');
+        // Checks login status
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+        if (!token) {
+            return false;
+        }
+
+        // Adds User to post and adds post to User's karmaHelping array
+        try {
+            console.log('log BEFORE add helper');
+
+            await addSelfAsHelper({
+              variables: { _id: helperId } 
+            });
+            
+            console.log('post TRY happened');
+      
+          } catch (err) {
+            console.error(err);
+          }
     }
 
     return (
@@ -65,7 +86,7 @@ export default function Post({data}) {
                 {/* Button to add karmaHelper to Post */}
                 <PostBottom>
                 <p>{data.address}</p>
-                <PrettyButton onClick={() => addHelperToPost()}>Help {data.postAuthor}</PrettyButton>
+                <PrettyButton onClick={() => addHelperToPost(data._id)}>Help {data.postAuthor}</PrettyButton>
                 </PostBottom>
 
             </PostBody>
