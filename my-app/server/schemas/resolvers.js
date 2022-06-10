@@ -108,35 +108,28 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { username: context.user.username },
-          { $pull: { karmaPosts: karmaPost.id } },
+          { $pull: { karmaPosts: karmaPost._id } },
           { new: true }
         );
         return karmaPost;
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
-    deletePost: async (parent, { _id }) => {
-      if (context.user) {
-        const karmaPost = await KarmaPost.findOneAndDelete({
-          _id: _id
-        },
+    addHelper: async (parent, { _id, helperUsername }, context) => {
+      if(context.user){
+        return(
+            // // Updates Karma Post with username
+            // await KarmaPost.findOneAndUpdate(
+            // { _id },
+            // { $addToSet: { karmaHelpers: context.user.username } },
+            // { new: true });
+            // // Updates username with KarmaPost
+            // await User.findOneAndUpdate(
+            //   { _id: context.user._id },
+            //   { $addToSet: { karmaHelpers: context.user.username } },
+            //   { new: true });
         );
-
-        await User.findOneAndUpdate(
-          { username: context.user.username },
-          { $pull: { karmaPosts: karmaPost.id } },
-          { new: true }
-        );
-        return karmaPost;
       }
-      throw new AuthenticationError('You need to be logged in!')
-    },
-    addHelper: async (parent, { _id, helperUsername }) => {
-      return KarmaPost.findOneAndUpdate(
-        { _id },
-        { $addToSet: { karmaHelpers: { helperUsername } } },
-        { new: true }
-      )
     },
   },
 };

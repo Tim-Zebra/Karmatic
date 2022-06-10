@@ -4,11 +4,11 @@ import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import { useMutation, useQuery } from '@apollo/client';
 import EditPostModal from '../Modals/EditPostModal'
 
-
+import { GET_ME } from '../../';
 export default function Post({data}) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
-
+    const [addSelfAsHelper] = useMutation(SAVE_BOOK);
     // Finds length of Karma
     let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
 
@@ -28,6 +28,11 @@ export default function Post({data}) {
             </p>
         )
     };
+
+    // Adds logged in user to karmapost as helper
+    const addHelperToPost = () => {
+
+    }
 
     return (
         <PostOutterContainer>
@@ -51,7 +56,7 @@ export default function Post({data}) {
                 {/* Button to add karmaHelper to Post */}
                 <PostBottom>
                 <p>{data.address}</p>
-                <PrettyButton>Help {data.postAuthor}</PrettyButton>
+                <PrettyButton onClick={() => addHelperToPost()}>Help {data.postAuthor}</PrettyButton>
                 </PostBottom>
 
             </PostBody>
