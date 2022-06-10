@@ -39,30 +39,30 @@ export default function Post({data}) {
         )
     };
 
-    // Adds logged in user to karmapost as helper
-    const addHelperToPost = async (helperId) => {
-        console.log('ADD HELPER HAPPENED');
-        // Checks login status
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // // Adds logged in user to karmapost as helper
+    // const addHelperToPost = async (helperId) => {
+    //     console.log('ADD HELPER HAPPENED');
+    //     // Checks login status
+    //     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-        if (!token) {
-            return false;
-        }
+    //     if (!token) {
+    //         return false;
+    //     }
 
-        // Adds User to post and adds post to User's karmaHelping array
-        try {
-            console.log('log BEFORE add helper');
+    //     // Adds User to post and adds post to User's karmaHelping array
+    //     try {
+    //         console.log('log BEFORE add helper');
 
-            await addSelfAsHelper({
-              variables: { _id: helperId } 
-            });
+    //         await addSelfAsHelper({
+    //           variables: { _id: helperId } 
+    //         });
             
-            console.log('post TRY happened');
+    //         console.log('post TRY happened');
       
-          } catch (err) {
-            console.error(err);
-          }
-    }
+    //       } catch (err) {
+    //         console.error(err);
+    //       }
+    // }
 
     return (
         <PostOutterContainer>
@@ -86,7 +86,7 @@ export default function Post({data}) {
                 {/* Button to add karmaHelper to Post */}
                 <PostBottom>
                 <p>{data.address}</p>
-                <PrettyButton onClick={() => addHelperToPost(data._id)}>Help {data.postAuthor}</PrettyButton>
+                <PrettyButton>Help {data.postAuthor}</PrettyButton>
                 </PostBottom>
 
                 </PostBody>

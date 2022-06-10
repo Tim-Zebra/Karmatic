@@ -16,16 +16,16 @@ import { GET_ALL_KARMAPOSTS } from '../../utils/queries';
 export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
-    const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_ALL_KARMAPOSTS);
+    const { loading, data } = useQuery(GET_ALL_KARMAPOSTS);
 
-    const karmaPosts = dataKarmaPosts?.allKarmaPosts || [];
+    const karmaPosts = data?.allKarmaPosts || [];
 
     if (!karmaPosts) {
         return null;
     }
 
     // Displays differently during loading
-    if (loadingKarmaPosts) {
+    if (loading) {
         return <h2>LOADING...</h2>;
     }
     console.log('This happened', karmaPosts);
