@@ -115,13 +115,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
-    addHelper: async (parent, { _id, helperUsername }, context) => {
+    addHelper: async (parent, { _id }, context) => {
       // Checks if the context is a user
       if(context.user) {
         // Updates Karma Post with username
         const userUpdate = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { karmaHelpers: context.user.username } },
+          { $addToSet: { karmaHelping: _id } },
           { new: true });
 
         // Updates username with KarmaPost
