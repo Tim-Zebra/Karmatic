@@ -4,10 +4,9 @@ import StatusBanner from '../StatusBanner/StatusBanner'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
 // Imports Authorization
-import Auth from '../../utils/auth';
 
 // Allows use for both queries and mutations from our utils folder
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 // Gets Queries
 import { GET_ME } from '../../utils/queries';

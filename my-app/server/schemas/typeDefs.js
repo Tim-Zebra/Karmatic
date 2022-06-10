@@ -37,6 +37,7 @@ const typeDefs = gql`
     me: User
     user(username: String!): User
     users: [User]
+    allKarmaPosts: [KarmaPost]
     karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
     karmaHelpers: [KarmaPost]
@@ -46,7 +47,7 @@ const typeDefs = gql`
     createUser(username: String!, email: String!, password: String!) : Auth
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
-    createPost(username: String!, postTitle: String!, postDescription: String!, postAuthor: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
+    createPost(username: String!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(_id: ID!, helperUsername: String!) : KarmaPost
