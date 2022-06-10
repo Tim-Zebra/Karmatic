@@ -5,9 +5,16 @@ import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } 
 import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
+const calcPostValue = require('../../utils/helpers');
 
 export default function PostForm() {
+    // Querys username and karma
+    // Sets hooks for data loading
+    const { loading, data } = useQuery(GET_ME);
 
+    const userData = data?.me || {};
+
+    const username = userData.username
     const [postTitle, setTitle] = useState('');
     const [postDescription, setDescription] = useState('');
     const [difficulty, setDifficulty] = useState('');
@@ -15,29 +22,21 @@ export default function PostForm() {
     const [address, setAddress] = useState('');
     const [createPost] = useMutation(CREATE_POST);
 
-    const { loading, data } = useQuery(GET_ME);
-    const username = data?.me.username || [];
-
-    if (!username) {
-        return null;
-    } if (loading) {
-        return <h2>LOADING...</h2>;
-    }
-
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
+            const currentPostValue = await calcPostValue(difficulty, duration);
             await createPost({
                 variables: {
                     username: username,
                     postTitle: postTitle,
                     postDescription: postDescription,
+                    postValue: currentPostValue,
                     duration: parseInt(duration),
                     difficulty: difficulty,
                     address: address
                 }
             });
-            console.log('post created!', typeof postTitle, typeof postDescription, difficulty, typeof duration, address)
             setTitle('');
             setDescription('');
         } catch (err) {

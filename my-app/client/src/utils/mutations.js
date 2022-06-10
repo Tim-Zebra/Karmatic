@@ -28,10 +28,17 @@ mutation Login($username: String!, $password: String!) {
 
 // Create Post
 export const CREATE_POST = gql`
-mutation CreatePost($username: String!, $postTitle: String!, $postDescription: String!, $duration: Int!, $difficulty: String!, $address: String!) {
-  createPost(username: $username, postTitle: $postTitle, postDescription: $postDescription, duration: $duration, difficulty: $difficulty, address: $address) {
+mutation CreatePost($username: String!, $postTitle: String!, $postDescription: String!, $postValue: Int!, $duration: Int!, $difficulty: String!, $address: String!) {
+  createPost(username: $username, postTitle: $postTitle, postDescription: $postDescription, postValue: $postValue, duration: $duration, difficulty: $difficulty, address: $address) {
     _id
+    postAuthor
     postTitle
+    postDescription
+    postValue
+    difficulty
+    duration
+    address
+    createdAt
   }
 }
 `;
