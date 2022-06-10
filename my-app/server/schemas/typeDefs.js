@@ -37,6 +37,7 @@ const typeDefs = gql`
     me: User
     user(username: String!): User
     users: [User]
+    allKarmaPosts: [KarmaPost]
     karmaPost(_id: ID!): KarmaPost
     karmaPosts(username: String!): [KarmaPost]
     karmaHelpers: [KarmaPost]
