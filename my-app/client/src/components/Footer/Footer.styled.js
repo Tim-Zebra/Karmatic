@@ -5,11 +5,17 @@ position: fixed;
 bottom:0;
 left:0;
 width: 100%;
-background-color: #4A5655;
-text-align: right;
-padding:5px 0 5px 0;
 font-size:18px;
-color: #e9e9e9;
+color: ${({ theme }) => theme.colors.darkgrey };
 opacity: .8;
-margin-top: 1rem;
+height: 2rem;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+flex-shrink: 0;
 `
+
+// export const Wrapper = styled.div`
+   
+//     margin-bottom: 2rem;
+// `

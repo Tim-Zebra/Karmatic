@@ -4,6 +4,7 @@ export const DashboardContainer = styled.div`
     margin-top: 6rem;
     display: flex;
     flex-direction: column;
+    flex: 1 0 auto;
 
     @media only screen and (min-width: 992px) {
         flex-direction: row;

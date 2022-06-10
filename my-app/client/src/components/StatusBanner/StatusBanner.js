@@ -25,7 +25,8 @@ export default function StatusBanner({data}){
             <KarmaticHeroKarmaBanner>
                 Karmatic Hero!
             </KarmaticHeroKarmaBanner>
-            : <>Help Somone Today to Change your Status!</>
+            : 
+            <h4>Help Somone Today to Change your Status!</h4>
             }
         </>
     )
