@@ -17,8 +17,8 @@ Karmatic is a hub for communities to come together and help each other by volunt
   **[Developers](#developers)** <br />
 
 ## How to Use:
-* Visit our [deployed application](#inserturlfordeployedapphere)
-* Create an account (or login if you've already made one), and see others' requests for help. Click 'Help' on their post to volunteer to help them and earn Karmacoins! You can also create a post to request help on a task and spend some of your karma coins. Helpers get back double the coins spent!
+* dateFormat.js obtained from UTA bookcamp #21-MERN
+* 
 
 ## Application Demos:
 <h2 align="center">Signup/Login Demo</h2>
