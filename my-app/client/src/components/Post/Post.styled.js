@@ -15,19 +15,30 @@ export const PostContainer = styled.div`
 `
 export const ImageContainer = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     min-width: 60px;
-    
-    img {
-        height: 44px;
-        border: solid 1px ${({ theme }) => theme.colors.darkgrey };
-        margin-left: 1rem;
-        padding: .5rem;
-        border-radius: 10px;
-        margin: 1rem;
-    }
+    flex-direction: column;
+`
+export const PostProfileImage = styled.img`
+    height: 44px;
+    border: solid 1px ${({ theme }) => theme.colors.darkgrey };
+    margin-left: 1rem;
+    padding: .5rem;
+    border-radius: 10px;
+    margin: 1rem;
+`
 
+
+export const EditButton = styled.div`
+    font-family: ${({ theme }) => theme.fonts.otherfont };
+    font-size: 16px;
+    color: ${({ theme }) => theme.colors.darkgrey };
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.lightteal };
+        cursor: pointer;
+    }
 `
 export const PostBody = styled.div`
     display: flex;
@@ -46,6 +57,10 @@ export const PostHeader = styled.div`
         font-family: ${({ theme }) => theme.fonts.otherfont };
     }
 
+    h3 {
+        font-family: ${({ theme }) => theme.fonts.otherfont };
+    }
+
 `
 
 export const PostMessage = styled.div`
@@ -61,6 +76,7 @@ export const PostMessage = styled.div`
 `
 export const PostBottom = styled.div`
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 `

@@ -32,6 +32,5 @@ export default function ProfileActivityCard() {
                 <img src='./assets/images/k_logo.png' alt='k logo' />
                 Completed: {karmaPosts.postTitle} for the user {karmaPosts.postAuthor} at the location{karmaPosts.address}
             </CardContainer>))
-
     )
 }

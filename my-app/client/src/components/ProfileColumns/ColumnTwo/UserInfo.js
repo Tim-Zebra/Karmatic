@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Container, ContainerSubRowOne, ContainerSubColumnOne, ContainerSubColumnTwo, UserContainerWide } from './ProfileColumnTwo.styled'
 import { CreatePostButtonProfile } from "../../Buttons/AddButton.styled";
 import StatusBanner from '../../StatusBanner/StatusBanner'
-import CreatePostModal from "../../CreatePostModal/CreatePostModal";
+import CreatePostModal from "../../Modals/CreatePostModal";
 
 // Imports Authorization
 import Auth from '../../../utils/auth';

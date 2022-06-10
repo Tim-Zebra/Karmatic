@@ -56,4 +56,5 @@ export const FeedContainer = styled.div`
     overflow: scroll;
     display: flex;
     flex-direction: column-reverse;
+    justify-content: flex-end;
 `
