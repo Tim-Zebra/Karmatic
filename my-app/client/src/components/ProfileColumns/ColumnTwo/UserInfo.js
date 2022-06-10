@@ -5,21 +5,12 @@ import { CreatePostButtonProfile } from "../../Buttons/AddButton.styled";
 import StatusBanner from '../../StatusBanner/StatusBanner'
 import CreatePostModal from "../../CreatePostModal/CreatePostModal";
 
-// Imports Authorization
-import Auth from '../../../utils/auth';
-
 // Allows use for both queries and mutations from our utils folder
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 // Gets Queries
-// Gets the Karma PostGET_USER
 import { GET_ME } from '../../../utils/queries';
 
-const data =
-{
-    username: 'Bob',
-    karma: 2000,
-}
 
 export default function UserInfo() {
 
@@ -29,7 +20,6 @@ export default function UserInfo() {
     const { loading, data } = useQuery(GET_ME);
 
     const userData = data?.me || {};
-    console.log(userData)
     // Returns null if userdata is not present
     if (!userData) {
         return null;
