@@ -10,9 +10,7 @@ import Auth from '../../utils/auth';
 import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
-// Gets the Karma PostGET_USER
 import { GET_ME } from '../../utils/queries';
-
 export default function ColumnOne({ handlePageChange }) {
     // Querys username and karma
     // Sets hooks for data loading
@@ -29,7 +27,6 @@ export default function ColumnOne({ handlePageChange }) {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-
     return (
         <ColumnContainer>
             <GreetingContainer>
