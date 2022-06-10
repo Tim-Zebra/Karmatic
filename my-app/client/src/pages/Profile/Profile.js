@@ -4,11 +4,13 @@ import ProfileColumnOne from '../../components/ProfileColumns/ColumnOne/ProfileC
 import UserActivity from '../../components/ProfileColumns/ColumnTwo/UserActivity'
 import UserInfo from '../../components/ProfileColumns/ColumnTwo/UserInfo'
 
+
 export default function Profile() {
+
 
     return (
         <ProfileContainer>
-            
+
             <ColumnTwo>
                 <UserInfo />
                 <h3>Recent Activity</h3>
