@@ -1,31 +1,50 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import { Container, ContainerSubRowOne, ContainerSubColumnOne, ContainerSubColumnTwo, UserContainerWide } from './ProfileColumnTwo.styled'
 import { CreatePostButtonProfile } from "../../Buttons/AddButton.styled";
 import StatusBanner from '../../StatusBanner/StatusBanner'
 import CreatePostModal from "../../CreatePostModal/CreatePostModal";
 
-// import { useQuery } from '@apollo/client';
-// import { GET_USER } from "../../../utils/queries"
+// Imports Authorization
+import Auth from '../../../utils/auth';
 
-const data = 
+// Allows use for both queries and mutations from our utils folder
+import { useMutation, useQuery } from '@apollo/client';
+
+// Gets Queries
+// Gets the Karma PostGET_USER
+import { GET_ME } from '../../../utils/queries';
+
+const data =
 {
     username: 'Bob',
     karma: 2000,
 }
 
-
 export default function UserInfo() {
-    // const { data } = useQuery(GET_USER);
-    // const user = data?.users[0].username
-const [isOpen, setIsOpen] = useState(false);
 
+    const [isOpen, setIsOpen] = useState(false);
+    // Querys username and karma
+    // Sets hooks for data loading
+    const { loading, data } = useQuery(GET_ME);
+
+    const userData = data?.me || {};
+    console.log(userData)
+    // Returns null if userdata is not present
+    if (!userData) {
+        return null;
+    }
+
+    // Displays differently during loading
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
     return (
         <Container>
             <UserContainerWide>
                 <ContainerSubRowOne>
                     <ContainerSubColumnOne>
-                        <h1>{data.username}'s Profile</h1>
+                        <h1>{userData.username}'s Profile</h1>
                     </ContainerSubColumnOne>
                     <CreatePostButtonProfile onClick={() => setIsOpen(true)}>
                         Create Post
@@ -35,7 +54,7 @@ const [isOpen, setIsOpen] = useState(false);
                 <ContainerSubColumnTwo>
                     <h2>Current:</h2>
                     <img src='./assets/images/karma_coin.png' alt='coin logo' />
-                    <p>{data.karma} Karma Coins</p>
+                    <p>{userData.karma} Karma Coins</p>
                     <h2>Overall:</h2>
                     <StatusBanner data={data} width={50} />
                 </ContainerSubColumnTwo>
