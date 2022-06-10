@@ -118,18 +118,19 @@ const resolvers = {
       // Checks if the context is a user
       console.log('addhelper resolver happened');
       // if(context.user) {
-        // Updates User's karmaHelping array
-        // const userUpdate = await User.findOneAndUpdate(
-        //   { _id: context.user._id },
-        //   { $addToSet: { karmaHelping: _id } },
-        //   { new: true });
+
         // console.log('This happened', context.user.username);
         // Updates username in KarmaPost's karmaHelpers array
-        return await KarmaPost.findOneAndUpdate(
+        const karmaPost = await KarmaPost.findOneAndUpdate(
           { _id: karmaPostId },
           { $addToSet: { karmaHelpers: {helperUsername: "RYAN CAT - MEOW"} } },
           { new: true })
-        
+
+        // Updates User's karmaHelping array
+        const userUpdate = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { karmaHelping: karmaPost._id } },
+          { new: true });
         // return { userUpdate, karmaPostUpdate };
       // }
         
