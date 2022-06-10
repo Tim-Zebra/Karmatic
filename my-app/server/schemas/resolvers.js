@@ -5,8 +5,8 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     // Finds user based off the jwt context
-    me: async (parent, args, context ) => {
-      if(context.user) {
+    me: async (parent, args, context) => {
+      if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelping');
       }
       throw new AuthenticationError('You are not logged in!');
@@ -17,16 +17,16 @@ const resolvers = {
     users: async () => {
       return User.find({}).populate('karmaPosts').populate('karmaHelping');
     },
-    karmaPosts: async (parent, {username}) => {
+    karmaPosts: async (parent, { username }) => {
       return KarmaPost.find({ username }).populate('karmaHelpers');
     },
-    karmaPost: async (parent, {_id }) => {
+    karmaPost: async (parent, { _id }) => {
       return KarmaPost.findOne({ _id }).populate('karmaHelpers');
     },
   },
 
   Mutation: {
-    createUser: async (parent, {username, email, password}) => {
+    createUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
 
@@ -53,68 +53,85 @@ const resolvers = {
     changeKarma: async (parent, { username, karma }) => {
       return User.findOneAndUpdate(
         { username },
-        {karma: karma},
+        { karma: karma },
         { new: true }
       );
     },
     // postValue is a placeholder, needs to be calculated based on duration and difficulty. Needs tokens to be able to use context. This is the version that uses context, commented out so we can test creating a post
-    createPost: async (parent, {username, postTitle, postDescription, duration, difficulty, address}, context) => {
+    createPost: async (parent, { username, postTitle, postDescription, duration, difficulty, address }, context) => {
       // context.user authentication commented out for now for testing. username above should be removed when context is being used. context should also be replaced under user.findoneandupdate and postAuthor
       // if (context.user) {
-        const postValue = 100;
-        const karmaPost = await KarmaPost.create({ 
-          postTitle, 
-          postDescription, 
-          postAuthor: username,
-          postValue: postValue, 
-          duration, 
-          difficulty,
-          address,})
+      const postValue = 100;
+      const karmaPost = await KarmaPost.create({
+        postTitle,
+        postDescription,
+        postAuthor: username,
+        postValue: postValue,
+        duration,
+        difficulty,
+        address,
+      })
 
-        await User.findOneAndUpdate(
-          { username: username},
-          { $addToSet: {karmaPosts: karmaPost.id}}
-        );
-        return karmaPost;
-        // uncomment the following two lines when activating context
-        // }
-        // throw new AuthenticationError('You need to be logged in!')
-      },
-      // editPost creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be edited is included in the array of this user's karmaposts, it updates the post
-    editPost: async (parent, {_id, postTitle, postDescription, duration, difficulty, address}, context) => {
+      await User.findOneAndUpdate(
+        { username: username },
+        { $addToSet: { karmaPosts: karmaPost.id } }
+      );
+      return karmaPost;
+      // uncomment the following two lines when activating context
+      // }
+      // throw new AuthenticationError('You need to be logged in!')
+    },
+    // editPost creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be edited is included in the array of this user's karmaposts, it updates the post
+    editPost: async (parent, { _id, postTitle, postDescription, duration, difficulty, address }, context) => {
       const userposts = context.user.karmaPosts;
       if (userposts.includes(_id)) {
         return KarmaPost.findOneAndUpdate(
-          {_id},
-          {postTitle, postDescription, duration, difficulty, address},
-          {new: true}
+          { _id },
+          { postTitle, postDescription, duration, difficulty, address },
+          { new: true }
         )
       }
 
       throw new AuthenticationError('You need to be logged in!')
-        },
-        // This creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be deleted is included in the array of this user's karmaposts, it deletes the post and updates the user to remove that object id from the user karmaposts array, otherwise it throws an error
-    deletePost: async (parent, {_id}, context) => {
+    },
+    // This creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be deleted is included in the array of this user's karmaposts, it deletes the post and updates the user to remove that object id from the user karmaposts array, otherwise it throws an error
+    deletePost: async (parent, { _id }, context) => {
       const userposts = context.user.karmaPosts;
       if (userposts.includes(_id)) {
         const karmaPost = await KarmaPost.findOneAndDelete({
           _id: _id
         },
         );
-  
+
         await User.findOneAndUpdate(
-          { username: context.user.username},
-          { $pull: { karmaPosts: karmaPost.id}},
-          {new: true}
+          { username: context.user.username },
+          { $pull: { karmaPosts: karmaPost.id } },
+          { new: true }
         );
-        return karmaPost; 
+        return karmaPost;
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
-    addHelper: async (parent, {_id, helperUsername}) => {
+    deletePost: async (parent, { _id }) => {
+      if (context.user) {
+        const karmaPost = await KarmaPost.findOneAndDelete({
+          _id: _id
+        },
+        );
+
+        await User.findOneAndUpdate(
+          { username: context.user.username },
+          { $pull: { karmaPosts: karmaPost.id } },
+          { new: true }
+        );
+        return karmaPost;
+      }
+      throw new AuthenticationError('You need to be logged in!')
+    },
+    addHelper: async (parent, { _id, helperUsername }) => {
       return KarmaPost.findOneAndUpdate(
-        {_id},
-        { $addToSet: {karmaHelpers: {helperUsername}}},
+        { _id },
+        { $addToSet: { karmaHelpers: { helperUsername } } },
         { new: true }
       )
     },
