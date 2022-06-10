@@ -17,7 +17,7 @@ export default function PostForm() {
 
     const { loading, data } = useQuery(GET_ME);
     const username = data?.me.username || [];
-    console.log(username)
+
     if (!username) {
         return null;
     } if (loading) {
