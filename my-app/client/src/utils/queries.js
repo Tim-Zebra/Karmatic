@@ -145,3 +145,23 @@ query Me {
   }
 }
 `;
+
+export const GET_ALL_KARMAPOSTS = gql`
+query GET_ALL_KARMAPOSTS {
+  allKarmaPosts {
+    _id
+    postTitle
+    postDescription
+    postValue
+    duration
+    difficulty
+    address
+    createdAt
+    karmaHelpers {
+      _id
+      helperUsername
+      createdAt
+    }
+  }
+}
+`;

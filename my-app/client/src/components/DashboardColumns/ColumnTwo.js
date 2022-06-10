@@ -11,7 +11,7 @@ import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
 // Gets the Karma Post
-import { GET_USERS } from '../../utils/queries';
+import { GET_ALL_KARMAPOSTS } from '../../utils/queries';
 
 // Test Data
 // const data1 = [
@@ -48,9 +48,9 @@ import { GET_USERS } from '../../utils/queries';
 export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
-    const { loading, data } = useQuery(GET_USERS);
+    const { loading, data } = useQuery(GET_ALL_KARMAPOSTS);
 
-    const karmaPosts = data?.me.karmaPosts || [];
+    const karmaPosts = data?.allKarmaPosts || [];
 
     if(!karmaPosts) {
     return null;
