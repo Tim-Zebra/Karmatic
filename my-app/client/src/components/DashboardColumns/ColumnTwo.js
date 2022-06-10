@@ -60,6 +60,7 @@ export default function ColumnTwo() {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
+    console.log('This happened', karmaPosts);
     return(
         <ColumnContainer>
             <FeedHeaderContainer>
