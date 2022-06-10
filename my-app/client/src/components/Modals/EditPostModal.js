@@ -5,7 +5,7 @@ import { ModalBackground, ModalCloseButton, ModalContainer } from './Modal.style
 export default function CreatePostModal({setIsOpen}){
  
     return (
-        <ModalBackground onClick={() => setIsOpen(false)}>
+        <ModalBackground>
             <ModalContainer>
                 <div>
                     <p>Edit Post</p>
