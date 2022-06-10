@@ -25,3 +25,18 @@ mutation Login($username: String!, $password: String!) {
   }
 }
 `;
+
+// Create Post
+export const CREATE_POST = gql`
+mutation Mutation($postAuthor: String!, $duration: Int!, $difficulty: String!, $address: String!, $postDescription: String!, $postTitle: String!, $username: String!) {
+  createPost(postAuthor: $postAuthor, duration: $duration, difficulty: $difficulty, address: $address, postDescription: $postDescription, postTitle: $postTitle, username: $username) {
+    postTitle
+    postDescription
+    postValue
+    duration
+    difficulty
+    address
+    createdAt
+  }
+}
+`
