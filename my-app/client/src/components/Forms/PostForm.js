@@ -22,15 +22,15 @@ export default function PostForm() {
         try {
             await createPost({
                 variables: {
-                    username: `${username}`,
-                    postTitle: `${postTitle}`,
-                    postDescription: `${postDescription}`,
-                    duration: duration,
-                    difficulty: `${difficulty}`,
-                    address: `${address}`
+                    username: username,
+                    postTitle: postTitle,
+                    postDescription: postDescription,
+                    duration: parseInt(duration),
+                    difficulty: difficulty,
+                    address: address
                 }
             });
-            console.log('post created!', postTitle, postDescription, difficulty, duration, address)
+            console.log('post created!', typeof postTitle, typeof postDescription, difficulty, typeof duration, address)
             setTitle('');
             setDescription('');
         } catch (err) {
