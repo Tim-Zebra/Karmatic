@@ -7,30 +7,28 @@ import { Container } from "./ProfileColumnOne.styled";
 
 const data = [
     {
-    groupName: 'The Oaks'
+        groupName: 'The Oaks'
     },
     {
-    groupName: 'The Springs'
+        groupName: 'The Springs'
     },
     {
-    groupName: 'The End'
-}]
+        groupName: 'The End'
+    }]
 
 export default function ProfileColumnOne() {
     return (
         <Container>
-        <>Neighborhoods</>
-        <UserContainer>
-            <UserContainerBorder>
-                <UserContainerBorderThick>
-
-                    {data.map((group) => 
-                    <NeighborhoodCard data={ group } />
-                    )}
-                    
-                </UserContainerBorderThick>
-            </UserContainerBorder>
-        </UserContainer>
+            <>Neighborhoods</>
+            <UserContainer>
+                <UserContainerBorder>
+                    <UserContainerBorderThick>
+                        <NeighborhoodCard data={data[0]} />
+                        <NeighborhoodCard data={data[1]} />
+                        <NeighborhoodCard data={data[2]} />
+                    </UserContainerBorderThick>
+                </UserContainerBorder>
+            </UserContainer>
         </Container>
     )
 }

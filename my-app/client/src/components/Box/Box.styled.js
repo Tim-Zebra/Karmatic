@@ -23,6 +23,7 @@ export const UserContainerBorderThick = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 
   & h1{
     color:#666666;

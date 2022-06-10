@@ -2,20 +2,27 @@ import React, { useState } from 'react';
 import { CreatePostButton } from '../Buttons/AddButton.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } from './PostForm.styled'
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
+import { GET_ME } from '../../utils/queries';
 
 export default function PostForm() {
 
     const [postTitle, setTitle] = useState('');
-    const [username] = 'danny';
-    // const [postAuthor] = 'danny'
     const [postDescription, setDescription] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [duration, setDuration] = useState('');
     const [address, setAddress] = useState('');
-
     const [createPost] = useMutation(CREATE_POST);
+
+    const { loading, data } = useQuery(GET_ME);
+    const username = data?.me.username || [];
+    console.log(username)
+    if (!username) {
+        return null;
+    } if (loading) {
+        return <h2>LOADING...</h2>;
+    }
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -72,14 +79,14 @@ export default function PostForm() {
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)} >
                     <option
-                    >Please Select</option>
+                    >Select Difficulty</option>
                     <option
-                        value="Easy">Easy-Peasy</option>
+                        value="Easy">Easy</option>
                     <option
-                        value="Medium">Medium-Shmedium
+                        value="Medium">Medium
                     </option>
                     <option
-                        value="Hard">Very Difficult
+                        value="Hard">Hard
                     </option>
                 </select>
                 <hr />
@@ -88,8 +95,8 @@ export default function PostForm() {
                     id="duration"
                     name="difficulty"
                     value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                >
+                    onChange={(e) => setDuration(e.target.value)}>
+                    <option>Select Duration</option>
                     <option value="1">1 Hour</option>
                     <option value="2">2 Hours</option>
                     <option value="3">3 Hours</option>

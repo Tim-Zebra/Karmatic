@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ColumnContainer = styled.div`
     margin-top: -1rem;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +32,7 @@ export const CreatePostContainer = styled.div`
 
 export const ActivityHeader = styled.div`
     color: ${({ theme  }) => theme.colors.darkgrey};
+    padding-top: 1rem;
     
     p {
     font-family: ${({ theme }) => theme.fonts.otherfont};
@@ -43,18 +44,18 @@ export const ActivityHeader = styled.div`
     }
     
     @media only screen and (min-width: 992px) {
-        
-        margin-top: 240px;
+        margin-top: 225px;
     }
     
 `
 
 export const FeedContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.teal };
-    width: 99%;
-    height: 100%;
+    width: 100%;
+    height:600px;
+    overflow: visible;
     overflow-y: scroll;
+    overscroll-behavior-y: none;
     display: flex;
     flex-direction: column-reverse;
-    justify-content: flex-end;
 `
