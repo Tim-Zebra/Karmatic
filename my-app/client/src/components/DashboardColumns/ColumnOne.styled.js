@@ -7,6 +7,7 @@ export const ColumnContainer = styled.div`
     flex-direction: column;
     align-items: center;
     
+    
     a {
         text-decoration: none;
         color: ${({ theme }) => theme.colors.darkgrey}

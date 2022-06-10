@@ -7,8 +7,10 @@ export const GlobalStyles = createGlobalStyle`
 body {
     background-color: #E9E9E9;
     padding: 0;
-    margin: 0 auto;
-    height: 100vh;
-    width: 100vw;
+    margin: 0 0 2rem 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 `

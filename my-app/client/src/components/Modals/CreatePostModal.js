@@ -1,6 +1,6 @@
 import React from "react";
 import PostForm from '../Forms/PostForm'
-import { ModalBackground, ModalCloseButton, ModalContainer } from "./CreatePostModal.styled";
+import { ModalBackground, ModalCloseButton, ModalContainer } from "./Modal.styled";
 
 export default function CreatePostModal({ setIsOpen }) {
 

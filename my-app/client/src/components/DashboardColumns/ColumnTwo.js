@@ -43,7 +43,7 @@ export default function ColumnTwo() {
             <FeedContainer>
 
                 {karmaPosts.map((post) =>
-                    <Post data={post} />
+                    <Post data={post} key={post.id} />
                 )}
 
             </FeedContainer>

@@ -1,15 +1,21 @@
-import React from 'react'
-import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter } from './Post.styled'
+import React, { useState } from 'react'
+import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import { useMutation, useQuery } from '@apollo/client';
+import EditPostModal from '../Modals/EditPostModal'
+
 
 export default function Post({ data }) {
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <PostOutterContainer>
             <PostContainer>
                 <ImageContainer>
-                    <img src='./assets/images/user.png' alt='profile pic' />
+                    <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                    <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
+                    {isOpen && <EditPostModal setIsOpen={setIsOpen} />}
                 </ImageContainer>
                 <PostBody>
 
@@ -24,8 +30,8 @@ export default function Post({ data }) {
 
                     {/* Button to add karmaHelper to Post */}
                     <PostBottom>
-                        <PrettyButton>Help {data.postAuthor}</PrettyButton>
                         <p>{data.address}</p>
+                        <PrettyButton>Help {data.postAuthor}</PrettyButton>
                     </PostBottom>
 
                 </PostBody>
@@ -36,6 +42,7 @@ export default function Post({ data }) {
             {data.karmaHelpers ?
                 <PostFooter>
                     <button>In Progress</button>
+                    <p>with {data.karmaHelpers.helperUsername}</p>
                     <div>
                         <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
                         {data.postValue}
