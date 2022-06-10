@@ -5,69 +5,56 @@ import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } 
 import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
 
-export default function PostForm(handleSubmit) {
+export default function PostForm() {
 
-    const [postFormData, setpostFormData] = useState({ difficulty: '', title: '', description: '', duration: '' });
-    const [createPost, { error, data }] = useMutation(CREATE_POST);
-    const [showAlert, setShowAlert] = useState(false);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [difficulty, setDifficulty] = useState('');
+    const [duration, setDuration] = useState('');
+    const [address, setAddress] = useState('');
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setpostFormData({
-            ...postFormData,
-            [name]: value
-        });
-    };
-    const handlePostFormSubmit = async (event) => {
-        console.log('HANDLE FORM SUBMIT HAPPENED');
-        event.preventDefault();
-
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        try {
-            const postData = {
-                title: postFormData.title,
-                description: postFormData.description,
-                difficulty: postFormData.difficulty,
-                duration: postFormData.duration,
-            }
-            const { data } = await createPost({
-                variables: { ...postData },
-            });
-        } catch (err) {
-            console.error(err);
-            setShowAlert(true);
-        }
-        setpostFormData({
-            difficulty: '',
-            title: '',
-            description: '',
-        });
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(title, description, difficulty, duration, address)
     }
+
     return (
-        <PostFormContainer onSubmit={handlePostFormSubmit}>
+        <PostFormContainer onSubmit={onSubmit}>
             <PostTitleContainer>
                 <input
                     type='text'
                     maxLength={50}
                     placeholder='Title'
-                    value={postFormData.title}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
             </PostTitleContainer>
             <PostTextArea
                 maxLength={140}
                 type='text'
-                placeholder='What do you need help with?' value={postFormData.description}
+                placeholder='What do you need help with?'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+
             />
+            <PostTitleContainer>
+                <input
+                    type='text'
+                    maxLength={50}
+                    placeholder='address'
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+
+                />
+            </PostTitleContainer>
             <PostFormOptions>
                 <label>Difficulty:</label>
                 <select
                     id="difficulty"
                     name="difficulty"
-                    value={postFormData.difficulty} onChange={handleInputChange}>
+                    value={difficulty}
+                    onChange={(e) => setDifficulty(e.target.value)} >
+
                     <option
                         value="Easy">Easy-Peasy</option>
                     <option
@@ -82,8 +69,9 @@ export default function PostForm(handleSubmit) {
                 <select
                     id="duration"
                     name="difficulty"
-                    value={postFormData.duration}
-                    onChange={handleInputChange}>
+                    value={duration}
+                    onChange={(e) => setDuration(e.target.value)}
+                >
                     <option value="1">1 Hour</option>
                     <option value="2">2 Hours</option>
                     <option value="3">3 Hours</option>
@@ -91,10 +79,7 @@ export default function PostForm(handleSubmit) {
                 </select>
             </PostFormOptions>
             <CreatePostButton
-                as='a'
-                href='#'
-                type='submit'
-                submit={handleSubmit}>
+                type='submit'>
                 Create Post
             </CreatePostButton>
         </PostFormContainer>
