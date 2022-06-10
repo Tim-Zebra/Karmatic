@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage,  PostBottom, PostFooter, EditButton, PostProfileImage  } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
-import { useMutation, useQuery } from '@apollo/client';
+
 import EditPostModal from '../Modals/EditPostModal'
 
-import { GET_ME } from '../../';
+// Imports Authorization
+import Auth from '../../utils/auth';
+
+// Imports mutations and queries
+import { useQuery, useMutation } from '@apollo/client';
+// Gets Queries
+import { GET_ME } from '../../utils/queries';
+// Gets Mutations
+import { ADD_HELPER } from '../../utils/mutations'
+
 export default function Post({data}) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
-    const [addSelfAsHelper] = useMutation(SAVE_BOOK);
+    const [addSelfAsHelper] = useMutation(ADD_HELPER);
     // Finds length of Karma
     let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
 

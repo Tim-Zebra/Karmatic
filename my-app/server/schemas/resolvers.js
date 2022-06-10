@@ -118,13 +118,13 @@ const resolvers = {
     addHelper: async (parent, { _id }, context) => {
       // Checks if the context is a user
       if(context.user) {
-        // Updates Karma Post with username
+        // Updates User's karmaHelping array
         const userUpdate = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { karmaHelping: _id } },
           { new: true });
 
-        // Updates username with KarmaPost
+        // Updates username in KarmaPost's karmaHelpers array
         const karmaPostUpdate = await KarmaPost.findOneAndUpdate(
           { _id: _id },
           { $addToSet: { karmaHelpers: context.user.username } },

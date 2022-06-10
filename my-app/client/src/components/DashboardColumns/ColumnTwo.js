@@ -13,6 +13,7 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets the Karma Post
 import { GET_ALL_KARMAPOSTS } from '../../utils/queries';
 
+
 // Test Data
 // const data1 = [
 // {
@@ -48,16 +49,16 @@ import { GET_ALL_KARMAPOSTS } from '../../utils/queries';
 export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
-    const { loading, data } = useQuery(GET_ALL_KARMAPOSTS);
+    const { loadingKarmaPosts, dataKarmaPosts } = useQuery(GET_ALL_KARMAPOSTS);
 
-    const karmaPosts = data?.allKarmaPosts || [];
+    const karmaPosts = dataKarmaPosts?.allKarmaPosts || [];
 
     if(!karmaPosts) {
     return null;
     }
 
     // Displays differently during loading
-    if (loading) {
+    if (loadingKarmaPosts) {
         return <h2>LOADING...</h2>;
     }
     console.log('This happened', karmaPosts);
