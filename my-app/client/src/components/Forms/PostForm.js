@@ -5,6 +5,7 @@ import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } 
 import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
+const calcPostValue = require('../../utils/helpers');
 
 export default function PostForm() {
     // Querys username and karma
@@ -25,13 +26,13 @@ export default function PostForm() {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log('username', username)
+            const currentPostValue = await calcPostValue(difficulty, duration);
             await createPost({
                 variables: {
                     username: username,
                     postTitle: postTitle,
                     postDescription: postDescription,
-                    postValue: 50,
+                    postValue: currentPostValue,
                     duration: parseInt(duration),
                     difficulty: difficulty,
                     address: address
