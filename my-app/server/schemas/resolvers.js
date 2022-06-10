@@ -77,7 +77,7 @@ const resolvers = {
 
       await User.findOneAndUpdate(
         { username: username },
-        { $addToSet: { karmaPosts: karmaPost.id } }
+        { $addToSet: { karmaPosts: karmaPost._id } }
       );
       return karmaPost;
       // uncomment the following two lines when activating context
@@ -116,20 +116,24 @@ const resolvers = {
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
     addHelper: async (parent, { _id, helperUsername }, context) => {
-      if(context.user){
-        return(
-            // // Updates Karma Post with username
-            // await KarmaPost.findOneAndUpdate(
-            // { _id },
-            // { $addToSet: { karmaHelpers: context.user.username } },
-            // { new: true });
-            // // Updates username with KarmaPost
-            // await User.findOneAndUpdate(
-            //   { _id: context.user._id },
-            //   { $addToSet: { karmaHelpers: context.user.username } },
-            //   { new: true });
-        );
+      // Checks if the context is a user
+      if(context.user) {
+        // Updates Karma Post with username
+        const userUpdate = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { karmaHelpers: context.user.username } },
+          { new: true });
+
+        // Updates username with KarmaPost
+        const karmaPostUpdate = await KarmaPost.findOneAndUpdate(
+          { _id: _id },
+          { $addToSet: { karmaHelpers: context.user.username } },
+          { new: true })
+        
+        return { userUpdate, karmaPostUpdate };
       }
+        
+      throw new AuthenticationError('You are not logged in!');
     },
   },
 };
