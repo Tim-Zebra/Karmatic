@@ -17,6 +17,7 @@ import { GET_ME } from '../../utils/queries';
 
 const dateFormat = require('../../utils/dateFormat');
 
+// Shows recent KarmaPost activity
 export default function ColumnThree(){
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
@@ -39,8 +40,6 @@ export default function ColumnThree(){
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-
-    console.log('\n\nPASSED DATA KARMAPOSTS:: \n\n', recentKarmaPosts);
 
     return(
         <ColumnContainer>
