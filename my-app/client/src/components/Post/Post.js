@@ -6,8 +6,28 @@ import EditPostModal from '../Modals/EditPostModal'
 
 
 export default function Post({data}) {
-
+    // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
+
+    // Finds length of Karma
+    let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
+
+    // Renders Karma Helpers
+    const renderKarmaHelpers = () => {
+        return(
+            <p>with:
+                {data.karmaHelpers.map((karmaHelper, index) => {
+                    // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
+                    if(index !== lengthOfKarmaHelpersArray-1) {
+                        return (` ${karmaHelper.helperUsername},`);
+                    }
+                    else {
+                        return (` ${karmaHelper.helperUsername}`);
+                    }
+                })}
+            </p>
+        )
+    };
 
     return (
         <PostOutterContainer>
@@ -43,9 +63,7 @@ export default function Post({data}) {
         <PostFooter>
             <button>In Progress</button>
             
-            { data.karmaHelpers.map((karmaHelper) => 
-                <p>with {karmaHelper.helperUsername}</p>
-                )}
+            {renderKarmaHelpers()}
 
             <div>
             <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
