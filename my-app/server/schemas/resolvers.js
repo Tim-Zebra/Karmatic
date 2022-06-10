@@ -116,20 +116,21 @@ const resolvers = {
     },
     addHelper: async (parent, { _id }, context) => {
       // Checks if the context is a user
+      console.log('addhelper resolver happened');
       if(context.user) {
         // Updates User's karmaHelping array
-        const userUpdate = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { karmaHelping: _id } },
-          { new: true });
-
+        // const userUpdate = await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $addToSet: { karmaHelping: _id } },
+        //   { new: true });
+        console.log('This happened', context.user.username);
         // Updates username in KarmaPost's karmaHelpers array
-        const karmaPostUpdate = await KarmaPost.findOneAndUpdate(
-          { _id: _id },
+        return await KarmaPost.findOneAndUpdate(
+          { _id: id },
           { $addToSet: { karmaHelpers: context.user.username } },
           { new: true })
         
-        return { userUpdate, karmaPostUpdate };
+        // return { userUpdate, karmaPostUpdate };
       }
         
       throw new AuthenticationError('You are not logged in!');
