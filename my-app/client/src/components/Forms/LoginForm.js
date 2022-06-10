@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledForm, OrDiv } from "./Form.Styled"
+import { StyledForm, OrDiv } from "./Form.Styled";
 
 // Mutation imports
 import { useMutation } from '@apollo/client';
@@ -30,7 +30,6 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
     };
 
     const handleFormSubmit = async (event) => {
-        console.log('HANDLE FORM SUBMIT HAPPENED');
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
@@ -41,13 +40,11 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
         }
 
         try {
-            console.log('USERFORM DATA BEFORE TRY', userFormData);
             const { data } = await login({
                 variables: { ...userFormData },
             });
 
             Auth.login(data.login.token);
-            console.log('YOU ARE LOGGED');
             // Hides alert if previously present
             setShowAlert(false);
         } catch (err) {

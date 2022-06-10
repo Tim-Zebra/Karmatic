@@ -60,16 +60,15 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('Home');
   const handlePageChange = (page) => setCurrentPage(page);
 
-  // Renders current page
+  // Renders current page based on user login
   const renderCurrentPage = () => {
-    console.log('The Current Page selected and through renderCurrentPage function', currentPage);
     if (currentPage === 'Profile') {
       return <Profile />;
     }
     if (currentPage === 'Dashboard') {
       return <Dashboard handlePageChange={handlePageChange} />;
     }
-      return <Home />;
+      return <Home handlePageChange={handlePageChange}/>;
   }
 
   return (

@@ -49,6 +49,7 @@ const resolvers = {
 
       return { token, user };
     },
+    // Should be changed to use user id
     changeKarma: async (parent, { username, karma }) => {
       return User.findOneAndUpdate(
         { username },
@@ -79,30 +80,36 @@ const resolvers = {
         // }
         // throw new AuthenticationError('You need to be logged in!')
       },
-    editPost: async (parent, {_id, postTitle, postDescription, duration, difficulty, address}) => {
-      if (context.user) {
-      return KarmaPost.findOneAndUpdate(
-        {_id},
-        {postTitle, postDescription, duration, difficulty, address},
-        {new: true}
-      )
+      // editPost creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be edited is included in the array of this user's karmaposts, it updates the post
+    editPost: async (parent, {_id, postTitle, postDescription, duration, difficulty, address}, context) => {
+      const userposts = context.user.karmaPosts;
+      if (userposts.includes(_id)) {
+        return KarmaPost.findOneAndUpdate(
+          {_id},
+          {postTitle, postDescription, duration, difficulty, address},
+          {new: true}
+        )
       }
+
       throw new AuthenticationError('You need to be logged in!')
         },
-    deletePost: async (parent, {_id}) => {
-      if (context.user) {
-      const karmaPost = await KarmaPost.findOneAndDelete({
-        _id: _id
-      },
-      );
-
-      await User.findOneAndUpdate(
-        { username: context.user.username},
-        { $pull: { karmaPosts: karmaPost.id}},
-        {new: true}
-      );
-      return karmaPost; }
-      throw new AuthenticationError('You need to be logged in!')
+        // This creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be deleted is included in the array of this user's karmaposts, it deletes the post and updates the user to remove that object id from the user karmaposts array, otherwise it throws an error
+    deletePost: async (parent, {_id}, context) => {
+      const userposts = context.user.karmaPosts;
+      if (userposts.includes(_id)) {
+        const karmaPost = await KarmaPost.findOneAndDelete({
+          _id: _id
+        },
+        );
+  
+        await User.findOneAndUpdate(
+          { username: context.user.username},
+          { $pull: { karmaPosts: karmaPost.id}},
+          {new: true}
+        );
+        return karmaPost; 
+      }
+      throw new AuthenticationError('You do not have permission to delete this post!')
     },
     addHelper: async (parent, {_id, helperUsername}) => {
       return KarmaPost.findOneAndUpdate(

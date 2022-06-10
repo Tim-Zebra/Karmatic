@@ -7,8 +7,6 @@ export default function Nav({ currentPage, handlePageChange }) {
         <StyledNavContainer>
             <StyledNavImage src='./assets/images/logo_karmatic.png' alt='karmatic logo' />
 
-            <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
-
             {currentPage === 'Profile' ?
 
                 <StyledNavEnd>

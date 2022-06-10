@@ -10,6 +10,7 @@ export default function LoginSignupForm() {
     // Displays either login or sign up form depending on which button (login or sign up) the user clicked on
     // Sets hook to render form
     const [currentLoginSignupForm, setcurrentLoginSignupForm] = useState(true);
+    
     // Simple toggle between either form
     // Can be more complex once adding  called to render whichever form depending on login
     const renderLoginSignupFormSection = () => {
