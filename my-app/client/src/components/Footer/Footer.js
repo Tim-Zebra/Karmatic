@@ -5,7 +5,9 @@ import { StyledFooter } from "./Footer.styled"
 export default function Footer() {
     return (
         <StyledFooter>
-            Karmatic &nbsp; &nbsp; &nbsp;
+
+            &copy; Karmatic &nbsp; &nbsp;
+
         </StyledFooter>
     );
 }
