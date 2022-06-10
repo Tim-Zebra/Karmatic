@@ -51,7 +51,7 @@ const typeDefs = gql`
     createPost(username: String!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
-    addHelper(_id: ID!) : KarmaPost
+    addHelper(karmaPostId: ID!): KarmaPost
   }
 `;
 

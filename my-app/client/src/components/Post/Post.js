@@ -18,7 +18,7 @@ export default function Post({data}) {
     console.log('DATA from previous', data);
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
-    const [addSelfAsHelper] = useMutation(ADD_HELPER);
+    const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
     // Finds length of Karma
     let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
 
@@ -40,7 +40,7 @@ export default function Post({data}) {
     };
 
     // Adds logged in user to karmapost as helper
-    const addHelperToPost = async (helperId) => {
+    const addHelperToPost = async (karmaPostId) => {
         // Checks login status
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -50,11 +50,9 @@ export default function Post({data}) {
 
         // Adds User to post and adds post to User's karmaHelping array
         try {
-            console.log('log BEFORE add helper', helperId);
-            await addSelfAsHelper({
-              variables: { 
-                postId: {_id: helperId } 
-              }
+            console.log('log BEFORE add helper', karmaPostId);
+            await addMeAsHelper({
+                variables: {karmaPostId: karmaPostId }
             });
             
             console.log('post TRY happened');

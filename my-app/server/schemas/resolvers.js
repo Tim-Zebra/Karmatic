@@ -114,24 +114,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
-    addHelper: async (parent, { _id }, context) => {
+    addHelper: async (parent, { karmaPostId }, context) => {
       // Checks if the context is a user
       console.log('addhelper resolver happened');
-      if(context.user) {
+      // if(context.user) {
         // Updates User's karmaHelping array
         // const userUpdate = await User.findOneAndUpdate(
         //   { _id: context.user._id },
         //   { $addToSet: { karmaHelping: _id } },
         //   { new: true });
-        console.log('This happened', context.user.username);
+        // console.log('This happened', context.user.username);
         // Updates username in KarmaPost's karmaHelpers array
         return await KarmaPost.findOneAndUpdate(
-          { _id: id },
-          { $addToSet: { karmaHelpers: context.user.username } },
+          { _id: karmaPostId },
+          { $addToSet: { karmaHelpers: {helperUsername: "RYAN CAT - MEOW"} } },
           { new: true })
         
         // return { userUpdate, karmaPostUpdate };
-      }
+      // }
         
       throw new AuthenticationError('You are not logged in!');
     },
