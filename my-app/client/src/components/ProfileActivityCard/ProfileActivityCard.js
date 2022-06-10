@@ -20,17 +20,25 @@ export default function ProfileActivityCard() {
     if (!userData) {
         return null;
     }
-
     // Displays differently during loading
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-    return (
+
+    if (userData.username === userData.karmaPosts.postAuthor) {
+        return (userData.karmaPosts.map(karmaPosts => (
+            <CardContainer>
+                <img src='./assets/images/k_logo.png' alt='k logo' />
+                You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue}
+            </CardContainer>))
+
+        )
+    } else return (
 
         userData.karmaPosts.map(karmaPosts => (
             <CardContainer>
                 <img src='./assets/images/k_logo.png' alt='k logo' />
-                Completed: {karmaPosts.postTitle} for the user {karmaPosts.postAuthor} at the location{karmaPosts.address}
+                Completed the job "{karmaPosts.postTitle}" for the user "{karmaPosts.postAuthor}" at the location: {karmaPosts.address}
             </CardContainer>))
     )
 }
