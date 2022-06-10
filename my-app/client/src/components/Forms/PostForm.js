@@ -7,15 +7,35 @@ import { CREATE_POST } from '../../utils/mutations';
 
 export default function PostForm() {
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [postTitle, setTitle] = useState('');
+    const [username] = 'danny';
+    // const [postAuthor] = 'danny'
+    const [postDescription, setDescription] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [duration, setDuration] = useState('');
     const [address, setAddress] = useState('');
 
-    const onSubmit = (e) => {
+    const [createPost] = useMutation(CREATE_POST);
+
+    const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(title, description, difficulty, duration, address)
+        try {
+            await createPost({
+                variables: {
+                    username: `${username}`,
+                    postTitle: `${postTitle}`,
+                    postDescription: `${postDescription}`,
+                    duration: duration,
+                    difficulty: `${difficulty}`,
+                    address: `${address}`
+                }
+            });
+            console.log('post created!', postTitle, postDescription, difficulty, duration, address)
+            setTitle('');
+            setDescription('');
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return (
@@ -25,7 +45,7 @@ export default function PostForm() {
                     type='text'
                     maxLength={50}
                     placeholder='Title'
-                    value={title}
+                    value={postTitle}
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <input
@@ -40,7 +60,7 @@ export default function PostForm() {
                 maxLength={140}
                 type='text'
                 placeholder='What do you need help with?'
-                value={description}
+                value={postDescription}
                 onChange={(e) => setDescription(e.target.value)}
 
             />
@@ -51,7 +71,8 @@ export default function PostForm() {
                     name="difficulty"
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)} >
-
+                    <option
+                    >Please Select</option>
                     <option
                         value="Easy">Easy-Peasy</option>
                     <option
