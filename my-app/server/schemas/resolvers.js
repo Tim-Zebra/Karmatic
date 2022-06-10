@@ -61,15 +61,13 @@ const resolvers = {
       );
     },
     // postValue is a placeholder, needs to be calculated based on duration and difficulty. Needs tokens to be able to use context. This is the version that uses context, commented out so we can test creating a post
-    createPost: async (parent, { username, postTitle, postDescription, duration, difficulty, address }, context) => {
+    createPost: async (parent, {username, postTitle, postDescription, postValue, duration, difficulty, address }, context) => {
       // context.user authentication commented out for now for testing. username above should be removed when context is being used. context should also be replaced under user.findoneandupdate and postAuthor
-      // if (context.user) {
-      const postValue = 100;
       const karmaPost = await KarmaPost.create({
         postTitle,
         postDescription,
         postAuthor: username,
-        postValue: postValue,
+        postValue,
         duration,
         difficulty,
         address,
@@ -77,12 +75,9 @@ const resolvers = {
 
       await User.findOneAndUpdate(
         { username: username },
-        { $addToSet: { karmaPosts: karmaPost.id } }
+        { $addToSet: { karmaPosts: karmaPost._id } }
       );
       return karmaPost;
-      // uncomment the following two lines when activating context
-      // }
-      // throw new AuthenticationError('You need to be logged in!')
     },
     // editPost creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be edited is included in the array of this user's karmaposts, it updates the post
     editPost: async (parent, { _id, postTitle, postDescription, duration, difficulty, address }, context) => {

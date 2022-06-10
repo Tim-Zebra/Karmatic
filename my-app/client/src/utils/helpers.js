@@ -1,5 +1,4 @@
-class Helpers {
-    calcPostValue(difficulty, duration) {
+module.exports =  function calcPostValue (difficulty, duration) {
         let difficultyModifier;
         switch (difficulty) {
             case 'Easy':
@@ -14,7 +13,4 @@ class Helpers {
         };
         const postValue = difficultyModifier*duration*10;
         return postValue;
-    }
-}
-
-export default new Helpers();
+    };
