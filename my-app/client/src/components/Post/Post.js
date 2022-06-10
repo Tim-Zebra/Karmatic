@@ -50,13 +50,10 @@ export default function Post({data}) {
 
         // Adds User to post and adds post to User's karmaHelping array
         try {
-            console.log('log BEFORE add helper', karmaPostId);
             await addMeAsHelper({
                 variables: {karmaPostId: karmaPostId }
             });
-            
-            console.log('post TRY happened');
-      
+
           } catch (err) {
             console.error(err);
           }
