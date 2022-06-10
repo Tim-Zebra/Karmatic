@@ -1,6 +1,6 @@
 import React from "react";
 import PostForm from '../Forms/PostForm'
-import { ModalBackground, ModalContainer } from "./CreatePostModal.styled";
+import { ModalBackground, ModalCloseButton, ModalContainer } from "./CreatePostModal.styled";
 
 export default function CreatePostModal({setIsOpen}){
  
@@ -9,7 +9,9 @@ export default function CreatePostModal({setIsOpen}){
             <ModalContainer>
                 <div>
                     <p>Post</p>
-                    <button onClick={() => setIsOpen(false)}><img src="./assets/images/cancel.png" alt="cancel x" /></button>
+                    <ModalCloseButton onClick={() => setIsOpen(false)}>
+                        <img src="./assets/images/cancel.png" alt="cancel x" />
+                    </ModalCloseButton>
                 </div>
             <PostForm />
             </ModalContainer>
