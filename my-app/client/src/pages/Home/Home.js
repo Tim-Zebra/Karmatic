@@ -3,7 +3,13 @@ import { HomeContainer, StyledHomeLeft, StyledHomeRight, StyledLogo } from './Ho
 import ToggleForm from "../../components/Forms/ToggleForm"
 import HomeInfo from '../../components/HomeInfo/HomeInfo'
 
-export default function Home() {
+// Checks user Auth
+import Auth from '../../utils/auth';
+
+export default function Home({ handlePageChange }) {
+  if(Auth.loggedIn()) {
+    handlePageChange('Dashboard');
+  }
   return (
     <HomeContainer>
 
