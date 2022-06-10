@@ -11,10 +11,6 @@ export default function RecentKarma({ data }) {
             <RecentContainer>
                 <ExchangeContainer>
                     <ExchangeBetween>
-<<<<<<< HEAD
-                        <p></p>
-=======
->>>>>>> main
                         <h4>received</h4>
                     </ExchangeBetween>
                     <ExchangeBetween>
