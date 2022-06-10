@@ -5,7 +5,7 @@ import { ModalBackground, ModalContainer } from "./CreatePostModal.styled";
 export default function CreatePostModal({setIsOpen}){
  
     return (
-        <ModalBackground>
+        <ModalBackground onClick={() => setIsOpen(false)}>
             <ModalContainer>
                 <div>
                     <p>Post</p>

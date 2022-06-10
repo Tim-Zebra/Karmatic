@@ -13,6 +13,7 @@ export const ColumnContainer = styled.div`
 `
 
 export const FeedHeaderContainer = styled.div`
+    
     width: 100%;
 `
 
@@ -36,6 +37,8 @@ export const ActivityHeader = styled.div`
     font-family: ${({ theme }) => theme.fonts.otherfont};
     font-size: 20px;
     margin-left: 1rem;
+    margin-top: 0;
+    padding: 0;
 
     }
     

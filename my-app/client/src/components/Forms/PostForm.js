@@ -7,6 +7,7 @@ export default function PostForm() {
         <PostFormContainer>
             <PostTitleContainer>
             <input type='text' maxLength={50} placeholder='Title' />
+            <input type='text' maxLength={50} placeholder='Address' />
             </PostTitleContainer>
             <PostTextArea maxLength={140} placeholder='What do you need help with?'/>
                 <PostFormOptions>
@@ -25,7 +26,7 @@ export default function PostForm() {
                             <option value="4">4 Hours</option>
                         </select>
                 </PostFormOptions>
-            <CreatePostButton as='a' href='#' type='submit'>
+            <CreatePostButton type='submit'>
             Create Post
             </CreatePostButton>
         </PostFormContainer>
