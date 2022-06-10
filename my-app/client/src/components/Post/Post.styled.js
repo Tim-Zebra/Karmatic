@@ -19,26 +19,26 @@ export const ImageContainer = styled.div`
     justify-content: flex-start;
     min-width: 60px;
     flex-direction: column;
-    
-    img {
-        height: 44px;
-        border: solid 1px ${({ theme }) => theme.colors.darkgrey };
-        margin-left: 1rem;
-        padding: .5rem;
-        border-radius: 10px;
-        margin: 1rem;
-    }
-    p {
-        font-family: ${({ theme }) => theme.fonts.otherfont };
-        font-size: 16px;
-        color: ${({ theme }) => theme.colors.darkgrey }
-    }
+`
+export const PostProfileImage = styled.img`
+    height: 44px;
+    border: solid 1px ${({ theme }) => theme.colors.darkgrey };
+    margin-left: 1rem;
+    padding: .5rem;
+    border-radius: 10px;
+    margin: 1rem;
+`
 
-    p:hover {
+
+export const EditButton = styled.div`
+    font-family: ${({ theme }) => theme.fonts.otherfont };
+    font-size: 16px;
+    color: ${({ theme }) => theme.colors.darkgrey };
+
+    &:hover {
         color: ${({ theme }) => theme.colors.lightteal };
         cursor: pointer;
     }
-
 `
 export const PostBody = styled.div`
     display: flex;

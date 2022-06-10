@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage,  PostBottom, PostFooter  } from './Post.styled'
+import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage,  PostBottom, PostFooter, EditButton, PostProfileImage  } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import { useMutation, useQuery } from '@apollo/client';
 import EditPostModal from '../Modals/EditPostModal'
@@ -14,8 +14,8 @@ export default function Post({data}) {
         <PostOutterContainer>
         <PostContainer>
             <ImageContainer>
-                <img src='./assets/images/user.png' alt='profile pic' />
-                <p onClick={() => setIsOpen(true)}>edit</p>
+                <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
                 {isOpen && <EditPostModal setIsOpen={setIsOpen} />}
             </ImageContainer>
             <PostBody>

@@ -79,7 +79,9 @@ export default function PostForm() {
                 type='submit'>
                 Create Post
             </CreatePostButton>
-            <DeleteButton>delete</DeleteButton>
+            <DeleteButton>
+                delete
+            </DeleteButton>
         </PostFormContainer>
     )
 }

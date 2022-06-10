@@ -55,7 +55,7 @@ export const PostFormOptions = styled.div`
     margin-right: 1rem;
     }
 `
-export const DeleteButton = styled.p`
+export const DeleteButton = styled.div`
     font-family: ${({ theme }) => theme.fonts.otherfont };
     font-size: 16px;
     color: ${({ theme }) => theme.colors.darkgrey };
