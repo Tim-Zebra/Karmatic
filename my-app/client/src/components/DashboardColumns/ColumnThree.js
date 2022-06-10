@@ -18,20 +18,20 @@ import { GET_ME } from '../../utils/queries';
 const dateFormat = require('../../utils/dateFormat');
 
 // Shows recent KarmaPost activity
-export default function ColumnThree(){
+export default function ColumnThree() {
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
 
     const karmaPosts = data?.me.karmaPosts || [];
-
-    if(!karmaPosts) {
-    return null;
+    console.log(karmaPosts)
+    if (!karmaPosts) {
+        return null;
     }
 
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 4;
-    const pastDate = dateFormat(Date.now() - (1000*60*60*hours));
+    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
 
     // Filters Karma posts from the up to 4 hours in the past from the current date.
     const recentKarmaPosts = karmaPosts.filter((post) => post.createdAt > pastDate);
@@ -41,14 +41,14 @@ export default function ColumnThree(){
         return <h2>LOADING...</h2>;
     }
 
-    return(
+    return (
         <ColumnContainer>
             <h3>Recent Karma</h3>
 
-            {recentKarmaPosts.map((recentPost) => 
-            <RecentKarma data={recentPost} />
+            {recentKarmaPosts.map((recentPost) =>
+                <RecentKarma data={recentPost} />
             )}
-                    
+
         </ColumnContainer>
     )
 }

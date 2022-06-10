@@ -13,6 +13,7 @@ query Me {
     karmaPosts {
       _id
       postTitle
+      postAuthor
       postDescription
       postValue
       duration

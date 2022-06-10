@@ -20,7 +20,6 @@ export default function PostForm() {
     const [difficulty, setDifficulty] = useState('');
     const [duration, setDuration] = useState('');
     const [address, setAddress] = useState('');
-
     const [createPost] = useMutation(CREATE_POST);
 
     const onSubmit = async (e) => {
@@ -79,7 +78,7 @@ export default function PostForm() {
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)} >
                     <option
-                    >Please Select</option>
+                    >Select Difficulty</option>
                     <option
                         value="Easy">Easy</option>
                     <option
@@ -95,8 +94,8 @@ export default function PostForm() {
                     id="duration"
                     name="difficulty"
                     value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                >
+                    onChange={(e) => setDuration(e.target.value)}>
+                    <option>Select Duration</option>
                     <option value="1">1 Hour</option>
                     <option value="2">2 Hours</option>
                     <option value="3">3 Hours</option>
