@@ -27,25 +27,34 @@ export const ModalContainer = styled.div`
         justify-content: space-between;
     }
 
-    button {
-       height: 44px;
-       border-radius: 50% ;
-       padding:0 1rem;
-       position: relative;
-       top: -40px;
-       right: -35px;
-       background-color: ${({ theme }) => theme.colors.lightgrey};
-       border: none;
-    }
-
-    button:hover {
-        background-color: ${({ theme }) => theme.colors.teal} ;
-    }
-    button:active {
-        border: 2px solid ${({ theme }) => theme.colors.darkteal}
-    }
+    
 
     @media only screen and (min-width: 992px) {
         width: 33vw;
+    }
+`
+export const ModalCloseButton = styled.button`
+    height: 44px;
+    width: 44px;
+    border-radius: 50% ;
+    padding:0 1rem;
+    position: relative;
+    top: -40px;
+    right: -35px;
+    background-color: ${({ theme }) => theme.colors.lightgrey};
+    border: none;
+    img {
+        height: 16px;
+        position: relative;
+        left:-2px;
+        top: 1.5px;
+    }
+    
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.teal} ;
+    }
+    &:active {
+        border: 2px solid ${({ theme }) => theme.colors.darkteal}
     }
 `

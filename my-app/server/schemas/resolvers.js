@@ -18,7 +18,7 @@ const resolvers = {
       return User.find({}).populate('karmaPosts').populate('karmaHelping');
     },
     allKarmaPosts: async (parent, args) => {
-      return KarmaPost.find().populate('karmaHelpers');
+      return KarmaPost.find({}).populate('karmaHelpers');
     },
     karmaPosts: async (parent, {username}) => {
       return KarmaPost.find({ username }).populate('karmaHelpers');

@@ -1,5 +1,5 @@
 import React from 'react'
-import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostFooter, } from './Post.styled'
+import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage,  PostBottom, PostFooter  } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -24,7 +24,10 @@ export default function Post({data}) {
                 </PostMessage>
 
                 {/* Button to add karmaHelper to Post */}
+                <PostBottom>
                 <PrettyButton>Help {data.postAuthor}</PrettyButton>
+                <p>address</p>
+                </PostBottom>
 
             </PostBody>
         </PostContainer>

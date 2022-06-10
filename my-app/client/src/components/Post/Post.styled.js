@@ -59,6 +59,11 @@ export const PostMessage = styled.div`
         margin: 0;
     }
 `
+export const PostBottom = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
 
 export const PostFooter = styled.div`
     background-color: ${({ theme }) => theme.colors.lightgrey };

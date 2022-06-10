@@ -21,6 +21,7 @@ export const CreatePostButton = styled(AddButton)`
     border-radius:30px;
     padding: .5rem;
     font-size: 16px;
+    height: fit-content;
 
     &:hover {
         color: ${({ theme }) => theme.colors.darkteal};
