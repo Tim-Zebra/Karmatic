@@ -13,39 +13,37 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets the Karma Post
 import { GET_ME } from '../../utils/queries';
 
-// Gets Mutations
-// Allow for helpers
-
-const data1 = [
-{
-    postTitle: 'Pirate Bay',
-    postDescription: `Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl.`,
-    postAuthor: 'Mary',
-    postValue: 100,
-    duration: 1,
-    difficulty: 'Medium',
-    createdAt: 'June 2, 2022',
-    karmaHelpers: [
-        {
-            helperUsername: 'Bob'
-        }
-    ]
-},
-{
-    postTitle: 'Pirating is Good for the Ocean',
-    postDescription: `Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee snow crow's nest rutters. Fluke jib scourge of the seven seas boatswain schooner gaff booty Jack Tar transom spirits.`,
-    postAuthor: 'Bob',
-    postValue: 200,
-    duration: 2,
-    difficulty: 'Hard',
-    createdAt: 'June 2, 2022',
-    // karmaHelpers: [
-    //     {
-    //         helperUsername: 'Joe'
-    //     }
-    // ]
-}
-]
+// Test Data
+// const data1 = [
+// {
+//     postTitle: 'Pirate Bay',
+//     postDescription: `Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl.`,
+//     postAuthor: 'Mary',
+//     postValue: 100,
+//     duration: 1,
+//     difficulty: 'Medium',
+//     createdAt: 'June 2, 2022',
+//     karmaHelpers: [
+//         {
+//             helperUsername: 'Bob'
+//         }
+//     ]
+// },
+// {
+//     postTitle: 'Pirating is Good for the Ocean',
+//     postDescription: `Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee snow crow's nest rutters. Fluke jib scourge of the seven seas boatswain schooner gaff booty Jack Tar transom spirits.`,
+//     postAuthor: 'Bob',
+//     postValue: 200,
+//     duration: 2,
+//     difficulty: 'Hard',
+//     createdAt: 'June 2, 2022',
+//     // karmaHelpers: [
+//     //     {
+//     //         helperUsername: 'Joe'
+//     //     }
+//     // ]
+// }
+// ]
 
 export default function ColumnTwo() {
     // Queries Karma Post data
