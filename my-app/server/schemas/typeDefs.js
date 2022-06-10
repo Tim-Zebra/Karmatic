@@ -12,6 +12,7 @@ const typeDefs = gql`
 
   type KarmaPost {
     _id: ID!
+    postAuthor: String!
     postTitle: String!
     postDescription: String!
     postValue: Int!

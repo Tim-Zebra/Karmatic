@@ -3,7 +3,6 @@ import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeade
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import { useMutation, useQuery } from '@apollo/client';
 
-
 export default function Post({data}) {
 
     return (
@@ -26,7 +25,7 @@ export default function Post({data}) {
                 {/* Button to add karmaHelper to Post */}
                 <PostBottom>
                 <PrettyButton>Help {data.postAuthor}</PrettyButton>
-                <p>address</p>
+                <p>{data.address}</p>
                 </PostBottom>
 
             </PostBody>
