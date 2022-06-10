@@ -57,6 +57,10 @@ export const PostHeader = styled.div`
         font-family: ${({ theme }) => theme.fonts.otherfont };
     }
 
+    h3 {
+        font-family: ${({ theme }) => theme.fonts.otherfont };
+    }
+
 `
 
 export const PostMessage = styled.div`

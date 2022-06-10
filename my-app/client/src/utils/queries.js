@@ -150,6 +150,7 @@ export const GET_ALL_KARMAPOSTS = gql`
 query GET_ALL_KARMAPOSTS {
   allKarmaPosts {
     _id
+    postAuthor
     postTitle
     postDescription
     postValue

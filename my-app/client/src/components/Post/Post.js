@@ -5,7 +5,6 @@ import { useMutation, useQuery } from '@apollo/client';
 import EditPostModal from '../Modals/EditPostModal'
 
 
-
 export default function Post({data}) {
 
     const [isOpen, setIsOpen] = useState(false);
