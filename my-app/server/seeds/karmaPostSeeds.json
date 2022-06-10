@@ -30,6 +30,20 @@
           "helperUsername": "billycwong19"
         }
     ]
-  }
+  },
+  {
+    "postTitle": "UI/UX TEST",
+    "postDescription": "I do things with UI/UX cause I'm pro. Help me test my Front-end",
+    "postAuthor":"billycwong19",
+    "postValue": 100,
+    "duration": 2,
+    "difficulty": 3,
+    "address": "The Matrix",
+    "karmaHelpers": [
+        {
+          "helperUsername": "Stiltskinner"
+        }
+      ]
+  },
 ]
 
