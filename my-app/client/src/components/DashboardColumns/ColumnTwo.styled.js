@@ -44,7 +44,7 @@ export const ActivityHeader = styled.div`
     
     @media only screen and (min-width: 992px) {
         
-        margin-top: 260px;
+        margin-top: 240px;
     }
     
 `
@@ -53,7 +53,7 @@ export const FeedContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.teal };
     width: 99%;
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-end;
