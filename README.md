@@ -15,7 +15,7 @@ describe <br /> <br />
   **[Developers](#developers)** <br />
 
 ## How to Use:
-* 
+* dateFormat.js obtained from UTA bookcamp #21-MERN
 * 
 
 ## Application Demos:
