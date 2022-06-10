@@ -15,7 +15,7 @@ export default function ProfileActivityCard() {
     const { loading, data } = useQuery(GET_ME);
 
     const userData = data?.me || {};
-    console.log(userData)
+
     // Returns null if userdata is not present
     if (!userData) {
         return null;

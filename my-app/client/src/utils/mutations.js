@@ -41,4 +41,14 @@ mutation CreatePost($username: String!, $postTitle: String!, $postDescription: S
     createdAt
   }
 }
-`
+`;
+
+// Add the logged in user as a helper
+export const ADD_HELPER = gql`
+mutation addHelper($karmaPostId: ID!) {
+  addHelper(karmaPostId: $karmaPostId) {
+    _id
+  }
+}
+`;
+

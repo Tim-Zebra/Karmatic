@@ -1,13 +1,63 @@
 import React, { useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
-import { useMutation, useQuery } from '@apollo/client';
+
 import EditPostModal from '../Modals/EditPostModal'
 
+// Imports Authorization
+import Auth from '../../utils/auth';
 
-export default function Post({ data }) {
+// Imports mutations and queries
+import { useQuery, useMutation } from '@apollo/client';
+// Gets Queries
+import { GET_ME } from '../../utils/queries';
+// Gets Mutations
+import { ADD_HELPER } from '../../utils/mutations'
 
+export default function Post({data}) {
+    console.log('DATA from previous', data);
+    // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
+    const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
+    // Finds length of Karma
+    let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
+
+    // Renders Karma Helpers
+    const renderKarmaHelpers = () => {
+        return(
+            <p>with:
+                {data.karmaHelpers.map((karmaHelper, index) => {
+                    // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
+                    if(index !== lengthOfKarmaHelpersArray-1) {
+                        return (` ${karmaHelper.helperUsername},`);
+                    }
+                    else {
+                        return (` ${karmaHelper.helperUsername}`);
+                    }
+                })}
+            </p>
+        )
+    };
+
+    // Adds logged in user to karmapost as helper
+    const addHelperToPost = async (karmaPostId) => {
+        // Checks login status
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        // Adds User to post and adds post to User's karmaHelping array
+        try {
+            await addMeAsHelper({
+                variables: {karmaPostId: karmaPostId }
+            });
+
+          } catch (err) {
+            console.error(err);
+          }
+    }
 
     return (
         <PostOutterContainer>
@@ -28,11 +78,11 @@ export default function Post({ data }) {
                         {data.postDescription}
                     </PostMessage>
 
-                    {/* Button to add karmaHelper to Post */}
-                    <PostBottom>
-                        <p>{data.address}</p>
-                        <PrettyButton>Help {data.postAuthor}</PrettyButton>
-                    </PostBottom>
+                {/* Button to add karmaHelper to Post */}
+                <PostBottom>
+                <p>{data.address}</p>
+                <PrettyButton onClick={() => addHelperToPost(data._id)}>Help {data.postAuthor}</PrettyButton>
+                </PostBottom>
 
                 </PostBody>
             </PostContainer>
@@ -42,7 +92,7 @@ export default function Post({ data }) {
             {data.karmaHelpers ?
                 <PostFooter>
                     <button>In Progress</button>
-                    <p>with {data.karmaHelpers.helperUsername}</p>
+                    {renderKarmaHelpers()}
                     <div>
                         <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
                         {data.postValue}

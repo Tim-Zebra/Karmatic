@@ -24,7 +24,7 @@ export default function ColumnThree() {
     const { loading, data } = useQuery(GET_ME);
 
     const karmaPosts = data?.me.karmaPosts || [];
-    console.log(karmaPosts)
+
     if (!karmaPosts) {
         return null;
     }

@@ -36,7 +36,6 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { username, password }) => {
-      console.log('LOGIN HAPPENED');
       const user = await User.findOne({ username });
 
       if (!user) {
@@ -103,35 +102,31 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { username: context.user.username },
-          { $pull: { karmaPosts: karmaPost.id } },
+          { $pull: { karmaPosts: karmaPost._id } },
           { new: true }
         );
         return karmaPost;
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
-    deletePost: async (parent, { _id }) => {
-      if (context.user) {
-        const karmaPost = await KarmaPost.findOneAndDelete({
-          _id: _id
-        },
-        );
+    addHelper: async (parent, { karmaPostId }, context) => {
+      // Checks if the context is a user
+      if(context.user) {
+        // Updates username in KarmaPost's karmaHelpers array
+        const karmaPost = await KarmaPost.findOneAndUpdate(
+          { _id: karmaPostId },
+          { $addToSet: { karmaHelpers: {helperUsername: context.user.username} } },
+          { new: true })
 
-        await User.findOneAndUpdate(
-          { username: context.user.username },
-          { $pull: { karmaPosts: karmaPost.id } },
-          { new: true }
-        );
-        return karmaPost;
-      }
-      throw new AuthenticationError('You need to be logged in!')
-    },
-    addHelper: async (parent, { _id, helperUsername }) => {
-      return KarmaPost.findOneAndUpdate(
-        { _id },
-        { $addToSet: { karmaHelpers: { helperUsername } } },
-        { new: true }
-      )
+        // Updates User's karmaHelping array
+        const userUpdate = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { karmaHelping: karmaPost._id } },
+          { new: true });
+          return;
+      };
+        
+      throw new AuthenticationError('You are not logged in!');
     },
   },
 };

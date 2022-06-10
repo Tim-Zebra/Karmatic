@@ -13,7 +13,6 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets the Karma Post
 import { GET_ALL_KARMAPOSTS } from '../../utils/queries';
 
-
 export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
