@@ -28,6 +28,13 @@ export default function PostForm() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
+                <input
+                    type='text'
+                    maxLength={50}
+                    placeholder='Address'
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
             </PostTitleContainer>
             <PostTextArea
                 maxLength={140}
@@ -37,16 +44,6 @@ export default function PostForm() {
                 onChange={(e) => setDescription(e.target.value)}
 
             />
-            <PostTitleContainer>
-                <input
-                    type='text'
-                    maxLength={50}
-                    placeholder='address'
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-
-                />
-            </PostTitleContainer>
             <PostFormOptions>
                 <label>Difficulty:</label>
                 <select
