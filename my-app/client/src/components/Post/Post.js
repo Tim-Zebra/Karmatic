@@ -12,8 +12,7 @@ import { useQuery, useMutation } from '@apollo/client';
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
 // Gets Mutations
-import { ADD_HELPER } from '../../utils/mutations'
-import { DELETE_POST } from "../../utils/mutations";
+import { ADD_HELPER, DELETE_POST } from '../../utils/mutations'
 
 export default function Post({ karmaPostData }) {
     // Determines if the Modal for edit post should open
