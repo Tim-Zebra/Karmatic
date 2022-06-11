@@ -92,6 +92,7 @@ const resolvers = {
       const userposts = context.user.karmaPosts;
       if (userposts.includes(_id)) {
         const karmaPost = await KarmaPost.findOneAndDelete({
+<<<<<<< HEAD
           _id: _id
         },
         );
@@ -102,6 +103,24 @@ const resolvers = {
           { new: true }
         );
         return karmaPost;
+=======
+          _id: karmaPostId
+        });
+  
+        const updateAuthor = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { karmaPosts: karmaPost._id } },
+          { new: true });
+
+        karmaPost.karmaHelpers.map(async (karmaHelpers) => {
+          const updatedHelper = await User.findOneAndUpdate(
+            { username: karmaHelpers.helperUsername },
+            { $pull: { karmaHelping: karmaPost._id } },
+            { new: true });
+        });
+
+        return;
+>>>>>>> main
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },
