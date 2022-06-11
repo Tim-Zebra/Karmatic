@@ -20,8 +20,8 @@ export default function Post({ karmaPostData }) {
 
 
     // Sets Mutation function
-    const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
-    const [deletePost, { post }] = useMutation(DELETE_POST);
+    const [addMeAsHelper] = useMutation(ADD_HELPER);
+    const [deletePost] = useMutation(DELETE_POST);
 
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
@@ -113,13 +113,9 @@ export default function Post({ karmaPostData }) {
 
         console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
         try {
-            console.log(karmaPostData._id)
-            console.log(userData.username)
+            console.log(typeof karmaPostData._id)
             await deletePost({
-                variables: {
-                    _id: karmaPostData._id,
-                    username: userData.username
-                },
+                variables: { karmaPostId: karmaPostData._id, },
             });
             console.log('deleted')
             setIsDeleted(true);
