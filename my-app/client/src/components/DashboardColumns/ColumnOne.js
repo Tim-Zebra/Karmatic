@@ -28,6 +28,7 @@ export default function ColumnOne({ handlePageChange }) {
         return <h2>LOADING...</h2>;
     }
     
+    // If token is not matched in DB, and DB is not querying, then assumed token is expired/no longer valid in DB and destroys token.
     if (!loading && data?.me === null) {
         Auth.logout();
     }
