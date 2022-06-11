@@ -37,6 +37,11 @@ const karmaPostSchema = new Schema({
     type: String,
     required: true,
   },
+  complete: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
     createdAt: {
     type: Date,
     default: Date.now,
