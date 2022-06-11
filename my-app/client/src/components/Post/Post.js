@@ -115,12 +115,8 @@ export default function Post({ karmaPostData }) {
         console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
         try {
             console.log(typeof karmaPostData._id)
-            console.log(typeof userData.username)
             await deletePost({
-                variables: {
-                    id: karmaPostData._id,
-                    username: userData.username
-                },
+                variables: { karmaPostId: karmaPostData._id, },
             });
             console.log('deleted')
             setIsDeleted(true);

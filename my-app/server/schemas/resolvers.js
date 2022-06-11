@@ -92,20 +92,21 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!')
     },
     // This creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be deleted is included in the array of this user's karmaposts, it deletes the post and updates the user to remove that object id from the user karmaposts array, otherwise it throws an error
-    deletePost: async (parent, { _id, username }) => {
-      console.log('resolvers delete')
-      const karmaPost = await KarmaPost.findOneAndDelete({
-        _id: _id
-      },
-      );
+    deletePost: async (parent, { karmaPostId }, context ) => {
+      if(context.user) {
+        const karmaPost = await KarmaPost.findOneAndDelete({
+          _id: karmaPostId
+        });
+  
+        const updatedAuthor = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { karmaPost: karmaPost._id } },
+          { new: true });
 
-      await User.findOneAndUpdate(
-        { username: username },
-        { $pull: { karmaPosts: karmaPost._id } },
-        { new: true }
-      );
-      return karmaPost;
+        return;
+      }
 
+      throw new AuthenticationError('You are not logged in!');
     },
     addHelper: async (parent, { karmaPostId }, context) => {
       // Checks if the context is a user
