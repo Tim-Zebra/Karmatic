@@ -54,7 +54,7 @@ export default function ColumnThree() {
             {recentKarmaReceivedArray.map((recentPost) =>
                 <RecentKarmaReceived karmaPostData={recentPost} />
             )}
-            <h3>Recent Karma Helping</h3>
+            <h3>Recent Karma Helping:</h3>
             {recentKarmaHelpingArray.map((recentPost) =>
                 <RecentKarmaHelping karmaPostData={recentPost} />
             )}

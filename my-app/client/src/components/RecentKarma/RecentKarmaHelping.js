@@ -5,17 +5,14 @@ export default function RecentKarmaHelping({ karmaPostData }) {
 console.log('Helping Karma Post', karmaPostData);
     return (
         <RecentKarmaBox>
-            <img src='./assets/images/karma_coin.png' height='44px' alt='karma coin' />
             <RecentContainer>
-                <ExchangeContainer>
-                    <ExchangeBetween>
-                        <h4>received</h4>
-                    </ExchangeBetween>
-                    <ExchangeBetween>
-                        <h4>from</h4>
-                        <p>{karmaPostData.postAuthor}</p>
-                    </ExchangeBetween>
-                </ExchangeContainer>
+                <div>
+                    <h1>Helping out: {karmaPostData.postAuthor}</h1>
+                    <p>postCONTENT</p>
+                </div>
+                <div>
+
+                </div>
                 <KarmaCoins>
                     <h1>{karmaPostData.postValue}</h1>
                     <p>Karma Coins</p>
