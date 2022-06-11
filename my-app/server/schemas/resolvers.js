@@ -7,7 +7,8 @@ const resolvers = {
     // Finds user based off the jwt context
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelping');
+        const me = await User.findOne({ _id: context.user._id }).populate('karmaPosts').populate('karmaHelping');
+        return me;
       }
       throw new AuthenticationError('You are not logged in!');
     },
