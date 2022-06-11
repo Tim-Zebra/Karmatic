@@ -1,6 +1,6 @@
 import React from "react";
 import { CardContainer } from "./ProfileActivityCard.styled";
-
+import ProfileHelpingCard from "./ProfileHelping";
 // Allows use for both queries and mutations from our utils folder
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -35,15 +35,16 @@ export default function ProfileActivityCard() {
     }
 
 
-    if (userData.username === userData.karmaPosts[i].postAuthor) {
-        return (userData.karmaPosts.map(karmaPosts => (
-            <CardContainer>
-                <img src='./assets/images/k_logo.png' alt='k logo' />
-                You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue} karma points. {karmaPosts.karmaHelpers.map(karmaHelpers => (
-                    karmaHelpers.helperUsername + " " + "has signed up to help."
-                ))}
-                <button onClick={() => deleteKarmaPost(karmaPosts._id)}>Delete Post</button>
-            </CardContainer>))
-        )
-    }
+
+    return (userData.karmaPosts.map(karmaPosts => (
+        <CardContainer>
+            <img src='./assets/images/k_logo.png' alt='k logo' />
+            You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue} karma points. {karmaPosts.karmaHelpers.map(karmaHelpers => (
+                karmaHelpers.helperUsername + " " + "has signed up to help."
+            ))}
+            <button onClick={() => deleteKarmaPost(karmaPosts._id)}>Delete Post</button>
+        </CardContainer>))
+    )
+
+
 }
