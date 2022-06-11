@@ -19,6 +19,7 @@ const typeDefs = gql`
     duration: Int!
     difficulty: String!
     address: String!
+    complete: Boolean!
     createdAt:String
     karmaHelpers: [KarmaHelper]
   }

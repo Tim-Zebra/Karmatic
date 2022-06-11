@@ -23,6 +23,11 @@ export default function Post({karmaPostData}) {
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
 
+    // Creates hook to mark off completion
+    const [isComplete, setIsComplete] = useState(karmaPostData.complete);
+
+    console.log('This happened', isComplete);
+    console.log('This happened', karmaPostData);
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
