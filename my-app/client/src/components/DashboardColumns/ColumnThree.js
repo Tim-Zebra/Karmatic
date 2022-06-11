@@ -23,14 +23,21 @@ export default function ColumnThree() {
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
 
-    const karmaPosts = data?.me.karmaPosts || [];
+    const meData = data?.me || [];
 
-    if (!karmaPosts) {
+    if (!meData) {
         return null;
     }
 
-    const meData = data?.me;
+    // Displays differently during loading
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
+
+    const karmaPosts = meData?.karmaPosts;
+    const karmaHelping = meData?.karmaHelping;
     console.log('This happened', meData);
+    console.log('This happened', karmaHelping);
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 4;
     const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
@@ -38,15 +45,8 @@ export default function ColumnThree() {
     // Filters Karma posts from the up to 4 hours in the past from the current date.
     const recentKarmaPosts = karmaPosts.filter((post) => post.createdAt > pastDate);
 
-    // Displays differently during loading
-    if (loading) {
-        return <h2>LOADING...</h2>;
-    }
-    console.log('KarmaMap', recentKarmaPosts.map((recentPost) => {
-        console.log('recentPostMap Object', recentPost);
-    }
 
-));
+
     return (
         <ColumnContainer>
         {/* Recent Karma Received */}
