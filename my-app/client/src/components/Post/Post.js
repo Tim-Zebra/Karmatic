@@ -21,7 +21,21 @@ export default function Post({data}) {
     // Sets status if already helping
     const [isHelping, setIsHelping] = useState(false);
 
+    // Querys username and karma
+    // Sets hooks for data loading
+    const { loading, data } = useQuery(GET_ME);
 
+    const userData = data?.me || {};
+
+    // Returns null if userdata is not present
+    if (!userData) {
+        return null;
+    }
+
+    // Displays differently during loading
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
 
     // Sets Mutation function
     const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
@@ -88,9 +102,13 @@ export default function Post({data}) {
                 {/* Button to add karmaHelper to Post */}
                 <PostBottom>
                 <p>{data.address}</p>
-                <PrettyButton
-                disabled={data.karmaHelpers?.some((author) => author === useContext.userID.username)}
-                onClick={() => addHelperToPost(data._id)}>Help {data.postAuthor}</PrettyButton>
+                    <PrettyButton
+                    disabled={data.karmaHelpers?.some((author) => author === useContext.userID.username)}
+                    onClick={() => addHelperToPost(data._id)}>
+                        {data.karmaHelpers?.some((author) => author === useContext.userID.username)
+                        ? 'Already helping!'
+                        : `Help ${data.postAuthor}`}
+                    </PrettyButton>
                 </PostBottom>
 
                 </PostBody>
