@@ -44,15 +44,15 @@ export default function ColumnThree() {
     const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
 
     // Filters Karma posts from the up to 4 hours in the past from the current date.
-    const recentKarmaPosts = karmaPosts.filter((post) => post > pastDate);
+    const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
 
-    console.log('RECENT Karma Posts', recentKarmaPosts);
+    console.log('RECENT Karma Posts', recentKarmaPostsArray);
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelping = karmaHelping.filter((post) => post > pastDate);
-    const recentKarmaReceived = recentKarmaHelping.filter((post) => post === true);
+    const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
+    const recentKarmaReceivedArray = recentKarmaHelping.filter((post) => post.complete === true);
 
-    console.log('RECENT Karma Helping', recentKarmaHelping);
-    console.log('RECEIVED KARMA',   recentKarmaReceived);
+    console.log('RECENT Karma Helping', recentKarmaHelpingArray);
+    console.log('RECEIVED KARMA',   recentKarmaReceivedArray);
     return (
         <ColumnContainer>
         {/* Recent Karma Received */}
