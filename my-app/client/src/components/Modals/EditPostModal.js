@@ -2,7 +2,7 @@ import React from "react";
 import EditPostForm from '../Forms/EditPostForm'
 import { ModalBackground, ModalCloseButton, ModalContainer } from './Modal.styled';
 
-export default function CreatePostModal({setIsOpen}){
+export default function CreatePostModal({setIsOpen, karmaPostData}){
  
     return (
         <ModalBackground>
@@ -13,7 +13,7 @@ export default function CreatePostModal({setIsOpen}){
                         <img src="./assets/images/cancel.png" alt="cancel x" />
                     </ModalCloseButton>
                 </div>
-            <EditPostForm/>
+            <EditPostForm karmaPostData={karmaPostData}/>
             </ModalContainer>
         </ModalBackground>
     )
