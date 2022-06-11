@@ -14,6 +14,10 @@ import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER } from '../../utils/mutations'
 
+// Brings in helper functions
+const calcPostValue = require('../../utils/helpers');
+
+
 export default function Post({karmaPostData}) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +96,25 @@ export default function Post({karmaPostData}) {
     // Completes Karma Post...In-progress
     const completeKarmaPost = async () => {
         console.log('I AM THE COMPLETE, AND GRANT UPON YOU KARMA!');
-        
+        try {
+            const currentPostValue = await calcPostValue(difficulty, duration);
+            await createPost({
+                variables: {
+                    username: username,
+                    postTitle: postTitle,
+                    postDescription: postDescription,
+                    postValue: currentPostValue,
+                    duration: parseInt(duration),
+                    difficulty: difficulty,
+                    address: address
+                }
+            });
+            setTitle('');
+            setDescription('');
+        } catch (err) {
+            console.error(err);
+        }
+
     }
 
     // Completes Karma Post...In-progress
