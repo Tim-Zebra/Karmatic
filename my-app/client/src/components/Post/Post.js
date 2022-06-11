@@ -25,9 +25,7 @@ export default function Post({karmaPostData}) {
 
     // Creates hook to mark off completion
     const [isComplete, setIsComplete] = useState(karmaPostData.complete);
-
-    console.log('This happened', isComplete);
-    console.log('This happened', karmaPostData);
+    
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
