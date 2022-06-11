@@ -41,7 +41,6 @@ export default function PostForm() {
             setTitle('');
             setDescription('');
             const updatedUserKarma = userData.karma - currentPostValue;
-            console.log(updatedUserKarma)
             await updateKarma({
                 variables: {
                     username: username,
