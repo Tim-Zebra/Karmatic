@@ -36,17 +36,23 @@ export default function ColumnThree() {
 
     const karmaPosts = meData?.karmaPosts;
     const karmaHelping = meData?.karmaHelping;
-    console.log('This happened', meData);
-    console.log('This happened', karmaHelping);
+    console.log('MEDATA:', meData);
+    console.log('KARMAHELPING', karmaHelping);
+    console.log('KARMAPOSTS', karmaPosts);
     // hours variable sets how far in the past the dates will be filtered.
-    const hours = 4;
+    const hours = 8;
     const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
 
     // Filters Karma posts from the up to 4 hours in the past from the current date.
-    const recentKarmaPosts = karmaPosts.filter((post) => post.createdAt > pastDate);
+    const recentKarmaPosts = karmaPosts.filter((post) => post > pastDate);
 
+    console.log('RECENT Karma Posts', recentKarmaPosts);
+    // Filters a new array based on recent karma received and recent karmaPosts helping
+    const recentKarmaHelping = karmaHelping.filter((post) => post > pastDate);
+    const recentKarmaReceived = recentKarmaHelping.filter((post) => post === true);
 
-
+    console.log('RECENT Karma Helping', recentKarmaHelping);
+ console.log('RECEIVED KARMA',   recentKarmaReceived);
     return (
         <ColumnContainer>
         {/* Recent Karma Received */}
@@ -54,7 +60,7 @@ export default function ColumnThree() {
             {recentKarmaPosts.map((recentPost) =>
                 <RecentKarmaReceived data={recentPost} />
             )}
-            <h3>Recent Karma Received</h3>
+            <h3>Recent Karma Helping</h3>
             {recentKarmaPosts.map((recentPost) =>
             <RecentKarmaReceived data={recentPost} />
 )}

@@ -19,6 +19,7 @@ query Me {
       duration
       difficulty
       address
+      complete
       createdAt
       karmaHelpers {
         _id
@@ -31,6 +32,8 @@ query Me {
       postTitle
       postValue
       address
+      complete
+      createdAt
     }
   }
 }
