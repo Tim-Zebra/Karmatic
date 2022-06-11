@@ -86,6 +86,16 @@ export default function Post({karmaPostData}) {
           }
     }
 
+    // Completes Karma Post...In-progress
+    const completeKarmaPost = async () => {
+        console.log('I AM THE COMPLETE, AND GRANT UPON YOU KARMA!');
+    }
+
+    // Completes Karma Post...In-progress
+    const deleteKarmaPost = async () => {
+        console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
+    }
+
     return (
         <PostOutterContainer>
             <PostContainer>
@@ -108,7 +118,7 @@ export default function Post({karmaPostData}) {
                 {/* Address and button line */}
                 <PostBottom>
                 <p>{karmaPostData.address}</p>
-                    {/* Button to add karmaHelper to Post or Buttons to delete/Approve*/}
+                    {/* Button to add karmaHelper if user is not the post author*/}
                     {userData.username !== karmaPostData.postAuthor && 
                         <PrettyButton
                         disabled={helpersArray?.some((author) => author === userData.username)}
@@ -117,6 +127,21 @@ export default function Post({karmaPostData}) {
                             ? 'Already helping!'
                             : `Help ${karmaPostData.postAuthor}`}
                         </PrettyButton>
+                    }
+                    {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
+                    {userData.username === karmaPostData.postAuthor && 
+                    // React requires parent child relationship. Must be wrapped in div or rendered in separate boolean statements
+                        <div>
+                                <PrettyButton
+                                onClick={() => completeKarmaPost()}>
+
+                                </PrettyButton>
+                                {/* // Delete Karma Post */}
+                                <PrettyButton
+                                onClick={() => deleteKarmaPost()}>
+
+                                </PrettyButton>
+                        </div>
                     }
   
                 </PostBottom>
