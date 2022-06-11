@@ -10,11 +10,17 @@
     "karmaHelpers": [
         {
           "helperUsername": "Stiltskinner"
+        },
+        {
+          "helperUsername": "cyconutz"
+        },
+        {
+          "helperUsername": "billycwong19"
         }
       ]
   },
   {
-    "postTitle": "Bring out your dead!",
+    "postTitle": "post dummy1",
     "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
     "postAuthor":"Tim-Zebra",
     "postValue": 200,
@@ -24,6 +30,52 @@
     "karmaHelpers": [
         {
           "helperUsername": "Stiltskinner"
+        },
+        {
+          "helperUsername": "cyconutz"
+        },
+        {
+          "helperUsername": "billycwong19"
+        }
+      ]
+  },
+  {
+    "postTitle": "post dummy3",
+    "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
+    "postAuthor":"Tim-Zebra",
+    "postValue": 200,
+    "duration": 1,
+    "difficulty": 2,
+    "address": "123 Camelot Trail",
+    "karmaHelpers": [
+        {
+          "helperUsername": "Stiltskinner"
+        },
+        {
+          "helperUsername": "cyconutz"
+        },
+        {
+          "helperUsername": "billycwong19"
+        }
+      ]
+  },
+  {
+    "postTitle": "post dummy2",
+    "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
+    "postAuthor":"Tim-Zebra",
+    "postValue": 200,
+    "duration": 1,
+    "difficulty": 2,
+    "address": "123 Camelot Trail",
+    "karmaHelpers": [
+        {
+          "helperUsername": "Stiltskinner"
+        },
+        {
+          "helperUsername": "cyconutz"
+        },
+        {
+          "helperUsername": "billycwong19"
         }
       ]
   },
@@ -38,7 +90,6 @@
     "karmaHelpers": [
         {
           "helperUsername": "cyconutz"
-          
         },
         {
           "helperUsername": "billycwong19"
