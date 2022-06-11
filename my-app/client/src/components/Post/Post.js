@@ -130,8 +130,11 @@ export default function Post({ karmaPostData }) {
                     <PostContainer>
                         <ImageContainer>
                             <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                            {userData.username == karmaPostData.postAuthor &&
                             <EditButton  onClick={() => setIsOpen(true)}>edit</EditButton>
+                            }   
                             {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
+                            
                         </ImageContainer>
                         <PostBody>
 
