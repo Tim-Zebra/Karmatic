@@ -14,7 +14,7 @@ import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER } from '../../utils/mutations'
 
-export default function Post({karmaPostData , refreshCard}) {
+export default function Post({karmaPostData}) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
 

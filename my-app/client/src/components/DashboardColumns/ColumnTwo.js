@@ -31,9 +31,6 @@ export default function ColumnTwo() {
         return <h2>LOADING...</h2>;
     }
 
-    // Function to refresh page
-    const refreshCard = () => setRefresh(!refresh);
-
     return (
         <ColumnContainer>
             <FeedHeaderContainer>
@@ -47,7 +44,7 @@ export default function ColumnTwo() {
             <FeedContainer>
 
                 {karmaPosts.map((post) =>
-                    <Post karmaPostData={post} key={post.id} refreshCard={refreshCard}/>
+                    <Post karmaPostData={post} key={post.id}/>
                 )}
 
             </FeedContainer>
