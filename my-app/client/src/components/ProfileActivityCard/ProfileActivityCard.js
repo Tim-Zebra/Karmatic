@@ -6,20 +6,28 @@ import { useMutation, useQuery } from '@apollo/client';
 
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
-import { DELETE_POST } from "../../utils/mutations";
+import { DELETE_POST, CHANGE_KARMA } from "../../utils/mutations";
 
 export default function ProfileActivityCard() {
     const [deletePost, { error, post }] = useMutation(DELETE_POST);
     const { loading, data } = useQuery(GET_ME);
     let i = 0;
     const userData = data?.me || {};
+    const [refundKarma] = useMutation(CHANGE_KARMA);
 
-    const deleteKarmaPost = async (data) => {
-        console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
+    const deleteKarmaPost = async (userData, karmaPosts) => {
         try {
+            console.log(userData)
             await deletePost({
-                variables: { karmaPostId: data, },
+                variables: { karmaPostId: karmaPosts._id, },
             });
+            const refundedUserKarma = userData.karma + karmaPosts.postValue;
+            await refundKarma({
+                variables: {
+                    username: userData.username,
+                    karma: refundedUserKarma,
+                }
+            })
         } catch (err) {
             console.error(err);
         }
@@ -42,7 +50,7 @@ export default function ProfileActivityCard() {
             You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue} karma points. {karmaPosts.karmaHelpers.map(karmaHelpers => (
                 karmaHelpers.helperUsername + " " + "has signed up to help."
             ))}
-            <button onClick={() => deleteKarmaPost(karmaPosts._id)}>Delete Post</button>
+            <button onClick={() => deleteKarmaPost(userData, karmaPosts)}>Delete Post</button>
         </CardContainer>))
     )
 
