@@ -115,84 +115,87 @@ export default function Post({karmaPostData}) {
 
     return (
         <PostOutterContainer>
-            <PostContainer>
-                <ImageContainer>
-                    <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                    <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
-                    {isOpen && <EditPostModal setIsOpen={setIsOpen} />}
-                </ImageContainer>
-                <PostBody>
+            {!isDeleted &&
+                <>
+                    <PostContainer>
+                        <ImageContainer>
+                            <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                            <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
+                            {isOpen && <EditPostModal setIsOpen={setIsOpen} />}
+                        </ImageContainer>
+                        <PostBody>
 
-                    <PostHeader>
-                        <h3>{karmaPostData.postAuthor}</h3>
-                        <p>{karmaPostData.createdAt}</p>
-                    </PostHeader>
-                    <PostMessage>
-                        <p>{karmaPostData.postTitle}</p>
-                        {karmaPostData.postDescription}
-                    </PostMessage>
+                            <PostHeader>
+                                <h3>{karmaPostData.postAuthor}</h3>
+                                <p>{karmaPostData.createdAt}</p>
+                            </PostHeader>
+                            <PostMessage>
+                                <p>{karmaPostData.postTitle}</p>
+                                {karmaPostData.postDescription}
+                            </PostMessage>
 
-                {/* Address and button line */}
-                <PostBottom>
-                <p>{karmaPostData.address}</p>
-                    {/* Button to add karmaHelper if user is not the post author*/}
-                    {userData.username !== karmaPostData.postAuthor && !isComplete &&
-                        <PrettyButton
-                        disabled={helpersArray?.some((author) => author === userData.username)}
-                        onClick={() => addHelperToPost(karmaPostData._id)}>
-                            {helpersArray?.some((author) => author === userData.username)
-                            ? 'Already helping!'
-                            : `Help ${karmaPostData.postAuthor}`}
-                        </PrettyButton>
-                    }
-                    {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
-                    {userData.username === karmaPostData.postAuthor && !isComplete &&
-                    // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
-                        <div  style={{"margin-right": "50px"}}>
-                                <button
-                                style={{"margin-left": "20px", "margin-right": "20px"}}
-                                onClick={() => completeKarmaPost()}>
-                                    &#10004;
-                                </button>
+                        {/* Address and button line */}
+                        <PostBottom>
+                        <p>{karmaPostData.address}</p>
+                            {/* Button to add karmaHelper if user is not the post author*/}
+                            {userData.username !== karmaPostData.postAuthor && !isComplete &&
+                                <PrettyButton
+                                disabled={helpersArray?.some((author) => author === userData.username)}
+                                onClick={() => addHelperToPost(karmaPostData._id)}>
+                                    {helpersArray?.some((author) => author === userData.username)
+                                    ? 'Already helping!'
+                                    : `Help ${karmaPostData.postAuthor}`}
+                                </PrettyButton>
+                            }
+                            {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
+                            {userData.username === karmaPostData.postAuthor && !isComplete &&
+                            // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
+                                <div  style={{"margin-right": "50px"}}>
+                                        <button
+                                        style={{"margin-left": "20px", "margin-right": "20px"}}
+                                        onClick={() => completeKarmaPost()}>
+                                            &#10004;
+                                        </button>
 
-                                {/* // Delete Karma Post */}
-                                <button
-                                style={{"margin-left": "20px", "margin-right": "20px"}}
-                                onClick={() => deleteKarmaPost()}>
-                                    &#128148;
-                                </button>
-                        </div>
-                    }
-  
-                </PostBottom>
+                                        {/* // Delete Karma Post */}
+                                        <button
+                                        style={{"margin-left": "20px", "margin-right": "20px"}}
+                                        onClick={() => deleteKarmaPost()}>
+                                            &#128148;
+                                        </button>
+                                </div>
+                            }
+        
+                        </PostBottom>
 
-                </PostBody>
-            </PostContainer>
+                        </PostBody>
+                    </PostContainer>
 
-            {/* Checks to see if someone has been added to karmaHelpers and displays the helpers with an in progress link else it shows the stats of the post including difficulty, duration, coins */}
+                    {/* Checks to see if someone has been added to karmaHelpers and displays the helpers with an in progress link else it shows the stats of the post including difficulty, duration, coins */}
 
-            {karmaPostData.karmaHelpers ?
-                <PostFooter>
-                    <button>
-                        {isComplete? 'complete!' : 'In Progress'}
-                    </button>
-                    {renderKarmaHelpers()}
-                    <div>
-                        <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
-                        {karmaPostData.postValue}
-                    </div>
-                </PostFooter>
-                :
-                <PostFooter>
-                    <p>Estimated Duration: {karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
-                    <p>{karmaPostData.difficulty === 'Easy' ? 'Easy-peasy' : karmaPostData.difficulty === 'Medium' ? 'Medium-shmedium' : 'Quite difficult'}</p>
-                    <div>
-                        <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
-                        {karmaPostData.postValue}
-                    </div>
-                </PostFooter>
-            }
-
+                    {karmaPostData.karmaHelpers ?
+                        <PostFooter>
+                            <button>
+                                {isComplete? 'complete!' : 'In Progress'}
+                            </button>
+                            {renderKarmaHelpers()}
+                            <div>
+                                <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+                                {karmaPostData.postValue}
+                            </div>
+                        </PostFooter>
+                        :
+                        <PostFooter>
+                            <p>Estimated Duration: {karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
+                            <p>{karmaPostData.difficulty === 'Easy' ? 'Easy-peasy' : karmaPostData.difficulty === 'Medium' ? 'Medium-shmedium' : 'Quite difficult'}</p>
+                            <div>
+                                <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+                                {karmaPostData.postValue}
+                            </div>
+                        </PostFooter>
+                }
+            </>
+        }
         </PostOutterContainer>
     )
 }
