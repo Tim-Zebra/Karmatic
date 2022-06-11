@@ -44,6 +44,7 @@ query GET_USER($username: String!) {
       postValue
       duration
       difficulty
+      complete
       createdAt
       karmaHelpers {
         _id
@@ -59,6 +60,7 @@ query GET_USER($username: String!) {
       duration
       difficulty
       createdAt
+      complete
       karmaHelpers {
         _id
         helperUsername
@@ -158,6 +160,7 @@ query GET_ALL_KARMAPOSTS {
     duration
     difficulty
     address
+    complete
     createdAt
     karmaHelpers {
       _id
