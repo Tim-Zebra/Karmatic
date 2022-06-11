@@ -13,14 +13,16 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER } from '../../utils/mutations'
+import { DELETE_POST } from "../../utils/mutations";
 
-export default function Post({karmaPostData}) {
+export default function Post({ karmaPostData }) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
 
 
     // Sets Mutation function
-    const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
+    const [addMeAsHelper] = useMutation(ADD_HELPER);
+    const [deletePost] = useMutation(DELETE_POST);
 
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
@@ -49,19 +51,19 @@ export default function Post({karmaPostData}) {
     // Renders Karma Helpers
     const renderKarmaHelpers = () => {
         // Finds length of Karma
-        if(helpersArray.length === 0) {
-            return(
+        if (helpersArray.length === 0) {
+            return (
                 <p>
                     {'No one wants to help :('}
                 </p>
             )
         }
-        return(
+        return (
             <p>with:
                 {
                     helpersArray.map((karmaHelper, index) => {
                         // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
-                        if(index !== helpersArray.length-1) {
+                        if (index !== helpersArray.length - 1) {
                             return (` ${helpersArray[index]},`);
                         }
                         else {
@@ -83,14 +85,14 @@ export default function Post({karmaPostData}) {
         }
         // Adds User to post and adds post to User's karmaHelping array
         try {
-            const {data} = await addMeAsHelper({
-                variables: {karmaPostId: karmaPostId }
+            const { data } = await addMeAsHelper({
+                variables: { karmaPostId: karmaPostId }
             });
             // Adds new helper to hooked Array to refresh page
             setHelpersArray([...helpersArray, userData.username])
-          } catch (err) {
+        } catch (err) {
             console.error(err);
-          }
+        }
     }
 
     // Completes Karma Post...In-progress
@@ -106,12 +108,23 @@ export default function Post({karmaPostData}) {
         //     console.error(err);
         // }
     }
-
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
+
+
         console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
-        setIsDeleted(true);
-    }
+        try {
+            console.log(typeof karmaPostData._id)
+            await deletePost({
+                variables: { karmaPostId: karmaPostData._id, },
+            });
+            console.log('deleted')
+            setIsDeleted(true);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
 
     return (
         <PostOutterContainer>
@@ -136,36 +149,36 @@ export default function Post({karmaPostData}) {
 
                             {/* Address and button line */}
                             <PostBottom>
-                            <p>{karmaPostData.address}</p>
+                                <p>{karmaPostData.address}</p>
                                 {/* Button to add karmaHelper if user is not the post author*/}
                                 {userData.username !== karmaPostData.postAuthor && !isComplete &&
                                     <PrettyButton
-                                    disabled={helpersArray?.some((author) => author === userData.username)}
-                                    onClick={() => addHelperToPost(karmaPostData._id)}>
+                                        disabled={helpersArray?.some((author) => author === userData.username)}
+                                        onClick={() => addHelperToPost(karmaPostData._id)}>
                                         {helpersArray?.some((author) => author === userData.username)
-                                        ? 'Already helping!'
-                                        : `Help ${karmaPostData.postAuthor}`}
+                                            ? 'Already helping!'
+                                            : `Help ${karmaPostData.postAuthor}`}
                                     </PrettyButton>
                                 }
                                 {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
                                 {userData.username === karmaPostData.postAuthor && !isComplete &&
-                                // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
-                                    <div  style={{"margin-right": "50px"}}>
-                                            <button
-                                            style={{"margin-left": "20px", "margin-right": "20px"}}
+                                    // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
+                                    <div style={{ "margin-right": "50px" }}>
+                                        <button
+                                            style={{ "margin-left": "20px", "margin-right": "20px" }}
                                             onClick={() => completeKarmaPost()}>
-                                                &#10004;
-                                            </button>
+                                            &#10004;
+                                        </button>
 
-                                            {/* // Delete Karma Post */}
-                                            <button
-                                            style={{"margin-left": "20px", "margin-right": "20px"}}
+                                        {/* // Delete Karma Post */}
+                                        <button
+                                            style={{ "margin-left": "20px", "margin-right": "20px" }}
                                             onClick={() => deleteKarmaPost()}>
-                                                &#128148;
-                                            </button>
+                                            &#128148;
+                                        </button>
                                     </div>
                                 }
-            
+
                             </PostBottom>
                         </PostBody>
                     </PostContainer>
@@ -175,7 +188,7 @@ export default function Post({karmaPostData}) {
                     {karmaPostData.karmaHelpers ?
                         <PostFooter>
                             <button>
-                                {isComplete? 'complete!' : 'In Progress'}
+                                {isComplete ? 'complete!' : 'In Progress'}
                             </button>
                             {renderKarmaHelpers()}
                             <div>
@@ -192,7 +205,7 @@ export default function Post({karmaPostData}) {
                                 {karmaPostData.postValue}
                             </div>
                         </PostFooter>
-                }
+                    }
                 </>
             }
             {/* Displays if post is deleted */}
@@ -211,7 +224,7 @@ export default function Post({karmaPostData}) {
                                 <p>POST DELETED MUHAHAHAHA!</p>
                             </PostMessage>
                             <PostBottom>
-                            <p></p>
+                                <p></p>
                             </PostBottom>
                         </PostBody>
                     </PostContainer>
