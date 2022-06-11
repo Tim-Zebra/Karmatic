@@ -26,6 +26,12 @@ query Me {
         createdAt
       }
     }
+    karmaHelping {
+      postAuthor
+      postTitle
+      postValue
+      address
+    }
   }
 }
 `;

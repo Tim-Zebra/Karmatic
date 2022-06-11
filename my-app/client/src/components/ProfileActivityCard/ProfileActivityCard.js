@@ -13,8 +13,9 @@ import { GET_ME } from '../../utils/queries';
 
 export default function ProfileActivityCard() {
     const { loading, data } = useQuery(GET_ME);
-
+    let i = 0;
     const userData = data?.me || {};
+    console.log(userData.karmaHelping)
 
     // Returns null if userdata is not present
     if (!userData) {
@@ -24,21 +25,23 @@ export default function ProfileActivityCard() {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-
-    if (userData.username === userData.karmaPosts.postAuthor) {
-        return (userData.karmaPosts.map(karmaPosts => (
+    for (i = 0; i < userData.karmaPosts.length; i++) {
+        if (userData.username === userData.karmaPosts[i].postAuthor) {
+            return (userData.karmaPosts.map(karmaPosts => (
+                <CardContainer>
+                    <img src='./assets/images/k_logo.png' alt='k logo' />
+                    You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue} karma points. {karmaPosts.karmaHelpers.map(karmaHelpers => (
+                        karmaHelpers.helperUsername + " " + "has signed up to help."
+                    ))}
+                </CardContainer>))
+            )
+        }
+    } return (
+        userData.karmaHelping.map(karmaHelping => (
             <CardContainer>
                 <img src='./assets/images/k_logo.png' alt='k logo' />
-                You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue}
-            </CardContainer>))
-
-        )
-    } else return (
-
-        userData.karmaPosts.map(karmaPosts => (
-            <CardContainer>
-                <img src='./assets/images/k_logo.png' alt='k logo' />
-                Completed the job "{karmaPosts.postTitle}" for the user "{karmaPosts.postAuthor}" at the location: {karmaPosts.address}
+                Signed up to help with "{karmaHelping.postTitle}" for the user "{karmaHelping.postAuthor}" at the location: {karmaHelping.address}
             </CardContainer>))
     )
+
 }
