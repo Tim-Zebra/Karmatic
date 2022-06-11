@@ -65,6 +65,9 @@ export default function Post({karmaPostData , refreshCard}) {
         )
     };
 
+    console.log('This happened', helpersArray?.some((test) =>{
+        console.log('test happened', test);
+    }));
     // Adds logged in user to karmapost as helper
     const addHelperToPost = async (karmaPostId) => {
         // Checks login status
@@ -107,9 +110,9 @@ export default function Post({karmaPostData , refreshCard}) {
                 <PostBottom>
                 <p>{karmaPostData.address}</p>
                     <PrettyButton
-                    disabled={karmaPostData.karmaHelpers?.some((author) => author.helperUsername === userData.username)}
+                    disabled={helpersArray?.some((author) => author === userData.username)}
                     onClick={() => addHelperToPost(karmaPostData._id)}>
-                        {karmaPostData.karmaHelpers?.some((author) => author.helperUsername === userData.username)
+                        {helpersArray?.some((author) => author === userData.username)
                         ? 'Already helping!'
                         : `Help ${karmaPostData.postAuthor}`}
                     </PrettyButton>
