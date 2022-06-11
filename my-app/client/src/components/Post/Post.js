@@ -11,7 +11,7 @@ import { useQuery, useMutation } from '@apollo/client';
 // Gets Queries
 import { GET_ME} from '../../utils/queries';
 // Gets Mutations
-import { ADD_HELPER, DELETE_POST, CHANGE_KARMA } from '../../utils/mutations'
+import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
 
 export default function Post({ karmaPostData, usersKarma }) {
 // populatePostKarma finds the amount of karma for the post author and returns it
@@ -32,6 +32,7 @@ export default function Post({ karmaPostData, usersKarma }) {
     // Sets Mutation function
     const [addMeAsHelper] = useMutation(ADD_HELPER);
     const [deletePost] = useMutation(DELETE_POST);
+    const [completeKarmaPostMutation] = useMutation(KARMAPOST_COMPLETE);
     const [refundKarma] = useMutation(CHANGE_KARMA);
 
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
@@ -105,23 +106,19 @@ export default function Post({ karmaPostData, usersKarma }) {
     }
 
     // Completes Karma Post...In-progress
-    const completeKarmaPost = async () => {
-        console.log('I AM THE COMPLETE, AND GRANT UPON YOU KARMA!');
-        setIsComplete(true);
-        // try {
-        //     await createPost({
-        //         variables: {...karmaPostData}
-        //     });
-
-        // } catch (err) {
-        //     console.error(err);
-        // }
+    const completeKarmaPost = async (karmaPostId) => {
+        try {
+            await completeKarmaPostMutation({
+                variables: { karmaPostId: karmaPostId }
+            });
+            setIsComplete(true);
+        } catch (err) {
+            console.error(err);
+        }
     }
+    
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
-
-
-        console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
         try {
             await deletePost({
                 variables: { karmaPostId: karmaPostData._id, },
@@ -187,7 +184,7 @@ export default function Post({ karmaPostData, usersKarma }) {
                                     <div style={{ "margin-right": "50px" }}>
                                         <button
                                             style={{ "margin-left": "20px", "margin-right": "20px" }}
-                                            onClick={() => completeKarmaPost()}>
+                                            onClick={() => completeKarmaPost(karmaPostData._id)}>
                                             &#10004;
                                         </button>
 

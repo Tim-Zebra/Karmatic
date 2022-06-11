@@ -4,12 +4,13 @@ import StatusBanner from '../StatusBanner/StatusBanner'
 import { UserContainer, UserContainerBorder, UserContainerBorderThick } from '../Box/Box.styled'
 
 // Imports Authorization
-
+import Auth from '../../utils/auth';
 // Allows use for both queries and mutations from our utils folder
 import { useQuery } from '@apollo/client';
 
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
+
 export default function ColumnOne({ handlePageChange }) {
     // Querys username and karma
     // Sets hooks for data loading
@@ -25,6 +26,11 @@ export default function ColumnOne({ handlePageChange }) {
     // Displays differently during loading
     if (loading) {
         return <h2>LOADING...</h2>;
+    }
+    
+    // If token is not matched in DB, and DB is not querying, then assumed token is expired/no longer valid in DB and destroys token.
+    if (!loading && data?.me === null) {
+        Auth.logout();
     }
     return (
         <ColumnContainer>

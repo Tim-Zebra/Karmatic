@@ -58,7 +58,8 @@ mutation editPost($karmaPostId: ID!, $postTitle: String, $postDescription: Strin
     _id
   }
 }
-`
+`;
+
 // Deletes a post
 export const DELETE_POST = gql`
 mutation deletePost($karmaPostId: ID!) {
@@ -66,7 +67,7 @@ mutation deletePost($karmaPostId: ID!) {
     _id
   }
 }
-`
+`;
 
 //Change Karma for a User **DONE**
 export const CHANGE_KARMA = gql`
@@ -75,4 +76,15 @@ mutation Mutation($username: String!, $karma: Int!) {
     karma
   }
 }
-`
+`;
+
+//Change Karmapost to compelte
+export const KARMAPOST_COMPLETE = gql`
+mutation editPostComplete($karmaPostId: ID!) {
+  editPostComplete(karmaPostId: $karmaPostId) {
+    _id
+  }
+}
+`;
+
+

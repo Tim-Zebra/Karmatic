@@ -3,9 +3,6 @@ import Post from '../Post/Post'
 import { ColumnContainer, FeedHeaderContainer, CreatePostContainer, FeedContainer, ActivityHeader } from './ColumnTwo.styled'
 import PostForm from '../Forms/PostForm'
 
-// Imports Authorization
-import Auth from '../../utils/auth';
-
 // Allows use for both queries and mutations from our utils folder
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -19,8 +16,6 @@ export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ALL_KARMAPOSTS);
-    // Hook to refresh page
-    const [refresh, setRefresh] = useState(false);
 
     const karmaPosts = data?.allKarmaPosts || [];
 
