@@ -40,7 +40,7 @@ export default function ColumnThree() {
     console.log('KARMAHELPING', karmaHelping);
     console.log('KARMAPOSTS', karmaPosts);
     // hours variable sets how far in the past the dates will be filtered.
-    const hours = 8;
+    const hours = 4;
     const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
 
     // Filters Karma posts from the up to 4 hours in the past from the current date.
