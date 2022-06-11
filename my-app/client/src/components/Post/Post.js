@@ -37,8 +37,6 @@ export default function Post({karmaPostData , refreshCard}) {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-    
-    console.log('This happened', helpersArray);
 
     // Renders Karma Helpers
     const renderKarmaHelpers = () => {
@@ -55,7 +53,7 @@ export default function Post({karmaPostData , refreshCard}) {
                 {
                     helpersArray.map((karmaHelper, index) => {
                         // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
-                        if(index !== helpersArray-1) {
+                        if(index !== helpersArray.length-1) {
                             return (` ${helpersArray[index]},`);
                         }
                         else {
@@ -75,13 +73,12 @@ export default function Post({karmaPostData , refreshCard}) {
         if (!token) {
             return false;
         }
-        refreshCard();
         // Adds User to post and adds post to User's karmaHelping array
         try {
             await addMeAsHelper({
                 variables: {karmaPostId: karmaPostId }
             });
-
+            setHelpersArray([...helpersArray, userData.username])
           } catch (err) {
             console.error(err);
           }
