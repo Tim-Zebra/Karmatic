@@ -4,10 +4,22 @@ import ColumnTwo from '../../components/DashboardColumns/ColumnTwo'
 import ColumnThree from '../../components/DashboardColumns/ColumnThree'
 
 import { DashboardContainer, Column } from './Dashboard.styled'
+import { useQuery } from '@apollo/client';
+import { GET_USERS_KARMA } from '../../utils/queries';
 
 
 export default function Dashboard({ handlePageChange }) {
+    const {data, loading } = useQuery(GET_USERS_KARMA);
+
+    if (!data) {
+        return null;
+    }
+
+    if (loading) {
+        return <h2>LOADING...</h2>
+    }
     return (
+        
         <DashboardContainer>
 
             <Column>
@@ -15,7 +27,7 @@ export default function Dashboard({ handlePageChange }) {
             </Column>
 
             <Column>
-            <ColumnTwo />
+            <ColumnTwo usersKarma={data}/>
             </Column>
 
             <Column>

@@ -85,6 +85,16 @@ query GET_USER($username: String!) {
 }
 `;
 
+// Queries karma for all users
+export const GET_USERS_KARMA = gql`
+query getUserKarma {
+  users {
+    username
+    karma
+  }
+}
+`;
+
 // Queries all users except password
 export const GET_USERS = gql`
 query Users {
