@@ -3,19 +3,35 @@ import { CreatePostButton } from '../Buttons/AddButton.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions, DeleteButton } from './PostForm.styled'
 
 import { useMutation } from '@apollo/client';
-import { CREATE_POST } from '../../utils/mutations';
+import { EDIT_POST } from '../../utils/mutations';
 
-export default function PostForm() {
+export default function PostForm({karmaPostData}) {
+    const [title, setTitle] = useState(`${karmaPostData.postTitle}`);
+    const [description, setDescription] = useState(`${karmaPostData.postDescription}`);
+    const [difficulty, setDifficulty] = useState(`${karmaPostData.difficulty}`);
+    const [duration, setDuration] = useState(`${karmaPostData.duration}`);
+    const [address, setAddress] = useState(`${karmaPostData.address}`);
+    const postId = karmaPostData._id;
+    const [editPost] = useMutation(EDIT_POST);
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [difficulty, setDifficulty] = useState('');
-    const [duration, setDuration] = useState('');
-    const [address, setAddress] = useState('');
-
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(title, description, difficulty, duration, address)
+        console.log(postId, title, description, duration, difficulty, address)
+        try {
+            await editPost({
+                variables: {
+                    karmaPostId: postId,
+                    postTitle: title,
+                    postDescription: description,
+                    duration: parseInt(duration),
+                    difficulty: difficulty,
+                    address: address
+                }
+            })
+        }
+        catch (err) {
+            console.error(err);
+        }
     }
 
     return (
@@ -53,12 +69,12 @@ export default function PostForm() {
                     onChange={(e) => setDifficulty(e.target.value)} >
 
                     <option
-                        value="Easy">Easy-Peasy</option>
+                        value="Easy">Easy</option>
                     <option
-                        value="Medium">Medium-Shmedium
+                        value="Medium">Medium
                     </option>
                     <option
-                        value="Hard">Very Difficult
+                        value="Hard">Hard
                     </option>
                 </select>
                 <hr />

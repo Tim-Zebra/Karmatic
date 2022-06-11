@@ -52,3 +52,10 @@ mutation addHelper($karmaPostId: ID!) {
 }
 `;
 
+export const EDIT_POST = gql`
+mutation editPost($id: ID!, $postTitle: String!, $postDescription: String!, $duration: Int!, $difficulty: String!, $address: String!) {
+  editPost(karmaPostId: $karmaPostId, postTitle: $postTitle, postDescription: $postDescription, duration: $duration, difficulty: $difficulty, address: $address) {
+    _id
+  }
+}
+`

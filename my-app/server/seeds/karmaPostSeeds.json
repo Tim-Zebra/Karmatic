@@ -5,7 +5,7 @@
     "postAuthor":"Tim-Zebra",
     "postValue": 200,
     "duration": 1,
-    "difficulty": 2,
+    "difficulty": "Easy",
     "address": "123 Camelot Trail",
     "karmaHelpers": [
         {
@@ -19,7 +19,7 @@
     "postAuthor":"Stiltskinner",
     "postValue": 400,
     "duration": 1,
-    "difficulty": 2,
+    "difficulty": "Medium",
     "address": "456 Arthur Lane",
     "karmaHelpers": [
         {
@@ -37,7 +37,7 @@
     "postAuthor":"billycwong19",
     "postValue": 100,
     "duration": 2,
-    "difficulty": 3,
+    "difficulty": "Hard",
     "address": "The Matrix",
     "karmaHelpers": [
         {

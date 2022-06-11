@@ -50,7 +50,7 @@ const typeDefs = gql`
     changeKarma(username: String!, karma: Int!) : User
     login(username: String!, password: String!) : Auth
     createPost(username: String!, postTitle: String!, postDescription: String!, postValue: Int!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
-    editPost(_id: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
+    editPost(karmaPostId: ID!, postTitle: String!, postDescription: String!, duration: Int!, difficulty: String!, address: String!) : KarmaPost
     deletePost(_id: ID!, username: String!) : KarmaPost
     addHelper(karmaPostId: ID!): KarmaPost
   }

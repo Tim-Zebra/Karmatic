@@ -17,8 +17,6 @@ import { ADD_HELPER } from '../../utils/mutations'
 export default function Post({karmaPostData}) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
-
-
     // Sets Mutation function
     const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
 
@@ -120,8 +118,8 @@ export default function Post({karmaPostData}) {
                     <PostContainer>
                         <ImageContainer>
                             <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                            <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
-                            {isOpen && <EditPostModal setIsOpen={setIsOpen} />}
+                            <EditButton  onClick={() => setIsOpen(true)}>edit</EditButton>
+                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
                         </ImageContainer>
                         <PostBody>
 
