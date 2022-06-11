@@ -9,11 +9,25 @@ import Auth from '../../utils/auth';
 // Imports mutations and queries
 import { useQuery, useMutation } from '@apollo/client';
 // Gets Queries
-import { GET_ME } from '../../utils/queries';
+import { GET_ME} from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
 
-export default function Post({ karmaPostData }) {
+export default function Post({ karmaPostData, usersKarma }) {
+// populatePostKarma finds the amount of karma for the post author and returns it
+    const populatePostKarma = (karmaPostData, usersKarma) => {
+        let postAuthorKarma=0;
+        for (let i=0; i<usersKarma.users.length; i++) {
+            if (karmaPostData.postAuthor === usersKarma.users[i].username) {
+                postAuthorKarma=usersKarma.users[i].karma
+            }
+        }
+        return postAuthorKarma;
+    };
+
+// Uses populatePostKarma to declare a variable that can be used by the component to display the karma for the post author
+    let postAuthorKarma = populatePostKarma(karmaPostData, usersKarma);
+    JSON.stringify(postAuthorKarma);
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
     // Sets Mutation function
@@ -45,7 +59,6 @@ export default function Post({ karmaPostData }) {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-
     // Renders Karma Helpers
     const renderKarmaHelpers = () => {
         // Finds length of Karma
@@ -132,7 +145,7 @@ export default function Post({ karmaPostData }) {
                     <PostContainer>
                         <ImageContainer>
                             <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                            {userData.username == karmaPostData.postAuthor &&
+                            {userData.username === karmaPostData.postAuthor &&
                             <EditButton  onClick={() => setIsOpen(true)}>edit</EditButton>
                             }   
                             {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
@@ -143,15 +156,19 @@ export default function Post({ karmaPostData }) {
                             <PostHeader>
                                 <h3>{karmaPostData.postAuthor}</h3>
                                 <p>{karmaPostData.createdAt}</p>
+                                {/* @William duration of task, difficulty, and user karma needs styling */}
+                                <p>Duration: {karmaPostData.duration} hours</p>
+                                <p>{karmaPostData.postAuthor}'s KarmaCoins: {postAuthorKarma}</p>
                             </PostHeader>
                             <PostMessage>
                                 <p>{karmaPostData.postTitle}</p>
+                                <p>Difficulty: {karmaPostData.difficulty}</p>
                                 {karmaPostData.postDescription}
                             </PostMessage>
 
                             {/* Address and button line */}
                             <PostBottom>
-                                <p>{karmaPostData.address}</p>
+                                <p>Location: {karmaPostData.address}</p>
                                 {/* Button to add karmaHelper if user is not the post author*/}
                                 {userData.username !== karmaPostData.postAuthor && !isComplete &&
                                     <PrettyButton
