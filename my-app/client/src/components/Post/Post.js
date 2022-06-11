@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
-
 import EditPostModal from '../Modals/EditPostModal'
 
 // Imports Authorization
@@ -12,7 +11,7 @@ import { useQuery, useMutation } from '@apollo/client';
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
 // Gets Mutations
-import { ADD_HELPER, KARMAPOST_COMPLETE, DELETE_POST } from '../../utils/mutations'
+import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
 
 export default function Post({ karmaPostData }) {
     // Determines if the Modal for edit post should open
@@ -20,7 +19,11 @@ export default function Post({ karmaPostData }) {
     // Sets Mutation function
     const [addMeAsHelper] = useMutation(ADD_HELPER);
     const [deletePost] = useMutation(DELETE_POST);
+  
     const [completeKarmaPostMutation] = useMutation(KARMAPOST_COMPLETE);
+
+    const [refundKarma] = useMutation(CHANGE_KARMA);
+
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
 
@@ -111,11 +114,16 @@ export default function Post({ karmaPostData }) {
 
         console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
         try {
-            console.log(typeof karmaPostData._id)
             await deletePost({
                 variables: { karmaPostId: karmaPostData._id, },
             });
-            console.log('deleted')
+            const refundedUserKarma = userData.karma + karmaPostData.postValue;
+            await refundKarma({
+                variables: {
+                    username: karmaPostData.postAuthor,
+                    karma: refundedUserKarma,
+                }
+            })
             setIsDeleted(true);
         } catch (err) {
             console.error(err);
@@ -130,8 +138,11 @@ export default function Post({ karmaPostData }) {
                     <PostContainer>
                         <ImageContainer>
                             <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                            {userData.username == karmaPostData.postAuthor &&
                             <EditButton  onClick={() => setIsOpen(true)}>edit</EditButton>
+                            }   
                             {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
+                            
                         </ImageContainer>
                         <PostBody>
 
