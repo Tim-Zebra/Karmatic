@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import RecentKarmaReceived from '../RecentKarma/RecentKarma'
-
+import RecentKarmaReceived from '../RecentKarma/RecentKarmaReceived'
+import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
 // CSS components
 import { ColumnContainer } from './ColumnThree.styled'
 import { css } from 'styled-components';
@@ -36,9 +36,7 @@ export default function ColumnThree() {
 
     const karmaPosts = meData?.karmaPosts;
     const karmaHelping = meData?.karmaHelping;
-    console.log('MEDATA:', meData);
-    console.log('KARMAHELPING', karmaHelping);
-    console.log('KARMAPOSTS', karmaPosts);
+
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 4;
     const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
@@ -46,13 +44,9 @@ export default function ColumnThree() {
     // Filters Karma posts from the up to 4 hours in the past from the current date.
     const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
 
-    console.log('RECENT Karma Posts', recentKarmaPostsArray);
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
-
-    console.log('RECENT Karma Helping', recentKarmaHelpingArray);
-    console.log('RECEIVED KARMA',   recentKarmaReceivedArray);
     return (
         <ColumnContainer>
         {/* Recent Karma Received */}
@@ -62,7 +56,7 @@ export default function ColumnThree() {
             )}
             <h3>Recent Karma Helping</h3>
             {recentKarmaHelpingArray.map((recentPost) =>
-                <RecentKarmaReceived karmaPostData={recentPost} />
+                <RecentKarmaHelping karmaPostData={recentPost} />
             )}
 
         </ColumnContainer>
