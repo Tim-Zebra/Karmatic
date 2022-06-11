@@ -52,15 +52,17 @@ export default function Post({karmaPostData , refreshCard}) {
         }
         return(
             <p>with:
-                {karmaPostData.karmaHelpers.map((karmaHelper, index) => {
-                    // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
-                    if(index !== helpersArray-1) {
-                        return (` ${karmaHelper.helperUsername},`);
-                    }
-                    else {
-                        return (` ${karmaHelper.helperUsername}`);
-                    }
-                })}
+                {
+                    helpersArray.map((karmaHelper, index) => {
+                        // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
+                        if(index !== helpersArray-1) {
+                            return (` ${helpersArray[index]},`);
+                        }
+                        else {
+                            return (` ${helpersArray[index]}`);
+                        }
+                    })
+                }
             </p>
         )
     };
