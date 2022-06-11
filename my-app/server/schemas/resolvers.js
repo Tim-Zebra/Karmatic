@@ -79,11 +79,11 @@ const resolvers = {
       return karmaPost;
     },
     // editPost creates the variable userposts to hold the array of karmapost ids for the logged in user. If the id of the post to be edited is included in the array of this user's karmaposts, it updates the post
-    editPost: async (parent, { karmaPostId, postTitle, postDescription, duration, difficulty, address }, context) => {
+    editPost: async (parent, { karmaPostId, postTitle, postDescription, postValue, duration, difficulty, address }, context) => {
 
         return KarmaPost.findOneAndUpdate(
           { _id: karmaPostId },
-          { postTitle, postDescription, duration, difficulty, address },
+          { postTitle, postDescription, postValue, duration, difficulty, address },
           { new: true }
         )
     },
@@ -92,18 +92,6 @@ const resolvers = {
       const userposts = context.user.karmaPosts;
       if (userposts.includes(_id)) {
         const karmaPost = await KarmaPost.findOneAndDelete({
-<<<<<<< HEAD
-          _id: _id
-        },
-        );
-
-        await User.findOneAndUpdate(
-          { username: context.user.username },
-          { $pull: { karmaPosts: karmaPost._id } },
-          { new: true }
-        );
-        return karmaPost;
-=======
           _id: karmaPostId
         });
   
@@ -120,7 +108,6 @@ const resolvers = {
         });
 
         return;
->>>>>>> main
       }
       throw new AuthenticationError('You do not have permission to delete this post!')
     },

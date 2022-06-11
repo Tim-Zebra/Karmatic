@@ -10,6 +10,9 @@ module.exports =  function calcPostValue (difficulty, duration) {
             case 'Hard':
             difficultyModifier = 3;
             break;
+            default: 
+            console.log('Something went wrong with calculating post value. Defaulted to difficulty modifier 1')
+            difficultyModifier = 1;
         };
         const postValue = difficultyModifier*duration*10;
         return postValue;

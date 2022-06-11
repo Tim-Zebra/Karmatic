@@ -4,6 +4,7 @@ import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions, D
 
 import { useMutation } from '@apollo/client';
 import { EDIT_POST } from '../../utils/mutations';
+const calcPostValue = require('../../utils/helpers');
 
 export default function PostForm({karmaPostData}) {
     const [title, setTitle] = useState(`${karmaPostData.postTitle}`);
@@ -18,11 +19,15 @@ export default function PostForm({karmaPostData}) {
         e.preventDefault();
         console.log(postId, title, description, duration, difficulty, address)
         try {
+            // Uses calcPostValue helper function to calculate a new postvalue from difficulty and duration and return it
+            const currentPostValue = calcPostValue(difficulty, duration);
+            console.log('currentpostvalue',currentPostValue)
             await editPost({
                 variables: {
                     karmaPostId: postId,
                     postTitle: title,
                     postDescription: description,
+                    postValue: parseInt(currentPostValue),
                     duration: parseInt(duration),
                     difficulty: difficulty,
                     address: address
