@@ -55,8 +55,8 @@ mutation addHelper($karmaPostId: ID!) {
 // Deletes a post
 
 export const DELETE_POST = gql`
-mutation deletePost($id: ID!, $username: String!) {
-  deletePost(_id: $id, username: $username) {
+mutation deletePost($karmaPostId: ID!, $username: String!) {
+  deletePost(karmaPostId: $karmaPostId, username: $username) {
     _id
   }
 }
