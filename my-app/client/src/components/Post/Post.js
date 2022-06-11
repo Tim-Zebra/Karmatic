@@ -19,7 +19,6 @@ export default function Post({karmaPostData}) {
     const [isOpen, setIsOpen] = useState(false);
 
 
-
     // Sets Mutation function
     const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
 
@@ -29,6 +28,8 @@ export default function Post({karmaPostData}) {
     // Creates hook to mark off completion
     const [isComplete, setIsComplete] = useState(karmaPostData.complete);
 
+    // Creates hook post delete
+    const [isDeleted, setIsDeleted] = useState(false);
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -95,19 +96,21 @@ export default function Post({karmaPostData}) {
     // Completes Karma Post...In-progress
     const completeKarmaPost = async () => {
         console.log('I AM THE COMPLETE, AND GRANT UPON YOU KARMA!');
-        try {
-            await createPost({
-                variables: {...karmaPostData}
-            });
+        setIsComplete(true);
+        // try {
+        //     await createPost({
+        //         variables: {...karmaPostData}
+        //     });
 
-        } catch (err) {
-            console.error(err);
-        }
+        // } catch (err) {
+        //     console.error(err);
+        // }
     }
 
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
         console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
+        setIsDeleted(true);
     }
 
     return (
@@ -133,7 +136,7 @@ export default function Post({karmaPostData}) {
                 <PostBottom>
                 <p>{karmaPostData.address}</p>
                     {/* Button to add karmaHelper if user is not the post author*/}
-                    {userData.username !== karmaPostData.postAuthor && 
+                    {userData.username !== karmaPostData.postAuthor && !isComplete &&
                         <PrettyButton
                         disabled={helpersArray?.some((author) => author === userData.username)}
                         onClick={() => addHelperToPost(karmaPostData._id)}>
@@ -143,7 +146,7 @@ export default function Post({karmaPostData}) {
                         </PrettyButton>
                     }
                     {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
-                    {userData.username === karmaPostData.postAuthor && 
+                    {userData.username === karmaPostData.postAuthor && !isComplete &&
                     // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
                         <div  style={{"margin-right": "50px"}}>
                                 <button
@@ -170,7 +173,9 @@ export default function Post({karmaPostData}) {
 
             {karmaPostData.karmaHelpers ?
                 <PostFooter>
-                    <button>In Progress</button>
+                    <button>
+                        {isComplete? 'complete!' : 'In Progress'}
+                    </button>
                     {renderKarmaHelpers()}
                     <div>
                         <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
