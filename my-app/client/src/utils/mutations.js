@@ -59,3 +59,11 @@ mutation editPost($id: ID!, $postTitle: String!, $postDescription: String!, $dur
   }
 }
 `
+// Deletes a post
+export const DELETE_POST = gql`
+mutation deletePost($karmaPostId: ID!) {
+  deletePost(karmaPostId: $karmaPostId) {
+    _id
+  }
+}
+`;
