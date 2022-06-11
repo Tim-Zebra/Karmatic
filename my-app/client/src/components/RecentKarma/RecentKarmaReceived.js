@@ -1,10 +1,7 @@
 import React from 'react'
-import { RecentKarmaBox, ExchangeContainer, ExchangeBetween, KarmaCoins, RecentContainer } from './RecentKarma.styled'
+import { RecentKarmaBox, ExchangeContainer, ExchangeBetween, KarmaCoins, RecentContainer } from './RecentKarmaReceived.styled'
 
-// STATIC DATA BUILT OFF MODEL
-
-
-export default function RecentKarma({ data }) {
+export default function RecentKarmaReceived({ karmaPostData }) {
     return (
         <RecentKarmaBox>
             <img src='./assets/images/karma_coin.png' height='44px' alt='karma coin' />
@@ -14,12 +11,19 @@ export default function RecentKarma({ data }) {
                         <h4>received</h4>
                     </ExchangeBetween>
                     <ExchangeBetween>
+                        {/* Displays postauthor */}
                         <h4>from</h4>
-                        <p>{data.postAuthor}</p>
+                        <p>{karmaPostData.postAuthor}</p>
                     </ExchangeBetween>
+                    {/* Displays posttitle */}
+                    <div>
+                        <h4>post</h4>
+                        <p>{karmaPostData.postTitle}</p>
+                    </div>
                 </ExchangeContainer>
+                {/* Displays Karma Coins */}
                 <KarmaCoins>
-                    <h1>{data.postValue}</h1>
+                    <h1>{karmaPostData.postValue}</h1>
                     <p>Karma Coins</p>
                 </KarmaCoins>
             </RecentContainer>

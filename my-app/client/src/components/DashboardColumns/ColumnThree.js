@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import RecentKarma from '../RecentKarma/RecentKarma'
-
+import RecentKarmaReceived from '../RecentKarma/RecentKarmaReceived'
+import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
 // CSS components
 import { ColumnContainer } from './ColumnThree.styled'
 import { css } from 'styled-components';
@@ -23,30 +23,40 @@ export default function ColumnThree() {
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
 
-    const karmaPosts = data?.me.karmaPosts || [];
+    const meData = data?.me || [];
 
-    if (!karmaPosts) {
+    if (!meData) {
         return null;
     }
-
-    // hours variable sets how far in the past the dates will be filtered.
-    const hours = 1000;
-    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
-
-    // Filters Karma posts from the up to 4 hours in the past from the current date.
-    const recentKarmaPosts = karmaPosts.filter((post) => post.createdAt > pastDate);
 
     // Displays differently during loading
     if (loading) {
         return <h2>LOADING...</h2>;
     }
 
+    const karmaPosts = meData?.karmaPosts;
+    const karmaHelping = meData?.karmaHelping;
+
+    // hours variable sets how far in the past the dates will be filtered.
+    const hours = 4;
+    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
+
+    // Filters Karma posts from the up to 4 hours in the past from the current date.
+    const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
+
+    // Filters a new array based on recent karma received and recent karmaPosts helping
+    const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
+    const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
     return (
         <ColumnContainer>
-            <h3>Recent Karma</h3>
-
-            {recentKarmaPosts.map((recentPost) =>
-                <RecentKarma data={recentPost} />
+        {/* Recent Karma Received */}
+            <h3>Recent Karma Received:</h3>
+            {recentKarmaReceivedArray.map((recentPost) =>
+                <RecentKarmaReceived karmaPostData={recentPost} />
+            )}
+            <h3>Recent Karma Helping:</h3>
+            {recentKarmaHelpingArray.map((recentPost) =>
+                <RecentKarmaHelping karmaPostData={recentPost} />
             )}
 
         </ColumnContainer>
