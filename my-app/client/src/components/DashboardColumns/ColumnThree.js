@@ -52,7 +52,7 @@ export default function ColumnThree() {
     const recentKarmaReceived = recentKarmaHelping.filter((post) => post === true);
 
     console.log('RECENT Karma Helping', recentKarmaHelping);
- console.log('RECEIVED KARMA',   recentKarmaReceived);
+    console.log('RECEIVED KARMA',   recentKarmaReceived);
     return (
         <ColumnContainer>
         {/* Recent Karma Received */}
