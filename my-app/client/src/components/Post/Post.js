@@ -134,40 +134,39 @@ export default function Post({karmaPostData}) {
                                 {karmaPostData.postDescription}
                             </PostMessage>
 
-                        {/* Address and button line */}
-                        <PostBottom>
-                        <p>{karmaPostData.address}</p>
-                            {/* Button to add karmaHelper if user is not the post author*/}
-                            {userData.username !== karmaPostData.postAuthor && !isComplete &&
-                                <PrettyButton
-                                disabled={helpersArray?.some((author) => author === userData.username)}
-                                onClick={() => addHelperToPost(karmaPostData._id)}>
-                                    {helpersArray?.some((author) => author === userData.username)
-                                    ? 'Already helping!'
-                                    : `Help ${karmaPostData.postAuthor}`}
-                                </PrettyButton>
-                            }
-                            {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
-                            {userData.username === karmaPostData.postAuthor && !isComplete &&
-                            // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
-                                <div  style={{"margin-right": "50px"}}>
-                                        <button
-                                        style={{"margin-left": "20px", "margin-right": "20px"}}
-                                        onClick={() => completeKarmaPost()}>
-                                            &#10004;
-                                        </button>
+                            {/* Address and button line */}
+                            <PostBottom>
+                            <p>{karmaPostData.address}</p>
+                                {/* Button to add karmaHelper if user is not the post author*/}
+                                {userData.username !== karmaPostData.postAuthor && !isComplete &&
+                                    <PrettyButton
+                                    disabled={helpersArray?.some((author) => author === userData.username)}
+                                    onClick={() => addHelperToPost(karmaPostData._id)}>
+                                        {helpersArray?.some((author) => author === userData.username)
+                                        ? 'Already helping!'
+                                        : `Help ${karmaPostData.postAuthor}`}
+                                    </PrettyButton>
+                                }
+                                {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
+                                {userData.username === karmaPostData.postAuthor && !isComplete &&
+                                // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
+                                    <div  style={{"margin-right": "50px"}}>
+                                            <button
+                                            style={{"margin-left": "20px", "margin-right": "20px"}}
+                                            onClick={() => completeKarmaPost()}>
+                                                &#10004;
+                                            </button>
 
-                                        {/* // Delete Karma Post */}
-                                        <button
-                                        style={{"margin-left": "20px", "margin-right": "20px"}}
-                                        onClick={() => deleteKarmaPost()}>
-                                            &#128148;
-                                        </button>
-                                </div>
-                            }
-        
-                        </PostBottom>
-
+                                            {/* // Delete Karma Post */}
+                                            <button
+                                            style={{"margin-left": "20px", "margin-right": "20px"}}
+                                            onClick={() => deleteKarmaPost()}>
+                                                &#128148;
+                                            </button>
+                                    </div>
+                                }
+            
+                            </PostBottom>
                         </PostBody>
                     </PostContainer>
 
@@ -194,8 +193,34 @@ export default function Post({karmaPostData}) {
                             </div>
                         </PostFooter>
                 }
-            </>
-        }
+                </>
+            }
+            {/* Displays if post is deleted */}
+            {isDeleted &&
+                <>
+                    <PostContainer>
+                        <ImageContainer>
+                            <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                        </ImageContainer>
+                        <PostBody>
+                            <PostHeader>
+                                <h3>{karmaPostData.postAuthor}</h3>
+                                <p>{karmaPostData.createdAt}</p>
+                            </PostHeader>
+                            <PostMessage>
+                                <p>POST DELETED MUHAHAHAHA!</p>
+                            </PostMessage>
+                            <PostBottom>
+                            <p></p>
+                            </PostBottom>
+                        </PostBody>
+                    </PostContainer>
+
+                    <PostFooter>
+                        <p>Becareful clicking or you'll lose more of your soul than you can make up before the next life</p>
+                    </PostFooter>
+                </>
+            }
         </PostOutterContainer>
     )
 }
