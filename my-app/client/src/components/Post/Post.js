@@ -15,7 +15,7 @@ import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../..
 
 export default function Post({ karmaPostData, usersKarma }) {
 // populatePostKarma finds the amount of karma for the post author and returns it
-    function populatePostKarma(karmaPostData, usersKarma) {
+    const populatePostKarma = (karmaPostData, usersKarma) => {
         let postAuthorKarma=0;
         for (let i=0; i<usersKarma.users.length; i++) {
             if (karmaPostData.postAuthor === usersKarma.users[i].username) {
@@ -23,7 +23,8 @@ export default function Post({ karmaPostData, usersKarma }) {
             }
         }
         return postAuthorKarma;
-    }
+    };
+
 // Uses populatePostKarma to declare a variable that can be used by the component to display the karma for the post author
     let postAuthorKarma = populatePostKarma(karmaPostData, usersKarma);
     JSON.stringify(postAuthorKarma);
@@ -144,7 +145,7 @@ export default function Post({ karmaPostData, usersKarma }) {
                     <PostContainer>
                         <ImageContainer>
                             <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                            {userData.username == karmaPostData.postAuthor &&
+                            {userData.username === karmaPostData.postAuthor &&
                             <EditButton  onClick={() => setIsOpen(true)}>edit</EditButton>
                             }   
                             {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
