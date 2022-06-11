@@ -103,9 +103,8 @@ const resolvers = {
           { $pull: { karmaPosts: karmaPost._id } },
           { new: true });
 
-        karmaPost.karmaHelpers.map((karmaHelpers) => {
-          console.log('This happened', karmaHelpers.helperUsername);  
-          const updatedHelper = User.findOneAndUpdate(
+        karmaPost.karmaHelpers.map(async (karmaHelpers) => {
+          const updatedHelper = await User.findOneAndUpdate(
             { username: karmaHelpers.helperUsername },
             { $pull: { karmaHelping: karmaPost._id } },
             { new: true });
