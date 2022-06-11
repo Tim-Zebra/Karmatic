@@ -19,9 +19,7 @@ export default function Post({ karmaPostData }) {
     // Sets Mutation function
     const [addMeAsHelper] = useMutation(ADD_HELPER);
     const [deletePost] = useMutation(DELETE_POST);
-  
     const [completeKarmaPostMutation] = useMutation(KARMAPOST_COMPLETE);
-
     const [refundKarma] = useMutation(CHANGE_KARMA);
 
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
@@ -97,8 +95,6 @@ export default function Post({ karmaPostData }) {
 
     // Completes Karma Post...In-progress
     const completeKarmaPost = async (karmaPostId) => {
-        console.log('I AM THE COMPLETE, AND GRANT UPON YOU KARMA!');
-
         try {
             await completeKarmaPostMutation({
                 variables: { karmaPostId: karmaPostId }
@@ -108,11 +104,9 @@ export default function Post({ karmaPostData }) {
             console.error(err);
         }
     }
+    
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
-
-
-        console.log('I AM THE DELETE. ALL YOUR KARMA EFFORT IS NULL');
         try {
             await deletePost({
                 variables: { karmaPostId: karmaPostData._id, },
