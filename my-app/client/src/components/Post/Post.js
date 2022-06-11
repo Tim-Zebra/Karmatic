@@ -130,17 +130,20 @@ export default function Post({karmaPostData}) {
                     }
                     {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
                     {userData.username === karmaPostData.postAuthor && 
-                    // React requires parent child relationship. Must be wrapped in div or rendered in separate boolean statements
-                        <div>
-                                <PrettyButton
+                    // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
+                        <div  style={{"margin-right": "50px"}}>
+                                <button
+                                style={{"margin-left": "20px", "margin-right": "20px"}}
                                 onClick={() => completeKarmaPost()}>
+                                    &#10004;
+                                </button>
 
-                                </PrettyButton>
                                 {/* // Delete Karma Post */}
-                                <PrettyButton
+                                <button
+                                style={{"margin-left": "20px", "margin-right": "20px"}}
                                 onClick={() => deleteKarmaPost()}>
-
-                                </PrettyButton>
+                                    &#128148;
+                                </button>
                         </div>
                     }
   
