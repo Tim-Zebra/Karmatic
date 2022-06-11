@@ -7,7 +7,7 @@ import { CREATE_POST, CHANGE_KARMA } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
 const calcPostValue = require('../../utils/helpers');
 
-export default function PostForm() {
+export default function PostForm({handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -47,6 +47,7 @@ export default function PostForm() {
                     karma: updatedUserKarma,
                 }
             })
+            handlePageChange('Dashboard');
         } catch (err) {
             console.error(err);
         }

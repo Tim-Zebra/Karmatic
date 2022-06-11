@@ -39,7 +39,7 @@ export default function Dashboard({ handlePageChange }) {
             </Column>
 
             <Column>
-            <ColumnTwo usersKarma={data} karmaPosts={karmaPosts.data.allKarmaPosts}/>
+            <ColumnTwo usersKarma={data} karmaPosts={karmaPosts.data.allKarmaPosts} handlePageChange={handlePageChange}/>
             </Column>
 
             <Column>

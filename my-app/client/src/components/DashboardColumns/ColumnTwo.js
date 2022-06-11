@@ -4,13 +4,13 @@ import { ColumnContainer, FeedHeaderContainer, CreatePostContainer, FeedContaine
 import PostForm from '../Forms/PostForm'
 
 
-export default function ColumnTwo({usersKarma, karmaPosts}) {
+export default function ColumnTwo({usersKarma, karmaPosts, handlePageChange}) {
 
     return (
         <ColumnContainer>
             <FeedHeaderContainer>
                 <CreatePostContainer>
-                    <PostForm />
+                    <PostForm handlePageChange={handlePageChange} />
                 </CreatePostContainer>
                 <ActivityHeader>
                     <p>Activity</p>
