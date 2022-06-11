@@ -14,12 +14,12 @@ export default function RecentKarmaReceived({ karmaPostData }) {
                         {/* Displays postauthor */}
                         <h4>from</h4>
                         <p>{karmaPostData.postAuthor}</p>
-                        {/* Displays posttitle */}
-                        <ExchangeBetween>
-                            <h4>post</h4>
-                            <p>{karmaPostData.postTitle}</p>
-                        </ExchangeBetween>
                     </ExchangeBetween>
+                    {/* Displays posttitle */}
+                    <div>
+                        <h4>post</h4>
+                        <p>{karmaPostData.postTitle}</p>
+                    </div>
                 </ExchangeContainer>
                 {/* Displays Karma Coins */}
                 <KarmaCoins>

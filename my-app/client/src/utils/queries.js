@@ -31,6 +31,7 @@ query Me {
       postAuthor
       postTitle
       postValue
+      postDescription
       address
       complete
       createdAt
