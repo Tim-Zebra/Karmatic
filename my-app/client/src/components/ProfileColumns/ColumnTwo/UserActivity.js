@@ -1,5 +1,6 @@
 import React from "react";
 import ProfileActivityCard from "../../ProfileActivityCard/ProfileActivityCard";
+import ProfileHelpingCard from "../../ProfileActivityCard/ProfileHelping";
 import { Container, UserContainerLong } from "./ProfileColumnTwo.styled";
 
 const data = [
@@ -22,7 +23,7 @@ export default function UserActivity() {
                 <UserContainerLong>
 
                     <ProfileActivityCard />
-
+                    <ProfileHelpingCard />
                 </UserContainerLong>
             </Container>
         </>
