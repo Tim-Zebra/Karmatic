@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 
@@ -15,15 +15,22 @@ import { GET_ME } from '../../utils/queries';
 import { ADD_HELPER } from '../../utils/mutations'
 
 export default function Post({data}) {
-    console.log('DATA from previous', data);
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
+
+    // Sets status if already helping
+    const [isHelping, setIsHelping] = useState(false);
+
+
+
+    // Sets Mutation function
     const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
-    // Finds length of Karma
-    let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
+
 
     // Renders Karma Helpers
     const renderKarmaHelpers = () => {
+        // Finds length of Karma
+        let lengthOfKarmaHelpersArray = data.karmaHelpers.length;
         return(
             <p>with:
                 {data.karmaHelpers.map((karmaHelper, index) => {
@@ -81,7 +88,9 @@ export default function Post({data}) {
                 {/* Button to add karmaHelper to Post */}
                 <PostBottom>
                 <p>{data.address}</p>
-                <PrettyButton onClick={() => addHelperToPost(data._id)}>Help {data.postAuthor}</PrettyButton>
+                <PrettyButton
+                disabled={data.karmaHelpers?.some((author) => author === useContext.userID.username)}
+                onClick={() => addHelperToPost(data._id)}>Help {data.postAuthor}</PrettyButton>
                 </PostBottom>
 
                 </PostBody>
