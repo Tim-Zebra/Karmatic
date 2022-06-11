@@ -17,8 +17,6 @@ export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ALL_KARMAPOSTS);
-    // Hook to refresh page
-    const [refresh, setRefresh] = useState(false);
 
     const karmaPosts = data?.allKarmaPosts || [];
 
