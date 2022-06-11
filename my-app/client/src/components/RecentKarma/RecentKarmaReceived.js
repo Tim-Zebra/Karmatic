@@ -2,7 +2,6 @@ import React from 'react'
 import { RecentKarmaBox, ExchangeContainer, ExchangeBetween, KarmaCoins, RecentContainer } from './RecentKarmaReceived.styled'
 
 export default function RecentKarmaReceived({ karmaPostData }) {
-console.log('Recent KARMA POST', karmaPostData);
     return (
         <RecentKarmaBox>
             <img src='./assets/images/karma_coin.png' height='44px' alt='karma coin' />
