@@ -86,19 +86,6 @@ export default function Post({karmaPostData}) {
           }
     }
 
-    const renderHelpCompleteDeleteButton= async () => {
-        // Returns Complete and Delete button if the post is made by the user
-        return(
-            <PrettyButton
-            disabled={helpersArray?.some((author) => author === userData.username)}
-            onClick={() => addHelperToPost(karmaPostData._id)}>
-                {helpersArray?.some((author) => author === userData.username)
-                ? 'Already helping!'
-                : `Help ${karmaPostData.postAuthor}`}
-            </PrettyButton>
-        )
-    }
-
     return (
         <PostOutterContainer>
             <PostContainer>
@@ -122,8 +109,16 @@ export default function Post({karmaPostData}) {
                 <PostBottom>
                 <p>{karmaPostData.address}</p>
                     {/* Button to add karmaHelper to Post or Buttons to delete/Approve*/}
-                    {/* {renderHelpCompleteDeleteButton()} */}
-                    {renderKarmaHelpers()}
+                    {userData.username !== karmaPostData.postAuthor && 
+                        <PrettyButton
+                        disabled={helpersArray?.some((author) => author === userData.username)}
+                        onClick={() => addHelperToPost(karmaPostData._id)}>
+                            {helpersArray?.some((author) => author === userData.username)
+                            ? 'Already helping!'
+                            : `Help ${karmaPostData.postAuthor}`}
+                        </PrettyButton>
+                    }
+  
                 </PostBottom>
 
                 </PostBody>
