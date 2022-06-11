@@ -98,12 +98,19 @@ const resolvers = {
           _id: karmaPostId
         });
   
-        console.log('This happened', karmaPost);
-        const updatedAuthor = await User.findOneAndUpdate(
+        const updateAuthor = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { karmaPosts: karmaPost._id } },
           { new: true });
-          console.log('This happened', updatedAuthor);
+
+        karmaPost.karmaHelpers.map((karmaHelpers) => {
+          console.log('This happened', karmaHelpers.helperUsername);  
+          const updatedHelper = User.findOneAndUpdate(
+            { username: karmaHelpers.helperUsername },
+            { $pull: { karmaHelping: karmaPost._id } },
+            { new: true });
+        });
+
         return;
       }
 
