@@ -20,8 +20,9 @@ export default function Post({karmaPostData}) {
 
     // Sets Mutation function
     const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
-    // const [helpers, setHelpers] = useState([]);
+    // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
+
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -65,9 +66,6 @@ export default function Post({karmaPostData}) {
         )
     };
 
-    console.log('This happened', helpersArray?.some((test) =>{
-        console.log('test happened', test);
-    }));
     // Adds logged in user to karmapost as helper
     const addHelperToPost = async (karmaPostId) => {
         // Checks login status
@@ -81,9 +79,8 @@ export default function Post({karmaPostData}) {
             const {data} = await addMeAsHelper({
                 variables: {karmaPostId: karmaPostId }
             });
-            console.log('Data before reset', data);
+            // Adds new helper to hooked Array to refresh page
             setHelpersArray([...helpersArray, userData.username])
-            console.log('data POST', data);
           } catch (err) {
             console.error(err);
           }
