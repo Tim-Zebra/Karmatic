@@ -49,7 +49,7 @@ export default function ColumnThree() {
     console.log('RECENT Karma Posts', recentKarmaPostsArray);
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
-    const recentKarmaReceivedArray = recentKarmaHelping.filter((post) => post.complete === true);
+    const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
 
     console.log('RECENT Karma Helping', recentKarmaHelpingArray);
     console.log('RECEIVED KARMA',   recentKarmaReceivedArray);
@@ -57,13 +57,13 @@ export default function ColumnThree() {
         <ColumnContainer>
         {/* Recent Karma Received */}
             <h3>Recent Karma Received:</h3>
-            {recentKarmaPosts.map((recentPost) =>
-                <RecentKarmaReceived data={recentPost} />
+            {recentKarmaReceivedArray.map((recentPost) =>
+                <RecentKarmaReceived karmaPostData={recentPost} />
             )}
             <h3>Recent Karma Helping</h3>
-            {recentKarmaPosts.map((recentPost) =>
-            <RecentKarmaReceived data={recentPost} />
-)}
+            {recentKarmaHelpingArray.map((recentPost) =>
+                <RecentKarmaReceived karmaPostData={recentPost} />
+            )}
 
         </ColumnContainer>
     )

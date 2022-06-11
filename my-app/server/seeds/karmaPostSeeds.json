@@ -111,7 +111,7 @@
       ]
   },
   {
-    "postTitle": "This post is completed",
+    "postTitle": "UI/UX This post is completed",
     "postDescription": "I do things with UI/UX cause I'm pro. Help me test my Front-end",
     "postAuthor":"billycwong19",
     "postValue": 100,
@@ -126,13 +126,13 @@
       ]
   },
   {
-    "postTitle": "UI/UX TEST",
+    "postTitle": "UI/UX This post is incomplete",
     "postDescription": "I do things with UI/UX cause I'm pro. Help me test my Front-end",
     "postAuthor":"billycwong19",
     "postValue": 100,
     "duration": 2,
     "difficulty": "Hard",
-    "complete": true,
+    "complete": false,
     "address": "The Matrix",
     "karmaHelpers": [
         {
