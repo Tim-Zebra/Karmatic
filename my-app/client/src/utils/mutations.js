@@ -78,8 +78,8 @@ mutation Mutation($username: String!, $karma: Int!) {
 }
 `;
 
-//Change Karma for a User **DONE**
-export const KARMNPOST_COMPLETE = gql`
+//Change Karmapost to compelte
+export const KARMAPOST_COMPLETE = gql`
 mutation editPostComplete($karmaPostId: ID!) {
   editPostComplete(karmaPostId: $karmaPostId) {
     _id
