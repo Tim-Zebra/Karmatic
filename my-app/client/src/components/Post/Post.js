@@ -78,10 +78,12 @@ export default function Post({karmaPostData}) {
         }
         // Adds User to post and adds post to User's karmaHelping array
         try {
-            await addMeAsHelper({
+            const {data} = await addMeAsHelper({
                 variables: {karmaPostId: karmaPostId }
             });
+            console.log('Data before reset', data);
             setHelpersArray([...helpersArray, userData.username])
+            console.log('data POST', data);
           } catch (err) {
             console.error(err);
           }
