@@ -14,16 +14,15 @@ import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER } from '../../utils/mutations'
 
-// Brings in helper functions
-const calcPostValue = require('../../utils/helpers');
-
-
 export default function Post({karmaPostData}) {
     // Determines if the Modal for edit post should open
     const [isOpen, setIsOpen] = useState(false);
 
+
+
     // Sets Mutation function
     const [addMeAsHelper, { error }] = useMutation(ADD_HELPER);
+
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
 
@@ -97,24 +96,13 @@ export default function Post({karmaPostData}) {
     const completeKarmaPost = async () => {
         console.log('I AM THE COMPLETE, AND GRANT UPON YOU KARMA!');
         try {
-            const currentPostValue = await calcPostValue(difficulty, duration);
             await createPost({
-                variables: {
-                    username: username,
-                    postTitle: postTitle,
-                    postDescription: postDescription,
-                    postValue: currentPostValue,
-                    duration: parseInt(duration),
-                    difficulty: difficulty,
-                    address: address
-                }
+                variables: {...karmaPostData}
             });
-            setTitle('');
-            setDescription('');
+
         } catch (err) {
             console.error(err);
         }
-
     }
 
     // Completes Karma Post...In-progress
