@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Post from '../Post/Post'
 import { ColumnContainer, FeedHeaderContainer, CreatePostContainer, FeedContainer, ActivityHeader } from './ColumnTwo.styled'
 import PostForm from '../Forms/PostForm'
@@ -17,6 +17,8 @@ export default function ColumnTwo() {
     // Queries Karma Post data
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ALL_KARMAPOSTS);
+    // Hook to refresh page
+    const [refresh, setRefresh] = useState(false);
 
     const karmaPosts = data?.allKarmaPosts || [];
 
@@ -28,7 +30,10 @@ export default function ColumnTwo() {
     if (loading) {
         return <h2>LOADING...</h2>;
     }
-    console.log('This happened', karmaPosts);
+
+    // Function to refresh page
+    const refreshCard = () => setRefresh(!refresh);
+
     return (
         <ColumnContainer>
             <FeedHeaderContainer>
@@ -42,7 +47,7 @@ export default function ColumnTwo() {
             <FeedContainer>
 
                 {karmaPosts.map((post) =>
-                    <Post data={post} key={post.id} />
+                    <Post karmaPostData={post} key={post.id} refreshCard={refreshCard}/>
                 )}
 
             </FeedContainer>
