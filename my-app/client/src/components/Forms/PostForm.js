@@ -3,7 +3,7 @@ import { CreatePostButton } from '../Buttons/AddButton.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } from './PostForm.styled'
 
 import { useMutation, useQuery } from '@apollo/client';
-import { CREATE_POST } from '../../utils/mutations';
+import { CREATE_POST, CHANGE_KARMA } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
 const calcPostValue = require('../../utils/helpers');
 
@@ -21,6 +21,7 @@ export default function PostForm() {
     const [duration, setDuration] = useState('');
     const [address, setAddress] = useState('');
     const [createPost] = useMutation(CREATE_POST);
+    const [updateKarma] = useMutation(CHANGE_KARMA);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +40,13 @@ export default function PostForm() {
             });
             setTitle('');
             setDescription('');
+            const updatedUserKarma = userData.karma - currentPostValue;
+            await updateKarma({
+                variables: {
+                    username: username,
+                    karma: updatedUserKarma,
+                }
+            })
         } catch (err) {
             console.error(err);
         }

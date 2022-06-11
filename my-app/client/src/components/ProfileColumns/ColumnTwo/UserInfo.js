@@ -46,7 +46,7 @@ export default function UserInfo() {
                     <img src='./assets/images/karma_coin.png' alt='coin logo' />
                     <p>{userData.karma} Karma Coins</p>
                     <h2>Overall:</h2>
-                    <StatusBanner data={data} width={50} />
+                    <StatusBanner data={userData} width={50} />
                 </ContainerSubColumnTwo>
             </UserContainerWide>
         </Container>
