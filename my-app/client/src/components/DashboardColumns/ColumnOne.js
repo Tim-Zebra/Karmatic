@@ -11,7 +11,7 @@ import { useQuery } from '@apollo/client';
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
 
-export default function ColumnOne({ handlePageChange }) {
+export default function ColumnOne({ handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -32,6 +32,7 @@ export default function ColumnOne({ handlePageChange }) {
     if (!loading && data?.me === null) {
         Auth.logout();
     }
+
     return (
         <ColumnContainer>
             <GreetingContainer>

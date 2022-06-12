@@ -20,7 +20,7 @@ const [postsArray, setPostsArray] = useState(karmaPosts);
             </FeedHeaderContainer>
             <FeedContainer>
                 {postsArray.map((post) =>
-                    <Post karmaPostData={post} usersKarma={usersKarma} key={post._id} setPostsArray={setPostsArray} allPosts={postsArray} />
+                    <Post karmaPostData={post} key={post._id} setPostsArray={setPostsArray} allPosts={postsArray} usersKarma={usersKarma}/>
                 )}
 
             </FeedContainer>
