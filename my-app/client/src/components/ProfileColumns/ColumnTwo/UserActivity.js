@@ -3,27 +3,16 @@ import ProfileActivityCard from "../../ProfileActivityCard/ProfileActivityCard";
 import ProfileHelpingCard from "../../ProfileActivityCard/ProfileHelping";
 import { Container, UserContainerLong } from "./ProfileColumnTwo.styled";
 
-const data = [
-    {
-        postAuthor: 'Mary',
-        postValue: 100,
-        createdAt: 'June 2, 2020'
-    },
-    {
-        postAuthor: 'Joe',
-        postValue: 200,
-        createdAt: 'June 5, 2020'
-    }
-]
 
-export default function UserActivity() {
+export default function UserActivity({userData, setCurrentUserData}) {
+
     return (
         <>
             <Container>
                 <UserContainerLong>
 
                     <ProfileActivityCard />
-                    <ProfileHelpingCard />
+                    <ProfileHelpingCard userData={userData} setCurrentUserData={setCurrentUserData}/>
                 </UserContainerLong>
             </Container>
         </>
