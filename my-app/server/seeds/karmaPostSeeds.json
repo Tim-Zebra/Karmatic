@@ -3,8 +3,8 @@
     "postTitle": "Bring out your dead!",
     "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
     "postAuthor":"Tim-Zebra",
-    "postValue": 200,
-    "duration": 1,
+    "postValue": 30,
+    "duration": 3,
     "difficulty": "Easy",
     "address": "123 Camelot Trail",
     "karmaHelpers": [
@@ -20,12 +20,32 @@
       ]
   },
   {
-    "postTitle": "post dummy1",
-    "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
+    "postTitle": "Help with gardening",
+    "postDescription": "I want to start a garden, and I'm not very experienced. I did some research, but it would be great to have some advice and help",
     "postAuthor":"Tim-Zebra",
-    "postValue": 200,
+    "postValue": 20,
     "duration": 1,
-    "difficulty": 2,
+    "difficulty": "Medium",
+    "address": "4545 Bluebird way",
+    "karmaHelpers": [
+        {
+          "helperUsername": "Stiltskinner"
+        },
+        {
+          "helperUsername": "cyconutz"
+        },
+        {
+          "helperUsername": "billycwong19"
+        }
+      ]
+  },
+  {
+    "postTitle": "Cleaning up the neighborhood park",
+    "postDescription": "I noticed there is some litter in our park, and I wanted to put together a group to help clean it up",
+    "postAuthor":"Tim-Zebra",
+    "postValue": 20,
+    "duration": 2,
+    "difficulty": "Easy",
     "address": "123 Camelot Trail",
     "karmaHelpers": [
         {
@@ -40,12 +60,12 @@
       ]
   },
   {
-    "postTitle": "post dummy3",
-    "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
+    "postTitle": "Help fix my bike",
+    "postDescription": "I want to get back into biking, but my bike needs some maintenance that I don't know how to do. Anyone willing to show me how to fix the chain and replace a tire?",
     "postAuthor":"Tim-Zebra",
-    "postValue": 200,
-    "duration": 1,
-    "difficulty": 2,
+    "postValue": 60,
+    "duration": 2,
+    "difficulty": "Hard",
     "address": "123 Camelot Trail",
     "karmaHelpers": [
         {
@@ -60,31 +80,11 @@
       ]
   },
   {
-    "postTitle": "post dummy2",
-    "postDescription": "King Arthur is a terrible king as he rides around on cononuts all day and does nothing as a king. Please help me clean up this community",
-    "postAuthor":"Tim-Zebra",
-    "postValue": 200,
-    "duration": 1,
-    "difficulty": 2,
-    "address": "123 Camelot Trail",
-    "karmaHelpers": [
-        {
-          "helperUsername": "Stiltskinner"
-        },
-        {
-          "helperUsername": "cyconutz"
-        },
-        {
-          "helperUsername": "billycwong19"
-        }
-      ]
-  },
-  {
-    "postTitle": "Rabit on the Lose!",
-    "postDescription": "Help! My rabit got out and I'm worried he might get hurt. He's been known to be a little...aggressive but that's no excuse for throwing holy hand grenades at him!",
+    "postTitle": "Rabbit on the Lose!",
+    "postDescription": "Help! My rabbit got out and I'm worried he might get hurt. He's been known to be a little...aggressive but that's no excuse for throwing holy hand grenades at him!",
     "postAuthor":"Stiltskinner",
-    "postValue": 400,
-    "duration": 1,
+    "postValue": 80,
+    "duration": 4,
     "difficulty": "Medium",
     "address": "456 Arthur Lane",
     "karmaHelpers": [
@@ -100,7 +100,7 @@
     "postTitle": "UI/UX TEST",
     "postDescription": "I do things with UI/UX cause I'm pro. Help me test my Front-end",
     "postAuthor":"billycwong19",
-    "postValue": 100,
+    "postValue": 60,
     "duration": 2,
     "difficulty": "Hard",
     "address": "The Matrix",
@@ -111,28 +111,13 @@
       ]
   },
   {
-    "postTitle": "UI/UX This post is completed",
-    "postDescription": "I do things with UI/UX cause I'm pro. Help me test my Front-end",
+    "postTitle": "Set up my wifi network",
+    "postDescription": "I am not too good with technology, and I am hoping someone can help me set up my wifi network. I just can't figure out why I don't get a signal in my office!",
     "postAuthor":"billycwong19",
     "postValue": 100,
-    "duration": 2,
+    "duration": 1,
     "complete": true,
     "difficulty": "Hard",
-    "address": "The Matrix",
-    "karmaHelpers": [
-        {
-          "helperUsername": "Tim-Zebra"
-        }
-      ]
-  },
-  {
-    "postTitle": "UI/UX This post is incomplete",
-    "postDescription": "I do things with UI/UX cause I'm pro. Help me test my Front-end",
-    "postAuthor":"billycwong19",
-    "postValue": 100,
-    "duration": 2,
-    "difficulty": "Hard",
-    "complete": false,
     "address": "The Matrix",
     "karmaHelpers": [
         {
