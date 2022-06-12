@@ -57,5 +57,5 @@ export const FeedContainer = styled.div`
     overflow-y: scroll;
     overscroll-behavior-y: none;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 `
