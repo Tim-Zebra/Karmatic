@@ -28,17 +28,23 @@ mutation Login($username: String!, $password: String!) {
 
 // Create Post
 export const CREATE_POST = gql`
-mutation CreatePost($username: String!, $postTitle: String!, $postDescription: String!, $postValue: Int!, $duration: Int!, $difficulty: String!, $address: String!) {
+mutation createPost($username: String!, $postTitle: String!, $postDescription: String!, $postValue: Int!, $duration: Int!, $difficulty: String!, $address: String!) {
   createPost(username: $username, postTitle: $postTitle, postDescription: $postDescription, postValue: $postValue, duration: $duration, difficulty: $difficulty, address: $address) {
     _id
     postAuthor
     postTitle
     postDescription
     postValue
-    difficulty
     duration
+    difficulty
     address
+    complete
     createdAt
+    karmaHelpers {
+      _id
+      helperUsername
+      createdAt
+    }
   }
 }
 `;
@@ -56,6 +62,20 @@ export const EDIT_POST = gql`
 mutation editPost($karmaPostId: ID!, $postTitle: String, $postDescription: String, $postValue: Int, $duration: Int, $difficulty: String, $address: String) {
   editPost(karmaPostId: $karmaPostId, postTitle: $postTitle, postDescription: $postDescription, postValue: $postValue, duration: $duration, difficulty: $difficulty, address: $address) {
     _id
+    postAuthor
+    postTitle
+    postDescription
+    postValue
+    duration
+    difficulty
+    address
+    complete
+    createdAt
+    karmaHelpers {
+      _id
+      helperUsername
+      createdAt
+    }
   }
 }
 `;

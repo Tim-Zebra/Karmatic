@@ -12,8 +12,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
-
-export default function Post({ karmaPostData, usersKarma }) {
+export default function Post({ karmaPostData, usersKarma, setPostsArray, allPosts }) {
     // populatePostKarma finds the amount of karma for the post author and returns it
     const populatePostKarma = (karmaPostData, usersKarma) => {
         let postAuthorKarma = 0;
@@ -37,6 +36,7 @@ export default function Post({ karmaPostData, usersKarma }) {
     const [refundKarma] = useMutation(CHANGE_KARMA);
 
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
+    
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
 
     // Creates hook to mark off completion
@@ -149,7 +149,7 @@ export default function Post({ karmaPostData, usersKarma }) {
                             {userData.username === karmaPostData.postAuthor &&
                                 <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
                             }
-                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
+                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts}/>}
 
                         </ImageContainer>
                         <PostBody>
