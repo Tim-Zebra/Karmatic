@@ -19,9 +19,10 @@ const dateFormat = require('../../utils/dateFormat');
 
 // Shows recent KarmaPost activity
 export default function ColumnThree() {
-    // Creates hook for hours, sets default to view posts 4 hours ago.
+    // set hooks
     const [recentHours, setRecentHours] = useState(4);
-console.log('RECENT HOURS', recentHours);
+    const [pastDate, setPastDate] = useState(dateFormat(Date.now() - (1000 * 60 * 60 * recentHours)));
+
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
@@ -41,14 +42,18 @@ console.log('RECENT HOURS', recentHours);
     const karmaHelping = meData?.karmaHelping;
 
     // hours variable sets how far in the past the dates will be filtered.
-    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * recentHours));
-    console.log('This happened', pastDate);
+    // const hours = 72;
+    // const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
     // Filters Karma posts from the up to 4 hours in the past from the current date.
     const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
+
+    const updatePastDate = (hours) => {
+        dateFormat(Date.now() - (1000 * 60 * 60 * hours))
+    }
 
     // Renders drop down so user can select how far back they want to view each set of posts.
     const rendersFormDropDown = () => {
@@ -58,7 +63,7 @@ console.log('RECENT HOURS', recentHours);
             <select
                 name="hours"
                 value={recentHours}
-                onChange={(e) => setRecentHours(e.target.value)}>
+                onChange={(e) => {setRecentHours(e.target.value); updatePastDate(e.target.value)}}>
                 <option value="1">From 1 hour ago</option>
                 <option value="4">From 4 hours ago</option>
                 <option value="8">From 8 hours ago</option>
