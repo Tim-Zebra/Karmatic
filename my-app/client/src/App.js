@@ -63,7 +63,8 @@ export default function App() {
   // Renders current page based on user login
   const renderCurrentPage = () => {
     if (currentPage === 'Profile') {
-      return <Profile />;
+
+      return <Profile/>;
     }
     if (currentPage === 'Dashboard') {
       return <Dashboard handlePageChange={handlePageChange} />;

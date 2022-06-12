@@ -13,7 +13,7 @@ const data = [
         groupName: 'The Springs'
     },
     {
-        groupName: 'The End'
+        groupName: 'Copper Spring'
     }]
 
 export default function ProfileColumnOne() {

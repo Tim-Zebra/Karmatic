@@ -1,34 +1,15 @@
 import React, { useState } from "react";
 
 import { Container, ContainerSubRowOne, ContainerSubColumnOne, ContainerSubColumnTwo, UserContainerWide } from './ProfileColumnTwo.styled'
-import { CreatePostButtonProfile } from "../../Buttons/AddButton.styled";
+// import { CreatePostButtonProfile } from "../../Buttons/AddButton.styled";
 import StatusBanner from '../../StatusBanner/StatusBanner'
-import CreatePostModal from "../../Modals/CreatePostModal";
+// import CreatePostModal from "../../Modals/CreatePostModal";
 
-// Allows use for both queries and mutations from our utils folder
-import { useQuery } from '@apollo/client';
-
-// Gets Queries
-import { GET_ME } from '../../../utils/queries';
-
-
-export default function UserInfo() {
+export default function UserInfo({userData}) {
 
     const [isOpen, setIsOpen] = useState(false);
-    // Querys username and karma
-    // Sets hooks for data loading
-    const { loading, data } = useQuery(GET_ME);
 
-    const userData = data?.me || {};
-    // Returns null if userdata is not present
-    if (!userData) {
-        return null;
-    }
 
-    // Displays differently during loading
-    if (loading) {
-        return <h2>LOADING...</h2>;
-    }
     return (
         <Container>
             <UserContainerWide>
@@ -36,10 +17,10 @@ export default function UserInfo() {
                     <ContainerSubColumnOne>
                         <h1>{userData.username}'s Profile</h1>
                     </ContainerSubColumnOne>
-                    <CreatePostButtonProfile onClick={() => setIsOpen(true)}>
+                    {/* <CreatePostButtonProfile onClick={() => setIsOpen(true)}>
                         Create Post
                     </CreatePostButtonProfile>
-                    {isOpen && <CreatePostModal setIsOpen={setIsOpen} />}
+                    {isOpen && <CreatePostModal setIsOpen={setIsOpen} />} */}
                 </ContainerSubRowOne>
                 <ContainerSubColumnTwo>
                     <h2>Current:</h2>
