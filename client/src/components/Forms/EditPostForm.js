@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client';
 import { EDIT_POST } from '../../utils/mutations';
 const calcPostValue = require('../../utils/helpers');
 
-export default function PostForm({karmaPostData, setPostsArray, allPosts}) {
+export default function PostForm({ karmaPostData, setPostsArray, allPosts }) {
     const [title, setTitle] = useState(`${karmaPostData.postTitle}`);
     const [description, setDescription] = useState(`${karmaPostData.postDescription}`);
     const [difficulty, setDifficulty] = useState(`${karmaPostData.difficulty}`);
@@ -20,7 +20,6 @@ export default function PostForm({karmaPostData, setPostsArray, allPosts}) {
         try {
             // Uses calcPostValue helper function to calculate a new postvalue from difficulty and duration and return it
             const currentPostValue = calcPostValue(difficulty, duration);
-            console.log('currentpostvalue',currentPostValue)
             const editedPost = await editPost({
                 variables: {
                     karmaPostId: postId,

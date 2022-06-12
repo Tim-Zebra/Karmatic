@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Container, ContainerSubRowOne, ContainerSubColumnOne, ContainerSubColumnTwo, UserContainerWide } from './ProfileColumnTwo.styled'
-// import { CreatePostButtonProfile } from "../../Buttons/AddButton.styled";
 import StatusBanner from '../../StatusBanner/StatusBanner'
-// import CreatePostModal from "../../Modals/CreatePostModal";
 
-export default function UserInfo({userData}) {
-
-    const [isOpen, setIsOpen] = useState(false);
-
-
+export default function UserInfo({ userData }) {
     return (
         <Container>
             <UserContainerWide>

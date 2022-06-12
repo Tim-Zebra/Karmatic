@@ -1,21 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RecentKarmaReceived from '../RecentKarma/RecentKarmaReceived'
 import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
 // CSS components
 import { ColumnContainer } from './ColumnThree.styled'
-import { css } from 'styled-components';
 
 // Imports Authorization
-import Auth from '../../utils/auth';
 
 // Allows use for both queries and mutations from our utils folder
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 // Gets Queries
 // Gets the Karma Post
 import { GET_ME } from '../../utils/queries';
-
-const dateFormat = require('../../utils/dateFormat');
 
 // Shows recent KarmaPost activity
 export default function ColumnThree() {
@@ -34,7 +30,6 @@ export default function ColumnThree() {
         return <h2>LOADING...</h2>;
     }
 
-    const karmaPosts = meData?.karmaPosts;
     const karmaHelping = meData?.karmaHelping;
 
     // hours variable sets how far in the past the dates will be filtered.

@@ -10,7 +10,7 @@ const calcPostValue = require('../../utils/helpers');
 export default function PostForm({ setPostsArray, allPosts }) {
     // Querys username and karma
     // Sets hooks for data loading
-    const { loading, data } = useQuery(GET_ME);
+    const { data } = useQuery(GET_ME);
 
     const userData = data?.me || {};
 
