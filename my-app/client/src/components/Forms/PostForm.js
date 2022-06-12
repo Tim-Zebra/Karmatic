@@ -7,7 +7,7 @@ import { CREATE_POST, CHANGE_KARMA } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
 const calcPostValue = require('../../utils/helpers');
 
-export default function PostForm({setPostsArray, allPosts}) {
+export default function PostForm({ setPostsArray, allPosts }) {
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -41,7 +41,7 @@ export default function PostForm({setPostsArray, allPosts}) {
             setTitle('');
             setDescription('');
             // setPostsArray sets the state of the posts array to include the newly created post
-            setPostsArray([...allPosts, newPost.data.createPost]);
+            // Deducts Karma from User when post is created
             const updatedUserKarma = userData.karma - currentPostValue;
             await updateKarma({
                 variables: {
@@ -49,6 +49,7 @@ export default function PostForm({setPostsArray, allPosts}) {
                     karma: updatedUserKarma,
                 }
             })
+            setPostsArray([...allPosts, newPost.data.createPost]);
         } catch (err) {
             console.error(err);
         }
