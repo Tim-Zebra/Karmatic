@@ -48,9 +48,9 @@ module.exports = (oldDate) => {
 
   // Adds based on year value Array[2]
   let year = parseInt(unixTimeStringArray[2]);
-  // Added 56648 to compensate for integer rounding 
-  newUnixTime += (value.year * (2000 - 1970) + 56648);
-console.log('This happened', 1641016800- newUnixTime);
+  // Added 56648 to compensate for integer rounding which results ~ 8 hours missing. Integer compensates appropriately for both 2000 and 2022
+  newUnixTime += (value.year * (year - 1970) + 56648);
+
   // Adds based on month value Array[0]
 
   // Adds based on day value Array[1]
