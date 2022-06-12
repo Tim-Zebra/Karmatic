@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledForm} from './Form.Styled'
+import { StyledForm } from './Form.Styled'
 //Mutation imports
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../utils/mutations';
@@ -21,12 +21,12 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUserFormData({
-            ...userFormData, 
+            ...userFormData,
             [name]: value
         });
-      };
+    };
 
-      const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
@@ -62,35 +62,35 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
     };
 
     const renderAlert = () => {
-        if(showAlert) {
-            return <div>NICE TRY !! {'>:('}</div>
+        if (showAlert) {
+            return <div>Something went wrong, try again.</div>
         }
     }
 
     return (
         <StyledForm onSubmit={handleFormSubmit}>
             <label for="username">username</label>
-            <input type="text" name="username" placeholder="Enter your username..." 
-            value={userFormData.username} 
-            onChange={handleInputChange}
+            <input type="text" name="username" placeholder="Enter your username..."
+                value={userFormData.username}
+                onChange={handleInputChange}
             />
 
             <label for="email">email</label>
-            <input type="text" name="email" placeholder="Enter your email..." 
-            value={userFormData.email}
-            onChange={handleInputChange}
+            <input type="text" name="email" placeholder="Enter your email..."
+                value={userFormData.email}
+                onChange={handleInputChange}
             />
 
             <label for="password">password</label>
-            <input type="password" name="password" placeholder="Type in your password..." 
-            value={userFormData.password}
-            onChange={handleInputChange}
+            <input type="password" name="password" placeholder="Type in your password..."
+                value={userFormData.password}
+                onChange={handleInputChange}
             />
 
             <label for="password">confirm password</label>
-            <input type="password" name="confirmPassword" placeholder="Confirm your password..." 
-            value={userFormData.confirmPassword}
-            onChange={handleInputChange}
+            <input type="password" name="confirmPassword" placeholder="Confirm your password..."
+                value={userFormData.confirmPassword}
+                onChange={handleInputChange}
             />
 
             <SubmitButton submit={handleSubmit} textContent={submitButtonTextContent} />
