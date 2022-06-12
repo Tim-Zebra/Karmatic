@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyledNavImage, StyledNavContainer, StyledNavEnd } from './Nav.styled';
-import NavTabs from './NavTabs';
 import auth from '../../utils/auth'
 export default function Nav({ currentPage, handlePageChange }) {
     return (

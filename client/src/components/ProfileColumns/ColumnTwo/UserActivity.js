@@ -4,15 +4,15 @@ import ProfileHelpingCard from "../../ProfileActivityCard/ProfileHelping";
 import { Container, UserContainerLong } from "./ProfileColumnTwo.styled";
 
 
-export default function UserActivity({userData, setCurrentUserData}) {
+export default function UserActivity({ userData, setCurrentUserData }) {
 
     return (
         <>
             <Container>
                 <UserContainerLong>
 
-                    <ProfileActivityCard />
-                    <ProfileHelpingCard userData={userData} setCurrentUserData={setCurrentUserData}/>
+                    <ProfileActivityCard userData={userData} />
+                    <ProfileHelpingCard userData={userData} setCurrentUserData={setCurrentUserData} />
                 </UserContainerLong>
             </Container>
         </>
