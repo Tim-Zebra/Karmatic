@@ -12,6 +12,10 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
+
+// Imports utils and helpers
+const dateFormat = require('../../utils/dateFormat');
+
 export default function Post({ karmaPostData, usersKarma, setPostsArray, allPosts }) {
     // populatePostKarma finds the amount of karma for the post author and returns it
     const populatePostKarma = (karmaPostData, usersKarma) => {
@@ -59,6 +63,11 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     if (loading) {
         return <h2>LOADING...</h2>;
     }
+
+    console.log('This is date', karmaPostData.createdAt);
+    console.log('This is formated', dateFormat(karmaPostData.createdAt));
+    console.log('This .now()', Date.now());
+    console.log('This .now', Date.now);
     // Renders Karma Helpers
     const renderKarmaHelpers = () => {
         // Finds length of Karma
@@ -156,7 +165,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
 
                             <PostHeader>
                                 <h3>{karmaPostData.postAuthor}</h3>
-                                <p>{karmaPostData.createdAt}</p>
+                                <p>{dateFormat(karmaPostData.createdAt)}</p>
                                 {/* @William duration of task, difficulty, and user karma needs styling */}
                                 <p>Duration: {karmaPostData.duration} hours</p>
                                 <p>{karmaPostData.postAuthor}'s KarmaCoins: {postAuthorKarma}</p>
@@ -238,7 +247,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                         <PostBody>
                             <PostHeader>
                                 <h3>{karmaPostData.postAuthor}</h3>
-                                <p>{karmaPostData.createdAt}</p>
+                                <p>{dateFormat(karmaPostData.createdAt)}</p>
                             </PostHeader>
                             <PostMessage>
                                 <p>Post deleted. Karma refunded!</p>
