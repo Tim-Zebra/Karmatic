@@ -15,6 +15,9 @@ import { useMutation, useQuery } from '@apollo/client';
 // Gets the Karma Post
 import { GET_ME } from '../../utils/queries';
 
+// Imports util functions
+const unDateFormatToUnix = require('../../utils/unDateFormatToUnix');
+
 // Shows recent KarmaPost activity
 export default function ColumnThree() {
     // Queries recent Karma posts
@@ -39,6 +42,9 @@ export default function ColumnThree() {
     const hours = 72;
     const pastDate = Date.now() - (1000 * 60 * 60 * hours);
 
+    // console.log('pasteDate and type of ', pastDate, ' ', typeof pastDate);
+    // console.log('post.created at and type of ', karmaHelping[0].createdAt, ' ', typeof  karmaHelping[0].createdAt);
+    console.log('uncode karmahelping', unDateFormatToUnix(karmaHelping[0].createdAt), ' ', typeof unDateFormatToUnix(karmaHelping[0].createdAt));
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => post.createdAt > pastDate);
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);

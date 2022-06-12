@@ -40,6 +40,7 @@ module.exports = (
   };
 
   const dateObj = new Date(timestamp);
+  console.log('This happened', dateObj);
   const formattedMonth = months[dateObj.getMonth()];
 
   const dayOfMonth = dateSuffix
