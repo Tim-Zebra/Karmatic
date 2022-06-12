@@ -54,6 +54,8 @@ const typeDefs = gql`
     editPostComplete(karmaPostId: ID!) : KarmaPost
     deletePost(karmaPostId: ID!) : KarmaPost
     addHelper(karmaPostId: ID!) : KarmaPost
+    removeHelper(karmaPostId: ID!) : KarmaPost
+
   }
 `;
 

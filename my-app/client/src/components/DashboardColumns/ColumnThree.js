@@ -39,19 +39,23 @@ export default function ColumnThree() {
 
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 72;
-    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
-
-    // Filters Karma posts from the up to 4 hours in the past from the current date.
-    const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
+    const pastDate = Date.now() - (1000 * 60 * 60 * hours);
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) => post.createdAt > pastDate);
+    const recentKarmaHelpingArray = karmaHelping.filter((post) =>
+        post.createdAt > pastDate
+    );
 
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
+    console.log(recentKarmaHelpingArray)
+    console.log(pastDate)
+
+    console.log(karmaHelping[0].createdAt)
     return (
+
         <ColumnContainer>
-        {/* Keys are generated with a string plus the index */}
-        {/* Recent karma received after the postAuthor Completed the post */}
+            {/* Keys are generated with a string plus the index */}
+            {/* Recent karma received after the postAuthor Completed the post */}
             <h3>Recent Karma Received:</h3>
             {recentKarmaReceivedArray.length === 0 &&
                 <div>
@@ -59,10 +63,10 @@ export default function ColumnThree() {
                 </div>}
             {recentKarmaReceivedArray.length > 0 &&
                 recentKarmaReceivedArray.map((recentPost, index) =>
-                    <RecentKarmaReceived karmaPostData={recentPost} key={`karmareceived${index}`}/>
+                    <RecentKarmaReceived karmaPostData={recentPost} key={`karmareceived${index}`} />
                 )
             }
-            <h3>Recent Karma Helping:</h3>            
+            <h3>Recent Karma Helping:</h3>
             {recentKarmaHelpingArray.length === 0 &&
                 <div>
                     Go HELP somebody!! {':)'}

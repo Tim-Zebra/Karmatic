@@ -58,6 +58,14 @@ mutation addHelper($karmaPostId: ID!) {
 }
 `;
 
+export const REMOVE_HELPER = gql`
+mutation removeHelper($karmaPostId: ID!) {
+  removeHelper(karmaPostId: $karmaPostId) {
+    _id
+  }
+}
+`;
+
 export const EDIT_POST = gql`
 mutation editPost($karmaPostId: ID!, $postTitle: String, $postDescription: String, $postValue: Int, $duration: Int, $difficulty: String, $address: String) {
   editPost(karmaPostId: $karmaPostId, postTitle: $postTitle, postDescription: $postDescription, postValue: $postValue, duration: $duration, difficulty: $difficulty, address: $address) {
@@ -93,6 +101,7 @@ mutation deletePost($karmaPostId: ID!) {
 export const CHANGE_KARMA = gql`
 mutation Mutation($username: String!, $karma: Int!) {
   changeKarma(username: $username, karma: $karma) {
+    username
     karma
   }
 }
@@ -106,5 +115,3 @@ mutation editPostComplete($karmaPostId: ID!) {
   }
 }
 `;
-
-
