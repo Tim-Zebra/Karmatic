@@ -11,13 +11,13 @@ import { useQuery } from '@apollo/client';
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
 
-export default function ColumnOne({ handlePageChange, setUserKarma, userKarma }) {
+export default function ColumnOne({ handlePageChange}) {
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
 
     const userData = data?.me || {};
-    setUserKarma(userData.karma);
+
     // Returns null if userdata is not present
     if (!userData) {
         return null;
@@ -32,6 +32,7 @@ export default function ColumnOne({ handlePageChange, setUserKarma, userKarma })
     if (!loading && data?.me === null) {
         Auth.logout();
     }
+
     return (
         <ColumnContainer>
             <GreetingContainer>
@@ -47,7 +48,7 @@ export default function ColumnOne({ handlePageChange, setUserKarma, userKarma })
                         {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                         <CurrentKarmaCoinsContainer>
                             <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                            {userKarma} Karma Coins
+                            {userData.karma} Karma Coins
                         </CurrentKarmaCoinsContainer>
                         <UserContainerHeader>
                             Overall Status:

@@ -4,7 +4,7 @@ import { ColumnContainer, FeedHeaderContainer, CreatePostContainer, FeedContaine
 import PostForm from '../Forms/PostForm'
 
 
-export default function ColumnTwo({usersKarma, karmaPosts, setUserKarma, userKarma }) {
+export default function ColumnTwo({usersKarma, karmaPosts }) {
     // posts array usestate is passed down to child components so they can update the post feed when new posts are created or edited
 const [postsArray, setPostsArray] = useState(karmaPosts);
 
@@ -12,7 +12,7 @@ const [postsArray, setPostsArray] = useState(karmaPosts);
         <ColumnContainer>
             <FeedHeaderContainer>
                 <CreatePostContainer>
-                    <PostForm  setPostsArray={setPostsArray} allPosts={karmaPosts} setUserKarma={setUserKarma} userKarma={userKarma}/>
+                    <PostForm  setPostsArray={setPostsArray} allPosts={karmaPosts}/>
                 </CreatePostContainer>
                 <ActivityHeader>
                     <p>Activity</p>
@@ -20,7 +20,7 @@ const [postsArray, setPostsArray] = useState(karmaPosts);
             </FeedHeaderContainer>
             <FeedContainer>
                 {postsArray.map((post) =>
-                    <Post karmaPostData={post} usersKarma={usersKarma} key={post._id} setPostsArray={setPostsArray} allPosts={postsArray}  setUserKarma={setUserKarma} />
+                    <Post karmaPostData={post} key={post._id} setPostsArray={setPostsArray} allPosts={postsArray} usersKarma={usersKarma}/>
                 )}
 
             </FeedContainer>

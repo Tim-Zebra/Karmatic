@@ -13,8 +13,6 @@ export default function Dashboard({ handlePageChange }) {
 // Get all posts, so it can be passed down to col 2>posts and show posts
     const karmaPosts = useQuery(GET_ALL_KARMAPOSTS);
 
-    const [userKarma, setUserKarma] = useState(100);
-
     if (!data) {
         return null;
     }
@@ -38,11 +36,11 @@ export default function Dashboard({ handlePageChange }) {
         <DashboardContainer>
 
             <Column>
-            <ColumnOne handlePageChange={handlePageChange} userKarma={userKarma} setUserKarma={setUserKarma} />
+            <ColumnOne handlePageChange={handlePageChange} />
             </Column>
 
             <Column>
-            <ColumnTwo usersKarma={data} karmaPosts={karmaPosts.data.allKarmaPosts} handlePageChange={handlePageChange} setUserKarma={setUserKarma} userKarma={userKarma}/>
+            <ColumnTwo usersKarma={data} karmaPosts={karmaPosts.data.allKarmaPosts} handlePageChange={handlePageChange} />
             </Column>
 
             <Column>
