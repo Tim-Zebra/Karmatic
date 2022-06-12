@@ -4,7 +4,7 @@ import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
 // CSS components
 import { ColumnContainer } from './ColumnThree.styled'
 import { css } from 'styled-components';
-
+import { PostFormOptions } from '../Forms/PostForm.styled'
 // Imports Authorization
 import Auth from '../../utils/auth';
 
@@ -19,6 +19,9 @@ const dateFormat = require('../../utils/dateFormat');
 
 // Shows recent KarmaPost activity
 export default function ColumnThree() {
+    // Creates hook for hours, sets default to view posts 4 hours ago.
+    const [recentHours, setRecentHours] = useState(4);
+console.log('RECENT HOURS', recentHours);
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
@@ -38,20 +41,43 @@ export default function ColumnThree() {
     const karmaHelping = meData?.karmaHelping;
 
     // hours variable sets how far in the past the dates will be filtered.
-    const hours = 72;
-    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
-
+    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * recentHours));
+    console.log('This happened', pastDate);
     // Filters Karma posts from the up to 4 hours in the past from the current date.
     const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
+
+    // Renders drop down so user can select how far back they want to view each set of posts.
+    const rendersFormDropDown = () => {
+        return(
+            <PostFormOptions>
+            <label>Difficulty:</label>
+            <select
+                name="hours"
+                value={recentHours}
+                onChange={(e) => setRecentHours(e.target.value)}>
+                <option value="1">From 1 hour ago</option>
+                <option value="4">From 4 hours ago</option>
+                <option value="8">From 8 hours ago</option>
+                <option value="24">From 24 hours ago</option>
+                <option value="48">From 48 hours ago</option>
+                <option value="72">From 72 hours ago</option>
+            </select>
+            <hr />
+        </PostFormOptions>
+        )
+    }
+
+    
     return (
         <ColumnContainer>
         {/* Recent Karma Received */}
         {/* Keys are generated with a string plus the index */}
-            <h3>Recent Karma Received:</h3>
+            <h3>Recent Karma Received:</h3> 
+            {rendersFormDropDown()}
             {recentKarmaReceivedArray.map((recentPost, index) =>
                 <RecentKarmaReceived karmaPostData={recentPost} key={`karmareceived${index}`}/>
             )}
