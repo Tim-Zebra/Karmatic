@@ -1,5 +1,5 @@
 import React from 'react'
-import { RecentKarmaBox, ExchangeContainer, ExchangeBetween, KarmaCoins, RecentContainer } from './RecentKarmaHelping.styled'
+import { RecentKarmaBox, KarmaCoins, RecentContainer } from './RecentKarmaHelping.styled'
 
 export default function RecentKarmaHelping({ karmaPostData }) {
 

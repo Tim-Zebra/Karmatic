@@ -17,7 +17,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
 
     // Sets hooks for userform data, and invalid info
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
-    const [login, { error, data }] = useMutation(LOGIN_USER);
+    const [login] = useMutation(LOGIN_USER);
     const [showAlert, setShowAlert] = useState(false);
 
     // Updates form state based on input changes

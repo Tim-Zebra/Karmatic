@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ColumnOne from '../../components/DashboardColumns/ColumnOne'
 import ColumnTwo from '../../components/DashboardColumns/ColumnTwo'
 import ColumnThree from '../../components/DashboardColumns/ColumnThree'
 
 import { DashboardContainer, Column } from './Dashboard.styled'
 import { useQuery } from '@apollo/client';
-import { GET_USERS_KARMA, GET_ALL_KARMAPOSTS} from '../../utils/queries';
+import { GET_USERS_KARMA, GET_ALL_KARMAPOSTS } from '../../utils/queries';
 
 export default function Dashboard({ handlePageChange }) {
     // Get all users karma, so it can be passed to posts and used to display karma of postauthor
-    const {data, loading } = useQuery(GET_USERS_KARMA);
-// Get all posts, so it can be passed down to col 2>posts and show posts
+    const { data, loading } = useQuery(GET_USERS_KARMA);
+    // Get all posts, so it can be passed down to col 2>posts and show posts
     const karmaPosts = useQuery(GET_ALL_KARMAPOSTS);
 
     if (!data) {
@@ -36,17 +36,17 @@ export default function Dashboard({ handlePageChange }) {
         <DashboardContainer>
 
             <Column>
-            <ColumnOne handlePageChange={handlePageChange} />
+                <ColumnOne handlePageChange={handlePageChange} />
             </Column>
 
             <Column>
-            <ColumnTwo usersKarma={data} karmaPosts={karmaPosts.data.allKarmaPosts} handlePageChange={handlePageChange} />
+                <ColumnTwo usersKarma={data} karmaPosts={karmaPosts.data.allKarmaPosts} handlePageChange={handlePageChange} />
             </Column>
 
             <Column>
-            <ColumnThree />
+                <ColumnThree />
             </Column>
-            
+
         </DashboardContainer>
     )
 }
