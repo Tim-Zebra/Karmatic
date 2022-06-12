@@ -40,6 +40,7 @@ export default function ColumnThree() {
     const hours = 72;
     const pastDate = Date.now() - (1000 * 60 * 60 * hours);
 
+    console.log('This happened', karmaHelping);
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => {
         console.log('This post', post.createdAt);
