@@ -45,20 +45,35 @@ export default function ColumnThree() {
     const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
+    const recentKarmaHelpingArray = karmaHelping.filter((post) => post.createdAt > pastDate);
+
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
     return (
         <ColumnContainer>
-        {/* Recent Karma Received */}
         {/* Keys are generated with a string plus the index */}
+        {/* Recent karma received after the postAuthor Completed the post */}
             <h3>Recent Karma Received:</h3>
-            {recentKarmaReceivedArray.map((recentPost, index) =>
-                <RecentKarmaReceived karmaPostData={recentPost} key={`karmareceived${index}`}/>
-            )}
-            <h3>Recent Karma Helping:</h3>
-            {recentKarmaHelpingArray.map((recentPost, index) =>
-                <RecentKarmaHelping karmaPostData={recentPost} key={`karmahelping${index}`} />
-            )}
+            {recentKarmaReceivedArray.length === 0 &&
+                <div>
+                    No Karma Received Recently {':('}
+                </div>}
+            {recentKarmaReceivedArray.length > 0 &&
+                recentKarmaReceivedArray.map((recentPost, index) =>
+                    <RecentKarmaReceived karmaPostData={recentPost} key={`karmareceived${index}`}/>
+                )
+            }
+            <h3>Recent Karma Helping:</h3>            
+            {recentKarmaHelpingArray.length === 0 &&
+                <div>
+                    Go HELP somebody!! {':)'}
+                </div>
+            }
+
+            {recentKarmaHelpingArray.length > 0 &&
+                recentKarmaHelpingArray.map((recentPost, index) =>
+                    <RecentKarmaHelping karmaPostData={recentPost} key={`karmahelping${index}`} />
+                )
+            }
 
         </ColumnContainer>
     )
