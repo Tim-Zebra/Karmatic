@@ -10,7 +10,7 @@ export const KarmaBanner = styled.div`
     align-self: center;
     margin-bottom: 2rem;
 `
-
+// @William you may want to change theses colors
 export const LowKarmaBanner = styled(KarmaBanner)`
 background-color: #fce043;
 background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
