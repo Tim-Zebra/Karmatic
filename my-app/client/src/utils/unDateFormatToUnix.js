@@ -30,7 +30,6 @@ module.exports = (oldDate) => {
     minute: 60000,
     hour: 3600000,
     day: 86400000,
-    month : 2629800000,
     year : 31557600000,
   }
 
@@ -38,15 +37,15 @@ module.exports = (oldDate) => {
   let year = parseInt(unixTimeStringArray[2]);
   // Added 56648 to compensate for integer rounding which results ~ 8 hours missing. Integer compensates appropriately for both 2000 and 2022
   newUnixTime += (value.year * (year - 1970));
+  console.log('UNIX YEAR', newUnixTime);
 
   // Adds based on month value Array[0]
   // Converts any month length to short case. Eg. January = Jan, Janu = Jan, Jan=Jan
   let month = unixTimeStringArray[0].split('').splice(0,3).join('');
   let monthValue = months[month];
-  newUnixTime += (value.month * monthValue);
-  console.log('This happened', newUnixTime);
+  newUnixTime += (value.day * monthValue);
 
-  // Accounts for current year being a leap year
+  // Accounts for current year being a leap year. Adds 1 day to the current time if the current year is a leap year
   if(year % 4 === 0) {
     newUnixTime += value.day;
   }
