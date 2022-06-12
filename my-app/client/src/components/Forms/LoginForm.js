@@ -60,7 +60,7 @@ export default function LoginForm({ handleSubmit, handleLoginSignupToggle }) {
 
     const renderAlert = () => {
         if (showAlert) {
-            return <div>WRONG INFO!!</div>
+            return <div>Incorrect username or password</div>
         }
     }
 
