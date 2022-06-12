@@ -42,10 +42,9 @@ const karmaPostSchema = new Schema({
     required: true,
     default: false,
   },
-    createdAt: {
+  createdAt: {
     type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
+    default: Date.now(),
   },
   karmaHelpers: [
     {

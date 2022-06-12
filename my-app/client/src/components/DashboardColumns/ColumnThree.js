@@ -34,20 +34,21 @@ export default function ColumnThree() {
         return <h2>LOADING...</h2>;
     }
 
-    const karmaPosts = meData?.karmaPosts;
     const karmaHelping = meData?.karmaHelping;
 
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 72;
-    const pastDate = dateFormat(Date.now() - (1000 * 60 * 60 * hours));
-
-    // Filters Karma posts from the up to 4 hours in the past from the current date.
-    const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
+    const pastDate = Date.now() - (1000 * 60 * 60 * hours);
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) => post.createdAt > pastDate);
-
+    const recentKarmaHelpingArray = karmaHelping.filter((post) => {
+        console.log('This post', post.createdAt);
+        console.log('This pastDate', pastDate);
+        return post.createdAt > pastDate});
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
+
+    console.log('This recentKarmaHelpingArray', recentKarmaHelpingArray);
+    console.log('This recentKarmaReceivedArray', recentKarmaReceivedArray);
     return (
         <ColumnContainer>
         {/* Keys are generated with a string plus the index */}
