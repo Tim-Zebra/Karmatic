@@ -8,31 +8,20 @@ module.exports = (oldDate) => {
   // newUnixTime at 0 = January 1st 1970
   let newUnixTime = 0;
 
-  // create month object
+  // create month object. In 'days' value of days that have passed
   const months = {
     Jan: 0,
-    January: 0,
-    Feb: 1,
-    February: 1,
-    Mar: 2,
-    March: 2,
-    Apr: 3,
-    April: 3,
-    May: 4,
-    Jun: 5,
-    June: 5,
-    Jul: 6,
-    July: 6,
-    Aug: 7,
-    August: 7,
-    Sep: 8,
-    September: 8,
-    Oct: 9,
-    October: 9,
-    Nov: 10,
-    November: 10,
-    Dec: 11,
-    December: 11,
+    Feb: 31,
+    Mar: 59,
+    Apr: 90,
+    May: 120,
+    Jun: 151,
+    Jul: 181,
+    Aug: 212,
+    Sep: 243,
+    Oct: 273,
+    Nov: 304,
+    Dec: 334,
   };
 
   // Milliseconds values per minute, hour, day, month, year
@@ -51,11 +40,18 @@ module.exports = (oldDate) => {
   newUnixTime += (value.year * (year - 1970));
 
   // Adds based on month value Array[0]
-  // let month = months[unixTimeStringArray[0]];
-  // console.log('This happened', month);
-  // newUnixTime += (value.month * month)
-  // Adds based on day value Array[1]
+  // Converts any month length to short case. Eg. January = Jan, Janu = Jan, Jan=Jan
+  let month = unixTimeStringArray[0].split('').splice(0,3).join('');
+  let monthValue = months[month];
+  newUnixTime += (value.month * monthValue);
+  console.log('This happened', newUnixTime);
 
+  // Accounts for current year being a leap year
+  if(year % 4 === 0) {
+    newUnixTime += value.day;
+  }
+
+  // Adds based on day value Array[1]
   // Adds based on hours/minutes value Array[4]. Time value accounts for am and pm Array[5]. If pm then +12 hours.
 
   return newUnixTime;
