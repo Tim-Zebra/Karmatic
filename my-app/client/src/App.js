@@ -59,7 +59,7 @@ export default function App() {
   // Logic to have app follow the current page being displayed
   const [currentPage, setCurrentPage] = useState('Home');
   const handlePageChange = (page) => setCurrentPage(page);
-
+  
   // Renders current page based on user login
   const renderCurrentPage = () => {
     if (currentPage === 'Profile') {
