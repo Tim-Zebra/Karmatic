@@ -1,5 +1,5 @@
 // Takes in the string exported by dateFormat.JS and converts it into a unix time stamp
-module.exports = (oldDate) => {
+module.exports = (oldDate, timezoneOffSet) => {
   // create month object
   // [month, day, year, 'at', time, am/pm ]
   let unixTimeStringArray = oldDate.split(' ');
@@ -57,7 +57,8 @@ module.exports = (oldDate) => {
   let timeAmPm = unixTimeStringArray[5].toLowerCase();
   // Extrapolates minutes and hours
   let hoursMinutesArray = unixTimeStringArray[4].split(':');
-  let hours = parseInt(hoursMinutesArray[0]);
+  // hours + 5 accounts for time zone as -6 GMT
+  let hours = parseInt(hoursMinutesArray[0]) + timezoneOffSet;
   let minutes = parseInt(hoursMinutesArray[1]);
 
   // Accounts for midnight

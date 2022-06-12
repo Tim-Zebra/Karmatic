@@ -17,7 +17,7 @@ import { GET_ME } from '../../utils/queries';
 
 // Imports util functions
 const unDateFormatToUnix = require('../../utils/unDateFormatToUnix');
-const dateFormat = require('../../utils/dateFormat');
+
 // Shows recent KarmaPost activity
 export default function ColumnThree() {
     // Queries recent Karma posts
@@ -39,13 +39,14 @@ export default function ColumnThree() {
     const karmaHelping = meData?.karmaHelping;
 
     // hours variable sets how far in the past the dates will be filtered.
-    const hours = 3;
+    const hours = 72;
     const pastDate = Date.now() - (1000 * 60 * 60 * hours);
-    console.log('date.now', dateFormat(pastDate));
-    console.log('unixformat to now', karmaHelping[0].createdAt);
+    // Accounts for user time zone, which needs to be accounted for from the dateFormat Function
+    const timeZoneOffSet = new Date(Date.now()).getTimezoneOffset()/60;
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) => unDateFormatToUnix(post.createdAt) > pastDate);
+    const recentKarmaHelpingArray = karmaHelping.filter((post) => unDateFormatToUnix(post.createdAt, timeZoneOffSet) > pastDate);
+
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
 
     return (
