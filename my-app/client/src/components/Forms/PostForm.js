@@ -7,7 +7,7 @@ import { CREATE_POST, CHANGE_KARMA } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
 const calcPostValue = require('../../utils/helpers');
 
-export default function PostForm({handlePageChange}) {
+export default function PostForm({setPostsArray, allPosts}) {
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -27,7 +27,7 @@ export default function PostForm({handlePageChange}) {
         e.preventDefault();
         try {
             const currentPostValue = await calcPostValue(difficulty, duration);
-            await createPost({
+            const newPost = await createPost({
                 variables: {
                     username: username,
                     postTitle: postTitle,
@@ -35,11 +35,13 @@ export default function PostForm({handlePageChange}) {
                     postValue: currentPostValue,
                     duration: parseInt(duration),
                     difficulty: difficulty,
-                    address: address
+                    address: address,
                 }
             });
             setTitle('');
             setDescription('');
+            // setPostsArray sets the state of the posts array to include the newly created post
+            setPostsArray([...allPosts, newPost.data.createPost]);
             const updatedUserKarma = userData.karma - currentPostValue;
             await updateKarma({
                 variables: {
@@ -47,7 +49,6 @@ export default function PostForm({handlePageChange}) {
                     karma: updatedUserKarma,
                 }
             })
-            handlePageChange('Dashboard');
         } catch (err) {
             console.error(err);
         }

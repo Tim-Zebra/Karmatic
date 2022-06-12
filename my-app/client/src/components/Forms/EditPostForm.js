@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client';
 import { EDIT_POST } from '../../utils/mutations';
 const calcPostValue = require('../../utils/helpers');
 
-export default function PostForm({karmaPostData}) {
+export default function PostForm({karmaPostData, setPostsArray, allPosts}) {
     const [title, setTitle] = useState(`${karmaPostData.postTitle}`);
     const [description, setDescription] = useState(`${karmaPostData.postDescription}`);
     const [difficulty, setDifficulty] = useState(`${karmaPostData.difficulty}`);
@@ -17,12 +17,11 @@ export default function PostForm({karmaPostData}) {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(postId, title, description, duration, difficulty, address)
         try {
             // Uses calcPostValue helper function to calculate a new postvalue from difficulty and duration and return it
             const currentPostValue = calcPostValue(difficulty, duration);
             console.log('currentpostvalue',currentPostValue)
-            await editPost({
+            const editedPost = await editPost({
                 variables: {
                     karmaPostId: postId,
                     postTitle: title,
@@ -33,6 +32,11 @@ export default function PostForm({karmaPostData}) {
                     address: address
                 }
             })
+            // newPostsArr contains all of the posts except the one that is being edited, so that when the edited post is added back into the posts array, that id is not duplicated
+            const newPostsArr = allPosts.filter(post => post._id !== editedPost.data.editPost._id)
+
+            // Uses set state to refresh the posts feed with the updated post
+            setPostsArray([...newPostsArr, editedPost.data.editPost]);
         }
         catch (err) {
             console.error(err);
@@ -98,7 +102,7 @@ export default function PostForm({karmaPostData}) {
             </PostFormOptions>
             <CreatePostButton
                 type='submit'>
-                Create Post
+                Edit Post
             </CreatePostButton>
             <DeleteButton>
                 delete
