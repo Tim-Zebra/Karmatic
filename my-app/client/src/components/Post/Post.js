@@ -65,7 +65,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
         if (helpersArray.length === 0) {
             return (
                 <p>
-                    {'No one wants to help :('}
+                    {'No helpers yet. Hang tight!'}
                 </p>
             )
         }
@@ -241,7 +241,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                                 <p>{karmaPostData.createdAt}</p>
                             </PostHeader>
                             <PostMessage>
-                                <p>POST DELETED MUHAHAHAHA!</p>
+                                <p>Post deleted. Karma refunded!</p>
                             </PostMessage>
                             <PostBottom>
                                 <p></p>
@@ -250,7 +250,6 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                     </PostContainer>
 
                     <PostFooter>
-                        <p>Becareful clicking or you'll lose more of your soul than you can make up before the next life</p>
                     </PostFooter>
                 </>
             }
