@@ -101,6 +101,7 @@ mutation deletePost($karmaPostId: ID!) {
 export const CHANGE_KARMA = gql`
 mutation Mutation($username: String!, $karma: Int!) {
   changeKarma(username: $username, karma: $karma) {
+    username
     karma
   }
 }
