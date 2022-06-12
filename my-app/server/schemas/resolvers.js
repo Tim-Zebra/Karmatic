@@ -143,6 +143,25 @@ const resolvers = {
 
       throw new AuthenticationError('You are not logged in!');
     },
+    removeHelper: async (parent, { karmaPostId }, context) => {
+      // Checks if the context is a user
+      if (context.user) {
+        // Updates username in KarmaPost's karmaHelpers array
+        const karmaPost = await KarmaPost.findOneAndUpdate(
+          { _id: karmaPostId },
+          { $pull: { karmaHelpers: { helperUsername: context.user.username } } },
+          { new: true })
+
+        // Updates User's karmaHelping array
+        const userUpdate = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { karmaHelping: karmaPost._id } },
+          { new: true });
+        return karmaPost;
+      };
+
+      throw new AuthenticationError('You are not logged in!');
+    },
   },
 };
 

@@ -11,7 +11,7 @@ import { useQuery, useMutation } from '@apollo/client';
 // Gets Queries
 import { GET_ME } from '../../utils/queries';
 // Gets Mutations
-import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
+import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST, REMOVE_HELPER } from '../../utils/mutations'
 export default function Post({ karmaPostData, usersKarma, setPostsArray, allPosts }) {
     // populatePostKarma finds the amount of karma for the post author and returns it
     const populatePostKarma = (karmaPostData, usersKarma) => {
@@ -31,12 +31,13 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     const [isOpen, setIsOpen] = useState(false);
     // Sets Mutation function
     const [addMeAsHelper] = useMutation(ADD_HELPER);
+    const [removeMeAsHelper] = useMutation(REMOVE_HELPER);
     const [deletePost] = useMutation(DELETE_POST);
     const [completeKarmaPostMutation] = useMutation(KARMAPOST_COMPLETE);
     const [refundKarma] = useMutation(CHANGE_KARMA);
 
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
-    
+
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
 
     // Creates hook to mark off completion
@@ -90,19 +91,33 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     const addHelperToPost = async (karmaPostId) => {
         // Checks login status
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
             return false;
         }
         // Adds User to post and adds post to User's karmaHelping array
-        try {
-            const { data } = await addMeAsHelper({
-                variables: { karmaPostId: karmaPostId }
-            });
-            // Adds new helper to hooked Array to refresh page
-            setHelpersArray([...helpersArray, userData.username])
-        } catch (err) {
-            console.error(err);
+        if (!helpersArray?.some((author) => author === userData.username)) {
+            try {
+                const { data } = await addMeAsHelper({
+                    variables: { karmaPostId: karmaPostId }
+                });
+                // Adds new helper to hooked Array to refresh page
+                setHelpersArray([...helpersArray, userData.username])
+                console.log(karmaPostData.karmaHelpers)
+            } catch (err) {
+                console.error(err);
+            }
+
+        } else {
+            // Removes self from Karma Post Helper
+            try {
+                const { karmaPost } = await removeMeAsHelper({
+                    variables: { karmaPostId: karmaPostId }
+                });
+                console.log(helpersArray)
+                setHelpersArray([...helpersArray.filter(helpers => helpers !== userData.username)]);
+            } catch (err) {
+                console.error(err);
+            }
         }
     }
 
@@ -149,7 +164,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                             {userData.username === karmaPostData.postAuthor &&
                                 <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
                             }
-                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts}/>}
+                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts} />}
 
                         </ImageContainer>
                         <PostBody>
@@ -173,7 +188,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                                 {/* Button to add karmaHelper if user is not the post author*/}
                                 {userData.username !== karmaPostData.postAuthor && !isComplete &&
                                     <PrettyButton
-                                        disabled={helpersArray?.some((author) => author === userData.username)}
+                                        // disabled={helpersArray?.some((author) => author === userData.username)}
                                         onClick={() => addHelperToPost(karmaPostData._id)}>
                                         {helpersArray?.some((author) => author === userData.username)
                                             ? 'Already helping!'
