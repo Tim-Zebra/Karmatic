@@ -46,14 +46,34 @@ module.exports = (oldDate) => {
   newUnixTime += (value.day * monthValue);
 
   // Accounts for current year being a leap year. Adds 1 day to the current time if the current year is a leap year
-  // if(year % 4 === 0) {
-  //   newUnixTime += value.day;
-  // }
+  if(year % 4 === 0) {
+    newUnixTime += value.day;
+  }
 
   // Adds based on day value unixTimeStringArray[1]. Subtract 1 as unixcode already has 1 day (ie. Similar to months where january = 0)
   newUnixTime += (value.day * (parseInt(unixTimeStringArray[1])-1));
 
-  // Adds based on hours/minutes value unixTimeStringArray[4]. Time value accounts for am and pm unixTimeStringArray[5]. If pm then +12 hours.
+  // Adds based on hours/minutes value unixTimeStringArray[4].
+  // Time value accounts for am and pm unixTimeStringArray[5]. If pm then +12 hours.
+  let timeAmPm = unixTimeStringArray[5].toLowerCase();
+  // Extrapolates minutes and hours
+  let hoursMinutesArray = unixTimeStringArray[4].split(':');
+  let hours = parseInt(hoursMinutesArray[0]);
+  let minutes = parseInt(hoursMinutesArray[1]);
+
+  // Accounts for midnight
+  if(hours === 12 && timeAmPm === 'am') {
+    hours = 0;
+  }
+
+  // Accounts for PM
+  if(timeAmPm === 'pm') {
+    hours += 12;
+  }
+
+  newUnixTime += (value.hour * hours);
+  newUnixTime += (value.minute * minutes);
+
 
   return newUnixTime;
 };
