@@ -4,10 +4,9 @@ module.exports = (oldDate) => {
   // [month, day, year, 'at', time, am/pm ]
   let unixTimeStringArray = oldDate.split(' ');
   console.log('unixTimeArray',unixTimeStringArray);
-  
+
   // newUnixTime at 0 = January 1st 1970
   let newUnixTime = 0;
-
 
   // create month object
   const months = {
@@ -36,26 +35,27 @@ module.exports = (oldDate) => {
     December: 11,
   };
 
-  // Millisecond values per minute, hour, day, month, year
+  // Second values per minute, hour, day, month, year
   // Multipler for time conversion. In this case converts seconds to milliseconds.
-  let timeMultiplier = 1000
-  // Format: 1 year = 31556926 seconds * 1000 milliseconds/seconds
-  const values = {
-    minute: 60 * timeMultiplier,
-    hour: 3600 * timeMultiplier,
-    day: 86400 * timeMultiplier,
-    month : 2629743 * timeMultiplier,
-    year : 31556926 * timeMultiplier,
+  // Format: 1 year = 31556926 seconds
+  const value = {
+    minute: 60,
+    hour: 3600,
+    day: 86400,
+    month : 2629743,
+    year : 31556926,
   }
 
   // Adds based on year value Array[2]
-  let year = unixTimeStringArray
-  newUnixTime += 
-  // Adds based on month value
+  let year = parseInt(unixTimeStringArray[2]);
+  // Added 56648 to compensate for integer rounding 
+  newUnixTime += (value.year * (2000 - 1970) + 56648);
+console.log('This happened', 1641016800- newUnixTime);
+  // Adds based on month value Array[0]
 
-  // Adds based on day value
+  // Adds based on day value Array[1]
 
-  // Adds based on time value. Time value accounts for am and pm. If pm then +12 hours.
+  // Adds based on hours/minutes value Array[4]. Time value accounts for am and pm Array[5]. If pm then +12 hours.
 
   return newUnixTime;
 };
