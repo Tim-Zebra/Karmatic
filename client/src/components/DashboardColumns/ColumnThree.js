@@ -47,10 +47,7 @@ export default function ColumnThree() {
     );
 
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
-    console.log(recentKarmaHelpingArray)
-    console.log(pastDate)
 
-    console.log(karmaHelping[0].createdAt)
     return (
 
         <ColumnContainer>
