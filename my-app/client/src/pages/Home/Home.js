@@ -7,7 +7,7 @@ import HomeInfo from '../../components/HomeInfo/HomeInfo'
 import Auth from '../../utils/auth';
 
 export default function Home({ handlePageChange }) {
-  if(Auth.loggedIn()) {
+  if (Auth.loggedIn()) {
     handlePageChange('Dashboard');
   }
   return (
@@ -21,7 +21,7 @@ export default function Home({ handlePageChange }) {
       <StyledHomeRight>
         <HomeInfo />
       </StyledHomeRight>
-      
+
     </HomeContainer>
   )
 }

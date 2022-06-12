@@ -9,23 +9,23 @@ import Auth from '../../utils/auth';
 // Imports mutations and queries
 import { useQuery, useMutation } from '@apollo/client';
 // Gets Queries
-import { GET_ME} from '../../utils/queries';
+import { GET_ME } from '../../utils/queries';
 // Gets Mutations
 import { ADD_HELPER, KARMAPOST_COMPLETE, CHANGE_KARMA, DELETE_POST } from '../../utils/mutations'
 
 export default function Post({ karmaPostData, usersKarma }) {
-// populatePostKarma finds the amount of karma for the post author and returns it
+    // populatePostKarma finds the amount of karma for the post author and returns it
     const populatePostKarma = (karmaPostData, usersKarma) => {
-        let postAuthorKarma=0;
-        for (let i=0; i<usersKarma.users.length; i++) {
+        let postAuthorKarma = 0;
+        for (let i = 0; i < usersKarma.users.length; i++) {
             if (karmaPostData.postAuthor === usersKarma.users[i].username) {
-                postAuthorKarma=usersKarma.users[i].karma
+                postAuthorKarma = usersKarma.users[i].karma
             }
         }
         return postAuthorKarma;
     };
 
-// Uses populatePostKarma to declare a variable that can be used by the component to display the karma for the post author
+    // Uses populatePostKarma to declare a variable that can be used by the component to display the karma for the post author
     let postAuthorKarma = populatePostKarma(karmaPostData, usersKarma);
     JSON.stringify(postAuthorKarma);
     // Determines if the Modal for edit post should open
@@ -117,12 +117,13 @@ export default function Post({ karmaPostData, usersKarma }) {
             console.error(err);
         }
     }
-    
+
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
         try {
+            console.log(karmaPostData._id)
             await deletePost({
-                variables: { karmaPostId: karmaPostData._id, },
+                variables: { karmaPostId: karmaPostData._id }
             });
             const refundedUserKarma = userData.karma + karmaPostData.postValue;
             await refundKarma({
@@ -146,10 +147,10 @@ export default function Post({ karmaPostData, usersKarma }) {
                         <ImageContainer>
                             <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
                             {userData.username === karmaPostData.postAuthor &&
-                            <EditButton  onClick={() => setIsOpen(true)}>edit</EditButton>
-                            }   
+                                <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
+                            }
                             {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} />}
-                            
+
                         </ImageContainer>
                         <PostBody>
 
@@ -182,16 +183,16 @@ export default function Post({ karmaPostData, usersKarma }) {
                                 {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
                                 {userData.username === karmaPostData.postAuthor && !isComplete &&
                                     // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
-                                    <div style={{ "margin-right": "50px" }}>
+                                    <div style={{ "marginRight": "50px" }}>
                                         <button
-                                            style={{ "margin-left": "20px", "margin-right": "20px" }}
+                                            style={{ "marginLeft": "20px", "marginRight": "20px" }}
                                             onClick={() => completeKarmaPost(karmaPostData._id)}>
                                             &#10004;
                                         </button>
 
                                         {/* // Delete Karma Post */}
                                         <button
-                                            style={{ "margin-left": "20px", "margin-right": "20px" }}
+                                            style={{ "marginLeft": "20px", "marginRight": "20px" }}
                                             onClick={() => deleteKarmaPost()}>
                                             &#128148;
                                         </button>
