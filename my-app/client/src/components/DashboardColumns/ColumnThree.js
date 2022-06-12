@@ -52,7 +52,7 @@ export default function ColumnThree() {
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
 
     const updatePastDate = (hours) => {
-        dateFormat(Date.now() - (1000 * 60 * 60 * hours))
+        setPastDate(dateFormat(Date.now() - (1000 * 60 * 60 * hours)));
     }
 
     // Renders drop down so user can select how far back they want to view each set of posts.
