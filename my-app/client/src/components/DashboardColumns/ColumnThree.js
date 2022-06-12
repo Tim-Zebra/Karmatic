@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import RecentKarmaReceived from '../RecentKarma/RecentKarmaReceived'
 import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
 // CSS components
@@ -22,7 +22,8 @@ export default function ColumnThree() {
     // set hooks
     const [recentHours, setRecentHours] = useState(4);
     const [pastDate, setPastDate] = useState(dateFormat(Date.now() - (1000 * 60 * 60 * recentHours)));
-
+    const [recentKarmaHelpingArray, setRecentKarmaHelpingArray] = useState([]);
+    const [recentKarmaReceivedArray, setRecentKarmaReceivedArray] = useState([]);
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
@@ -48,11 +49,10 @@ export default function ColumnThree() {
     const recentKarmaPostsArray = karmaPosts.filter((post) => post > pastDate);
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) => post > pastDate);
-    const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
-
     const updatePastDate = (hours) => {
         setPastDate(dateFormat(Date.now() - (1000 * 60 * 60 * hours)));
+        setRecentKarmaHelpingArray(karmaHelping.filter((post) => post > pastDate));
+        setRecentKarmaReceivedArray(recentKarmaHelpingArray.filter((post) => post.complete === true));
     }
 
     // Renders drop down so user can select how far back they want to view each set of posts.
