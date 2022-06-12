@@ -3,7 +3,6 @@ module.exports = (oldDate) => {
   // create month object
   // [month, day, year, 'at', time, am/pm ]
   let unixTimeStringArray = oldDate.split(' ');
-  console.log('unixTimeArray',unixTimeStringArray);
 
   // newUnixTime at 0 = January 1st 1970
   let newUnixTime = 0;
@@ -73,7 +72,6 @@ module.exports = (oldDate) => {
 
   newUnixTime += (value.hour * hours);
   newUnixTime += (value.minute * minutes);
-
 
   return newUnixTime;
 };
