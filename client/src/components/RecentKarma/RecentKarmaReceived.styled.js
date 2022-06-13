@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const RecentKarmaBox = styled.div`
+    justify-content: center;
     border: 3px solid ${({ theme }) => theme.colors.darkteal};
     background-color: white ;
     border-radius: 20px;
@@ -65,7 +66,7 @@ export const KarmaCoins = styled.div`
 export const PostTitle = styled.div`
     display: flex;
     flex-direction: column;
-    line-height:0;
+    line-height:10px;
     color: ${({ theme }) => theme.colors.darkteal};
     font-size: 14px;
     font-family: ${({ theme }) => theme.fonts.otherfont};

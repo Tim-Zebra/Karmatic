@@ -52,7 +52,7 @@ export const ActivityHeader = styled.div`
 export const FeedContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.teal };
     width: 100%;
-    height:600px;
+    height:100vh;
     overflow: visible;
     overflow-y: scroll;
     overscroll-behavior-y: none;
