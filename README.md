@@ -32,7 +32,7 @@ landingPage
 <p align="center"><img src="./demos/demo_Login.gif" alt="image demo" width="800" height="auto"/></p> <br /><br />
 <h2 align="center">Dashboard/Profile Demo</h2>
 <p align="center"><img src="./demos/demo_profileDashboard.gif" alt="gif demo" width="800" height="auto"/></p> <br />
-<p align="center"><font size="4"><a href="" target="_blank" rel="noreferrer">Video Demo</a></font></p>
+<p align="center"><font size="4"><a href="https://drive.google.com/file/d/1Jpx4gbQsc8kAWWmZd9ISLvhaVRELKt2p/view" target="_blank" rel="noreferrer">Video Demo</a></font></p>
 
 ## Link to Deployed Page:
 <a href="https://serene-tor-70368.herokuapp.com/" target="_blank" rel="noreferrer">Try Out Karmatic Now!</a>
