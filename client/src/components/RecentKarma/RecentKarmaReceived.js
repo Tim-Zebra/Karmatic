@@ -23,10 +23,10 @@ export default function RecentKarmaReceived({ karmaPostData }) {
                         <p>{karmaPostData.postAuthor}</p>
                     </ExchangeBetweenBottom>
             </RecentContainer>
-            <PostTitle>
+            {/* <PostTitle>
                 <p>for</p>
                 <h4>{karmaPostData.postTitle}</h4>
-            </PostTitle>
+            </PostTitle> */}
         </RecentKarmaBox>
     )
 }
