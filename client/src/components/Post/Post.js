@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useContext, useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, SidebarContainer, PostAuthorHeader, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
-=======
-import React, { useState } from 'react'
-import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
->>>>>>> main
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import EditPostModal from '../Modals/EditPostModal'
 
