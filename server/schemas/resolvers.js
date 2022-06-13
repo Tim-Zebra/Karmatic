@@ -153,7 +153,7 @@ const resolvers = {
           { new: true })
 
         // Updates User's karmaHelping array
-        const userUpdate = await User.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { karmaHelping: karmaPost._id } },
           { new: true });
