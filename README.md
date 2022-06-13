@@ -30,10 +30,10 @@ Karmatic is a hub for communities to come together and help each other by volunt
 <p><img src="./demos/.png" alt="image demo" width="800" height="auto"/></p> <br /><br />
 <h2>Dashboard/Profile Demo</h2>
 <p><img src="./demos/.gif" alt="gif demo" width="800" height="auto"/></p> <br />
-<p><font size="4"><a href="">Video Demo</a></font></p>
+<p><font size="4"><a href="" target="_blank" rel="noreferrer">Video Demo</a></font></p>
 
 ## Link to Deployed Page:
-[Try Out Karmatic Now!](https://serene-tor-70368.herokuapp.com/)
+<a href="https://serene-tor-70368.herokuapp.com/" target="_blank" rel="noreferrer">Try Out Karmatic Now!</a>
 
 ## References:
 * dateFormat.js obtained from UTA bookcamp #21-MERN  <br />
