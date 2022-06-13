@@ -7,7 +7,7 @@ export default function ColumnTwo({ usersKarma, karmaPosts }) {
     // posts array usestate is passed down to child components so they can update the post feed when new posts are created or edited
     const [postsArray, setPostsArray] = useState(karmaPosts);
     const filteredArray = postsArray.filter((post) => post.complete !== true)
-
+    filteredArray.reverse();
     return (
         <ColumnContainer>
             <FeedHeaderContainer>
