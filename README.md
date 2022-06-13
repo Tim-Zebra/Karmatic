@@ -24,13 +24,15 @@ Karmatic is a hub for communities to come together and help each other by volunt
 ## How to Use:
 * Visit our [deployed application](https://serene-tor-70368.herokuapp.com/)  <br />
 * Create an account (or login if you've already made one), and see others' requests for help. Click 'Help' on their post to volunteer to help them and earn Karmacoins! You can also create a post to request help on a task and spend some of your karma coins. Helpers get back double the coins spent!
-
+landingPage
 ## Application Demos:
-<h2>Signup/Login Demo</h2>
-<p><img src="./demos/.png" alt="image demo" width="800" height="auto"/></p> <br /><br />
-<h2>Dashboard/Profile Demo</h2>
-<p><img src="./demos/.gif" alt="gif demo" width="800" height="auto"/></p> <br />
-<p><font size="4"><a href="" target="_blank" rel="noreferrer">Video Demo</a></font></p>
+<h2 align="center">Welcome to Karmatic!</h2>
+<p align="center"><img src="./demos/landingPage.png" alt="image demo" width="800" height="auto"/></p> <br /><br />
+<h2 align="center">Signup/Login Demo</h2>
+<p align="center"><img src="./demos/.png" alt="image demo" width="800" height="auto"/></p> <br /><br />
+<h2 align="center">Dashboard/Profile Demo</h2>
+<p align="center"><img src="./demos/.gif" alt="gif demo" width="800" height="auto"/></p> <br />
+<p align="center"><font size="4"><a href="" target="_blank" rel="noreferrer">Video Demo</a></font></p>
 
 ## Link to Deployed Page:
 <a href="https://serene-tor-70368.herokuapp.com/" target="_blank" rel="noreferrer">Try Out Karmatic Now!</a>
