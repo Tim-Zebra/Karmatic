@@ -43,9 +43,10 @@ export default function ColumnThree() {
     const timeZoneOffSet = new Date(Date.now()).getTimezoneOffset()/60;
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) => unDateFormatToUnix(post.createdAt, timeZoneOffSet) > pastDate);
+    const recentKarmaArray = karmaHelping.filter((post) => unDateFormatToUnix(post.createdAt, timeZoneOffSet) > pastDate );
 
-    const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
+    const recentKarmaReceivedArray = recentKarmaArray.filter((post) => post.complete === true);
+    const recentKarmaHelpingArray = recentKarmaArray.filter((post) => post.complete === false);
 
     return (
 
@@ -65,7 +66,7 @@ export default function ColumnThree() {
             <h3>Recent Karma Helping:</h3>
             {recentKarmaHelpingArray.length === 0 &&
                 <div>
-                    Go HELP somebody!! {':)'}
+                    Current joined Karma Posts will appear here.
                 </div>
             }
 

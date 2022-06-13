@@ -7,8 +7,9 @@ export const RecentKarmaBox = styled.div`
     display: flex;
     align-items: center;
     width: 80%;
-    max-height: fit-content;
     margin-bottom: .5rem;
+    padding: 0;
+
 
     img {
         margin: 0 1rem;
@@ -18,36 +19,65 @@ export const RecentKarmaBox = styled.div`
 export const RecentContainer =styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    margin:0;
 `
 export const ExchangeContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    width:80%;
-    margin-top: 1rem;
-    margin-bottom: -1rem;
+    padding: 0;
 `
 export const ExchangeBetween = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     line-height:0;
     color: ${({ theme }) => theme.colors.darkteal};
     font-size: 14px;
     font-family: ${({ theme }) => theme.fonts.otherfont};
+    margin: 0;
 
     h4 {
         color: ${({ theme }) => theme.colors.teal};
+        margin: .5rem;
     }
+    p {
+        margin: 0;
+        margin: .5rem;
+    }
+`
+export const ExchangeBetweenTop = styled(ExchangeBetween)`
+    margin-top: .5rem
+`
+export const ExchangeBetweenBottom = styled(ExchangeBetween)`
+    margin-bottom: .5rem
 `
 
 export const KarmaCoins = styled.div`
     width:80%;
     display: flex;
     align-items: center;
+    margin: 0;
 
     h1 {
-        margin-right: 1rem;
+        margin: 0 1rem 0 0;
         font-family: ${({ theme }) => theme.fonts.otherfont};
+    }
+`
+
+export const PostTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    line-height:0;
+    color: ${({ theme }) => theme.colors.darkteal};
+    font-size: 14px;
+    font-family: ${({ theme }) => theme.fonts.otherfont};
+    margin: .5rem 0;
+
+
+    h4 {
+        color: ${({ theme }) => theme.colors.teal};
+        margin: .5rem;
+    }
+    p {
+        margin: 0;
+        margin: .5rem;
     }
 `
