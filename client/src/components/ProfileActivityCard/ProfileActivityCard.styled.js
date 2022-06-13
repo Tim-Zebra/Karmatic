@@ -9,8 +9,14 @@ export const CardContainer = styled.div`
     align-items: center;
     justify-content: space-evenly;
 
-    img {
-        height: 44px;
-        margin-right: 1rem;
-    }
+`
+export const LogoImage = styled.img`
+    height: 44px;
+    margin-right: 1rem;
+`
+
+export const DeleteImage = styled.img`
+    height: 33px;
+    cursor: pointer;
+
 `
