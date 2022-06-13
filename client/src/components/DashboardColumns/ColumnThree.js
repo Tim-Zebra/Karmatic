@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RecentKarmaReceived from '../RecentKarma/RecentKarmaReceived'
 import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
 // CSS components
 import { ColumnContainer } from './ColumnThree.styled'
-import { css } from 'styled-components';
 
 // Imports Authorization
-import Auth from '../../utils/auth';
 
 // Allows use for both queries and mutations from our utils folder
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 // Gets Queries
 // Gets the Karma Post
@@ -41,19 +39,11 @@ export default function ColumnThree() {
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 72;
     const pastDate = Date.now() - (1000 * 60 * 60 * hours);
-<<<<<<< HEAD:my-app/client/src/components/DashboardColumns/ColumnThree.js
     // Accounts for user time zone, which needs to be accounted for from the dateFormat Function
     const timeZoneOffSet = new Date(Date.now()).getTimezoneOffset()/60;
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
     const recentKarmaHelpingArray = karmaHelping.filter((post) => unDateFormatToUnix(post.createdAt, timeZoneOffSet) > pastDate);
-=======
-
-    // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) =>
-        post.createdAt > pastDate
-    );
->>>>>>> main:client/src/components/DashboardColumns/ColumnThree.js
 
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
 

@@ -2,6 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+<div align="center">
+<img src="client/public/assets/images/logo_karmatic.png" alt="Logo" height="150">
+</div>
+<br>
+
 ## Description
 Karmatic is a hub for communities to come together and help each other by volunteering assistance and posting requests for help. You earn karma by helping your community. Karmatic is a free service designed to make good deeds easier! It's powered by React.js, MongoDB, and GraphQL <br /> <br />
 

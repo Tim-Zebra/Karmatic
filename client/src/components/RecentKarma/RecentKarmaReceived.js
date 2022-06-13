@@ -8,6 +8,7 @@ export default function RecentKarmaReceived({ karmaPostData }) {
             <RecentContainer>
                 <ExchangeContainer>
                     <ExchangeBetween>
+                        <>Bob</>
                         <h4>received</h4>
                     </ExchangeBetween>
                     <ExchangeBetween>

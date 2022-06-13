@@ -1,6 +1,6 @@
 import React from "react";
-import { CardContainer } from "./ProfileActivityCard.styled";
-import ProfileHelpingCard from "./ProfileHelping";
+import { CardContainer, LogoImage } from "./ProfileActivityCard.styled";
+// import ProfileHelpingCard from "./ProfileHelping";
 // Allows use for both queries and mutations from our utils folder
 import { useQuery } from '@apollo/client';
 
@@ -11,7 +11,6 @@ import { GET_ME } from '../../utils/queries';
 export default function ProfileActivityCard() {
     // const [deletePost, { error, post }] = useMutation(DELETE_POST);
     const { loading, data } = useQuery(GET_ME);
-    let i = 0;
     const userData = data?.me || {};
     // const [refundKarma] = useMutation(CHANGE_KARMA);
 
@@ -46,13 +45,11 @@ export default function ProfileActivityCard() {
 
     return (userData.karmaPosts.map(karmaPosts => (
         <CardContainer>
-            <img src='./assets/images/k_logo.png' alt='k logo' />
+            <LogoImage src='./assets/images/k_logo.png' alt='k logo' />
             You created the job "{karmaPosts.postTitle}" at the location: {karmaPosts.address} , offering {karmaPosts.postValue} karma points. {karmaPosts.karmaHelpers.map(karmaHelpers => (
                 karmaHelpers.helperUsername + " " + "has signed up to help."
             ))}
-            {/* <button onClick={() => deleteKarmaPost(userData, karmaPosts)}>Delete Post</button> */}
+            {/* <DeleteImage src="./assets/images/delete.png" onClick={() => deleteKarmaPost(userData, karmaPosts)} /> */}
         </CardContainer>))
     )
-
-
 }

@@ -13,12 +13,13 @@ export const PostContainer = styled.div`
     background-color: white;
     display: flex;
 `
-export const ImageContainer = styled.div`
+export const SidebarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
     min-width: 60px;
     flex-direction: column;
+    margin-bottom: 1rem;
 `
 export const PostProfileImage = styled.img`
     height: 44px;
@@ -56,11 +57,21 @@ export const PostHeader = styled.div`
         margin-right: 1rem;
         font-family: ${({ theme }) => theme.fonts.otherfont };
     }
+`
+
+export const PostAuthorHeader = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
 
     h3 {
         font-family: ${({ theme }) => theme.fonts.otherfont };
+        margin-right: .5rem;
     }
-
+    img {
+        margin-right: .5rem;
+        height: 18px;
+    }
 `
 
 export const PostMessage = styled.div`
@@ -79,6 +90,10 @@ export const PostBottom = styled.div`
     width: 100%;
     justify-content: space-between;
     align-items: center;
+
+    p {
+    font-family: ${({ theme }) => theme.fonts.otherfont };
+    }
 `
 
 export const PostFooter = styled.div`
@@ -107,6 +122,8 @@ export const PostFooter = styled.div`
         text-decoration: underline;
     }
     p {
-        margin: 0
+        margin: 0;
+        font-family: ${({ theme }) => theme.fonts.otherfont };
+        font-size: 14px;
     }
 `

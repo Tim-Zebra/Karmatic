@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
+import { PostOutterContainer, PostContainer, PostBody, SidebarContainer, PostAuthorHeader, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import EditPostModal from '../Modals/EditPostModal'
 
@@ -73,7 +73,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
             )
         }
         return (
-            <p>with:
+            <p>
                 {
                     helpersArray.map((karmaHelper, index) => {
                         // Displays names with commas, UNLESS it is the last element in the array which renders without a comma at the end
@@ -99,7 +99,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
         // Adds User to post and adds post to User's karmaHelping array
         if (!helpersArray?.some((author) => author === userData.username)) {
             try {
-                const { data } = await addMeAsHelper({
+                await addMeAsHelper({
                     variables: { karmaPostId: karmaPostId }
                 });
                 // Adds new helper to hooked Array to refresh page
@@ -111,7 +111,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
         } else {
             // Removes self from Karma Post Helper
             try {
-                const { karmaPost } = await removeMeAsHelper({
+                await removeMeAsHelper({
                     variables: { karmaPostId: karmaPostId }
                 });
                 setHelpersArray([...helpersArray.filter(helpers => helpers !== userData.username)]);
@@ -148,7 +148,6 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
         try {
-            console.log(karmaPostData._id)
             await deletePost({
                 variables: { karmaPostId: karmaPostData._id }
             });
@@ -166,149 +165,149 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     };
 
     for (let j = 0; j <= allPosts.length; j++) {
-        console.log(allPosts[j].complete)
         if (!allPosts[j].complete) {
             return (
                 <PostOutterContainer>
-                    {/* Displays if post is deleted */}
-                    {
-                        isDeleted &&
-                        <>
-                            <PostContainer>
-                                <ImageContainer>
-                                    <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                                </ImageContainer>
-                                <PostBody>
-                                    <PostHeader>
-                                        <h3>{karmaPostData.postAuthor}</h3>
-                                        <p>{karmaPostData.createdAt}</p>
-                                    </PostHeader>
-                                    <PostMessage>
-                                        <p>Post deleted. Karma refunded!</p>
-                                    </PostMessage>
-                                    <PostBottom>
-                                        <p></p>
-                                    </PostBottom>
-                                </PostBody>
-                            </PostContainer>
+            {!isDeleted &&
+                <>
+                    <PostContainer>
+                        <SidebarContainer>
+                            <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                            {userData.username === karmaPostData.postAuthor && !isComplete && helpersArray[0] ?
+                                    // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
+                                    <>
+                                        <EditButton onClick={() => completeKarmaPost(karmaPostData._id)}>
+                                            complete
+                                        </EditButton>
 
-                            <PostFooter>
-                            </PostFooter>
-                        </>
-                    }
-                    {
-                        isComplete &&
-                        <>
-                            <PostContainer>
-                                <ImageContainer>
-                                    <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                                </ImageContainer>
-                                <PostBody>
-                                    <PostHeader>
-                                        <h3>{karmaPostData.postAuthor}</h3>
-                                        <p>{karmaPostData.createdAt}</p>
-                                    </PostHeader>
-                                    <PostMessage>
-                                        <p>Jobs complete. Great work!</p>
-                                    </PostMessage>
-                                    <PostBottom>
-                                        <p></p>
-                                    </PostBottom>
-                                </PostBody>
-                            </PostContainer>
-
-                            <PostFooter>
-                            </PostFooter>
-                        </>
-                    }
-                    <>
-                        <PostContainer>
-                            <ImageContainer>
-                                <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
-                                {userData.username === karmaPostData.postAuthor &&
-                                    <EditButton onClick={() => setIsOpen(true)}>edit</EditButton>
-                                }
-                                {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts} />}
-
-                            </ImageContainer>
-                            <PostBody>
-
-                                <PostHeader>
-                                    <h3>{karmaPostData.postAuthor}</h3>
-                                    <p>{karmaPostData.createdAt}</p>
-                                    {/* @William duration of task, difficulty, and user karma needs styling */}
-                                    <p>Duration: {karmaPostData.duration} hours</p>
-                                    <p>{karmaPostData.postAuthor}'s KarmaCoins: {postAuthorKarma}</p>
-                                </PostHeader>
-                                <PostMessage>
-                                    <p>{karmaPostData.postTitle}</p>
-                                    <p>Difficulty: {karmaPostData.difficulty}</p>
-                                    {karmaPostData.postDescription}
-                                </PostMessage>
-
-                                {/* Address and button line */}
-                                <PostBottom>
-                                    <p>Location: {karmaPostData.address}</p>
-                                    {/* Button to add karmaHelper if user is not the post author*/}
-                                    {userData.username !== karmaPostData.postAuthor && !isComplete &&
-                                        <PrettyButton
-                                            // disabled={helpersArray?.some((author) => author === userData.username)}
-                                            onClick={() => addHelperToPost(karmaPostData._id)}>
-                                            {helpersArray?.some((author) => author === userData.username)
-                                                ? 'Already helping!'
-                                                : `Help ${karmaPostData.postAuthor}`}
-                                        </PrettyButton>
-                                    }
-                                    {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
-                                    {userData.username === karmaPostData.postAuthor && !isComplete &&
-                                        // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
-                                        <div style={{ "marginRight": "50px" }}>
-                                            <button
-                                                style={{ "marginLeft": "20px", "marginRight": "20px" }}
-                                                onClick={() => completeKarmaPost(karmaPostData._id)}>
-                                                &#10004;
-                                            </button>
-
-                                            {/* // Delete Karma Post */}
-                                            <button
-                                                style={{ "marginLeft": "20px", "marginRight": "20px" }}
-                                                onClick={() => deleteKarmaPost()}>
-                                                &#128148;
-                                            </button>
-                                        </div>
-                                    }
-
-                                </PostBottom>
-                            </PostBody>
-                        </PostContainer>
-
-                        {/* Checks to see if someone has been added to karmaHelpers and displays the helpers with an in progress link else it shows the stats of the post including difficulty, duration, coins */}
-
-                        {karmaPostData.karmaHelpers ?
-                            <PostFooter>
-                                <button>
-                                    {isComplete ? 'complete!' : 'In Progress'}
-                                </button>
-                                {renderKarmaHelpers()}
-                                <div>
-                                    <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
-                                    {karmaPostData.postValue}
-                                </div>
-                            </PostFooter>
-                            :
-                            <PostFooter>
-                                <p>Estimated Duration: {karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
-                                <p>{karmaPostData.difficulty === 'Easy' ? 'Easy-peasy' : karmaPostData.difficulty === 'Medium' ? 'Medium-shmedium' : 'Quite difficult'}</p>
-                                <div>
-                                    <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
-                                    {karmaPostData.postValue}
-                                </div>
-                            </PostFooter>
+                                        {/* // Delete Karma Post */}
+                                        <EditButton onClick={() => deleteKarmaPost()}>
+                                            delete
+                                        </EditButton>
+                                    
+                                        <EditButton onClick={() => setIsOpen(true)}>
+                                            edit
+                                        </EditButton>
+                            
+                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts}/>}
+                                    </>
+                            : userData.username === karmaPostData.postAuthor && !isComplete && !helpersArray[0] ?
+                            // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
+                            <>
+                                {/* // Delete Karma Post */}
+                                <EditButton onClick={() => deleteKarmaPost()}>
+                                    delete
+                                </EditButton>
+                            
+                                <EditButton onClick={() => setIsOpen(true)}>
+                                    edit
+                                </EditButton>
+                    
+                    {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts}/>}
+                            </>
+                            : ''   
                         }
-                    </>
+                            
+                        </SidebarContainer>
+                        <PostBody>
 
+                            <PostHeader>
+                                <PostAuthorHeader>
+                                <h3>{karmaPostData.postAuthor}</h3>
+                                <img src='./assets/images/karma_coin.png' alt='karma coin' />
+                                <p>{postAuthorKarma}</p>
+                                </PostAuthorHeader>
+                                <p>{karmaPostData.createdAt}</p>
+                            </PostHeader>
+                            <PostMessage>
+                                <p>{karmaPostData.postTitle}</p>
+                                {karmaPostData.postDescription}
+                            </PostMessage>
 
-                </PostOutterContainer >
+                            {/* Address and button line */}
+                            <PostBottom>
+                                <p>{karmaPostData.address}</p>
+                                {/* Button to add karmaHelper if user is not the post author*/}
+                                {userData.username !== karmaPostData.postAuthor && !isComplete &&
+                                    <PrettyButton
+                                    // disabled={helpersArray?.some((author) => author === userData.username)}
+                                    onClick={() => addHelperToPost(karmaPostData._id)}>
+                                    {helpersArray?.some((author) => author === userData.username)
+                                        ? 'Already helping!'
+                                        : `Help ${karmaPostData.postAuthor}`}
+                                </PrettyButton>
+                                }
+                                {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
+                                
+
+                            </PostBottom>
+                        </PostBody>
+                    </PostContainer>
+
+                    {/* Checks to see if someone has been added to karmaHelpers and displays the helpers with an in progress link else it shows the stats of the post including difficulty, duration, coins */}
+
+                    { !isComplete && helpersArray[0] ?
+                    <PostFooter>
+                        <p>In progress with {renderKarmaHelpers()}</p>
+                        
+                        <p>{karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
+                        <p>{karmaPostData.difficulty === 'Easy' ? 'Easy' : karmaPostData.difficulty === 'Medium' ? 'Medium' : 'Hard'}</p>
+                        <div>
+                            <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+                            {karmaPostData.postValue}
+                        </div>
+                    </PostFooter>
+                    : isComplete ?
+                        <PostFooter>
+                            <button>
+                                Completed
+                            </button>
+                            {renderKarmaHelpers()}
+                            <div>
+                                <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+                                {karmaPostData.postValue}
+                            </div>
+                        </PostFooter>
+                        : 
+                        <PostFooter>
+                            <p>{karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
+                            <p>{karmaPostData.difficulty === 'Easy' ? 'Easy' : karmaPostData.difficulty === 'Medium' ? 'Medium' : 'Hard'}</p>
+                            <div>
+                                <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
+                                {karmaPostData.postValue}
+                            </div>
+                        </PostFooter>
+                    }
+                </>
+            }
+            {/* Displays if post is deleted */}
+            {isDeleted &&
+                <>
+                    <PostContainer>
+                        <SidebarContainer>
+                            <PostProfileImage src='./assets/images/user.png' alt='profile pic' />
+                        </SidebarContainer>
+                        <PostBody>
+                            <PostHeader>
+                                <h3>{karmaPostData.postAuthor}</h3>
+                                <p>{karmaPostData.createdAt}</p>
+                            </PostHeader>
+                            <PostMessage>
+                                <p>Post deleted Karma refunded!</p>
+                            </PostMessage>
+                            <PostBottom>
+                                <p></p>
+                            </PostBottom>
+                        </PostBody>
+                    </PostContainer>
+
+                    <PostFooter>
+                        <p></p>
+                    </PostFooter>
+                </>
+            }
+        </PostOutterContainer>
+
 
             )
         }
