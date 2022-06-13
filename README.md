@@ -37,7 +37,6 @@ Karmatic is a hub for communities to come together and help each other by volunt
 
 ## References:
 * dateFormat.js obtained from UTA bookcamp #21-MERN
-* 
 
 ## Built With:
 * React.js
@@ -47,9 +46,12 @@ Karmatic is a hub for communities to come together and help each other by volunt
 * JSON Web Token
 
 ## Development Process:
-1. We created the database using MongoDB (Mongoose) and GraphQL
-2. We built the front-end using React.js and React Style Components
-3. See commits for more details
+1. Collaborated on an idea, created a project outline, and assigned team leads
+2. Added base code including files/folders and organization/layout
+3. Built front-end and back-end separately while having active discussion/collboration
+4. Actively linked front-end and back-end together during simultaneous development
+5. Final tests/fixes
+6. See commits for more details
 
 ## Developers:
 * Ryan Thomas: https://github.com/Stiltskinner <br />
