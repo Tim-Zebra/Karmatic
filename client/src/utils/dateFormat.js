@@ -1,4 +1,4 @@
-// dateFormat.js obtained from UTA bookcamp #21-MERN
+// dateFormat.js inspired from UTA bookcamp #21-MERN
 const addDateSuffix = (date) => {
   let dateStr = date.toString();
 

@@ -13,6 +13,9 @@ import { useQuery } from '@apollo/client';
 // Gets the Karma Post
 import { GET_ME } from '../../utils/queries';
 
+// Imports util functions
+const unDateFormatToUnix = require('../../utils/unDateFormatToUnix');
+
 // Shows recent KarmaPost activity
 export default function ColumnThree() {
     // Queries recent Karma posts
@@ -30,16 +33,17 @@ export default function ColumnThree() {
         return <h2>LOADING...</h2>;
     }
 
+    // Gets array of all the karmapost where ME is a helper
     const karmaHelping = meData?.karmaHelping;
 
     // hours variable sets how far in the past the dates will be filtered.
     const hours = 72;
     const pastDate = Date.now() - (1000 * 60 * 60 * hours);
+    // Accounts for user time zone, which needs to be accounted for from the dateFormat Function
+    const timeZoneOffSet = new Date(Date.now()).getTimezoneOffset()/60;
 
     // Filters a new array based on recent karma received and recent karmaPosts helping
-    const recentKarmaHelpingArray = karmaHelping.filter((post) =>
-        post.createdAt > pastDate
-    );
+    const recentKarmaHelpingArray = karmaHelping.filter((post) => unDateFormatToUnix(post.createdAt, timeZoneOffSet) > pastDate);
 
     const recentKarmaReceivedArray = recentKarmaHelpingArray.filter((post) => post.complete === true);
 
