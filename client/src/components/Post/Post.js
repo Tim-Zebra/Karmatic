@@ -251,7 +251,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                         <p>In progress with {renderKarmaHelpers()}</p>
                         
                         <p>{karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
-                        <p>{karmaPostData.difficulty === 'Easy' ? 'Easy-peasy' : karmaPostData.difficulty === 'Medium' ? 'Medium-shmedium' : 'Quite difficult'}</p>
+                        <p>{karmaPostData.difficulty === 'Easy' ? 'Easy' : karmaPostData.difficulty === 'Medium' ? 'Medium' : 'Hard'}</p>
                         <div>
                             <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
                             {karmaPostData.postValue}
@@ -271,7 +271,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                         : 
                         <PostFooter>
                             <p>{karmaPostData.duration === 1 ? '1 Hour or less' : karmaPostData.duration === 2 ? 'About 2 Hours' : karmaPostData.duration === 3 ? '3 Hours' : '4 Hours or more'}</p>
-                            <p>{karmaPostData.difficulty === 'Easy' ? 'Easy-peasy' : karmaPostData.difficulty === 'Medium' ? 'Medium-shmedium' : 'Quite difficult'}</p>
+                            <p>{karmaPostData.difficulty === 'Easy' ? 'Easy' : karmaPostData.difficulty === 'Medium' ? 'Medium' : 'Hard'}</p>
                             <div>
                                 <img src='./assets/images/karma_coin.png' alt='coin' height={22} />
                                 {karmaPostData.postValue}
