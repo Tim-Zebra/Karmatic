@@ -22,7 +22,7 @@ Karmatic is a hub for communities to come together and help each other by volunt
   **[Developers](#developers)** <br />
 
 ## How to Use:
-* Visit our [deployed application](https://serene-tor-70368.herokuapp.com/)
+* Visit our [deployed application](https://serene-tor-70368.herokuapp.com/)  <br />
 * Create an account (or login if you've already made one), and see others' requests for help. Click 'Help' on their post to volunteer to help them and earn Karmacoins! You can also create a post to request help on a task and spend some of your karma coins. Helpers get back double the coins spent!
 
 ## Application Demos:
@@ -36,21 +36,23 @@ Karmatic is a hub for communities to come together and help each other by volunt
 [Try Out Karmatic Now!](https://serene-tor-70368.herokuapp.com/)
 
 ## References:
-* dateFormat.js obtained from UTA bookcamp #21-MERN
+* dateFormat.js obtained from UTA bookcamp #21-MERN  <br />
+* Badges found at https://github.com/Ileriayo/markdown-badges  <br />
 
 ## Built With:
-* React.js
-* MongoDB (Mongoose)
-* GraphQL
-* React Style Components
-* JSON Web Token
+ ![React.js](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+ ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+ ![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
+ ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+ ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+ 
 
 ## Development Process:
-1. Collaborated on an idea, created a project outline, and assigned team leads
-2. Added base code including files/folders and organization/layout
-3. Built front-end and back-end separately while having active discussion/collboration
-4. Actively linked front-end and back-end together during simultaneous development
-5. Final tests/fixes
+1. Collaborated on an idea, created a project outline, and assigned team leads <br />
+2. Added base code including files/folders and organization/layout <br />
+3. Built front-end and back-end separately while having active discussion/collboration <br />
+4. Actively linked front-end and back-end together during simultaneous development <br />
+5. Final tests/fixes <br />
 6. See commits for more details
 
 ## Developers:
