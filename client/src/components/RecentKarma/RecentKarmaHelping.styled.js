@@ -22,6 +22,10 @@ export const RecentContainer =styled.div`
 export const ExchangeContainer = styled.div`
     display: flex;
     justify-content: space-between;
+
+    h3 {
+        margin: 0 0 .5rem 0;
+    }
 `
 
 export const KarmaCoins = styled.div`
@@ -30,6 +34,6 @@ export const KarmaCoins = styled.div`
     align-items: center;
 
     img {
-        height: 33px;
+        height: 44px;
     }
 `
