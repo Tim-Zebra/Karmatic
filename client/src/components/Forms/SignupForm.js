@@ -14,7 +14,7 @@ export default function SignupForm({ handleSubmit, handleLoginSignupToggle }) {
     const toggleButtonTextContent = 'Back to Login';
 
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
-    const [createUser, { error, data }] = useMutation(CREATE_USER);
+    const [createUser] = useMutation(CREATE_USER);
     const [showAlert, setShowAlert] = useState(false);
 
 

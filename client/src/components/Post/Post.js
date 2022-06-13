@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useContext, useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, SidebarContainer, PostAuthorHeader, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
+=======
+import React, { useState } from 'react'
+import { PostOutterContainer, PostContainer, PostBody, ImageContainer, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
+>>>>>>> main
 import { PrettyButton } from '../Buttons/PrettyButton.styled'
 import EditPostModal from '../Modals/EditPostModal'
 
@@ -99,7 +104,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
         // Adds User to post and adds post to User's karmaHelping array
         if (!helpersArray?.some((author) => author === userData.username)) {
             try {
-                const { data } = await addMeAsHelper({
+                await addMeAsHelper({
                     variables: { karmaPostId: karmaPostId }
                 });
                 // Adds new helper to hooked Array to refresh page
@@ -111,7 +116,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
         } else {
             // Removes self from Karma Post Helper
             try {
-                const { karmaPost } = await removeMeAsHelper({
+                await removeMeAsHelper({
                     variables: { karmaPostId: karmaPostId }
                 });
                 setHelpersArray([...helpersArray.filter(helpers => helpers !== userData.username)]);
@@ -148,7 +153,6 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     // Completes Karma Post...In-progress
     const deleteKarmaPost = async () => {
         try {
-            console.log(karmaPostData._id)
             await deletePost({
                 variables: { karmaPostId: karmaPostData._id }
             });
@@ -166,7 +170,6 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     };
 
     for (let j = 0; j <= allPosts.length; j++) {
-        console.log(allPosts[j].complete)
         if (!allPosts[j].complete) {
             return (
                 <PostOutterContainer>

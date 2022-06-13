@@ -11,7 +11,6 @@ import { DELETE_POST, CHANGE_KARMA } from "../../utils/mutations";
 export default function ProfileActivityCard() {
     const [deletePost, { error, post }] = useMutation(DELETE_POST);
     const { loading, data } = useQuery(GET_ME);
-    let i = 0;
     const userData = data?.me || {};
     const [refundKarma] = useMutation(CHANGE_KARMA);
 
@@ -53,6 +52,4 @@ export default function ProfileActivityCard() {
             <DeleteImage src="./assets/images/delete.png" onClick={() => deleteKarmaPost(userData, karmaPosts)} />
         </CardContainer>))
     )
-
-
 }
