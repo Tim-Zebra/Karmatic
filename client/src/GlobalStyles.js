@@ -2,10 +2,10 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
 * {
-    font-family: Arial Rounded MT Bold
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
 }
 body {
-    background-color: #E9E9E9;
     padding: 0;
     margin: 0 0 2rem 0;
     height: 100%;

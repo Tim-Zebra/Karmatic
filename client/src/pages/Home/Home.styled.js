@@ -5,34 +5,15 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    height: 100vh;
+    margin-top: 5rem;
     @media only screen and (min-width: 992px) {
         flex-direction: row;
     }
 `
 
-export const StyledHomeLeft = styled.div`
-    margin-top: 6rem;
-    height: fit-content;
-    width: 85vw;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @media only screen and (min-width: 776px) {
-        width: 60vw;
-
-    }
-    @media only screen and (min-width: 992px) {
-        width: 50vw;
-        height: 100vh;
-    }
-    @media only screen and (min-width: 1500px) {
-        width: 33vw;
-        height: 100vh;
-    }
-`
-export const StyledHomeRight = styled.div`
-    margin: 3rem 1rem 2rem 1rem;
+export const HomeInfoContainer = styled.div`
+    margin: 6rem 1rem 2rem 1rem;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -41,9 +22,6 @@ export const StyledHomeRight = styled.div`
 
     @media only screen and (min-width: 992px) {
         width: 66vw;
-        margin: 10rem 3rem 0 3rem;
+        margin: 6rem 3rem 0 3rem;
     }
-`
-export const StyledLogo = styled.img`
-    height: 100px;
 `

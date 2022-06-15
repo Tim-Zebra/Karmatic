@@ -1,8 +1,8 @@
 import React from 'react'
 import { ProfileContainer, ColumnOne, ColumnTwo } from './Profile.styled'
-import ProfileColumnOne from '../../components/ProfileColumns/ColumnOne/ProfileColumnOne'
-import UserActivity from '../../components/ProfileColumns/ColumnTwo/UserActivity'
-import UserInfo from '../../components/ProfileColumns/ColumnTwo/UserInfo'
+import ProfileColumnOne from './components/ProfileColumns/ColumnOne/ProfileColumnOne'
+import UserInfo from './components/ProfileColumns/ColumnTwo/UserInfo'
+import UserActivity from './components/ProfileColumns/ColumnTwo/UserActivity'
 import { useQuery } from '@apollo/client';
 import { GET_ME} from '../../utils/queries';
 

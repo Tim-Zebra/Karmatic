@@ -1,7 +1,7 @@
 import React from 'react'
-import ColumnOne from '../../components/DashboardColumns/ColumnOne'
-import ColumnTwo from '../../components/DashboardColumns/ColumnTwo'
-import ColumnThree from '../../components/DashboardColumns/ColumnThree'
+import ColumnOne from './components/DashboardColumns/ColumnOne'
+import ColumnTwo from './components/DashboardColumns/ColumnTwo'
+import ColumnThree from './components/DashboardColumns/ColumnThree'
 
 import { DashboardContainer, Column } from './Dashboard.styled'
 import { useQuery } from '@apollo/client';
