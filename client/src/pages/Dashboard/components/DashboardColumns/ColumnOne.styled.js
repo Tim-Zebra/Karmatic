@@ -59,6 +59,14 @@ export const CurrentKarmaCoinsContainer = styled.div`
     justify-content: center;
     width: 95%;
     margin-top: 1rem;
+    
+    h3 {
+        margin: 0;
+        font-size: 30px;
+        font-family: ${({ theme }) => theme.fonts.otherfont };
+        color: ${({ theme  }) => theme.colors.darkteal};
+
+    }
 `
 export const StyledCoin = styled.img`
     height: 44px;

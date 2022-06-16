@@ -14,7 +14,7 @@ export default function HomeInfo({handlePageChange}) {
     return (
         <StyledHomeInfoContainer>
             <StyledHeaderContainer>
-                <StyledHomeLogo src='./assets/images/logo_karmatic.png' alt='karmatic logo' />
+                <StyledHomeLogo src='./assets/images/logo_karmatic_pretty.png' alt='karmatic logo' />
             </StyledHeaderContainer>
             <hr />
             <Rows>

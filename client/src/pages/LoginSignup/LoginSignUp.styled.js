@@ -5,7 +5,7 @@ export const LoginSignUpBody = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
 
     div {
         display: flex;
@@ -26,7 +26,7 @@ export const LoginSignUpBody = styled.div`
 
 
     @media only screen and (min-width: 992px) {
-        width: 100vw;
+        width: 100%;
     }
 
 `

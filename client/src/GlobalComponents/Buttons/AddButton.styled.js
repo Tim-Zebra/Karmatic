@@ -23,10 +23,14 @@ export const CreatePostButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.teal};
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 
     &:hover {
         color: ${({ theme }) => theme.colors.lightgrey};
         background-color: ${({ theme }) => theme.colors.darkteal};
+    }
+    @media only screen and (min-width: 992px) {
+        margin-top: 0;
     }
 `
 

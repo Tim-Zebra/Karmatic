@@ -6,7 +6,7 @@ export const StyledNavContainer = styled.header`
     z-index: 1;
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
     display: flex;
     background-color: ${({ theme }) => theme.colors.darkgrey };
     align-content: center;

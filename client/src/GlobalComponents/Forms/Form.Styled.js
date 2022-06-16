@@ -5,10 +5,9 @@ export const StyledForm = styled.form`
     flex-direction: column;
     align-items: center;
     background-color: white;
-    width:100vw;
+    width:99%;
     border: 2px solid ${({ theme }) => theme.colors.darkteal};
     border-radius: 10px;
-    padding: 1rem;
     margin-top: 1rem;
     box-shadow: 3px 3px 10px rgb(0, 0 , 0, .5);
 
@@ -21,7 +20,7 @@ export const StyledForm = styled.form`
         font-size:20px;
         color: ${({ theme }) => theme.colors.darkgrey};
         align-self: flex-start;
-        margin-left: 2.5rem;
+        margin-left: 2rem;
         margin-bottom: 1rem;
     }
 

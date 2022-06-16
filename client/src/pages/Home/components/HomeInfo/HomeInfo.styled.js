@@ -21,8 +21,9 @@ export const StyledHeaderContainer = styled.div`
 `
 
 export const StyledHomeLogo = styled.img`
-    height: 150px;
+    max-height: 300;
     margin-bottom: 3rem;
+    max-width: 100%;
 `
 
 export const Rows = styled.div`

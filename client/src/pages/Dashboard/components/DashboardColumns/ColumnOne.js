@@ -47,8 +47,8 @@ export default function ColumnOne({ handlePageChange}) {
                 {/* im just proud of the karmabar and dont want to delete :( */}
                 {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                 <CurrentKarmaCoinsContainer>
-                    <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                     <h3>{userData.karma} Karma Coins</h3>
+                    <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' /> 
+                    <h3>{userData.karma}</h3>
                 </CurrentKarmaCoinsContainer>
                 <UserContainerHeader>
                     <h2>Status</h2>
