@@ -7,7 +7,7 @@ export const RecentKarmaBox = styled.div`
     border-radius: 20px;
     display: flex;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin-bottom: .5rem;
     padding: 0;
 
@@ -45,10 +45,10 @@ export const ExchangeBetween = styled.div`
     }
 `
 export const ExchangeBetweenTop = styled(ExchangeBetween)`
-    margin-top: .5rem
+    margin-top: .5rem;
 `
 export const ExchangeBetweenBottom = styled(ExchangeBetween)`
-    margin-bottom: .5rem
+    margin-bottom: .5rem;
 `
 
 export const KarmaCoins = styled.div`

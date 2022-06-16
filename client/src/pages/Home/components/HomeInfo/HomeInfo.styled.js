@@ -23,14 +23,12 @@ export const StyledHeaderContainer = styled.div`
 export const StyledHomeLogo = styled.img`
     height: 150px;
     margin-bottom: 3rem;
-   
 `
 
 export const Rows = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2rem;
 `
 
 export const Row = styled.div`

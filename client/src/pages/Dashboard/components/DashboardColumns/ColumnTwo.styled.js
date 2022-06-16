@@ -23,9 +23,12 @@ export const CreatePostContainer = styled.div`
     width: 100%;
     align-items: center;
     background-color: ${({ theme }) => theme.colors.lightteal};
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 5px ${({ theme }) => theme.colors.darkteal};
+
     @media only screen and (min-width: 992px) {
         position: fixed;
-        width: 33vw;
+        width: 50vw;
     }
     
 `
@@ -44,13 +47,12 @@ export const ActivityHeader = styled.div`
     }
     
     @media only screen and (min-width: 992px) {
-        margin-top: 225px;
+        margin-top: 12rem;
     }
     
 `
 
 export const FeedContainer = styled.div`
-    background-color: ${({ theme }) => theme.colors.teal };
     width: 100%;
     height:100vh;
     overflow: visible;

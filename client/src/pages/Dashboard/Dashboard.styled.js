@@ -17,7 +17,14 @@ export const Column = styled.div`
     align-items: center;
 
     @media only screen and (min-width: 992px) {
-        width: 33vw;
+        width: 25vw;
+    }
+`
+
+export const WideColumn = styled(Column)`
+
+    @media only screen and (min-width: 992px) {
+        width: 50vw;
     }
 `
 

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { CreatePostButton } from '../../../../GlobalComponents/Buttons/AddButton.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions, DeleteButton } from './PostForm.styled'
-
+import { TextInput } from '../../../../GlobalComponents/Forms/Form.Styled';
 import { useMutation } from '@apollo/client';
 import { EDIT_POST } from '../../../../utils/mutations';
 const calcPostValue = require('../../../../utils/helpers');
 
-export default function PostForm({ karmaPostData, setPostsArray, allPosts }) {
+export default function PostForm({ karmaPostData, setPostsArray, allPosts, deleteKarmaPost, setIsOpen }) {
     const [title, setTitle] = useState(`${karmaPostData.postTitle}`);
     const [description, setDescription] = useState(`${karmaPostData.postDescription}`);
     const [difficulty, setDifficulty] = useState(`${karmaPostData.difficulty}`);
@@ -42,17 +42,18 @@ export default function PostForm({ karmaPostData, setPostsArray, allPosts }) {
         }
     }
 
+
     return (
         <PostFormContainer onSubmit={onSubmit}>
             <PostTitleContainer>
-                <input
+                <TextInput
                     type='text'
                     maxLength={50}
                     placeholder='Title'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <input
+                <TextInput
                     type='text'
                     maxLength={50}
                     placeholder='Address'
@@ -69,7 +70,7 @@ export default function PostForm({ karmaPostData, setPostsArray, allPosts }) {
 
             />
             <PostFormOptions>
-                <label>Difficulty:</label>
+                
                 <select
                     id="difficulty"
                     name="difficulty"
@@ -85,8 +86,8 @@ export default function PostForm({ karmaPostData, setPostsArray, allPosts }) {
                         value="Hard">Hard
                     </option>
                 </select>
-                <hr />
-                <label>Duration:</label>
+   
+                
                 <select
                     id="duration"
                     name="difficulty"
@@ -101,11 +102,8 @@ export default function PostForm({ karmaPostData, setPostsArray, allPosts }) {
             </PostFormOptions>
             <CreatePostButton
                 type='submit'>
-                Edit Post
+                Done
             </CreatePostButton>
-            <DeleteButton>
-                delete
-            </DeleteButton>
         </PostFormContainer>
     )
 }

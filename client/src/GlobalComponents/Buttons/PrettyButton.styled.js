@@ -26,3 +26,8 @@ export const FormPrettyButton = styled(PrettyButton)`
     margin: 1.5rem 0;
     width: 80%;
 `
+
+export const PostPrettyButton = styled(PrettyButton)`
+    margin: 2rem 1rem;
+    width: 60%;
+`

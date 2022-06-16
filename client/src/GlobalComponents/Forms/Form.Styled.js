@@ -34,7 +34,7 @@ export const StyledForm = styled.form`
     }
 `
 export const TextInput = styled.input`
-    color:#666666;
+    color:${({ theme }) => theme.colors.darkgrey};
     width: 80%;
     font-size: 16px;
     padding: 1rem ;
@@ -42,7 +42,7 @@ export const TextInput = styled.input`
     display: block;
     border: none;
     border-radius: 10px;
-    background-color: #E9E9E9;
+    background-color: ${({ theme }) => theme.colors.lightgrey};
     box-sizing: border-box;
 
     &:focus {
@@ -50,12 +50,13 @@ export const TextInput = styled.input`
       outline: none;
       box-shadow: 0px 0px 10px ${({ theme }) => theme.colors.teal};
     }
-
-
 `
 export const ErrorTextInput = styled(TextInput)`
     box-shadow: 0px 0px 10px ${({ theme }) => theme.colors.darkpurple};
-    
+`
+
+export const PostTextInput = styled(TextInput)`
+    padding: 0.5rem;
 `
 
 export const OrDiv = styled.div`

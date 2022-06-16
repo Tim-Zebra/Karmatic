@@ -1,20 +1,25 @@
 import React from "react";
 import EditPostForm from '../Forms/EditPostForm'
-import { ModalBackground, ModalCloseButton, ModalContainer } from '../../../../GlobalComponents/Modals/Modal.styled';
+import { ModalBackground, ModalHeader, ModalCloseButton, ModalContainer } from '../../../../GlobalComponents/Modals/Modal.styled';
+import { DeleteButton } from "../Forms/PostForm.styled";
 
-export default function CreatePostModal({setIsOpen, karmaPostData, setPostsArray, allPosts}){
- 
+export default function CreatePostModal({setIsOpen, karmaPostData, setPostsArray, allPosts, deleteKarmaPost}){
+    
+
+
     return (
-        <ModalBackground>
+        <ModalBackground onClick={() => setIsOpen(false)}>
+            <>
             <ModalContainer>
-                <div>
+                <ModalHeader>
                     <p>Edit Post</p>
                     <ModalCloseButton onClick={() => setIsOpen(false)}>
-                        <img src="./assets/images/cancel.png" alt="cancel x" />
+                    <img src="./assets/images/cancel.png" alt="cancel x" />
                     </ModalCloseButton>
-                </div>
-            <EditPostForm karmaPostData={karmaPostData} setPostsArray={setPostsArray} allPosts={allPosts}/>
+                </ModalHeader>
+            <EditPostForm karmaPostData={karmaPostData} setPostsArray={setPostsArray} allPosts={allPosts} setIsOpen={setIsOpen}/>
             </ModalContainer>
+            </>
         </ModalBackground>
     )
 }

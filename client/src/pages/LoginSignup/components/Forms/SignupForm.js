@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledForm, TextInput, ErrorTextInput } from './Form.Styled'
+import { StyledForm, TextInput, ErrorTextInput } from '../../../../GlobalComponents/Forms/Form.Styled'
 //Mutation imports
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../../../utils/mutations';

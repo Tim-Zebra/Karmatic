@@ -5,6 +5,10 @@ export const GlobalStyles = createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
 }
+
+html {
+    height: 100%;
+}
 body {
     padding: 0;
     margin: 0 0 2rem 0;

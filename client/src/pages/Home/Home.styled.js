@@ -5,20 +5,21 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
-    margin-top: 5rem;
+    margin-top: 1rem;
+
     @media only screen and (min-width: 992px) {
         flex-direction: row;
     }
 `
 
 export const HomeInfoContainer = styled.div`
-    margin: 6rem 1rem 2rem 1rem;
-    height: 100vh;
-    width: 100vw;
+    margin: 6rem 1rem 0 1rem;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1 0 auto;
 
     @media only screen and (min-width: 992px) {
         width: 66vw;

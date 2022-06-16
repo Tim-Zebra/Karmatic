@@ -4,7 +4,8 @@ export const PostOutterContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 1rem;
-    
+    border: 2px solid ${({ theme  }) => theme.colors.teal};
+    border-radius: 10px;
 `
 
 export const PostContainer = styled.div`

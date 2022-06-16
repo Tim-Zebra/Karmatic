@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const KarmaBanner = styled.div`
     padding: 1rem;
-    border-radius: 25px;
+    border-radius: 10px;
     box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple};
     color: ${({ theme }) => theme.colors.darkpurple};
     width: 50%;

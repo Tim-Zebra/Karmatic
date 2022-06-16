@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColumnContainer, GreetingContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer } from './ColumnOne.styled'
+import { ColumnContainer, GreetingContainer, UserContainer, UserContainerHeader, StyledCoin, CurrentKarmaCoinsContainer } from './ColumnOne.styled'
 import StatusBanner from '../../../../GlobalComponents/StatusBanner/StatusBanner'
 
 // Imports Authorization
@@ -34,29 +34,32 @@ export default function ColumnOne({ handlePageChange}) {
 
     return (
         <ColumnContainer>
-            <GreetingContainer>
-                Hey, {userData.username}!
-            </GreetingContainer>
-            <>
-                <UserContainerHeader>
-                    Current Karma
-                </UserContainerHeader>
+            <UserContainer>
+                <GreetingContainer>
+                    Hey, {userData.username}!
+                </GreetingContainer>
+
+                <hr />
+            
+                {/* <UserContainerHeader>
+                    <h2>Current Karma</h2>
+                </UserContainerHeader> */}
                 {/* im just proud of the karmabar and dont want to delete :( */}
                 {/* <KarmaBar Karma={`75`}></KarmaBar> */}
                 <CurrentKarmaCoinsContainer>
                     <StyledCoin src='./assets/images/karma_coin.png' alt='karma coin' />
-                    {userData.karma} Karma Coins
+                     <h3>{userData.karma} Karma Coins</h3>
                 </CurrentKarmaCoinsContainer>
                 <UserContainerHeader>
-                    Overall Status:
+                    <h2>Status</h2>
                 </UserContainerHeader>
 
                 <StatusBanner data={userData} />
 
-                <a href='#profile' onClick={() => handlePageChange('Profile')}>
+                <p onClick={() => handlePageChange('Profile')}>
                     View Your Profile
-                </a>
-            </>
+                </p>
+            </UserContainer>
         </ColumnContainer>
     )
 }

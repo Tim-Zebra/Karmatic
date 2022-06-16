@@ -85,6 +85,7 @@ export default function App() {
   }
 
   return (
+    <>
     <ApolloProvider client={client}>
 
       <ThemeProvider theme={theme}>
@@ -94,5 +95,6 @@ export default function App() {
         <Footer />
       </ThemeProvider>
     </ApolloProvider>
+    </>
   );
 }

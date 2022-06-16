@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CreatePostButton } from '../../../../GlobalComponents/Buttons/AddButton.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions } from './PostForm.styled'
-
+import { PostTextInput } from '../../../../GlobalComponents/Forms/Form.Styled';
 import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_POST, CHANGE_KARMA } from '../../../../utils/mutations';
 import { GET_ME } from '../../../../utils/queries';
@@ -58,14 +58,14 @@ export default function PostForm({ setPostsArray, allPosts }) {
     return (
         <PostFormContainer onSubmit={onSubmit}>
             <PostTitleContainer>
-                <input
+                <PostTextInput
                     type='text'
                     maxLength={50}
                     placeholder='Title'
                     value={postTitle}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <input
+                <PostTextInput
                     type='text'
                     maxLength={50}
                     placeholder='Address'
@@ -82,7 +82,6 @@ export default function PostForm({ setPostsArray, allPosts }) {
 
             />
             <PostFormOptions>
-                <label>Difficulty:</label>
                 <select
                     id="difficulty"
                     name="difficulty"
@@ -99,8 +98,6 @@ export default function PostForm({ setPostsArray, allPosts }) {
                         value="Hard">Hard
                     </option>
                 </select>
-                <hr />
-                <label>Duration:</label>
                 <select
                     id="duration"
                     name="difficulty"
@@ -112,11 +109,12 @@ export default function PostForm({ setPostsArray, allPosts }) {
                     <option value="3">3 Hours</option>
                     <option value="4">4 Hours</option>
                 </select>
-            </PostFormOptions>
-            <CreatePostButton
+                <CreatePostButton
                 type='submit'>
                 Create Post
-            </CreatePostButton>
+                </CreatePostButton>
+            </PostFormOptions>
+            
         </PostFormContainer>
     )
 }

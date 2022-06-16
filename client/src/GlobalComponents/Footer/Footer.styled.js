@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-position: fixed;
-bottom:0;
-left:0;
-width: 100vw;
-font-size:18px;
-color: ${({ theme }) => theme.colors.darkgrey };
-height: 2rem;
-display: flex;
-align-items: center;
-justify-content: flex-end;
-background-color: whitesmoke;
-`
+    width: 100vw;
+    font-size:18px;
+    color: ${({ theme }) => theme.colors.darkgrey };
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+`
+export const Icons = styled.div`
+    img {
+        height: 44px;
+        margin: 0 .5rem;
+    }
+    img:hover {
+        cursor: pointer;
+    }
+`

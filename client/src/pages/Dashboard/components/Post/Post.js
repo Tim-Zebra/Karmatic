@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { PostOutterContainer, PostContainer, PostBody, SidebarContainer, PostAuthorHeader, PostHeader, PostMessage, PostBottom, PostFooter, EditButton, PostProfileImage } from './Post.styled'
-import { PrettyButton } from '../../../../GlobalComponents/Buttons/PrettyButton.styled'
+import { PostPrettyButton } from '../../../../GlobalComponents/Buttons/PrettyButton.styled'
 import EditPostModal from '../Modals/EditPostModal'
 
 // Imports Authorization
@@ -104,6 +104,8 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                 });
                 // Adds new helper to hooked Array to refresh page
                 setHelpersArray([...helpersArray, userData.username])
+                // reload page after add
+                window.location.reload(false)
             } catch (err) {
                 console.error(err);
             }
@@ -115,6 +117,8 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                     variables: { karmaPostId: karmaPostId }
                 });
                 setHelpersArray([...helpersArray.filter(helpers => helpers !== userData.username)]);
+                // reload page after remove
+                window.location.reload(false)
             } catch (err) {
                 console.error(err);
             }
@@ -145,7 +149,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
         }
     }
 
-    // Completes Karma Post...In-progress
+    // Deletes Karma Post...In-progress
     const deleteKarmaPost = async () => {
         try {
             await deletePost({
@@ -159,6 +163,8 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                 }
             })
             setIsDeleted(true);
+            // reload page after delete
+            window.location.reload(false)
         } catch (err) {
             console.error(err);
         }
@@ -180,28 +186,31 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                                             complete
                                         </EditButton>
 
+                                        <EditButton onClick={() => setIsOpen(true)}>
+                                            edit
+                                        </EditButton>
+
                                         {/* // Delete Karma Post */}
                                         <EditButton onClick={() => deleteKarmaPost()}>
                                             delete
                                         </EditButton>
                                     
-                                        <EditButton onClick={() => setIsOpen(true)}>
-                                            edit
-                                        </EditButton>
+                                        
                             
-                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts}/>}
+                            {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts} deleteKarmaPost={deleteKarmaPost} />}
                                     </>
                             : userData.username === karmaPostData.postAuthor && !isComplete && !helpersArray[0] ?
                             // React requires parent child relationship. Must be wrapped in div or rendered as separate boolean statements
                             <>
+
+                                <EditButton onClick={() => setIsOpen(true)}>
+                                    edit
+                                </EditButton>
                                 {/* // Delete Karma Post */}
                                 <EditButton onClick={() => deleteKarmaPost()}>
                                     delete
                                 </EditButton>
                             
-                                <EditButton onClick={() => setIsOpen(true)}>
-                                    edit
-                                </EditButton>
                     
                     {isOpen && <EditPostModal karmaPostData={karmaPostData} setIsOpen={setIsOpen} setPostsArray={setPostsArray} allPosts={allPosts}/>}
                             </>
@@ -209,6 +218,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                         }
                             
                         </SidebarContainer>
+                        
                         <PostBody>
 
                             <PostHeader>
@@ -229,13 +239,13 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                                 <p>{karmaPostData.address}</p>
                                 {/* Button to add karmaHelper if user is not the post author*/}
                                 {userData.username !== karmaPostData.postAuthor && !isComplete &&
-                                    <PrettyButton
+                                    <PostPrettyButton
                                     // disabled={helpersArray?.some((author) => author === userData.username)}
                                     onClick={() => addHelperToPost(karmaPostData._id)}>
                                     {helpersArray?.some((author) => author === userData.username)
                                         ? 'Already helping!'
                                         : `Help ${karmaPostData.postAuthor}`}
-                                </PrettyButton>
+                                </PostPrettyButton>
                                 }
                                 {/* Buttons to allow Complete/Delete of Karma Post if post author is logged in user*/}
                                 
