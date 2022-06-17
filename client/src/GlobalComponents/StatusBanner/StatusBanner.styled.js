@@ -5,10 +5,14 @@ export const KarmaBanner = styled.div`
     border-radius: 10px;
     box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple};
     color: ${({ theme }) => theme.colors.darkpurple};
-    width: 50%;
+    width: 33%;
     text-align: center;
     align-self: center;
     margin-bottom: 2rem;
+
+    &:hover {
+        box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.lightpurple};
+    }
 `
 // @William you may want to change theses colors
 export const LowKarmaBanner = styled(KarmaBanner)`

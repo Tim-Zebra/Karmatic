@@ -17,25 +17,33 @@ export const ContainerSubRowOne = styled.div`
 `
 
 export const ContainerSubColumnOne = styled.div`
-    margin-left: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
     h1 {
         color: ${({ theme }) => theme.colors.darkteal};
+    }
+
+    h2 {
+        font-family: ${({ theme }) => theme.fonts.otherfont};
     }
 `
 
 export const ContainerSubColumnTwo = styled.div`
     width:100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     img {
-        height: 88px;
+        height: 33px;
     }
 
     h2 {
-        margin-top: 0;
+        margin: 0 1rem;
         font-family: ${({ theme }) => theme.fonts.otherfont };
     }
 `
@@ -43,8 +51,6 @@ export const ContainerSubColumnTwo = styled.div`
 export const UserContainerWide = styled.div`
   width: 92%;
   border-radius: 20px;
-  background-color: white;
-  box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple} ;
   
 `
 
@@ -53,8 +59,6 @@ export const UserContainerLong = styled.div`
   width: 92%;
   border-radius: 20px;
   margin-bottom: 1rem;
-  background-color: white;
-  box-shadow: 3px 3px ${({ theme }) => theme.colors.lightpurple};
   padding-top: 1rem;
   flex-direction: column-reverse;
 `

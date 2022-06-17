@@ -25,7 +25,7 @@ export const PostTitleContainer = styled.div`
 export const PostTextArea = styled.textarea`
     margin: 1rem;
     width: 90%;
-    height: 1rem;
+    height: fit-content;
     font-size: 16px;
     border: none;
     resize: none;
@@ -62,9 +62,6 @@ export const PostFormOptions = styled.div`
     margin-right: 1rem;
     }
     
-    @media only screen and (min-width: 992px) {
-        flex-direction: column;
-    }
     @media only screen and (min-width: 1212px) {
         flex-direction: row;
     }

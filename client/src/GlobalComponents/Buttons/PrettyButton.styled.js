@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const PrettyButton = styled.button`
     color: ${({ theme }) => theme.colors.darkgrey};
     font-size: 16px;
-    width: 95px;
+    width: 110px;
     padding: .75rem;
     margin:.5rem;
     border: .25px solid ${({ theme }) => theme.colors.darkteal};
@@ -29,5 +29,5 @@ export const FormPrettyButton = styled(PrettyButton)`
 
 export const PostPrettyButton = styled(PrettyButton)`
     margin: 2rem 1rem;
-    width: 60%;
+    width: 40%;
 `

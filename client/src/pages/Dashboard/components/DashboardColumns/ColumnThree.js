@@ -1,6 +1,6 @@
 import React from 'react'
-import RecentKarmaReceived from '../RecentKarma/RecentKarmaReceived'
-import RecentKarmaHelping from '../RecentKarma/RecentKarmaHelping'
+import RecentKarma from '../RecentKarma/RecentKarma'
+import ActiveKarma from '../RecentKarma/ActiveKarma'
 // CSS components
 import { ColumnContainer } from './ColumnThree.styled'
 
@@ -17,7 +17,7 @@ import { GET_ME } from '../../../../utils/queries';
 const unDateFormatToUnix = require('../../../../utils/unDateFormatToUnix');
 
 // Shows recent KarmaPost activity
-export default function ColumnThree() {
+export default function ColumnThree({setState}) {
     // Queries recent Karma posts
     // Filters by date created determining if data created it outside scope of 'recent'
     const { loading, data } = useQuery(GET_ME);
@@ -53,17 +53,9 @@ export default function ColumnThree() {
         <ColumnContainer>
             {/* Keys are generated with a string plus the index */}
             {/* Recent karma received after the postAuthor Completed the post */}
-            <h3>Recent Karma Received:</h3>
-            {recentKarmaReceivedArray.length === 0 &&
-                <div>
-                    No Karma Received Recently {':('}
-                </div>}
-            {recentKarmaReceivedArray.length > 0 &&
-                recentKarmaReceivedArray.map((recentPost, index) =>
-                    <RecentKarmaReceived karmaPostData={recentPost} key={`karmareceived${index}`} />
-                )
-            }
-            <h3>Recent Karma Helping:</h3>
+            <hr />
+            <h3>Active</h3>
+            
             {recentKarmaHelpingArray.length === 0 &&
                 <div>
                     Current joined Karma Posts will appear here.
@@ -72,9 +64,22 @@ export default function ColumnThree() {
 
             {recentKarmaHelpingArray.length > 0 &&
                 recentKarmaHelpingArray.map((recentPost, index) =>
-                    <RecentKarmaHelping karmaPostData={recentPost} key={`karmahelping${index}`} />
+                    <ActiveKarma karmaPostData={recentPost} key={`karmahelping${index}`} />
                 )
             }
+            <hr />
+            <h3>Recent</h3>
+           
+            {recentKarmaReceivedArray.length === 0 &&
+                <div>
+                    No Karma Received Recently
+                </div>}
+            {recentKarmaReceivedArray.length > 0 &&
+                recentKarmaReceivedArray.map((recentPost, index) =>
+                    <RecentKarma karmaPostData={recentPost} key={`karmareceived${index}`} />
+                )
+            }
+            
 
         </ColumnContainer>
     )

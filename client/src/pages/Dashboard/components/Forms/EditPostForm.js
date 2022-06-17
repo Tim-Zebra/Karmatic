@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CreatePostButton } from '../../../../GlobalComponents/Buttons/AddButton.styled'
+import { CreatePostButton } from '../../../../GlobalComponents/Buttons/ButtonPrimary.styled'
 import { PostFormContainer, PostTitleContainer, PostTextArea, PostFormOptions, DeleteButton } from './PostForm.styled'
 import { TextInput } from '../../../../GlobalComponents/Forms/Form.Styled';
 import { useMutation } from '@apollo/client';

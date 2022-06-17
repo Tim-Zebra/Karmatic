@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Container, ContainerSubRowOne, ContainerSubColumnOne, ContainerSubColumnTwo, UserContainerWide } from './ProfileColumnTwo.styled'
-import StatusBanner from '../../../../../GlobalComponents/StatusBanner/StatusBanner'
+import { Container, ContainerSubRowOne, ContainerSubColumnOne, ContainerSubColumnTwo, UserContainerWide } from './UserActivityInfo.styled'
+import StatusBanner from '../../../../GlobalComponents/StatusBanner/StatusBanner'
 
 export default function UserInfo({ userData }) {
     return (
@@ -17,12 +17,13 @@ export default function UserInfo({ userData }) {
                     {isOpen && <CreatePostModal setIsOpen={setIsOpen} />} */}
                 </ContainerSubRowOne>
                 <ContainerSubColumnTwo>
-                    <h2>Current:</h2>
                     <img src='./assets/images/karma_coin.png' alt='coin logo' />
-                    <p>{userData.karma} Karma Coins</p>
-                    <h2>Overall:</h2>
-                    <StatusBanner data={userData} width={50} />
+                    <h2>{userData.karma}</h2>
                 </ContainerSubColumnTwo>
+                <ContainerSubColumnOne>
+                    <h2>Status</h2>
+                <StatusBanner data={userData} width='100px' />
+                </ContainerSubColumnOne>
             </UserContainerWide>
         </Container>
     )

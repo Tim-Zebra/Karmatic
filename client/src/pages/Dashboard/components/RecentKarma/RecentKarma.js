@@ -1,32 +1,32 @@
 import React from 'react'
-import { RecentKarmaBox, PostTitle, ExchangeBetweenTop, ExchangeBetweenBottom, KarmaCoins, RecentContainer } from './RecentKarmaReceived.styled'
+import { RecentKarmaBox, PostTitle, ExchangeBetweenTop, ExchangeBetweenBottom, KarmaCoins, RecentContainer } from './ActiveRecentKarma.styled'
 
-export default function RecentKarmaReceived({ karmaPostData }) {
+export default function RecentKarma({ karmaPostData }) {
     return (
         <RecentKarmaBox>
-            <img src='./assets/images/karma_coin.png' height='44px' alt='karma coin' />
             <RecentContainer>
                     <ExchangeBetweenTop>
                         <p>You</p>
-                        <h4>received</h4>
+                        <p>received</p>
                     </ExchangeBetweenTop>
                     {/* Displays posttitle */}
                 
                 {/* Displays Karma Coins */}
                 <KarmaCoins>
                     <h1>{karmaPostData.postValue}</h1>
-                    <p>Karma Coins</p>
+                    <img src='./assets/images/karma_coin.png' alt='karma coin' />
                 </KarmaCoins>
                 <ExchangeBetweenBottom>
                         {/* Displays postauthor */}
-                        <h4>from</h4>
+                        <p>from</p>
                         <p>{karmaPostData.postAuthor}</p>
                     </ExchangeBetweenBottom>
-            </RecentContainer>
-            {/* <PostTitle>
+                    {/* <PostTitle>
                 <p>for</p>
                 <h4>{karmaPostData.postTitle}</h4>
             </PostTitle> */}
+            </RecentContainer>
+            
         </RecentKarmaBox>
     )
 }

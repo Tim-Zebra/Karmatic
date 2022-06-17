@@ -46,7 +46,7 @@ export const ActivityHeader = styled.div`
     }
     
     @media only screen and (min-width: 992px) {
-        margin-top: 12rem;
+        margin-top: 13rem;
     }
     
 `

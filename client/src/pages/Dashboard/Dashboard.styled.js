@@ -20,6 +20,7 @@ export const Column = styled.div`
     flex-direction: column;
     align-items: center;
 
+
     @media only screen and (min-width: 992px) {
         width: 25vw;
     }

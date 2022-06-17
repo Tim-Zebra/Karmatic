@@ -10,17 +10,30 @@ export const StyledNavContainer = styled.header`
     display: flex;
     background-color: ${({ theme }) => theme.colors.darkgrey };
     align-content: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+
+    @media only screen and (min-width: 400px) {
+        justify-content: space-between;
+        }
 
 `
 export const StyledNavImage =  styled.img`
     height: 44px;
     cursor: pointer;
+
 `
+export const DisappearingNavImage = styled(StyledNavImage)`
+        display: none;
+    @media only screen and (min-width: 400px) {
+            display: block;
+        }
+`
+
 export const StyledNavEnd =  styled.div`
     margin-right: 1.5rem;
     display: flex;
     align-items: center;
+    
 
     a {
         margin-right: 3em;
@@ -32,4 +45,6 @@ export const StyledNavEnd =  styled.div`
         cursor: pointer;
 
     }
+
+
 `

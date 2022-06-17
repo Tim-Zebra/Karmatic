@@ -27,10 +27,6 @@ export const GreetingContainer = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.colors.darkgrey };
     font-size: 20px;
-
-    &:hover {
-        box-shadow: 0px 0px 10px ${({ theme  }) => theme.colors.darkteal};
-    }
 `
 export const UserContainer = styled.div`
     display: flex;
@@ -50,7 +46,7 @@ export const UserContainerHeader = styled.div`
     h2 {
         font-family: ${({ theme }) => theme.fonts.otherfont };
         margin: 0;
-        font-size: 26px;
+        font-size: 18px;
     }
 `
 export const CurrentKarmaCoinsContainer = styled.div`

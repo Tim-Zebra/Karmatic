@@ -36,7 +36,8 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     const [completeKarmaPostMutation] = useMutation(KARMAPOST_COMPLETE);
     const [refundKarma] = useMutation(CHANGE_KARMA);
     const [karmaPayment] = useMutation(CHANGE_KARMA);
-
+    
+    
     // Creates helpers array that sets hooks for page refresh. Get's initial helpers from karmaPostData Prop.
 
     const [helpersArray, setHelpersArray] = useState(karmaPostData.karmaHelpers.map((karmaHelper) => karmaHelper.helperUsername));
@@ -46,7 +47,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
 
     // Creates hook post delete
     const [isDeleted, setIsDeleted] = useState(false);
-
+    
     // Querys username and karma
     // Sets hooks for data loading
     const { loading, data } = useQuery(GET_ME);
@@ -62,6 +63,8 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
     if (loading) {
         return <h2>LOADING...</h2>;
     }
+    // update function 
+    
     // Renders Karma Helpers
     const renderKarmaHelpers = () => {
         // Finds length of Karma
@@ -106,6 +109,8 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                 setHelpersArray([...helpersArray, userData.username])
                 // reload page after add
                 window.location.reload(false)
+
+        
             } catch (err) {
                 console.error(err);
             }
@@ -119,6 +124,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                 setHelpersArray([...helpersArray.filter(helpers => helpers !== userData.username)]);
                 // reload page after remove
                 window.location.reload(false)
+
             } catch (err) {
                 console.error(err);
             }
@@ -169,6 +175,10 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
             console.error(err);
         }
     };
+
+    
+
+
 
     for (let j = 0; j <= allPosts.length; j++) {
         if (!allPosts[j].complete) {

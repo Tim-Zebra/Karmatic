@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ColumnOne from './components/DashboardColumns/ColumnOne'
 import ColumnTwo from './components/DashboardColumns/ColumnTwo'
 import ColumnThree from './components/DashboardColumns/ColumnThree'
@@ -6,6 +6,7 @@ import ColumnThree from './components/DashboardColumns/ColumnThree'
 import { DashboardContainer, Column, WideColumn } from './Dashboard.styled'
 import { useQuery } from '@apollo/client';
 import { GET_USERS_KARMA, GET_ALL_KARMAPOSTS } from '../../utils/queries';
+
 
 export default function Dashboard({ handlePageChange, isOpen, setIsOpen }) {
     // Get all users karma, so it can be passed to posts and used to display karma of postauthor

@@ -1,8 +1,8 @@
 import React from "react";
 //Styled Components
 
-import NeighborhoodCard from "../../NeighborCard/NeighborhoodCard";
-import { Container } from "./ProfileColumnOne.styled";
+import NeighborhoodCard from "../NeighborCard/NeighborhoodCard";
+import { Container } from "./Neighborhood.styled";
 
 const data = [
     {
@@ -15,15 +15,13 @@ const data = [
         groupName: 'Copper Spring'
     }]
 
-export default function ProfileColumnOne() {
+export default function Neighborhood() {
     return (
         <Container>
-            <>Neighborhoods</>
             <>
                 <NeighborhoodCard data={data[0]} />
                 <NeighborhoodCard data={data[1]} />
                 <NeighborhoodCard data={data[2]} />
-        
             </>
         </Container>
     )
