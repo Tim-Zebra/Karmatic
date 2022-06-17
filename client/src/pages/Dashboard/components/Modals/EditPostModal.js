@@ -8,7 +8,7 @@ export default function CreatePostModal({setIsOpen, karmaPostData, setPostsArray
 
 
     return (
-        <ModalBackground onClick={() => setIsOpen(false)}>
+        <ModalBackground>
             <>
             <ModalContainer>
                 <ModalHeader>
