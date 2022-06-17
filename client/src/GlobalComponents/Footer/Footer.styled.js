@@ -15,7 +15,7 @@ export const StyledFooter = styled.footer`
 export const Icons = styled.div`
     margin-top: 2rem;
     img {
-        height: 22px;
+        height: 32px;
         margin: 0 .5rem;
     }
     img:hover {
