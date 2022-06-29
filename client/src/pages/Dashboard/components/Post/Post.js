@@ -108,7 +108,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                 // Adds new helper to hooked Array to refresh page
                 setHelpersArray([...helpersArray, userData.username])
                 // reload page after add
-                window.location.reload(false)
+                // window.location.reload(false)
 
         
             } catch (err) {
@@ -123,7 +123,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
                 });
                 setHelpersArray([...helpersArray.filter(helpers => helpers !== userData.username)]);
                 // reload page after remove
-                window.location.reload(false)
+                // window.location.reload(false)
 
             } catch (err) {
                 console.error(err);
@@ -170,7 +170,7 @@ export default function Post({ karmaPostData, usersKarma, setPostsArray, allPost
             })
             setIsDeleted(true);
             // reload page after delete
-            window.location.reload(false)
+            // window.location.reload(false)
         } catch (err) {
             console.error(err);
         }
