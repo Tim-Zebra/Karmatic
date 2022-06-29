@@ -1,8 +1,8 @@
 import React from 'react'
-import { ProfileContainer, ColumnOne, ColumnTwo } from './Profile.styled'
-import ProfileColumnOne from '../../components/ProfileColumns/ColumnOne/ProfileColumnOne'
-import UserActivity from '../../components/ProfileColumns/ColumnTwo/UserActivity'
-import UserInfo from '../../components/ProfileColumns/ColumnTwo/UserInfo'
+import { ProfileContainer, Column, NeighborhoodColumn, ProfileHero, ProfileInformation } from './Profile.styled'
+import Neighborhood from './components/Neighborhood/Neighborhood'
+import UserInfo from './components/UserActivityInfo/UserInfo'
+import UserActivity from './components/UserActivityInfo/UserActivity'
 import { useQuery } from '@apollo/client';
 import { GET_ME} from '../../utils/queries';
 
@@ -22,15 +22,21 @@ export default function Profile() {
     return (
         <ProfileContainer>
 
-            <ColumnTwo>
+            <ProfileHero>
                 <UserInfo userData={userData} />
+            </ProfileHero>
+
+            <ProfileInformation>
+            <NeighborhoodColumn>
+                <h3>Neighborhoods</h3>
+                <Neighborhood />
+            </NeighborhoodColumn>
+
+            <Column>
                 <h3>Recent Activity</h3>
                 <UserActivity userData={userData}/>
-            </ColumnTwo>
-
-            <ColumnOne>
-                <ProfileColumnOne />
-            </ColumnOne>
+            </Column>
+            </ProfileInformation>
 
         </ProfileContainer>
     )

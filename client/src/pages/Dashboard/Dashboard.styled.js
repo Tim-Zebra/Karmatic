@@ -5,6 +5,10 @@ export const DashboardContainer = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
+    background-image: url('./assets/images/background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 
     @media only screen and (min-width: 992px) {
         flex-direction: row;
@@ -16,8 +20,16 @@ export const Column = styled.div`
     flex-direction: column;
     align-items: center;
 
+
     @media only screen and (min-width: 992px) {
-        width: 33vw;
+        width: 25vw;
+    }
+`
+
+export const WideColumn = styled(Column)`
+
+    @media only screen and (min-width: 992px) {
+        width: 50vw;
     }
 `
 

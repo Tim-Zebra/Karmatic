@@ -9,11 +9,13 @@ import { setContext } from '@apollo/client/link/context';
 
 import { GlobalStyles } from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
+import Login from './pages/LoginSignup/Login';
+import SignUp from './pages/LoginSignup/SignUp'
 import Profile from './pages/Profile/Profile';
 import Dashboard from './pages/Dashboard/Dashboard'
 import Home from './pages/Home/Home';
-import Nav from './components/Nav/Nav';
-import Footer from "./components/Footer/Footer"
+import Nav from './GlobalComponents/Nav/Nav';
+import Footer from "./GlobalComponents/Footer/Footer"
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -56,8 +58,12 @@ const theme = {
 }
 
 export default function App() {
+  
+  // Determines if the Modal for edit post should open
+  const [isOpen, setIsOpen] = useState(false)
   // Logic to have app follow the current page being displayed
   const [currentPage, setCurrentPage] = useState('Home');
+  const [accessPage, setCurrentAccessPage] = useState('Login')
   const handlePageChange = (page) => setCurrentPage(page);
   
   // Renders current page based on user login
@@ -67,20 +73,28 @@ export default function App() {
       return <Profile/>;
     }
     if (currentPage === 'Dashboard') {
-      return <Dashboard handlePageChange={handlePageChange} />;
+      return <Dashboard handlePageChange={handlePageChange} isOpen={isOpen} setIsOpen={setIsOpen} />;
     }
-      return <Home handlePageChange={handlePageChange}/>;
+    if (currentPage === 'Login') {
+      return <Login handlePageChange={handlePageChange} />;
+    }
+    if (currentPage === 'SignUp') {
+      return <SignUp handlePageChange={handlePageChange} />;
+    }
+      return <Home handlePageChange={handlePageChange} />;
   }
 
   return (
+    <>
     <ApolloProvider client={client}>
 
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
+        <Nav currentPage={currentPage} handlePageChange={handlePageChange} accessPage={accessPage} setCurrentAccessPage={setCurrentAccessPage} />
         {renderCurrentPage()}
         <Footer />
       </ThemeProvider>
     </ApolloProvider>
+    </>
   );
 }
